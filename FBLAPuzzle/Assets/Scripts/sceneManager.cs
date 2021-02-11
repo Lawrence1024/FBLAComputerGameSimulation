@@ -24,7 +24,9 @@ public class sceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("escape")) {
+            PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+        }
     }
     void activatePauseMenu() { 
         
@@ -36,5 +38,5 @@ public class sceneManager : MonoBehaviour
         }
         InstructionPages[pageNum].SetActive(true);
     }
-
+   
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
 public class ButtonDetection : MonoBehaviour
 {
     sceneManager sceneManager;
@@ -21,12 +21,12 @@ public class ButtonDetection : MonoBehaviour
     void Start()
     {
         sceneManager = GameObject.Find("SceneManager").GetComponent<sceneManager>();
-        PlayButton.GetComponent<Button>().onClick.AddListener(executePlayButton);
+        /*PlayButton.GetComponent<Button>().onClick.AddListener(executePlayButton);
         InstructionButton.GetComponent<Button>().onClick.AddListener(executeInstructionButton);
         LeaderBoardButton.GetComponent<Button>().onClick.AddListener(executeLeaderBoardButton);
         ExistButton.GetComponent<Button>().onClick.AddListener(executeExistButton);
         NextPageButton.GetComponent<Button>().onClick.AddListener(executeNextPageButton);
-        LastPageButton.GetComponent<Button>().onClick.AddListener(executeLastPageButton);
+        LastPageButton.GetComponent<Button>().onClick.AddListener(executeLastPageButton);*/
 
         if (pageCounter <= 0) {
             LastPageButton.SetActive(false);
@@ -38,10 +38,14 @@ public class ButtonDetection : MonoBehaviour
     {
         
     }
-    void executePlayButton() {
+    public void executePlayButton() {
         Debug.Log("Play");
+        sceneManager.LoadingCanvas.SetActive(true);
+        //sceneManager.LoadingCanvas.GetComponent<"LoadingBackground">.GetComponent<Loading>().runLoading("Map");
+        sceneManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
+        //SceneManager.LoadScene();
     }
-    void executeInstructionButton() {
+    public void executeInstructionButton() {
         Debug.Log("Instruction");
         pageCounter = 0;
         LastPageButton.SetActive(false);
@@ -49,17 +53,17 @@ public class ButtonDetection : MonoBehaviour
         sceneManager.InstructionCanvas.SetActive(true);
 
     }
-    void executeLeaderBoardButton() {
+    public void executeLeaderBoardButton() {
         Debug.Log("Leader Board");
 
     }
-    void executeExistButton()
+    public void executeExistButton()
     {
         Debug.Log("Exist");
         sceneManager.InstructionCanvas.SetActive(false);
 
     }
-    void executeNextPageButton()
+    public void executeNextPageButton()
     {
         pageCounter++;
         Debug.Log("page Counter" + pageCounter + " instructionpages " + sceneManager.InstructionPages.Length);
@@ -74,7 +78,7 @@ public class ButtonDetection : MonoBehaviour
         Debug.Log("Next");
 
     }
-    void executeLastPageButton()
+    public void executeLastPageButton()
     {
         pageCounter--;
         if (pageCounter <= 0)
@@ -90,5 +94,13 @@ public class ButtonDetection : MonoBehaviour
         Debug.Log("Last");
 
     }
+    public void quitProgram()
+    {
+        Debug.Log("clicked");
+        Application.Quit();
+    }
 
+    public void resumeGame() {
+        sceneManager.PauseMenuCanvas.SetActive(false);
+    }
 }

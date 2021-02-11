@@ -22,35 +22,33 @@ public class Loading : MonoBehaviour
         
     }
 
-    void runLoading() {
-        loadingCounter = 9;
-        StartCoroutine(RunningStart());        
+    public void runLoading(string sceneName) {
+        loadingCounter = Random.Range(4, 10);
+        Debug.Log(loadingCounter);
+        StartCoroutine(RunningStart(sceneName));        
     }
 
-    IEnumerator RunningStart()
+    IEnumerator RunningStart(string sceneName)
     {
         loadingCounter--;
-        Debug.Log(loadingCounter);
         //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.8f);
         if (loadingText.Length < 10)
         {
             loadingText = loadingText + ".";
             loadingGameObject.GetComponent<TMPro.TextMeshProUGUI>().text = loadingText;
-            Debug.Log(loadingText);
         }
         else {
             loadingText = "Loading.";
             loadingGameObject.GetComponent<TMPro.TextMeshProUGUI>().text = loadingText;
-            Debug.Log(loadingText);
         }
         if (loadingCounter > 0) {
-            StartCoroutine(RunningStart());
+            StartCoroutine(RunningStart(sceneName));
         }
         if (loadingCounter <= 0)
         {
             //Scene Transition
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(sceneName);
         }
     }
 }
