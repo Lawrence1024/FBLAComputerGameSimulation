@@ -44,6 +44,7 @@ public class ButtonDetection : MonoBehaviour
     void executeInstructionButton() {
         Debug.Log("Instruction");
         pageCounter = 0;
+        LastPageButton.SetActive(false);
         sceneManager.changeInstrucitonPage(pageCounter);
         sceneManager.InstructionCanvas.SetActive(true);
 
@@ -65,7 +66,8 @@ public class ButtonDetection : MonoBehaviour
         if (pageCounter > 0)
         {
             LastPageButton.SetActive(true);
-        } else if (pageCounter>= (sceneManager.InstructionPages.Length-2)) {
+        }
+        if (pageCounter== (sceneManager.InstructionPages.Length-1)) {
             NextPageButton.SetActive(false);
         }
         sceneManager.changeInstrucitonPage(pageCounter);
@@ -79,7 +81,7 @@ public class ButtonDetection : MonoBehaviour
         {
             LastPageButton.SetActive(false);
         }
-        else if (pageCounter < sceneManager.InstructionPages.Length-2)
+        if (pageCounter < sceneManager.InstructionPages.Length-1)
         {
             NextPageButton.SetActive(true);
         }
