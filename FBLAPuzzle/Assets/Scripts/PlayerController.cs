@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") == 1f)
             {
-        //        Debug.Log("New----------------------------------");
-         //       Debug.Log("old" + movePoint.position);
-         //       Debug.Log("new" + movePoint.position + new Vector3(0.99f, 0f, 0f));
+                Debug.Log("New----------------------------------");
+                Debug.Log("old" + movePoint.position);
+                Debug.Log("new" + movePoint.position + new Vector3(0.99f, 0f, 0f));
                 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, whatStopsMovement)) ;
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 2f, whatStopsMovement)) ;
                 {
                     Debug.Log("New----------------------------------");
                     Debug.Log("old" + movePoint.position);
