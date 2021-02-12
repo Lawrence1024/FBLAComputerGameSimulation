@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sceneManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
@@ -18,7 +18,8 @@ public class sceneManager : MonoBehaviour
         InstructionCanvas.SetActive(false);
         LeaderBoardCanvas.SetActive(false);
         MainPageCanvas.SetActive(true);
-        for (int i = 0; i < InstructionPages.Length; i++) {
+        for (int i = 0; i < InstructionPages.Length; i++)
+        {
             InstructionPages[i].SetActive(false);
         }
     }
@@ -26,19 +27,22 @@ public class sceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("escape")) {
+        if (Input.GetKeyDown("escape"))
+        {
             activatePauseMenu();
         }
     }
-    void activatePauseMenu() {
+    void activatePauseMenu()
+    {
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
     }
-    public void changeInstrucitonPage(int pageNum) {
+    public void changeInstrucitonPage(int pageNum)
+    {
         for (int i = 0; i < InstructionPages.Length; i++)
         {
             InstructionPages[i].SetActive(false);
         }
         InstructionPages[pageNum].SetActive(true);
     }
-   
+
 }
