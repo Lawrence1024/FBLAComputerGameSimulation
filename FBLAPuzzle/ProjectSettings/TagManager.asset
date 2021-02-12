@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MainBackground
+    uniqueID: 335836265
+    locked: 0
+  - name: FeaturesLayer
+    uniqueID: 2886945139
+    locked: 0
+  - name: InstructionLayer
+    uniqueID: 228046521
+    locked: 0
+  - name: LeaderBoardLayer
+    uniqueID: 3819190631
+    locked: 0
+  - name: LoadingLayer
+    uniqueID: 2879699985
+    locked: 0
+  - name: PauseLayer
+    uniqueID: 1916265901
+    locked: 0
