@@ -25,11 +25,11 @@ public class sceneManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("escape")) {
-            PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+            activatePauseMenu();
         }
     }
-    void activatePauseMenu() { 
-        
+    void activatePauseMenu() {
+        PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
     }
     public void changeInstrucitonPage(int pageNum) {
         for (int i = 0; i < InstructionPages.Length; i++)

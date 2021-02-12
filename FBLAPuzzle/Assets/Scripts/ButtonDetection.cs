@@ -42,7 +42,7 @@ public class ButtonDetection : MonoBehaviour
         Debug.Log("Play");
         sceneManager.LoadingCanvas.SetActive(true);
         //sceneManager.LoadingCanvas.GetComponent<"LoadingBackground">.GetComponent<Loading>().runLoading("Map");
-        sceneManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
+        sceneManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Level_1_1");
         //SceneManager.LoadScene();
     }
     public void executeInstructionButton() {
