@@ -23,7 +23,7 @@ public class Loading : MonoBehaviour
     }
 
     public void runLoading(string sceneName) {
-        loadingCounter = Random.Range(4, 10);
+        loadingCounter = Random.Range(4, 7);
         Debug.Log(loadingCounter);
         StartCoroutine(RunningStart(sceneName));        
     }
@@ -32,7 +32,7 @@ public class Loading : MonoBehaviour
     {
         loadingCounter--;
         //parser.nextScene(sceneCounter, sceneNum);
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(.5f);
         if (loadingText.Length < 10)
         {
             loadingText = loadingText + ".";
