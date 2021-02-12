@@ -25,10 +25,10 @@ public class Loading : MonoBehaviour
     public void runLoading(string sceneName) {
         loadingCounter = Random.Range(4, 7);
         Debug.Log(loadingCounter);
-        StartCoroutine(RunningStart(sceneName));        
+        StartCoroutine(Buffer(sceneName));        
     }
 
-    IEnumerator RunningStart(string sceneName)
+    IEnumerator Buffer(string sceneName)
     {
         loadingCounter--;
         //parser.nextScene(sceneCounter, sceneNum);
@@ -43,7 +43,7 @@ public class Loading : MonoBehaviour
             loadingGameObject.GetComponent<TMPro.TextMeshProUGUI>().text = loadingText;
         }
         if (loadingCounter > 0) {
-            StartCoroutine(RunningStart(sceneName));
+            StartCoroutine(Buffer(sceneName));
         }
         if (loadingCounter <= 0)
         {
