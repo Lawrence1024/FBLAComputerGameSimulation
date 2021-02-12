@@ -8,6 +8,7 @@ public class sceneManager : MonoBehaviour
     public GameObject PauseMenuCanvas;
     public GameObject MainPageCanvas;
     public GameObject InstructionCanvas;
+    public GameObject LeaderBoardCanvas;
     public GameObject[] InstructionPages;
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class sceneManager : MonoBehaviour
         LoadingCanvas.SetActive(false);
         PauseMenuCanvas.SetActive(false);
         InstructionCanvas.SetActive(false);
+        LeaderBoardCanvas.SetActive(false);
         MainPageCanvas.SetActive(true);
         for (int i = 0; i < InstructionPages.Length; i++) {
             InstructionPages[i].SetActive(false);

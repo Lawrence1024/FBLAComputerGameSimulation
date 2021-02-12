@@ -13,6 +13,7 @@ public class ButtonDetection : MonoBehaviour
     public GameObject NextPageButton;
     public GameObject LastPageButton;
 
+    public ScrollRect ScrollRect;
     int pageCounter = 0;
     //public GameObject PlayButton;
     //public GameObject PlayButton;
@@ -27,7 +28,7 @@ public class ButtonDetection : MonoBehaviour
         ExistButton.GetComponent<Button>().onClick.AddListener(executeExistButton);
         NextPageButton.GetComponent<Button>().onClick.AddListener(executeNextPageButton);
         LastPageButton.GetComponent<Button>().onClick.AddListener(executeLastPageButton);*/
-
+        ScrollRect.verticalNormalizedPosition = 1f;
         if (pageCounter <= 0) {
             LastPageButton.SetActive(false);
         }
@@ -55,12 +56,15 @@ public class ButtonDetection : MonoBehaviour
     }
     public void executeLeaderBoardButton() {
         Debug.Log("Leader Board");
+        ScrollRect.verticalNormalizedPosition = 1f;
+        sceneManager.LeaderBoardCanvas.SetActive(true);
+
 
     }
-    public void executeExistButton()
+    public void executeExistButton(GameObject existObj)
     {
         Debug.Log("Exist");
-        sceneManager.InstructionCanvas.SetActive(false);
+        existObj.SetActive(false);
 
     }
     public void executeNextPageButton()
