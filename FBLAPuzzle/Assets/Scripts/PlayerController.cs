@@ -26,9 +26,11 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") == 1f)
             {
+                Debug.Log(movePoint.position);
+                Debug.Log(movePoint.position + new Vector3(0.99f, 0f, 0f));
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, whatStopsMovement)) ;
                 {
-                    Debug.Log(movePoint.position + new Vector3(0.99f, 0f, 0f));
+                    
                     movePoint.position += new Vector3(0.99f, 0f, 0f);
                 }
             }
