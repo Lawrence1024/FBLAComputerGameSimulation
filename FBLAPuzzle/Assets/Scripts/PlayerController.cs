@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public Transform movePoint;
 
     public LayerMask whatStopsMovement;
+    public LayerMask boxLayer;
+    private int counter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,41 +26,89 @@ public class PlayerController : MonoBehaviour
 
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
         {
-            if (Input.GetAxisRaw("Horizontal") == 1f)
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
-                Debug.Log("New----------------------------------");
-                Debug.Log("old" + movePoint.position);
-                Debug.Log("new" + movePoint.position + new Vector3(0.99f, 0f, 0f));
-                
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 2f, whatStopsMovement)) ;
+                if (!thereIsObstacle())
                 {
-                    Debug.Log("New----------------------------------");
-                    Debug.Log("old" + movePoint.position);
-                    Debug.Log("new" + (movePoint.position + new Vector3(0.99f, 0f, 0f)));
-                    movePoint.position += new Vector3(0.99f, 0f, 0f);
+                    move();
                 }
             }
-            if (Input.GetAxisRaw("Horizontal") == -1f)
+            
+        }
+    }
+    bool thereIsObstacle()
+    {
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
+        {
+            return true;
+        }
+        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, whatStopsMovement))
+        {
+            return true;
+        }
+        return false;
+    }
+    bool moveWhenNoObstacle() {
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+        {
+            if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
             {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(-0.99f, 0f, 0f), 0.2f, whatStopsMovement)) ;
-                {
-                    movePoint.position += new Vector3(-0.99f, 0f, 0f);
-                }
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*0.99f, 0f, 0f);
             }
-            if (Input.GetAxisRaw("Vertical") == 1f)
+            else
             {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.99f, 0f), 0.2f, whatStopsMovement)) ;
-                {
-                    movePoint.position += new Vector3(0f, 0.99f, 0f);
-                }
-            }
-            if (Input.GetAxisRaw("Vertical") == -1f)
-            {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -0.99f, 0f), 0.2f, whatStopsMovement)) ;
-                {
-                    movePoint.position += new Vector3(0f, -0.99f, 0f);
-                }
+                return false;
             }
         }
+        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+        {
+            if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, whatStopsMovement))
+            {
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    void move() {
+        if (thereIsBox())
+        {
+
+        }
+        else {
+            makeMovement();
+        }
+    }
+    void makeMovement()
+    {
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+        {
+            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
+        }
+        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+        {
+            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
+        }
+    }
+    bool thereIsBox()
+    {
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+        {
+            if (Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, boxLayer))
+            {
+                return true;
+            }
+        }
+        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+        {
+            if (Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, boxLayer))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
