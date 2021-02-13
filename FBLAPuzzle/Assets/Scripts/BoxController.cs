@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class BoxController : MonoBehaviour
 {
-
     public float moveSpeed = 5f;
     public Transform movePoint;
+    public GameObject player;
 
     public LayerMask whatStopsMovement;
     public LayerMask boxLayer;
-
-    private ArrayList movementHistory = new ArrayList();
+    public bool getPushed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         movePoint.parent = null;
         movePoint.position = transform.position;
-        
     }
 
     // Update is called once per frame
@@ -28,14 +26,14 @@ public class PlayerController : MonoBehaviour
 
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
         {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+            if (getPushed)
             {
                 if (!thereIsObstacle())
                 {
                     move();
                 }
             }
-            
+
         }
     }
     bool thereIsObstacle()
@@ -50,12 +48,13 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-    bool moveWhenNoObstacle() {
+    bool moveWhenNoObstacle()
+    {
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
         {
             if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*0.99f, 0f, 0f);
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
             }
             else
             {
@@ -75,63 +74,20 @@ public class PlayerController : MonoBehaviour
         }
         return true;
     }
-    void move() {
-        if (thereIsBox())
-        {
-            makeMovement();
-            printArrayList(movementHistory);
-        }
-        else {
-            makeMovement();
-        }
-    }
-    void printArrayList(ArrayList temp)
+    void move()
     {
-        foreach(int num in temp)
-        {
-            Debug.Log(parseMovementHistory(num));
-        }
-    }
-    string parseMovementHistory(int num)
-    {
-        if (num == 1)
-        {
-            return "up";
-        }else if (num == 2)
-        {
-            return "down";
-        }
-        else if (num == 3)
-        {
-            return "left";
-        }
-        else if (num == 4)
-        {
-            return "right";
-        }
-        return "error in parseMovementHistory";
+        makeMovement();
+        getPushed = false;
     }
     void makeMovement()
     {
-        if ((Input.GetAxisRaw("Horizontal")) == 1f)
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
         {
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
-            movementHistory.Add(4);
         }
-        if ((Input.GetAxisRaw("Horizontal")) == -1f)
-        {
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
-            movementHistory.Add(3);
-        }
-        if ((Input.GetAxisRaw("Vertical")) == 1f)
+        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
         {
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
-            movementHistory.Add(1);
-        }
-        if ((Input.GetAxisRaw("Vertical")) == -1f)
-        {
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
-            movementHistory.Add(2);
         }
     }
     bool thereIsBox()
@@ -151,5 +107,9 @@ public class PlayerController : MonoBehaviour
             }
         }
         return false;
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        getPushed = true;
     }
 }
