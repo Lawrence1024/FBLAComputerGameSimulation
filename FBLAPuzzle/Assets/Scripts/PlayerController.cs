@@ -5,20 +5,27 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public float moveSpeed = 5f;
+    public float moveSpeed = 3f;
     public Transform movePoint;
 
     public LayerMask whatStopsMovement;
     public LayerMask boxLayer;
 
-    private ArrayList movementHistory = new ArrayList();
+    public ArrayList movementHistory = new ArrayList();
+
+    //public int[] startingPosition=new int[2];
+    public int xPos;
+    public int yPos;
+    public List<List<int>> positionHistory=new List<List<int>>();
+
+    private bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
     {
         movePoint.parent = null;
         movePoint.position = transform.position;
-        
+        positionHistory.Add(new List<int> {xPos,yPos});
     }
 
     // Update is called once per frame
@@ -26,16 +33,11 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)
+        if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f && (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) && !thereIsObstacle() && canMove)
         {
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-            {
-                if (!thereIsObstacle())
-                {
-                    move();
-                }
-            }
-            
+            makeMovement();
+            canMove = false;
+            StartCoroutine(resumeMove());
         }
     }
     bool thereIsObstacle()
@@ -75,64 +77,44 @@ public class PlayerController : MonoBehaviour
         }
         return true;
     }
-    void move() {
-        if (thereIsBox())
-        {
-            makeMovement();
-            printArrayList(movementHistory);
-        }
-        else {
-            makeMovement();
-        }
-    }
-    void printArrayList(ArrayList temp)
+    void printArray(List<int> temp)
     {
-        foreach(int num in temp)
+        string msg = "[";
+        for(int i = 0; i < temp.Count; i++)
         {
-            Debug.Log(parseMovementHistory(num));
+            msg += temp[i] + ",";
         }
-    }
-    string parseMovementHistory(int num)
-    {
-        if (num == 1)
-        {
-            return "up";
-        }else if (num == 2)
-        {
-            return "down";
-        }
-        else if (num == 3)
-        {
-            return "left";
-        }
-        else if (num == 4)
-        {
-            return "right";
-        }
-        return "error in parseMovementHistory";
+        msg += "]";
+        Debug.Log(msg);
     }
     void makeMovement()
     {
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
-            movementHistory.Add(4);
-        }
-        if ((Input.GetAxisRaw("Horizontal")) == -1f)
+            movementHistory.Add("right");
+            xPos += 1;
+        }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
-            movementHistory.Add(3);
+            movementHistory.Add("left");
+            xPos -= 1;
         }
-        if ((Input.GetAxisRaw("Vertical")) == 1f)
+        else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
-            movementHistory.Add(1);
+            movementHistory.Add("up");
+            yPos += 1;
         }
-        if ((Input.GetAxisRaw("Vertical")) == -1f)
+        else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
-            movementHistory.Add(2);
+            movementHistory.Add("down");
+            yPos -= 1;
         }
+        positionHistory.Add(new List<int> { xPos,yPos});
+        //Debug.Log("["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
+        
     }
     bool thereIsBox()
     {
@@ -142,8 +124,7 @@ public class PlayerController : MonoBehaviour
             {
                 return true;
             }
-        }
-        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+        }else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
         {
             if (Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, boxLayer))
             {
@@ -151,5 +132,34 @@ public class PlayerController : MonoBehaviour
             }
         }
         return false;
+    }
+    public void rebound()
+    {
+        string lastMove = movementHistory[movementHistory.Count - 1].ToString();
+        canMove = false;
+        if (lastMove == "up")
+        {
+            movePoint.position += new Vector3(0f, -0.99f, 0f);
+        }
+        else if (lastMove == "down")
+        {
+            movePoint.position += new Vector3(0f, 0.99f, 0f);
+        }
+        else if (lastMove == "left")
+        {
+            movePoint.position += new Vector3(0.99f, 0f, 0f);
+        }
+        else if (lastMove == "right")
+        {
+            movePoint.position += new Vector3(-0.99f, 0f, 0f);
+        }
+        //movementHistory.RemoveAt(movementHistory.Count - 1);
+        StartCoroutine(resumeMove());
+    }
+
+    IEnumerator resumeMove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canMove = true;
     }
 }
