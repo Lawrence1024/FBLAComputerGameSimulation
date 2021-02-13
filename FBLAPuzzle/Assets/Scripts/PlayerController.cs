@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         {
             makeMovement();
             canMove = false;
-            StartCoroutine(resumeMove());
+            StartCoroutine(resumeMove(0.5f));
         }
     }
     bool thereIsObstacle()
@@ -87,6 +87,16 @@ public class PlayerController : MonoBehaviour
         msg += "]";
         Debug.Log(msg);
     }
+    void printArray(ArrayList temp,string s)
+    {
+        string msg = "[";
+        for (int i = 0; i < temp.Count; i++)
+        {
+            msg += temp[i] + ",";
+        }
+        msg += "]";
+        Debug.Log(s + msg);
+    }
     void makeMovement()
     {
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
@@ -113,7 +123,9 @@ public class PlayerController : MonoBehaviour
             yPos -= 1;
         }
         positionHistory.Add(new List<int> { xPos,yPos});
-        //Debug.Log("["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
+        //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
+        //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
+        printArray(movementHistory,"Movement: ");
         
     }
     bool thereIsBox()
@@ -140,26 +152,34 @@ public class PlayerController : MonoBehaviour
         if (lastMove == "up")
         {
             movePoint.position += new Vector3(0f, -0.99f, 0f);
+            yPos -= 1;
         }
         else if (lastMove == "down")
         {
             movePoint.position += new Vector3(0f, 0.99f, 0f);
+            yPos += 1;
         }
         else if (lastMove == "left")
         {
             movePoint.position += new Vector3(0.99f, 0f, 0f);
+            xPos += 1;
         }
         else if (lastMove == "right")
         {
             movePoint.position += new Vector3(-0.99f, 0f, 0f);
+            xPos -= 1;
         }
-        //movementHistory.RemoveAt(movementHistory.Count - 1);
-        StartCoroutine(resumeMove());
+        positionHistory.RemoveAt(positionHistory.Count - 1);
+        movementHistory.RemoveAt(movementHistory.Count - 1);
+        StartCoroutine(resumeMove(2f));
+        //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
+        printArray(movementHistory,"Rebound: ");
+        
     }
 
-    IEnumerator resumeMove()
+    IEnumerator resumeMove(float time)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(time);
         canMove = true;
     }
 }

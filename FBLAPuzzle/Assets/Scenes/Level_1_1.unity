@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 628104655}
   - component: {fileID: 628104657}
   - component: {fileID: 628104656}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312041582}
   - component: {fileID: 1312041583}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Player Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3270,6 +3270,9 @@ MonoBehaviour:
   boxLayer:
     serializedVersion: 2
     m_Bits: 512
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   getPushed: 0
   xPos: 0
   yPos: 1
@@ -3363,7 +3366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2057268059}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Player Move Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
