@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public int yPos;
     public List<List<int>> positionHistory=new List<List<int>>();
 
+    public GameObject gameCanvas;
+    //public GamePositionRecord gamePositionRecord;
+
     private bool canMove = true;
 
     // Start is called before the first frame update
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
         movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> {xPos,yPos});
+        //gamePositionRecord = gameCanvas.GetComponent<GamePositionRecord>();
     }
 
     // Update is called once per frame
@@ -126,7 +130,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
         //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
         printArray(movementHistory,"Movement: ");
-        
+        //gamePositionRecord.updateObjectPosition2(movementHistory[movementHistory.Count-1]);
     }
     bool thereIsBox()
     {

@@ -8,6 +8,7 @@ public class FeatureButtonDetection : MonoBehaviour
     public GameObject tipButton;
     public GameObject NextPageButton;
     public GameObject LastPageButton;
+    public GameObject BoxManager;
     int pageCounter = 0;
     void Start()
     {
@@ -82,5 +83,9 @@ public class FeatureButtonDetection : MonoBehaviour
             levelManager.QuestionCanvas.SetActive(false);
             //Time.timeScale = 1;
         }
+    }
+    public void lastStep()
+    {
+
     }
 }
