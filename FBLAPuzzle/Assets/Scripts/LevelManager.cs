@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public GameObject LevelCanvas;
     public GameObject InstructionCanvas;
     public GameObject ScoreboardCanvas;
+    public GameObject QuestionCanvas;
     public GameObject[] TipPages;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour
        // PauseMenuCanvas.SetActive(false);
         InstructionCanvas.SetActive(false);
         ScoreboardCanvas.SetActive(false);
+        QuestionCanvas.SetActive(false);
         LevelCanvas.SetActive(true);
 
     }
@@ -24,7 +26,11 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        //testing------------
+        if (Input.GetKeyDown("space")) {
+            QuestionCanvas.SetActive(!QuestionCanvas.activeSelf);
+        }
     }
     public void changeInstrucitonPage(int pageNum)
     {
