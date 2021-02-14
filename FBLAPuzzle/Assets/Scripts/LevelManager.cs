@@ -40,4 +40,6 @@ public class LevelManager : MonoBehaviour
         }
         TipPages[pageNum].SetActive(true);
     }
+
+
 }

@@ -69,4 +69,18 @@ public class FeatureButtonDetection : MonoBehaviour
         existObj.SetActive(false);
 
     }
+
+
+    public void selectAnswer(GameObject answerButton) {
+        if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
+        {
+            Debug.Log("selectAnswer wrong");
+        }
+        else {
+            Debug.Log("selectAnswer right");
+            //levelManager.hideCanvas(levelManager.QuestionCanvas);
+            levelManager.QuestionCanvas.SetActive(false);
+            //Time.timeScale = 1;
+        }
+    }
 }
