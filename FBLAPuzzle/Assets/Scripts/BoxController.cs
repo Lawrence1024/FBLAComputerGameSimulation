@@ -16,7 +16,13 @@ public class BoxController : MonoBehaviour
 
     public int xPos;
     public int yPos;
+    public List<int> startingPosition;
     public List<List<int>> positionHistory = new List<List<int>>();
+    public Vector3 startingVectPosition;
+    public ArrayList movementHistory = new ArrayList();
+
+    public GameObject gameCanvas;
+    private PiecePosition piecePosition;
 
 
     // Start is called before the first frame update
@@ -25,6 +31,9 @@ public class BoxController : MonoBehaviour
         movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> { xPos, yPos });
+        startingPosition = new List<int> { xPos, yPos };
+        startingVectPosition = transform.position;
+        piecePosition = gameCanvas.GetComponent<PiecePosition>();
     }
 
     // Update is called once per frame
@@ -111,8 +120,13 @@ public class BoxController : MonoBehaviour
             movePoint.position += new Vector3(0.99f, 0f, 0f);
             xPos += 1;
         }
-        positionHistory.Add(new List<int> { xPos, yPos });
-        Debug.Log("[" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
+    //    positionHistory[positionHistory.Count-1]=(new List<int> { xPos, yPos });
+        foreach(List<int> temp in positionHistory)
+        {
+     //       Debug.Log("[" + temp[0] + "," + temp[1] + "]");
+        }
+     //   movementHistory[movementHistory.Count-1]=lastPlayerMovement;
+        //Debug.Log("[" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
     }
     bool thereIsBox()
     {
@@ -133,8 +147,7 @@ public class BoxController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        //Debug.Log("OnCollsision");
-        lastPlayerMovement = player.GetComponent<PlayerController>().movementHistory[player.GetComponent<PlayerController>().movementHistory.Count - 1].ToString();
+        lastPlayerMovement = player.GetComponent<PlayerController>().attemptMovement;
         getPushed = true;
         if (thereIsObstacle())
         {
@@ -143,9 +156,13 @@ public class BoxController : MonoBehaviour
         else
         {
             move();
+            //    piecePosition.addBoxPos(player.GetComponent<PlayerController>().attemptMovement);
+            positionHistory[positionHistory.Count - 1] = new List<int> { xPos, yPos };
+            movementHistory[movementHistory.Count - 1] = lastPlayerMovement;
         }
+
         StartCoroutine(checkIfBug());
-        
+        printArray(movementHistory,"Movement History: ");
     }
     IEnumerator checkIfBug()
     {
@@ -158,5 +175,75 @@ public class BoxController : MonoBehaviour
             //Debug.Log("Player Position: [" + player.GetComponent<PlayerController>().xPos + "," + player.GetComponent<PlayerController>().yPos + "]");
             player.GetComponent<PlayerController>().rebound();
         }
+    }
+    public void reverseBoxMove()
+    {
+    //    printArray(movementHistory, "Box Movement History: ");
+        string lastMove = movementHistory[movementHistory.Count - 1].ToString();
+        if (lastMove == "up")
+        {
+            movePoint.position += new Vector3(0f, -0.99f, 0f);
+            yPos -= 1;
+        }
+        else if (lastMove == "down")
+        {
+            movePoint.position += new Vector3(0f, 0.99f, 0f);
+            yPos += 1;
+        }
+        else if (lastMove == "left")
+        {
+            movePoint.position += new Vector3(0.99f, 0f, 0f);
+            xPos += 1;
+        }
+        else if (lastMove == "right")
+        {
+            movePoint.position += new Vector3(-0.99f, 0f, 0f);
+            xPos -= 1;
+        }else if (lastMove == "-")
+        {
+
+        }
+        else
+        {
+            Debug.Log("Error in reverseBoxMove in BoxController");
+        }
+    }
+    public void resetBox()
+    {
+        positionHistory = new List<List<int>>();
+        positionHistory.Add(startingPosition);
+        movementHistory = new ArrayList();
+        transform.position = startingVectPosition;
+        movePoint.position = startingVectPosition;
+    }
+    void printArray(List<int> temp)
+    {
+        string msg = "[";
+        for (int i = 0; i < temp.Count; i++)
+        {
+            msg += temp[i] + ",";
+        }
+        msg += "]";
+        Debug.Log(msg);
+    }
+    void printArray(ArrayList temp, string s)
+    {
+        string msg = "[";
+        for (int i = 0; i < temp.Count; i++)
+        {
+            msg += temp[i] + ",";
+        }
+        msg += "]";
+        Debug.Log(s + msg);
+    }
+    void printArray(List<List<int>> temp, string s)
+    {
+        string msg = s + "[";
+        foreach (List<int> myL in temp)
+        {
+            msg += ("[" + myL[0] + "," + myL[1] + "],");
+        }
+        msg += "]";
+        Debug.Log(msg);
     }
 }

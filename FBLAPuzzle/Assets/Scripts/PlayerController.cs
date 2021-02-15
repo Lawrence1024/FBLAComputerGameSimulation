@@ -16,10 +16,13 @@ public class PlayerController : MonoBehaviour
     //public int[] startingPosition=new int[2];
     public int xPos;
     public int yPos;
+    public List<int> startingPosition;
+    public Vector3 startingVectPosition;
     public List<List<int>> positionHistory=new List<List<int>>();
 
     public GameObject gameCanvas;
-    //public GamePositionRecord gamePositionRecord;
+    private PiecePosition piecePosition;
+    public string attemptMovement;
 
     private bool canMove = true;
 
@@ -29,7 +32,9 @@ public class PlayerController : MonoBehaviour
         movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> {xPos,yPos});
-        //gamePositionRecord = gameCanvas.GetComponent<GamePositionRecord>();
+        startingPosition = new List<int> { xPos, yPos };
+        startingVectPosition = transform.position;
+        piecePosition = gameCanvas.GetComponent<PiecePosition>();
     }
 
     // Update is called once per frame
@@ -40,6 +45,10 @@ public class PlayerController : MonoBehaviour
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f && (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) && !thereIsObstacle() && canMove)
         {
             makeMovement();
+            piecePosition.addPlayerPos(attemptMovement);
+            piecePosition.addBoxPos(attemptMovement);
+        //    printArray(positionHistory, "Movement: ");
+            
             canMove = false;
             StartCoroutine(resumeMove(0.5f));
         }
@@ -101,58 +110,70 @@ public class PlayerController : MonoBehaviour
         msg += "]";
         Debug.Log(s + msg);
     }
+    void printArray(List<List<int>> temp, string s)
+    {
+        string msg = s+"[";
+        foreach(List<int> myL in temp)
+        {
+            msg+=("["+myL[0] + "," + myL[1]+"],");
+        }
+        msg += "]";
+        Debug.Log(msg);
+    }
     void makeMovement()
     {
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
-            movementHistory.Add("right");
+            attemptMovement="right";
             xPos += 1;
         }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
-            movementHistory.Add("left");
+            attemptMovement = "left";
             xPos -= 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
-            movementHistory.Add("up");
+            attemptMovement = "up";
             yPos += 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
-            movementHistory.Add("down");
+            attemptMovement = "down";
             yPos -= 1;
         }
-        positionHistory.Add(new List<int> { xPos,yPos});
         //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
         //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
-        printArray(movementHistory,"Movement: ");
-        //gamePositionRecord.updateObjectPosition2(movementHistory[movementHistory.Count-1]);
+     //   piecePosition.updatePos(movementHistory[movementHistory.Count-1].ToString());
     }
     bool thereIsBox()
     {
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, boxLayer))
         {
-            if (Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, boxLayer))
-            {
-                return true;
-            }
-        }else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
+            return true;
+        }
+        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, boxLayer))
         {
-            if (Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, boxLayer))
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }
     public void rebound()
     {
-        string lastMove = movementHistory[movementHistory.Count - 1].ToString();
+        string lastMove = attemptMovement;
         canMove = false;
+        reversePlayerMove(lastMove);
+        piecePosition.backBoxPos();
+        StartCoroutine(resumeMove(2f));
+        //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
+    //    printArray(positionHistory,"Rebound: ");
+        
+    }
+    public void reversePlayerMove(string lastMove)
+    {
         if (lastMove == "up")
         {
             movePoint.position += new Vector3(0f, -0.99f, 0f);
@@ -173,17 +194,20 @@ public class PlayerController : MonoBehaviour
             movePoint.position += new Vector3(-0.99f, 0f, 0f);
             xPos -= 1;
         }
-        positionHistory.RemoveAt(positionHistory.Count - 1);
-        movementHistory.RemoveAt(movementHistory.Count - 1);
-        StartCoroutine(resumeMove(2f));
-        //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
-        printArray(movementHistory,"Rebound: ");
-        
+        piecePosition.backPlayerPos();
+        //piecePosition.backBoxPos();
     }
-
     IEnumerator resumeMove(float time)
     {
         yield return new WaitForSeconds(time);
         canMove = true;
+    }
+    public void resetPlayer()
+    {
+        positionHistory = new List<List<int>>();
+        positionHistory.Add(startingPosition);
+        movementHistory = new ArrayList();
+        transform.position = startingVectPosition;
+        movePoint.position = startingVectPosition;
     }
 }

@@ -8,7 +8,7 @@ public class FeatureButtonDetection : MonoBehaviour
     public GameObject tipButton;
     public GameObject NextPageButton;
     public GameObject LastPageButton;
-    public GameObject BoxManager;
+    public GameObject gameCanvas;
     int pageCounter = 0;
     void Start()
     {
@@ -86,6 +86,10 @@ public class FeatureButtonDetection : MonoBehaviour
     }
     public void lastStep()
     {
-
+        gameCanvas.GetComponent<PiecePosition>().whenHitBackButton();
+    }
+    public void resetBoard()
+    {
+        gameCanvas.GetComponent<PiecePosition>().whenHitResetButton();
     }
 }
