@@ -200,6 +200,7 @@ public class BoxController : MonoBehaviour
     public void answerQuestion()
     {
         Debug.Log("You Entered A Question Box");
+        gameObject.GetComponent<QuestionInteraction>().checkBoxQuestionStatus();
     }
     public void reverseBoxMove()
     {
