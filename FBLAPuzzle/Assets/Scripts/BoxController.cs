@@ -11,6 +11,7 @@ public class BoxController : MonoBehaviour
     public LayerMask whatStopsMovement;
     public LayerMask boxLayer;
     public LayerMask playerLayer;
+    public LayerMask questionLayer;
     public bool getPushed = false;
     private string lastPlayerMovement;
 
@@ -24,6 +25,7 @@ public class BoxController : MonoBehaviour
     public GameObject gameCanvas;
     private PiecePosition piecePosition;
 
+    public bool answered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -167,10 +169,12 @@ public class BoxController : MonoBehaviour
             //    piecePosition.addBoxPos(player.GetComponent<PlayerController>().attemptMovement);
             positionHistory[positionHistory.Count - 1] = new List<int> { xPos, yPos };
             movementHistory[movementHistory.Count - 1] = lastPlayerMovement;
-            Debug.Log("seed");
         }
-
         StartCoroutine(checkIfBug());
+        if (checkIfEnterQuestion())
+        {
+            answerQuestion();
+        }
         printArray(movementHistory,"Movement History: ");
     }
     IEnumerator checkIfBug()
@@ -184,6 +188,18 @@ public class BoxController : MonoBehaviour
             //Debug.Log("Player Position: [" + player.GetComponent<PlayerController>().xPos + "," + player.GetComponent<PlayerController>().yPos + "]");
             player.GetComponent<PlayerController>().rebound();
         }
+    }
+    public bool checkIfEnterQuestion()
+    {
+        if(Physics2D.OverlapCircle(movePoint.position, 0.2f, questionLayer))
+        {
+            return true;
+        }
+        return false;
+    }
+    public void answerQuestion()
+    {
+        Debug.Log("You Entered A Question Box");
     }
     public void reverseBoxMove()
     {
