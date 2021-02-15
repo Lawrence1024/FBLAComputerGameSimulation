@@ -857,7 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171005411}
   m_Layer: 9
-  m_Name: Box1 Move Point
+  m_Name: Box2 Move Point
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10880,7 +10880,7 @@ MonoBehaviour:
     m_Bits: 2048
   getPushed: 0
   xPos: 0
-  yPos: 2
+  yPos: -1
   startingPosition: 
   startingVectPosition: {x: 0, y: 0, z: 0}
   gameCanvas: {fileID: 129578231}
