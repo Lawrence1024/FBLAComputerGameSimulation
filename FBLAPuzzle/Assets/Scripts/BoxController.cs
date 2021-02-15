@@ -246,6 +246,11 @@ public class BoxController : MonoBehaviour
         transform.position = startingVectPosition;
         movePoint.position = startingVectPosition;
     }
+    public void answerCorrect()
+    {
+        answered = true;
+        Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
+    }
     void printArray(List<int> temp)
     {
         string msg = "[";
