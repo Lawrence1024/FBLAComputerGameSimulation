@@ -27,6 +27,7 @@ public class BoxController : MonoBehaviour
     private PiecePosition piecePosition;
 
     public bool answered = false;
+    public Sprite correctSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -177,7 +178,7 @@ public class BoxController : MonoBehaviour
         {
             answerQuestion();
         }
-        printArray(movementHistory,"Movement History: ");
+    //    printArray(movementHistory,"Movement History: ");
     }
     IEnumerator checkIfBug()
     {
@@ -201,7 +202,7 @@ public class BoxController : MonoBehaviour
     }
     public void answerQuestion()
     {
-        Debug.Log("You Entered A Question Box");
+        //Debug.Log("You Entered A Question Box");
         gameObject.GetComponent<QuestionBoxCondition>().checkBoxQuestionStatus();
         levelManager.currentQuestionBox = gameObject;
 
@@ -249,7 +250,10 @@ public class BoxController : MonoBehaviour
     public void answerCorrect()
     {
         answered = true;
-        Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
+        //Debug.Log("test");
+        //Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
+        gameObject.GetComponent<SpriteRenderer>().sprite = correctSprite;
+        gameObject.GetComponentInParent<BoxManager>().checkIfWin();
     }
     void printArray(List<int> temp)
     {

@@ -80,6 +80,7 @@ public class FeatureButtonDetection : MonoBehaviour
         else {
             Debug.Log("selectAnswer right");
             //levelManager.hideCanvas(levelManager.QuestionCanvas);
+            gameObject.GetComponent<LevelManager>().currentQuestionBox.GetComponent<BoxController>().answerCorrect();
             levelManager.QuestionCanvas.SetActive(false);
             //Time.timeScale = 1;
         }

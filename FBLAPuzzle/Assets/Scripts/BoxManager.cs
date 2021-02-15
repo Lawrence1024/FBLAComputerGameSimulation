@@ -16,4 +16,19 @@ public class BoxManager : MonoBehaviour
     {
         
     }
+    public void checkIfWin()
+    {
+        bool win = true;
+        foreach(GameObject box in allBoxes)
+        {
+            if (!box.GetComponent<BoxController>().answered)
+            {
+                win = false;
+            }
+        }
+        if (win)
+        {
+            Debug.Log("The Level Is Passed!");
+        }
+    }
 }

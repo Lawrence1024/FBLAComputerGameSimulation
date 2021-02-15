@@ -37,7 +37,7 @@ public class QuestionInteraction : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Question box: "+QuestionBox.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text);
+        //Debug.Log("Question box: "+QuestionBox.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text);
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
         lines = new List<QuestionLine>();
         LoadQuestion("QuestionData.csv");
@@ -56,32 +56,32 @@ public class QuestionInteraction : MonoBehaviour
         
     }
     public string getQuestion(int num) {
-        Debug.Log("Question: " + lines[num].question);
+        //Debug.Log("Question: " + lines[num].question);
         return lines[num].question;
     }
     public string getAnswer1(int num)
     {
-        Debug.Log("ans1: " + lines[num].answer1);
+        //Debug.Log("ans1: " + lines[num].answer1);
         return lines[num].answer1;
     }
     public string getAnswer2(int num)
     {
-        Debug.Log("ans2: " + lines[num].answer2);
+        //Debug.Log("ans2: " + lines[num].answer2);
         return lines[num].answer2;
     }
     public string getAnswer3(int num)
     {
-        Debug.Log("ans3: " + lines[num].answer3);
+        //Debug.Log("ans3: " + lines[num].answer3);
         return lines[num].answer3;
     }
     public string getAnswer4(int num)
     {
-        Debug.Log("ans4: " + lines[num].answer4);
+        //Debug.Log("ans4: " + lines[num].answer4);
         return lines[num].answer4;
     }
     public string getCorrectAnswer(int num)
     {
-        Debug.Log("Question: " + lines[num].correctAnswer);
+        //Debug.Log("Question: " + lines[num].correctAnswer);
         return lines[num].correctAnswer;
     }
 
@@ -103,7 +103,7 @@ public class QuestionInteraction : MonoBehaviour
                     string[] line_values = SplitCsvLine(line);
                     QuestionLine line_entry = new QuestionLine(line_values[0].ToString(), line_values[1].ToString(), line_values[2].ToString(), line_values[3].ToString(), line_values[4].ToString(), line_values[5].ToString());
                     lines.Add(line_entry);
-                    Debug.Log("answer: " + line_values[5]);
+                    //Debug.Log("answer: " + line_values[5]);
                     //Debug.Log("answer: " + line_values[1]);
                 }
             }
