@@ -54,18 +54,26 @@ public class BoxController : MonoBehaviour
     }
     bool thereIsObstacle()
     {
-        if(lastPlayerMovement=="up"&& Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.99f, 0f), 0.2f, whatStopsMovement))
+        bool obstUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.99f, 0f), 0.2f, whatStopsMovement);
+        bool boxUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.99f, 0f), 0.2f, boxLayer);
+        bool obstDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -0.99f, 0f), 0.2f, whatStopsMovement);
+        bool boxDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -0.99f, 0f), 0.2f, boxLayer);
+        bool obstLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-0.99f, 0f, 0f), 0.2f, whatStopsMovement);
+        bool boxLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-0.99f, 0f, 0f), 0.2f, boxLayer);
+        bool obstRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, whatStopsMovement);
+        bool boxRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, boxLayer);
+        if (lastPlayerMovement=="up"&& (obstUp || boxUp))
         {
             return true;
-        }else if (lastPlayerMovement == "down" && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -0.99f, 0f), 0.2f, whatStopsMovement))
+        }else if (lastPlayerMovement == "down" && (obstDown || boxDown))
         {
             return true;
         }
-        else if (lastPlayerMovement == "left" && Physics2D.OverlapCircle(movePoint.position + new Vector3(-0.99f, 0f, 0f), 0.2f, whatStopsMovement))
+        else if (lastPlayerMovement == "left" && (obstLeft || boxLeft))
         {
             return true;
         }
-        else if (lastPlayerMovement == "right" && Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, whatStopsMovement))
+        else if (lastPlayerMovement == "right" && (obstRight || boxRight))
         {
             return true;
         }
@@ -159,6 +167,7 @@ public class BoxController : MonoBehaviour
             //    piecePosition.addBoxPos(player.GetComponent<PlayerController>().attemptMovement);
             positionHistory[positionHistory.Count - 1] = new List<int> { xPos, yPos };
             movementHistory[movementHistory.Count - 1] = lastPlayerMovement;
+            Debug.Log("seed");
         }
 
         StartCoroutine(checkIfBug());
