@@ -9,12 +9,13 @@ using System;
 public class QuestionInteraction : MonoBehaviour
 {
     List<QuestionLine> lines;
+    LevelManager levelManager;
     public GameObject QuestionBox;
     public GameObject AnswerButton1;
     public GameObject AnswerButton2;
     public GameObject AnswerButton3;
     public GameObject AnswerButton4;
-
+    public bool activated = false;
     public int QuestionNumber;
     struct QuestionLine {
         public string context;
@@ -30,6 +31,7 @@ public class QuestionInteraction : MonoBehaviour
     void Start()
     {
         Debug.Log("Question box: "+QuestionBox.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text);
+        levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class QuestionInteraction : MonoBehaviour
     {
         //If the box activates 
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")&!activated)
         {
            /* if (Time.timeScale == 0)
             {
@@ -46,7 +48,14 @@ public class QuestionInteraction : MonoBehaviour
             else {
                 Time.timeScale = 0;
             }*/
+            
+        }
+    }
+    public void checkBoxQuestionStatus() {
+        if (!activated) {
             loadQuestion();
+            levelManager.QuestionCanvas.SetActive(!levelManager.QuestionCanvas.activeSelf);
+            activated = true;
         }
     }
 
