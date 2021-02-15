@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public GameObject InstructionCanvas;
     public GameObject ScoreboardCanvas;
     public GameObject QuestionCanvas;
+    public GameObject currentQuestionBox;
     public GameObject[] TipPages;
     // Start is called before the first frame update
     void Start()

@@ -15,15 +15,22 @@ public class QuestionInteraction : MonoBehaviour
     public GameObject AnswerButton2;
     public GameObject AnswerButton3;
     public GameObject AnswerButton4;
-    public bool activated = false;
-    public int QuestionNumber;
+    
     struct QuestionLine {
-        public string context;
-        public string condition;
-        public QuestionLine(string ct, string cd)
+        public string question;
+        public string answer1;
+        public string answer2;
+        public string answer3;
+        public string answer4;
+        public string correctAnswer;
+        public QuestionLine(string q, string a1, string a2, string a3, string a4, string ca)
         {
-            context = ct;
-            condition = cd;
+            question = q;
+            answer1 = a1;
+            answer2 = a2;
+            answer3 = a3;
+            answer4 = a4;
+            correctAnswer = ca;
         }
     }
     
@@ -32,54 +39,50 @@ public class QuestionInteraction : MonoBehaviour
     {
         Debug.Log("Question box: "+QuestionBox.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text);
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        lines = new List<QuestionLine>();
+        LoadQuestion("QuestionData.csv");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //If the box activates 
 
-        if (Input.GetKeyDown("space")&!activated)
-        {
-           /* if (Time.timeScale == 0)
-            {
-                Time.timeScale = 1;
-            }
-            else {
-                Time.timeScale = 0;
-            }*/
-            
-        }
-    }
-    public void checkBoxQuestionStatus() {
-        if (!activated) {
-            loadQuestion();
-            levelManager.QuestionCanvas.SetActive(!levelManager.QuestionCanvas.activeSelf);
-            activated = true;
-        }
     }
 
     public void loadQuestion() {
         lines = new List<QuestionLine>();
-        LoadQuestion("Question"+ QuestionNumber+".txt");
-        QuestionBox.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = displayContext(0);
-        AnswerButton1.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = displayContext(1);
-        AnswerButton1.GetComponent<ButtonRightOrWrong>().RightOrWrong = displayRightOrWrong(1);
-        AnswerButton2.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = displayContext(2);
-        AnswerButton2.GetComponent<ButtonRightOrWrong>().RightOrWrong = displayRightOrWrong(2);
-        AnswerButton3.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = displayContext(3);
-        AnswerButton3.GetComponent<ButtonRightOrWrong>().RightOrWrong = displayRightOrWrong(3);
-        AnswerButton4.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = displayContext(4);
-        AnswerButton4.GetComponent<ButtonRightOrWrong>().RightOrWrong = displayRightOrWrong(4);
+        LoadQuestion("QuestionData.csv");
+        
         
     }
-    public string displayContext(int num) {
-        Debug.Log("Question: " + lines[num].context);
-        return lines[num].context;
+    public string getQuestion(int num) {
+        Debug.Log("Question: " + lines[num].question);
+        return lines[num].question;
     }
-    public string displayRightOrWrong(int num) {
-        Debug.Log("condition: " + lines[num].condition);
-        return lines[num].condition;
+    public string getAnswer1(int num)
+    {
+        Debug.Log("ans1: " + lines[num].answer1);
+        return lines[num].answer1;
+    }
+    public string getAnswer2(int num)
+    {
+        Debug.Log("ans2: " + lines[num].answer2);
+        return lines[num].answer2;
+    }
+    public string getAnswer3(int num)
+    {
+        Debug.Log("ans3: " + lines[num].answer3);
+        return lines[num].answer3;
+    }
+    public string getAnswer4(int num)
+    {
+        Debug.Log("ans4: " + lines[num].answer4);
+        return lines[num].answer4;
+    }
+    public string getCorrectAnswer(int num)
+    {
+        Debug.Log("Question: " + lines[num].correctAnswer);
+        return lines[num].correctAnswer;
     }
 
     //Assets/Scripts/QuestionBank/Question1.txt
@@ -98,9 +101,9 @@ public class QuestionInteraction : MonoBehaviour
                 {
 
                     string[] line_values = SplitCsvLine(line);
-                    QuestionLine line_entry = new QuestionLine(line_values[0], line_values[1]);
+                    QuestionLine line_entry = new QuestionLine(line_values[0].ToString(), line_values[1].ToString(), line_values[2].ToString(), line_values[3].ToString(), line_values[4].ToString(), line_values[5].ToString());
                     lines.Add(line_entry);
-                    //Debug.Log("question: " + line_values[0]);
+                    Debug.Log("answer: " + line_values[5]);
                     //Debug.Log("answer: " + line_values[1]);
                 }
             }

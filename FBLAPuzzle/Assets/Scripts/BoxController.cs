@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxController : MonoBehaviour
 {
+    LevelManager levelManager;
     public float moveSpeed = 20f;
     public Transform movePoint;
     public GameObject player;
@@ -30,6 +31,7 @@ public class BoxController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> { xPos, yPos });
@@ -200,7 +202,9 @@ public class BoxController : MonoBehaviour
     public void answerQuestion()
     {
         Debug.Log("You Entered A Question Box");
-        gameObject.GetComponent<QuestionInteraction>().checkBoxQuestionStatus();
+        gameObject.GetComponent<QuestionBoxCondition>().checkBoxQuestionStatus();
+        levelManager.currentQuestionBox = gameObject;
+
     }
     public void reverseBoxMove()
     {
