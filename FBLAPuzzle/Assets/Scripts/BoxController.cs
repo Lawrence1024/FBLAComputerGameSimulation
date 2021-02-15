@@ -176,6 +176,7 @@ public class BoxController : MonoBehaviour
         StartCoroutine(checkIfBug());
         if (checkIfEnterQuestion())
         {
+            gameObject.GetComponentInParent<BoxManager>().checkIfWin();
             answerQuestion();
         }
     //    printArray(movementHistory,"Movement History: ");

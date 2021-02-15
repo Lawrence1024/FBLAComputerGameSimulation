@@ -21,7 +21,7 @@ public class BoxManager : MonoBehaviour
         bool win = true;
         foreach(GameObject box in allBoxes)
         {
-            if (!box.GetComponent<BoxController>().answered)
+            if (!box.GetComponent<BoxController>().answered||!box.GetComponent<BoxController>().checkIfEnterQuestion())
             {
                 win = false;
             }
