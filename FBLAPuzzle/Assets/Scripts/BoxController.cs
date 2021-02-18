@@ -206,6 +206,8 @@ public class BoxController : MonoBehaviour
         //Debug.Log("You Entered A Question Box");
         gameObject.GetComponent<QuestionBoxCondition>().checkBoxQuestionStatus();
         levelManager.currentQuestionBox = gameObject;
+        StartCoroutine(buffer());
+        
 
     }
     public void reverseBoxMove()
@@ -285,5 +287,11 @@ public class BoxController : MonoBehaviour
         }
         msg += "]";
         Debug.Log(msg);
+    }
+
+    IEnumerator buffer()
+    {
+        yield return new WaitForSeconds(.2f);
+        GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
     }
 }

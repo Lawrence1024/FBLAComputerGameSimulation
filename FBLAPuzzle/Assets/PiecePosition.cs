@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PiecePosition : MonoBehaviour
 {
+    LevelManager levelManager;
     public GameObject player;
     public GameObject boxManager;
     private PlayerController playerScript;
@@ -12,6 +13,7 @@ public class PiecePosition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         playerScript = player.GetComponent<PlayerController>();
         boxManagerScript = boxManager.GetComponent<BoxManager>();
         boxes = boxManagerScript.allBoxes;
@@ -94,6 +96,8 @@ public class PiecePosition : MonoBehaviour
         else
         {
             Debug.Log("You are at the first step!");
+            StartCoroutine(loadWarning());
+
         }
     }
     public void whenHitResetButton()
@@ -111,7 +115,14 @@ public class PiecePosition : MonoBehaviour
         else
         {
             Debug.Log("You are at the first step!");
+            StartCoroutine(loadWarning());
         }
+    }
+
+    IEnumerator loadWarning() {
+        levelManager.WarningCanvas.SetActive(true);
+        yield return new WaitForSeconds(.8f);
+        levelManager.WarningCanvas.SetActive(false);
     }
 }
 

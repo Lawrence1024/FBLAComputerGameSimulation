@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private PiecePosition piecePosition;
     public string attemptMovement;
 
-    private bool canMove = true;
+    public bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
