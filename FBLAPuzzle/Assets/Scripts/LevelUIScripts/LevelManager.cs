@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public GameObject ScoreboardCanvas;
     public GameObject QuestionCanvas;
     public GameObject WarningCanvas;
+    public GameObject FeatureCanvas;
     public GameObject currentQuestionBox;
     public GameObject[] TipPages;
     // Start is called before the first frame update
@@ -60,7 +61,12 @@ public class LevelManager : MonoBehaviour
         }
         
     }
-
+    public void displayScoreboard()
+    {
+        //FeatureCanvas.active=false;
+        Time.timeScale = 0;
+        ScoreboardCanvas.SetActive(true);
+    }
     IEnumerator resetLevel() {
 
         yield return new WaitForSeconds(.5f);

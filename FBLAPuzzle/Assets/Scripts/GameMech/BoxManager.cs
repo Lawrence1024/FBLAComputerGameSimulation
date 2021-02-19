@@ -5,10 +5,13 @@ using UnityEngine;
 public class BoxManager : MonoBehaviour
 {
     public List<GameObject> allBoxes;
+    LevelManager levelManager;
+    PointsCalculation pointsCalculation;
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        pointsCalculation = GameObject.Find("Points").GetComponent<PointsCalculation>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,14 @@ public class BoxManager : MonoBehaviour
         if (win)
         {
             Debug.Log("The Level Is Passed!");
+            StartCoroutine(buffer());
         }
+    }
+
+
+    IEnumerator buffer() {
+        pointsCalculation.levelComplete = true;
+        yield return new WaitForSeconds(1f);
+        levelManager.displayScoreboard();
     }
 }

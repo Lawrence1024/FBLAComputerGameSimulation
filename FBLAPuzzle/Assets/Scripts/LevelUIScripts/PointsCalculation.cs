@@ -8,6 +8,7 @@ public class PointsCalculation : MonoBehaviour
     LevelManager levelManager;
     FeatureButtonDetection featureButtonDetection;
     int points = 1000;
+    public bool levelComplete = false;
     void Start()
     {
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
@@ -29,7 +30,7 @@ public class PointsCalculation : MonoBehaviour
         //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.01f);
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + points;
-        if (points > 0)
+        if (points > 0&& !levelComplete)
         {
             StartCoroutine(pointsCountDown());
         }

@@ -105,8 +105,18 @@ public class GetInputField : MonoBehaviour
                 
             }
         }  
-        
-        
+    }
+
+    public void enterCreatedPassword(GameObject textObj) {
+        string name = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
+        //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
+        if (string.IsNullOrEmpty(name) || name.Length == 1)
+        {
+            return;
+        }
+        else { 
+            
+        }
     }
 
     //displayWarning() takes in the display warning image (child number)

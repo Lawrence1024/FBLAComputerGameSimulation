@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class FeatureButtonDetection : MonoBehaviour
 {
     LevelManager levelManager;
@@ -55,4 +55,10 @@ public class FeatureButtonDetection : MonoBehaviour
     {
         gameCanvas.GetComponent<PiecePosition>().whenHitResetButton();
     }
+
+    public void goMap() {
+        SceneManager.LoadScene("Map");
+    }
+
+
 }
