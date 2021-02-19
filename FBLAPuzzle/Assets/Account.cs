@@ -14,8 +14,8 @@ public class Account
     {
         userName = name;
         totalStar = 0;
-        starsList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        pointsList = new List<int> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        starsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };
+        pointsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };
     }
     //setter/getter
 
@@ -28,7 +28,7 @@ public class Account
     public void loadAccount()
     {
         AccountData data = SaveSystem.loadAccount(this);
-        Debug.Log(data.userName);
+        //Debug.Log(data.userName);
         userName = data.userName;
         totalStar = data.totalStar;
         starsList = data.starsList;

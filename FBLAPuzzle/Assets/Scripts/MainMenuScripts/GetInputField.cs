@@ -9,6 +9,8 @@ public class GetInputField : MonoBehaviour
     MainMenuManager mainMenuManager;
     public bool accountTaken=false;
     public bool accountExist = false;
+    public GameObject accManagerObj;
+    private AccountsManager accManager;
     /*
         Children for UserNameInputBoxCanvas
         0. Login
@@ -21,6 +23,7 @@ public class GetInputField : MonoBehaviour
     void Start()
     {
         mainMenuManager = GameObject.Find("SceneManager").GetComponent<MainMenuManager>();
+        accManager = accManagerObj.GetComponent<AccountsManager>();
     }
 
     void Update()
@@ -30,7 +33,8 @@ public class GetInputField : MonoBehaviour
     //GetName() is for Login (assume account already created)
     public void GetName(GameObject textObj)
     {
-        if (string.IsNullOrEmpty(textObj.GetComponent<TMPro.TextMeshProUGUI>().text)|| textObj.GetComponent<TMPro.TextMeshProUGUI>().text.Length==1)
+        string inputText = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
+        if (string.IsNullOrEmpty(inputText) || inputText.Length==1)
         {
             return;
         }
@@ -38,6 +42,8 @@ public class GetInputField : MonoBehaviour
             //get the user information, if doesn't exist call displayWarning(3 for account not exist, 4 for account already exist)
             //if there is such account, account = true, else false
             accountExist = true;
+            accManager.loadAccount(textObj);
+            accountExist = accManager.checkIfAccountExist(inputText);
             if (accountExist)
             {
                 //get the account info and continue
@@ -53,16 +59,19 @@ public class GetInputField : MonoBehaviour
         
         
     }
+
     //enteredCreatedName() is for creating new account
     public void enteredCreateName(GameObject textObj) {
+        string name = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
-        if (string.IsNullOrEmpty(textObj.GetComponent<TMPro.TextMeshProUGUI>().text) || textObj.GetComponent<TMPro.TextMeshProUGUI>().text.Length == 1)
+        if (string.IsNullOrEmpty(name) || name.Length == 1)
         {
             return;
         }
         else {
-            Debug.Log(textObj.GetComponent<TMPro.TextMeshProUGUI>().text);
-            if (accountTaken)
+            name = name.Substring(0, name.Length - 1);
+            bool successCreate=accManager.createAccount(name);
+            if (!successCreate)
             {
                 StartCoroutine(displayWarning(4));
             }
