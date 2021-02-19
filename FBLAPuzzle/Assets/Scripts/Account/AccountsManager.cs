@@ -5,7 +5,7 @@ using System.IO;
 
 public class AccountsManager : MonoBehaviour
 {
-    List<Account> accounts;
+    public List<Account> accounts;
     private int activeIndex=-1;
     public Account activeAccount=null;
     // Start is called before the first frame update
@@ -139,5 +139,8 @@ public class AccountsManager : MonoBehaviour
         }
         return find;
     }
-
+    public int lookUpAccountIndex()
+    {
+        return -1;
+    }
 }
