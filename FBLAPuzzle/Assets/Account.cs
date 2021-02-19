@@ -28,6 +28,7 @@ public class Account
     public void loadAccount()
     {
         AccountData data = SaveSystem.loadAccount(this);
+        Debug.Log(data.userName);
         userName = data.userName;
         totalStar = data.totalStar;
         starsList = data.starsList;
