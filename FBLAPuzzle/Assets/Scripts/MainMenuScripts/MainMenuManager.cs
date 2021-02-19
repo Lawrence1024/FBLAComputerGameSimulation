@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject MainPageCanvas;
     public GameObject InstructionCanvas;
     public GameObject LeaderBoardCanvas;
+    public GameObject UserNameInputBoxCanvas;
     public GameObject[] InstructionPages;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,11 @@ public class MainMenuManager : MonoBehaviour
         InstructionCanvas.SetActive(false);
         LeaderBoardCanvas.SetActive(false);
         MainPageCanvas.SetActive(true);
+        //get the new account box and warnings and deactivate 
+        UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(3).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(5).gameObject.SetActive(false);
         for (int i = 0; i < InstructionPages.Length; i++)
         {
             InstructionPages[i].SetActive(false);
@@ -44,5 +50,14 @@ public class MainMenuManager : MonoBehaviour
         }
         InstructionPages[pageNum].SetActive(true);
     }
+    //reference in button
+    public void createAccount()
+    {
+        
+        UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(true);
+        UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
 
+
+    }
 }
