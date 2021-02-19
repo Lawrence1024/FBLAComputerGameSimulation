@@ -48,7 +48,10 @@ public class Loading : MonoBehaviour
         if (loadingCounter <= 0)
         {
             //Scene Transition
+            Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
+            
             SceneManager.LoadScene(sceneName);
+            //SceneManager.MoveGameObjectToScene(GameObject.Find("AccountsManager"), sceneToLoad);
         }
     }
 }
