@@ -6,6 +6,7 @@ public class Account
 {
     //fields
     public string userName;
+    public string password;
     public int totalStar;
     public List<int> starsList;
     public List<int> pointsList;
@@ -13,6 +14,7 @@ public class Account
     public Account(string name)
     {
         userName = name;
+        password = "lol";
         totalStar = 0;
         starsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };
         pointsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };

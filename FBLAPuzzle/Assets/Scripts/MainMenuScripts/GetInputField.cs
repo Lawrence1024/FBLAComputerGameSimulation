@@ -34,6 +34,7 @@ public class GetInputField : MonoBehaviour
     //GetName() is for Login (assume account already created)
     public void GetName(GameObject userName)
     {
+        Debug.Log("GetName");
         string inputText = userName.GetComponent<TMPro.TextMeshProUGUI>().text;
         if (string.IsNullOrEmpty(inputText) || inputText.Length==1)
         {
@@ -42,13 +43,12 @@ public class GetInputField : MonoBehaviour
         else {
             //get the user information, if doesn't exist call displayWarning(3 for account not exist, 4 for account already exist)
             //if there is such account, account = true, else false
-            accountExist = true;
             accManager.loadAccount(userName);
             accountExist = accManager.checkIfAccountExist(inputText);
             if (accountExist)
             {
                 //get the account info and continue
-                mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
+                //mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
 
             }
             else
@@ -56,13 +56,32 @@ public class GetInputField : MonoBehaviour
                 StartCoroutine(displayWarning(3));
             }
         }
-        
-        
-        
     }
 
-    public void GetPassword(GameObject userPassword) { 
-        
+    public void GetPassword(GameObject userPassword) {
+        Debug.Log("GetPassword");
+        string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().text;
+        //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
+        if (string.IsNullOrEmpty(password) || password.Length == 1)
+        {
+            StartCoroutine(displayWarning(6));
+            return;
+        }
+        else
+        {
+            password = password.Substring(0, password.Length - 1);
+            bool successLogin = accManager.confirmLogin(password);
+            if (!successLogin)
+            {
+                Debug.Log("asdfasdfasdf");
+                StartCoroutine(displayWarning(6));
+            }
+            else
+            {
+                StartCoroutine(displayWarning(5));
+                mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
+            }
+        }
     }
 
     //enteredCreatedName() is for creating new account

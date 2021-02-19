@@ -101,12 +101,23 @@ public class AccountsManager : MonoBehaviour
         {
             account = accounts[activeIndex];
             activeAccount = accounts[activeIndex];
-            Debug.Log("Signed in as \""+ activeAccount.userName+"\"");
+            Debug.Log("Attempt Sign in as: \""+ activeAccount.userName+"\"");
             //foreach (int i in account.pointsList)
             //{
             //    Debug.Log(i);
             //}
         }
+    }
+    public bool confirmLogin(string password)
+    {
+        if (activeAccount.password.Equals(password))
+        {
+            Debug.Log("Confirmed Login as: \"" + activeAccount.userName + "\"");
+            return true;
+        }
+        activeAccount = null;
+        activeIndex = -1;
+        return false;
     }
     public bool checkIfAccountExist(string name)
     {
