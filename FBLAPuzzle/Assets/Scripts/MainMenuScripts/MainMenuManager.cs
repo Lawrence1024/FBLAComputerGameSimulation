@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
         UserNameInputBoxCanvas.transform.GetChild(3).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(5).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(6).gameObject.SetActive(false);
         for (int i = 0; i < InstructionPages.Length; i++)
         {
             InstructionPages[i].SetActive(false);

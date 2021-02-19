@@ -19,6 +19,7 @@ public class GetInputField : MonoBehaviour
         3. Warning for login but account doesn't exist
         4. Warning for creating account but already exist
         5. Account create successfully sign
+        6. Wrong password sign
      */
     void Start()
     {
@@ -31,9 +32,9 @@ public class GetInputField : MonoBehaviour
         
     }
     //GetName() is for Login (assume account already created)
-    public void GetName(GameObject textObj)
+    public void GetName(GameObject userName)
     {
-        string inputText = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
+        string inputText = userName.GetComponent<TMPro.TextMeshProUGUI>().text;
         if (string.IsNullOrEmpty(inputText) || inputText.Length==1)
         {
             return;
@@ -42,7 +43,7 @@ public class GetInputField : MonoBehaviour
             //get the user information, if doesn't exist call displayWarning(3 for account not exist, 4 for account already exist)
             //if there is such account, account = true, else false
             accountExist = true;
-            accManager.loadAccount(textObj);
+            accManager.loadAccount(userName);
             accountExist = accManager.checkIfAccountExist(inputText);
             if (accountExist)
             {
@@ -57,6 +58,10 @@ public class GetInputField : MonoBehaviour
         }
         
         
+        
+    }
+
+    public void GetPassword(GameObject userPassword) { 
         
     }
 
