@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public GameObject FeatureCanvas;
     public GameObject currentQuestionBox;
     public GameObject[] TipPages;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +67,7 @@ public class LevelManager : MonoBehaviour
     {
         //FeatureCanvas.active=false;
         Time.timeScale = 0;
+        
         ScoreboardCanvas.SetActive(true);
     }
     IEnumerator resetLevel() {

@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 public class FeatureButtonDetection : MonoBehaviour
 {
     LevelManager levelManager;
+    Loading loading;
     public GameObject tipButton;
     public GameObject gameCanvas;
+    //public string nextSceneName;
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        loading = levelManager.LoadingCanvas.transform.GetChild(0).GetComponent<Loading>();
         tipButton.SetActive(false);
     }
 
@@ -58,6 +61,12 @@ public class FeatureButtonDetection : MonoBehaviour
 
     public void goMap() {
         SceneManager.LoadScene("Map");
+    }
+    public void nextScene(string nextSceneName) {
+        Time.timeScale = 1;
+        levelManager.LoadingCanvas.SetActive(true);
+        loading.runLoading(nextSceneName);
+        
     }
 
 

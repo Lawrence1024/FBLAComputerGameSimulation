@@ -4354,6 +4354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipButton: {fileID: 1713970540}
   gameCanvas: {fileID: 1689567694}
+  nextSceneName: Test_Level_3_1
 --- !u!114 &815193771
 MonoBehaviour:
   m_ObjectHideFlags: 0

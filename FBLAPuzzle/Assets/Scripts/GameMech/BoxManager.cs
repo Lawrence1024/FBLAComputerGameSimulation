@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class BoxManager : MonoBehaviour
 {
     public List<GameObject> allBoxes;
@@ -39,6 +39,12 @@ public class BoxManager : MonoBehaviour
 
     IEnumerator buffer() {
         pointsCalculation.levelComplete = true;
+        GameObject[] buttons;
+        buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = false;
+        }
         yield return new WaitForSeconds(1f);
         levelManager.displayScoreboard();
     }

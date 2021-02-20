@@ -8,7 +8,7 @@ public class Loading : MonoBehaviour
 {
     public GameObject loadingGameObject;
     private string loadingText="Loading";
-    private int loadingCounter = 9;
+    private int loadingCounter = 5;
     // Start is called before the first frame update
     void Start()
     {
