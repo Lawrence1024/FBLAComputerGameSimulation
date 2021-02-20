@@ -110,19 +110,26 @@ public class GetInputField : MonoBehaviour
         }
         else {
             name = name.Substring(0, name.Length - 1);
-            bool successCreate=accManager.createAccount(name);
-            if (!successCreate)
+            if (name.Length > 19)
             {
-                warningNote = "Username already taken! Choose another username";
-                StartCoroutine(displayWarning());
+                Debug.Log("Username Too Long");
             }
             else
             {
-                warningNote = "Account Created Successfully!";
-                StartCoroutine(displayWarning());
-                
-                
-                
+                bool successCreate = accManager.createAccount(name);
+                if (!successCreate)
+                {
+                    warningNote = "Username already taken! Choose another username";
+                    StartCoroutine(displayWarning());
+                }
+                else
+                {
+                    warningNote = "Account Created Successfully!";
+                    StartCoroutine(displayWarning());
+
+
+
+                }
             }
         }  
     }

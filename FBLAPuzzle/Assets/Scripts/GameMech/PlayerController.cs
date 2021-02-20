@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public string attemptMovement;
 
     public bool canMove = true;
+    private int testCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -46,14 +47,14 @@ public class PlayerController : MonoBehaviour
         {
             //if (thereIsObstacle())
             //{
-            //    makeMovement();
+            //    //makeMovement();
             //}
             //else
             //{
                 makeMovement();
                 piecePosition.addPlayerPos(attemptMovement);
                 piecePosition.addBoxPos(attemptMovement);
-                //    printArray(positionHistory, "Movement: ");
+            //    //    printArray(positionHistory, "Movement: ");
             //}
             canMove = false;
             StartCoroutine(resumeMove(0.5f));
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*0.99f, 0f, 0f);
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*1f, 0f, 0f);
             }
             else
             {
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, whatStopsMovement))
             {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 1f, 0f);
             }
             else
             {
@@ -135,6 +136,8 @@ public class PlayerController : MonoBehaviour
     }
     void makeMovement()
     {
+        testCounter++;
+        Debug.Log(testCounter);
         float scale = 1f;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
@@ -188,24 +191,25 @@ public class PlayerController : MonoBehaviour
     }
     public void reversePlayerMove(string lastMove)
     {
+        float scale = 1f;
         if (lastMove == "up")
         {
-            movePoint.position += new Vector3(0f, -0.99f, 0f);
+            movePoint.position += new Vector3(0f, -scale, 0f);
             yPos -= 1;
         }
         else if (lastMove == "down")
         {
-            movePoint.position += new Vector3(0f, 0.99f, 0f);
+            movePoint.position += new Vector3(0f, scale, 0f);
             yPos += 1;
         }
         else if (lastMove == "left")
         {
-            movePoint.position += new Vector3(0.99f, 0f, 0f);
+            movePoint.position += new Vector3(scale, 0f, 0f);
             xPos += 1;
         }
         else if (lastMove == "right")
         {
-            movePoint.position += new Vector3(-0.99f, 0f, 0f);
+            movePoint.position += new Vector3(-scale, 0f, 0f);
             xPos -= 1;
         }
         piecePosition.backPlayerPos();
@@ -223,5 +227,17 @@ public class PlayerController : MonoBehaviour
         movementHistory = new ArrayList();
         transform.position = startingVectPosition;
         movePoint.position = startingVectPosition;
+    }
+    IEnumerator checkIfBug()
+    {
+        yield return new WaitForSeconds(0.2f);
+        bool condition1 = Physics2D.OverlapCircle(movePoint.position, 0.02f, whatStopsMovement);
+        //bool condition2 = xPos == player.GetComponent<PlayerController>().xPos && yPos == player.GetComponent<PlayerController>().yPos;
+        if (condition1)
+        {
+            //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
+            //Debug.Log("Player Position: [" + player.GetComponent<PlayerController>().xPos + "," + player.GetComponent<PlayerController>().yPos + "]");
+            rebound();
+        }
     }
 }
