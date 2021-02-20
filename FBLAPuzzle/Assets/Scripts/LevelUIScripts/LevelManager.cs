@@ -71,6 +71,8 @@ public class LevelManager : MonoBehaviour
     }
     public void displayScore() {
         //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
+        Debug.Log(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text);
+        GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text;
     }
     IEnumerator resetLevel() {
 

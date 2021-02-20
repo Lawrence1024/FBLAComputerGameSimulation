@@ -32,7 +32,7 @@ public class BoxManager : MonoBehaviour
         if (win)
         {
             Debug.Log("The Level Is Passed!");
-            levelManager.displayScore();
+            
             StartCoroutine(buffer());
         }
     }
@@ -48,5 +48,6 @@ public class BoxManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         levelManager.displayScoreboard();
+        levelManager.displayScore();
     }
 }
