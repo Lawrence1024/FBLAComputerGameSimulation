@@ -42,18 +42,31 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f && (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) && !thereIsObstacle() && canMove)
+        if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f && (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) && canMove)
         {
-            makeMovement();
-            piecePosition.addPlayerPos(attemptMovement);
-            piecePosition.addBoxPos(attemptMovement);
-        //    printArray(positionHistory, "Movement: ");
-            
+            //if (thereIsObstacle())
+            //{
+            //    makeMovement();
+            //}
+            //else
+            //{
+                makeMovement();
+                piecePosition.addPlayerPos(attemptMovement);
+                piecePosition.addBoxPos(attemptMovement);
+                //    printArray(positionHistory, "Movement: ");
+            //}
             canMove = false;
             StartCoroutine(resumeMove(0.5f));
         }
     }
-    bool thereIsObstacle()
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider.gameObject.layer == LayerMask.NameToLayer("StopMovement"))
+        {
+            rebound();
+        }
+    }
+        bool thereIsObstacle()
     {
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
         {
@@ -122,26 +135,27 @@ public class PlayerController : MonoBehaviour
     }
     void makeMovement()
     {
+        float scale = 1f;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
+            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * scale, 0f, 0f);
             attemptMovement="right";
             xPos += 1;
         }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f);
+            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * scale, 0f, 0f);
             attemptMovement = "left";
             xPos -= 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
+            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * scale, 0f);
             attemptMovement = "up";
             yPos += 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f);
+            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * scale, 0f);
             attemptMovement = "down";
             yPos -= 1;
         }

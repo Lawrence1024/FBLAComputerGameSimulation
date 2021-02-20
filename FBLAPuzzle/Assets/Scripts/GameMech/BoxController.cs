@@ -35,6 +35,7 @@ public class BoxController : MonoBehaviour
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         movePoint.parent = null;
         movePoint.position = transform.position;
+        //Debug.Log("MovePoint POsition: " + movePoint.position);
         positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
@@ -116,21 +117,22 @@ public class BoxController : MonoBehaviour
     }
     void makeMovement()
     {
+        float scale = 1f;
         if (lastPlayerMovement=="up")
         {
-            movePoint.position += new Vector3(0f, 0.99f, 0f);
+            movePoint.position += new Vector3(0f, scale, 0f);
             yPos += 1;
         }else if (lastPlayerMovement == "down")
         {
-            movePoint.position += new Vector3(0f, -0.99f, 0f);
+            movePoint.position += new Vector3(0f, -1*scale, 0f);
             yPos -= 1;
         }else if (lastPlayerMovement == "left")
         {
-            movePoint.position += new Vector3(-0.99f, 0f, 0f);
+            movePoint.position += new Vector3(-1*scale, 0f, 0f);
             xPos -= 1;
         }else if (lastPlayerMovement == "right")
         {
-            movePoint.position += new Vector3(0.99f, 0f, 0f);
+            movePoint.position += new Vector3(scale, 0f, 0f);
             xPos += 1;
         }
     //    positionHistory[positionHistory.Count-1]=(new List<int> { xPos, yPos });
