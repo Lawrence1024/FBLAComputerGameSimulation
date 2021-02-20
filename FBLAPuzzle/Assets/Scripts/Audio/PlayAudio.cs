@@ -11,7 +11,7 @@ public class PlayAudio : MonoBehaviour
     void Start()
     {
         randomNumber = Random.Range(0, clip.Length);
-        Debug.Log(randomNumber);
+        //Debug.Log(randomNumber);
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = clip[randomNumber];
         audioSource.playOnAwake = false;

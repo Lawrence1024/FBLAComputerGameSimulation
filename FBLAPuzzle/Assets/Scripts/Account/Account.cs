@@ -32,6 +32,8 @@ public class Account
         AccountData data = SaveSystem.loadAccount(this);
         //Debug.Log(data.userName);
         userName = data.userName;
+        password = data.password;
+        Debug.Log("loadAccount password of account \""+userName+"\": " + data.password);
         totalStar = data.totalStar;
         starsList = data.starsList;
         pointsList = data.pointsList;

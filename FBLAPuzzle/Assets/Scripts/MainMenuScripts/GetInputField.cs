@@ -35,7 +35,7 @@ public class GetInputField : MonoBehaviour
     //GetName() is for Login (assume account already created)
     public void GetName(GameObject userName)
     {
-        Debug.Log("GetName");
+        //Debug.Log("GetName");
         string inputText = userName.GetComponent<TMPro.TextMeshProUGUI>().text;
         if (string.IsNullOrEmpty(inputText) || inputText.Length==1)
         {
@@ -62,7 +62,7 @@ public class GetInputField : MonoBehaviour
     }
 
     public void GetPassword(GameObject userPassword) {
-        Debug.Log("GetPassword");
+        //Debug.Log("GetPassword");
         string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().text;
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
         if (string.IsNullOrEmpty(password) || password.Length == 1)
@@ -78,7 +78,7 @@ public class GetInputField : MonoBehaviour
             bool successLogin = accManager.confirmLogin(password);
             if (!successLogin)
             {
-                Debug.Log("asdfasdfasdf");
+                //Debug.Log("asdfasdfasdf");
                 warningNote = "Incorrect Password!";
                 StartCoroutine(displayWarning());
             }
@@ -110,10 +110,9 @@ public class GetInputField : MonoBehaviour
             else
             {
                 warningNote = "Account Created Successfully!";
-                mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
-                mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
-                mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
                 StartCoroutine(displayWarning());
+                
+                
                 
             }
         }  
@@ -121,14 +120,21 @@ public class GetInputField : MonoBehaviour
 
     public void enterCreatedPassword(GameObject textObj) {
         string pwd = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
-        
         if (string.IsNullOrEmpty(pwd) || pwd.Length == 1)
         {
             return;
         }
         else {
-
-            Debug.Log("This is here: ");
+            pwd = pwd.Substring(0, pwd.Length - 1);
+            if (!(accManager.activeAccount == null))
+            {
+                //Debug.Log("Active Account: " + accManager.activeAccount.userName);
+                //Debug.Log("This is here: " + pwd);
+                accManager.activeAccount.password = pwd;
+                accManager.activeAccount.saveAccount();
+                Debug.Log("The current Active Account: " + accManager.activeAccount.password);
+                accManager.activeAccount = null;
+            }
         }
     }
 
@@ -139,8 +145,14 @@ public class GetInputField : MonoBehaviour
         tempObj.SetActive(true);
         yield return new WaitForSeconds(1f);
         tempObj.SetActive(false);
-        if (warningNote == "Sign in Successfully!") {
+        if (warningNote == "Sign in Successfully!")
+        {
             mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
+        }
+        else if (warningNote == "Account Created Successfully!") {
+            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
+            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
+            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 }
