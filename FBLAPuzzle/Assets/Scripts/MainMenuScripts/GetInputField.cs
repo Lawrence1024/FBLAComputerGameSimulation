@@ -67,9 +67,11 @@ public class GetInputField : MonoBehaviour
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
         if (string.IsNullOrEmpty(password) || password.Length == 1)
         {
+            if (warningNote!= "Account does not exist! Please create a new account") {
+                warningNote = "Incorrect Password!";
+                StartCoroutine(displayWarning());
+            }
             
-            warningNote = "Incorrect Password!";
-            StartCoroutine(displayWarning());
             return;
         }
         else
@@ -79,8 +81,11 @@ public class GetInputField : MonoBehaviour
             if (!successLogin)
             {
                 //Debug.Log("asdfasdfasdf");
-                warningNote = "Incorrect Password!";
-                StartCoroutine(displayWarning());
+                if (warningNote != "Account does not exist! Please create a new account")
+                {
+                    warningNote = "Incorrect Password!";
+                    StartCoroutine(displayWarning());
+                }
             }
             else
             {
