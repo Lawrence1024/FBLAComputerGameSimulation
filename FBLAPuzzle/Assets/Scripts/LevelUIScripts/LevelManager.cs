@@ -67,8 +67,10 @@ public class LevelManager : MonoBehaviour
     {
         //FeatureCanvas.active=false;
         Time.timeScale = 0;
-        
         ScoreboardCanvas.SetActive(true);
+    }
+    public void displayScore() {
+        //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
     }
     IEnumerator resetLevel() {
 

@@ -11,6 +11,7 @@ public class GetInputField : MonoBehaviour
     public bool accountExist = false;
     public GameObject accManagerObj;
     private AccountsManager accManager;
+    private string warningNote = "";
     /*
         Children for UserNameInputBoxCanvas
         0. Login
@@ -53,7 +54,9 @@ public class GetInputField : MonoBehaviour
             }
             else
             {
-                StartCoroutine(displayWarning(3));
+                
+                warningNote = "Account does not exist! Please create a new account";
+                StartCoroutine(displayWarning());
             }
         }
     }
@@ -64,7 +67,9 @@ public class GetInputField : MonoBehaviour
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
         if (string.IsNullOrEmpty(password) || password.Length == 1)
         {
-            StartCoroutine(displayWarning(6));
+            
+            warningNote = "Incorrect Password!";
+            StartCoroutine(displayWarning());
             return;
         }
         else
@@ -74,12 +79,14 @@ public class GetInputField : MonoBehaviour
             if (!successLogin)
             {
                 Debug.Log("asdfasdfasdf");
-                StartCoroutine(displayWarning(6));
+                warningNote = "Incorrect Password!";
+                StartCoroutine(displayWarning());
             }
             else
             {
-                StartCoroutine(displayWarning(5));
-                mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
+                warningNote = "Sign in Successfully!";
+                StartCoroutine(displayWarning());
+                //mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
             }
         }
     }
@@ -97,11 +104,16 @@ public class GetInputField : MonoBehaviour
             bool successCreate=accManager.createAccount(name);
             if (!successCreate)
             {
-                StartCoroutine(displayWarning(4));
+                warningNote = "Username already taken! Choose another username";
+                StartCoroutine(displayWarning());
             }
             else
             {
-                StartCoroutine(displayWarning(5));
+                warningNote = "Account Created Successfully!";
+                mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
+                mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
+                mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
+                StartCoroutine(displayWarning());
                 
             }
         }  
@@ -121,14 +133,14 @@ public class GetInputField : MonoBehaviour
     }
 
     //displayWarning() takes in the display warning image (child number)
-    IEnumerator displayWarning(int childNum) {
-        mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(childNum).gameObject.SetActive(true);
+    IEnumerator displayWarning() {
+        GameObject tempObj = mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(3).gameObject;
+        tempObj.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= warningNote;
+        tempObj.SetActive(true);
         yield return new WaitForSeconds(1f);
-        mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(childNum).gameObject.SetActive(false);
-        if (childNum==5) {
-            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
-            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
-            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
+        tempObj.SetActive(false);
+        if (warningNote == "Sign in Successfully!") {
+            mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
         }
     }
 }

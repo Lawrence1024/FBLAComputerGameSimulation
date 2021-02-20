@@ -13,7 +13,6 @@ public class Loading : MonoBehaviour
     void Start()
     {
         //runLoading();
-        
     }
 
     // Update is called once per frame
@@ -23,14 +22,17 @@ public class Loading : MonoBehaviour
     }
 
     public void runLoading(string sceneName) {
+        //audioObject.GetComponent<AudioSource>().Pause();
+        GameObject.Find("AudioObject").GetComponent<PlayAudio>().pauseAudio();
         loadingCounter = Random.Range(4, 7);
-        Debug.Log(loadingCounter);
+        Debug.Log("load scene "+sceneName);
         StartCoroutine(Buffer(sceneName));        
     }
 
     IEnumerator Buffer(string sceneName)
     {
         loadingCounter--;
+        Debug.Log("Loading text: " + loadingText);
         //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.5f);
         if (loadingText.Length < 10)
@@ -48,8 +50,8 @@ public class Loading : MonoBehaviour
         if (loadingCounter <= 0)
         {
             //Scene Transition
-            Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
-            
+            //Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
+            GameObject.Find("AudioObject").GetComponent<PlayAudio>().startPlayingAudio();
             SceneManager.LoadScene(sceneName);
             //SceneManager.MoveGameObjectToScene(GameObject.Find("AccountsManager"), sceneToLoad);
         }

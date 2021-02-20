@@ -493,6 +493,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7268853524496541644, guid: 4aa91c0beae7341408e7f91800e721b1,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 676339023}
+    - target: {fileID: 7268853524496541644, guid: 4aa91c0beae7341408e7f91800e721b1,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7268853524496541647, guid: 4aa91c0beae7341408e7f91800e721b1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -931,8 +941,8 @@ Canvas:
   m_GameObject: {fileID: 1778163341}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 676339023}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

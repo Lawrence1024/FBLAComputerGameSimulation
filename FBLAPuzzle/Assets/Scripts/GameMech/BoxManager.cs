@@ -32,6 +32,7 @@ public class BoxManager : MonoBehaviour
         if (win)
         {
             Debug.Log("The Level Is Passed!");
+            levelManager.displayScore();
             StartCoroutine(buffer());
         }
     }

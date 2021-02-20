@@ -60,6 +60,7 @@ public class FeatureButtonDetection : MonoBehaviour
     }
 
     public void goMap() {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Map");
     }
     public void nextScene(string nextSceneName) {
