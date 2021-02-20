@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private Account activeAccount;
     public List<int> level;
+    PointsCalculation pointsCalculation;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class LevelManager : MonoBehaviour
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
+        pointsCalculation = GameObject.Find("Points").GetComponent<PointsCalculation>();
         displayStars("Stars");
     }
 
@@ -106,5 +108,18 @@ public class LevelManager : MonoBehaviour
             GameObject.Find(holderName).transform.GetChild(i).gameObject.SetActive(true);
         }
     }
-
+    public IEnumerator buffer()
+    {
+        pointsCalculation.levelComplete = true;
+        activeAccount.saveAccount();
+        GameObject[] buttons;
+        buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = false;
+        }
+        yield return new WaitForSeconds(1f);
+        displayScoreboard();
+        displayScore();
+    }
 }
