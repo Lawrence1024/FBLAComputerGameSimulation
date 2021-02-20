@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
+        displayStars("Stars");
     }
 
     // Update is called once per frame
@@ -88,12 +89,22 @@ public class LevelManager : MonoBehaviour
         //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
         Debug.Log(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text);
         GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text;
+        displayStars("FinalStarDisplay");
     }
     IEnumerator resetLevel() {
 
         yield return new WaitForSeconds(.5f);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+    public void displayStars(string holderName) {
+        int starsRemain = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
+        GameObject.Find(holderName).transform.GetChild(0).gameObject.SetActive(false);
+        GameObject.Find(holderName).transform.GetChild(1).gameObject.SetActive(false);
+        GameObject.Find(holderName).transform.GetChild(2).gameObject.SetActive(false);
+        for (int i = 0; i < starsRemain; i++) {
+            GameObject.Find(holderName).transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
 }
