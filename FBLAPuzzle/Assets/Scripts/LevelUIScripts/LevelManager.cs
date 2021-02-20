@@ -66,8 +66,7 @@ public class LevelManager : MonoBehaviour
     public void displayScoreboard()
     {
         //FeatureCanvas.active=false;
-        //Time.timeScale = 0;
-        GameObject.Find("Points").GetComponent<PointsCalculation>().enabled = false;
+        Time.timeScale = 0;
         ScoreboardCanvas.SetActive(true);
     }
     public void displayScore() {
