@@ -23,7 +23,7 @@ public class Loading : MonoBehaviour
 
     public void runLoading(string sceneName) {
         //audioObject.GetComponent<AudioSource>().Pause();
-        GameObject.Find("AudioObject").GetComponent<PlayAudio>().pauseAudio();
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().pauseAudio();
         loadingCounter = Random.Range(4, 7);
         Debug.Log("load scene "+sceneName);
         StartCoroutine(Buffer(sceneName));        
@@ -51,7 +51,7 @@ public class Loading : MonoBehaviour
         {
             //Scene Transition
             //Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
-            GameObject.Find("AudioObject").GetComponent<PlayAudio>().startPlayingAudio();
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().startPlayingAudio();
             SceneManager.LoadScene(sceneName);
             //SceneManager.MoveGameObjectToScene(GameObject.Find("AccountsManager"), sceneToLoad);
         }

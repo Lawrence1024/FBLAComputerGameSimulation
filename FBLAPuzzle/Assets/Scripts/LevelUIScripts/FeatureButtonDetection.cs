@@ -61,7 +61,8 @@ public class FeatureButtonDetection : MonoBehaviour
 
     public void goMap() {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Map");
+        levelManager.LoadingCanvas.SetActive(true);
+        loading.runLoading("Map");
     }
     public void nextScene(string nextSceneName) {
         Time.timeScale = 1;
