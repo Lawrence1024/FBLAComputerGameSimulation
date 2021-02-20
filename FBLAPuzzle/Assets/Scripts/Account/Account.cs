@@ -9,6 +9,7 @@ public class Account
     public string password;
     public int totalStar;
     public List<int> starsList;
+    public List<int> potentialStarsList;
     public List<int> pointsList;
     //constructor
     public Account(string name)
@@ -17,6 +18,7 @@ public class Account
         password = "lol";
         totalStar = 0;
         starsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };
+        potentialStarsList = new List<int> { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
         pointsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };
     }
     //setter/getter
@@ -33,9 +35,10 @@ public class Account
         //Debug.Log(data.userName);
         userName = data.userName;
         password = data.password;
-        Debug.Log("loadAccount password of account \""+userName+"\": " + data.password);
+        //Debug.Log("loadAccount password of account \""+userName+"\": " + data.password);
         totalStar = data.totalStar;
         starsList = data.starsList;
+        potentialStarsList = data.potentialStarsList;
         pointsList = data.pointsList;
     }
     //private method

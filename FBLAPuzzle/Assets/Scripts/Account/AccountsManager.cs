@@ -60,7 +60,7 @@ public class AccountsManager : MonoBehaviour
     public void loadAccount(GameObject textArea)
     {
         Account account = null;
-        name = textArea.GetComponent<TMPro.TextMeshProUGUI>().text;
+        string name = textArea.GetComponent<TMPro.TextMeshProUGUI>().text;
         bool find = checkIfAccountExist(name);
         if (!find)
         {

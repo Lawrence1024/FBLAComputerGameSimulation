@@ -85,6 +85,10 @@ public class GetInputField : MonoBehaviour
             else
             {
                 warningNote = "Sign in Successfully!";
+                foreach(int i in accManager.activeAccount.potentialStarsList)
+                {
+                    Debug.Log("Potential Stars: "+i);
+                }
                 StartCoroutine(displayWarning());
                 //mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
             }

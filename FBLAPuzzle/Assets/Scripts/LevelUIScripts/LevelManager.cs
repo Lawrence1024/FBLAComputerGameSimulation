@@ -18,6 +18,9 @@ public class LevelManager : MonoBehaviour
     public GameObject currentQuestionBox;
     public GameObject[] TipPages;
 
+    private Account activeAccount;
+    public List<int> level;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +31,9 @@ public class LevelManager : MonoBehaviour
         QuestionCanvas.SetActive(false);
         WarningCanvas.SetActive(false);
         LevelCanvas.SetActive(true);
-
+        activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
+        //This is the max star
+        //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
     }
 
     // Update is called once per frame
@@ -56,10 +61,20 @@ public class LevelManager : MonoBehaviour
         }
         else if(GameObject.Find("Hearts").transform.childCount <=1)
         {
+            if(0 > activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] - 1)
+            {
+                activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = 0;
+            }
+            else
+            {
+                activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] - 1;
+            }
+            activeAccount.saveAccount();
             //SceneManager.LoadScene(SceneManager.GetActiveScene());
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
             StartCoroutine(resetLevel());
+            
         }
         
     }
