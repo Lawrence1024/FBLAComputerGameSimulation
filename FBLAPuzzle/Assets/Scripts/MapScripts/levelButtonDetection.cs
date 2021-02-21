@@ -23,4 +23,42 @@ public class levelButtonDetection : MonoBehaviour
         mapManager.LoadingCanvas.SetActive(true);
         mapManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading(levelButton.name);
     }
+
+
+    public void quitProgram()
+    {
+        Debug.Log("clicked");
+        Application.Quit();
+    }
+
+    public void resumeGame()
+    {
+        mapManager.PauseMenuCanvas.SetActive(false);
+    }
+    public void switchToMainMenu()
+    {
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            mapManager.LoadingCanvas.SetActive(true);
+            mapManager.PauseMenuCanvas.SetActive(false);
+            mapManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("MainMenu");
+        }
+        else
+        {
+            mapManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
+    public void switchToMap()
+    {
+        if (SceneManager.GetActiveScene().name != "Map")
+        {
+            mapManager.LoadingCanvas.SetActive(true);
+            mapManager.PauseMenuCanvas.SetActive(false);
+            mapManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
+        }
+        else
+        {
+            mapManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
 }

@@ -20,12 +20,13 @@ public class QuestionBoxCondition : MonoBehaviour
     string answer3;
     string answer4;
     string correctAnswer;
-    
+    private GameObject[] buttons;
+
     void Start()
     {
         questionInteraction= GameObject.Find("LevelManager").GetComponent<QuestionInteraction>();
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
-
+        buttons = GameObject.FindGameObjectsWithTag("Buttons");
     }
 
     // Update is called once per frame
@@ -60,10 +61,13 @@ public class QuestionBoxCondition : MonoBehaviour
             checkCorrectAnswer(questionInteraction.AnswerButton3, 3);
             checkCorrectAnswer(questionInteraction.AnswerButton4, 4);
 
-
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].GetComponent<Button>().interactable = false;
+                Debug.Log("button uninteractable");
+            }
             levelManager.QuestionCanvas.SetActive(true);
         }
-
     }
 
 

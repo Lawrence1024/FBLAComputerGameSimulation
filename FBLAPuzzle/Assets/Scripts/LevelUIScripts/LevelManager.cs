@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     private Account activeAccount;
     private bool freezeState = false;
     private GameObject[] buttons;
+
     // Start is called before the first frame update
     void Start()
     {

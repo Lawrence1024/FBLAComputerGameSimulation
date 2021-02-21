@@ -205,7 +205,7 @@ public class BoxController : MonoBehaviour
     }
     public void answerQuestion()
     {
-        //Debug.Log("You Entered A Question Box");
+        Debug.Log("You Entered A Question Box");
         gameObject.GetComponent<QuestionBoxCondition>().checkBoxQuestionStatus();
         levelManager.currentQuestionBox = gameObject;
         StartCoroutine(buffer());

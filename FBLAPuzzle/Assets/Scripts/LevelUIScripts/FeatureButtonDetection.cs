@@ -9,12 +9,14 @@ public class FeatureButtonDetection : MonoBehaviour
     Loading loading;
     public GameObject tipButton;
     public GameObject gameCanvas;
+    public GameObject[] buttons;
     //public string nextSceneName;
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         loading = levelManager.LoadingCanvas.transform.GetChild(0).GetComponent<Loading>();
         tipButton.SetActive(false);
+        //buttons = GameObject.FindGameObjectsWithTag("Buttons");
     }
 
     // Update is called once per frame
@@ -84,6 +86,13 @@ public class FeatureButtonDetection : MonoBehaviour
         levelManager.QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = true;
         levelManager.QuestionCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().interactable = true;
         levelManager.QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = true;
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = true;
+            Debug.Log("button interactable");
+        }
+        //idk what happened to detecting butten with tag but it's broken so i'll just hard code
+        //GameObject.Find("TipButton").GetComponent<Button>().interactable = true;
         gameObject.GetComponent<LevelManager>().currentQuestionBox.GetComponent<BoxController>().answerCorrect();
         levelManager.QuestionCanvas.SetActive(false);
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;

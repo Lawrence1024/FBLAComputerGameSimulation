@@ -8,10 +8,13 @@ public class MapManager : MonoBehaviour
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
     public GameObject MapCanvas;
+
+    public GameObject currentUserName;
     public GameObject[] allLevelButtons;
     private Account activeAccount;
     void Start()
     {
+        PauseMenuCanvas.SetActive(false);
         LoadingCanvas.SetActive(false);
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         for (int i=0; i<allLevelButtons.Length; i++) {
@@ -26,11 +29,19 @@ public class MapManager : MonoBehaviour
                 allLevelButtons[i].GetComponent<Button>().interactable = true;
             }
         }
+        currentUserName.GetComponent<TMPro.TextMeshProUGUI>().text=activeAccount.userName;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("escape"))
+        {
+            activatePauseMenu();
+        }
+    }
+    void activatePauseMenu()
+    {
+        PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
     }
 }

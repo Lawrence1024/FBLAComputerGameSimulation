@@ -111,4 +111,28 @@ public class ButtonDetection : MonoBehaviour
     public void resumeGame() {
         mainMenuManager.PauseMenuCanvas.SetActive(false);
     }
+    public void switchToMainMenu() {
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            mainMenuManager.LoadingCanvas.SetActive(true);
+            mainMenuManager.PauseMenuCanvas.SetActive(false);
+            mainMenuManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("MainMenu");
+        }
+        else {
+            mainMenuManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
+    public void switchToMap()
+    {
+        if (SceneManager.GetActiveScene().name != "Map")
+        {
+            mainMenuManager.LoadingCanvas.SetActive(true);
+            mainMenuManager.PauseMenuCanvas.SetActive(false);
+            mainMenuManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
+        }
+        else
+        {
+            mainMenuManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
 }

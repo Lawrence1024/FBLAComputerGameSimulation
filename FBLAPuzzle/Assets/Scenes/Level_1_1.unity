@@ -5708,6 +5708,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipButton: {fileID: 1481168852}
   gameCanvas: {fileID: 76286405}
+  buttons:
+  - {fileID: 1481168852}
+  - {fileID: 1825055302}
+  - {fileID: 1908174735}
 --- !u!114 &566177310
 MonoBehaviour:
   m_ObjectHideFlags: 0
