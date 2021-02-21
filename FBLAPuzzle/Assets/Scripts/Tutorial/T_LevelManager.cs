@@ -82,7 +82,10 @@ public class T_LevelManager : MonoBehaviour
             //SceneManager.LoadScene(SceneManager.GetActiveScene());
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
-            starsRemain--;
+            if (starsRemain > 0)
+            {
+                starsRemain--;
+            }
             heartRemain = 3;
 
             //scene reload
