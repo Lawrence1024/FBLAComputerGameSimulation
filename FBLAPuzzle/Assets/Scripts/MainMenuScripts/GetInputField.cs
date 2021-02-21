@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 public class GetInputField : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -153,7 +154,14 @@ public class GetInputField : MonoBehaviour
             }
         }
     }
-
+    public void resetInputField(GameObject inputField) {
+        TMP_InputField mainInputField;
+        mainInputField=inputField.GetComponent<TMP_InputField>();
+        mainInputField.text = "";
+        Debug.Log("text: "+ mainInputField.text);
+        //inputField.Select();
+        //inputField.text="";
+    }
     //displayWarning() takes in the display warning image (child number)
     IEnumerator displayWarning() {
         GameObject tempObj = mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(3).gameObject;
