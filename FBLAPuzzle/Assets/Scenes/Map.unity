@@ -288,6 +288,17 @@ MonoBehaviour:
   LoadingCanvas: {fileID: 801580765}
   PauseMenuCanvas: {fileID: 0}
   MapCanvas: {fileID: 1778163341}
+  allLevelButtons:
+  - {fileID: 1876038643}
+  - {fileID: 2029135671}
+  - {fileID: 1722072926}
+  - {fileID: 2131049614}
+  - {fileID: 889208751}
+  - {fileID: 2041977656}
+  - {fileID: 122957386}
+  - {fileID: 987297617}
+  - {fileID: 1706291362}
+  - {fileID: 126455222}
 --- !u!4 &53308636
 Transform:
   m_ObjectHideFlags: 0
