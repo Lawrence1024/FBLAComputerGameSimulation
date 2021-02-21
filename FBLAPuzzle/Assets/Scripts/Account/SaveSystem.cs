@@ -32,7 +32,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.Log("Save file not found in " + path);
+            Debug.Log("There is no data account found in " + path);
             return null;
         }
     }

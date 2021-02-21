@@ -104,4 +104,8 @@ public class AccountsManager : MonoBehaviour
     {
         return -1;
     }
+    public bool accountGreaterThan(Account acc1, Account acc2)
+    {
+        return acc1.getTotalStar() > acc2.getTotalStar();
+    }
 }

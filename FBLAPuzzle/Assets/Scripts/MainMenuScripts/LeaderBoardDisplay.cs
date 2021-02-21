@@ -34,7 +34,7 @@ public class LeaderBoardDisplay : MonoBehaviour
                 highToLow.Add(acc);
                 for(int j = i; j >= 1; j--)
                 {
-                    if (greaterThan(acc, highToLow[j - 1]))
+                    if (acc.getTotalStar() > highToLow[j - 1].getTotalStar())
                     {
                         Account tempAcc = highToLow[j - 1];
                         highToLow[j - 1] = acc;
@@ -54,42 +54,7 @@ public class LeaderBoardDisplay : MonoBehaviour
             
             //text = text + getTotalStar(highToLow[i]);
             rankTexts[i].GetComponent<TMPro.TextMeshProUGUI>().text= text;
-            rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= getTotalStar(highToLow[i]).ToString();
+            rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= highToLow[i].getTotalStar().ToString();
         }
-    }
-    private int getTotalStar(Account acc)
-    {
-        int total=0;
-        foreach (int score in acc.starsList)
-        {
-            if (score == -1)
-            {
-                break;
-            }
-            total += score;
-        }
-        return total;
-    }
-    private bool greaterThan(Account acc1, Account acc2)
-    {
-        int star1 = 0;
-        int star2 = 0;
-        foreach (int score in acc1.starsList)
-        {
-            if (score == -1)
-            {
-                break;
-            }
-            star1 += score;
-        }
-        foreach (int score in acc2.starsList)
-        {
-            if (score == -1)
-            {
-                break;
-            }
-            star2 += score;
-        }
-        return star1 > star2;
     }
 }

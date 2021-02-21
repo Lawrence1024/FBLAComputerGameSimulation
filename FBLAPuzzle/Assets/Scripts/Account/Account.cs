@@ -41,6 +41,19 @@ public class Account
         potentialStarsList = data.potentialStarsList;
         pointsList = data.pointsList;
     }
+    public int getTotalStar()
+    {
+        int total = 0;
+        foreach (int score in starsList)
+        {
+            if (score == -1)
+            {
+                break;
+            }
+            total += score;
+        }
+        return total;
+    }
     //private method
 
 
