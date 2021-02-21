@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
-        pointsCalculation = GameObject.Find("Points").GetComponent<PointsCalculation>();
+        pointsCalculation = GameObject.Find("PointsValue").GetComponent<PointsCalculation>();
         displayStars("Stars");
     }
 
@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
     public void displayScore() {
         //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
         Debug.Log(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text);
-        GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text;
+        GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = "Points: "+GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text;
         displayStars("FinalStarDisplay");
     }
     IEnumerator resetLevel() {
@@ -111,6 +111,8 @@ public class LevelManager : MonoBehaviour
     public IEnumerator buffer()
     {
         pointsCalculation.levelComplete = true;
+        activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
+        activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text);
         activeAccount.saveAccount();
         GameObject[] buttons;
         buttons = GameObject.FindGameObjectsWithTag("Buttons");

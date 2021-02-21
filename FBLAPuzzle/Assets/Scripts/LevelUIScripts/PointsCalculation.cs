@@ -14,7 +14,7 @@ public class PointsCalculation : MonoBehaviour
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
         featureButtonDetection = GameObject.Find("LevelManager").GetComponent<FeatureButtonDetection>();
         points = 1000;
-        gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + points;
+        gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
         StartCoroutine(pointsCountDown());
     }
 
@@ -29,13 +29,13 @@ public class PointsCalculation : MonoBehaviour
         points--;
         //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.01f);
-        gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + points;
+        gameObject.GetComponent<TMPro.TextMeshProUGUI>().text =points.ToString();
         if (points > 0&& !levelComplete)
         {
             StartCoroutine(pointsCountDown());
         }
         if (points<=0) {
-            gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Points: 0";
+            gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
             featureButtonDetection.tipButton.SetActive(true);
         }
 
