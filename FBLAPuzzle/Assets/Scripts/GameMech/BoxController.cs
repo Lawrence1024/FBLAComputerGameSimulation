@@ -218,22 +218,22 @@ public class BoxController : MonoBehaviour
         string lastMove = movementHistory[movementHistory.Count - 1].ToString();
         if (lastMove == "up")
         {
-            movePoint.position += new Vector3(0f, -0.99f, 0f);
+            movePoint.position += new Vector3(0f, -1f, 0f);
             yPos -= 1;
         }
         else if (lastMove == "down")
         {
-            movePoint.position += new Vector3(0f, 0.99f, 0f);
+            movePoint.position += new Vector3(0f, 1f, 0f);
             yPos += 1;
         }
         else if (lastMove == "left")
         {
-            movePoint.position += new Vector3(0.99f, 0f, 0f);
+            movePoint.position += new Vector3(1f, 0f, 0f);
             xPos += 1;
         }
         else if (lastMove == "right")
         {
-            movePoint.position += new Vector3(-0.99f, 0f, 0f);
+            movePoint.position += new Vector3(-1f, 0f, 0f);
             xPos -= 1;
         }else if (lastMove == "-")
         {
