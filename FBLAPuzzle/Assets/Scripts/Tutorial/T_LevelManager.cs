@@ -25,6 +25,8 @@ public class T_LevelManager : MonoBehaviour
     private bool freezeState = false;
     private GameObject[] buttons;
     int starsRemain = 3;
+    int heartRemain = 3;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class T_LevelManager : MonoBehaviour
         {
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
+            heartRemain--;
         }
         else if (GameObject.Find("Hearts").transform.childCount <= 1)
         {
@@ -77,9 +80,10 @@ public class T_LevelManager : MonoBehaviour
             //}
             //activeAccount.saveAccount();
             //SceneManager.LoadScene(SceneManager.GetActiveScene());
-            starsRemain--;
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
+            starsRemain--;
+            heartRemain = 3;
 
             //scene reload
             for (int i = 0; i < buttons.Length; i++)

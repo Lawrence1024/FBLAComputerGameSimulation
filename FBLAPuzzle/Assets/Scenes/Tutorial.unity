@@ -1680,7 +1680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &154118215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 605953149}
         m_MethodName: activateTips
         m_Mode: 1
         m_Arguments:
@@ -1991,7 +1991,7 @@ MonoBehaviour:
     m_Bits: 2048
   getPushed: 0
   xPos: -2
-  yPos: 1
+  yPos: 2
   startingPosition: 
   startingVectPosition: {x: 0, y: 0, z: 0}
   gameCanvas: {fileID: 1391529616}
@@ -6188,6 +6188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelComplete: 0
+  stopTime: 1
 --- !u!114 &674608300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10157,7 +10158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54, y: -54}
+  m_AnchoredPosition: {x: -54, y: -154}
   m_SizeDelta: {x: 51, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1453723643
@@ -10862,7 +10863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 605953149}
         m_MethodName: resetBoard
         m_Mode: 1
         m_Arguments:
@@ -11399,7 +11400,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 605953149}
         m_MethodName: lastStep
         m_Mode: 1
         m_Arguments:
@@ -11530,7 +11531,7 @@ MonoBehaviour:
     m_Bits: 2048
   getPushed: 0
   xPos: 0
-  yPos: 1
+  yPos: 2
   startingPosition: 
   startingVectPosition: {x: 0, y: 0, z: 0}
   gameCanvas: {fileID: 1391529616}

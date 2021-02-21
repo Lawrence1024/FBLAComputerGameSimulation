@@ -9,6 +9,7 @@ public class T_PointsCalculation : MonoBehaviour
     T_FeatureButtonDetection featureButtonDetection;
     int points = 1000;
     public bool levelComplete = false;
+    public bool stopTime = true;
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<T_LevelManager>();
@@ -26,18 +27,22 @@ public class T_PointsCalculation : MonoBehaviour
 
     IEnumerator pointsCountDown()
     {
-        points--;
+        if (!stopTime)
+        {
+            points--;
+        }
         //parser.nextScene(sceneCounter, sceneNum);
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(.9f);
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
         if (points > 0 && !levelComplete)
         {
             StartCoroutine(pointsCountDown());
         }
-        if (points <= 0)
+        else if (points <= 0)
         {
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
-            featureButtonDetection.tipButton.SetActive(true);
+            Debug.Log("Time=0, tip button is disabled in tutorial");
+            //featureButtonDetection.tipButton.SetActive(true);
         }
 
     }
