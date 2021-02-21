@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
     public bool canMove = true;
     private int testCounter = 0;
+    private float newTime;
+    private float oldTime=0f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +45,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f && (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) && canMove)
+        newTime = Time.time;
+        bool state1 = Vector3.Distance(transform.position, movePoint.position) <= 0.05f;
+        bool state2 = (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f);
+        bool state3 = canMove;
+        bool state4 = newTime - oldTime > 0.5f;
+        if (state1 && state2 && state3 && state4)
         {
             //if (thereIsObstacle())
             //{
@@ -136,8 +143,6 @@ public class PlayerController : MonoBehaviour
     }
     void makeMovement()
     {
-        testCounter++;
-        Debug.Log(testCounter);
         float scale = 1f;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
@@ -164,7 +169,8 @@ public class PlayerController : MonoBehaviour
         }
         //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
         //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
-     //   piecePosition.updatePos(movementHistory[movementHistory.Count-1].ToString());
+        //   piecePosition.updatePos(movementHistory[movementHistory.Count-1].ToString());
+        oldTime = Time.time;
     }
     bool thereIsBox()
     {
