@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonDetection : MonoBehaviour
 {
     //sceneManager sceneManager;
+    
     MainMenuManager mainMenuManager;
     /*public GameObject PlayButton;
     public GameObject InstructionButton;
@@ -22,6 +23,7 @@ public class ButtonDetection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         mainMenuManager = GameObject.Find("SceneManager").GetComponent<MainMenuManager>();
         /*PlayButton.GetComponent<Button>().onClick.AddListener(executePlayButton);
         InstructionButton.GetComponent<Button>().onClick.AddListener(executeInstructionButton);
@@ -59,7 +61,8 @@ public class ButtonDetection : MonoBehaviour
         Debug.Log("Leader Board");
         ScrollRect.verticalNormalizedPosition = 1f;
         mainMenuManager.LeaderBoardCanvas.SetActive(true);
-
+        mainMenuManager.LeaderBoardCanvas.GetComponent<LeaderBoardDisplay>().getAccountsTotalStars();
+        
 
     }
     public void executeExistButton(GameObject existObj)
