@@ -19,8 +19,8 @@ public class LeaderBoardDisplay : MonoBehaviour
     }
     public void getAccountsTotalStars() {
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
-        List<string> names=new List<string>();
-        List<int> stars = new List<int>();
+        //List<string> names=new List<string>();
+        //List<int> stars = new List<int>();
         List<Account> highToLow = new List<Account>();
         for(int i = 0; i < accountsManager.accounts.Count; i++)
         {

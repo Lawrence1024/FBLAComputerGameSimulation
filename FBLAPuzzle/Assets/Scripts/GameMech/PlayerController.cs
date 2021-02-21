@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         bool state1 = Vector3.Distance(transform.position, movePoint.position) <= 0.05f;
         bool state2 = (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f);
         bool state3 = canMove;
-        bool state4 = newTime - oldTime > 0.5f;
+        bool state4 = newTime - oldTime > 0.35f;
         if (state1 && state2 && state3 && state4)
         {
             //if (thereIsObstacle())
@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
                 piecePosition.addBoxPos(attemptMovement);
             //    //    printArray(positionHistory, "Movement: ");
             //}
-            canMove = false;
-            StartCoroutine(resumeMove(0.5f));
+            //canMove = false;
+            //StartCoroutine(resumeMove(0.5f));
         }
     }
     void OnCollisionEnter2D(Collision2D col)
@@ -187,10 +187,10 @@ public class PlayerController : MonoBehaviour
     public void rebound()
     {
         string lastMove = attemptMovement;
-        canMove = false;
+        //canMove = false;
         reversePlayerMove(lastMove);
         piecePosition.backBoxPos();
-        StartCoroutine(resumeMove(2f));
+        //StartCoroutine(resumeMove(2f));
         //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
     //    printArray(positionHistory,"Rebound: ");
         

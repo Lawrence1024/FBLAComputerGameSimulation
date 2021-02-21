@@ -6,6 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 public class QuestionBoxCondition : MonoBehaviour
 {
     QuestionInteraction questionInteraction;
@@ -38,7 +39,11 @@ public class QuestionBoxCondition : MonoBehaviour
         if (!activated) {
 
             activated = true;
-            question=questionInteraction.getQuestion(QuestionNumber);
+            levelManager.QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
+            levelManager.QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
+            levelManager.QuestionCanvas.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
+            levelManager.QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
+            question =questionInteraction.getQuestion(QuestionNumber);
             answer1=questionInteraction.getAnswer1(QuestionNumber);
             answer2=questionInteraction.getAnswer2(QuestionNumber);
             answer3=questionInteraction.getAnswer3(QuestionNumber);

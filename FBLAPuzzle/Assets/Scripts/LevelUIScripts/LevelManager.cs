@@ -46,10 +46,6 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
 
-        //testing------------
-        if (Input.GetKeyDown("space")) {
-            QuestionCanvas.SetActive(!QuestionCanvas.activeSelf);
-        }
     }
     public void changeInstrucitonPage(int pageNum)
     {
@@ -90,6 +86,7 @@ public class LevelManager : MonoBehaviour
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+            pointsCalculation.enabled = false;
             StartCoroutine(loadWarning("Level restart in", 3));
             
             
@@ -132,6 +129,10 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         displayScoreboard();
         displayScore();
+        //getAccountsPoints
+        //ScoreboardCanvas.GetComponent<ScoreBoardDisplay>().getAccountsPoints(level);
+        //ScoreboardCanvas.GetComponent<ScoreBoardDispaly>().getAccountsPoints(level);
+        ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
     }
 
     public IEnumerator loadWarning(string warningMessage, float sec)
@@ -168,7 +169,7 @@ public class LevelManager : MonoBehaviour
     }
     void reloadScene() {
         Scene scene = SceneManager.GetActiveScene();
-        for (int i = 0; i < buttons.Length; i++)
+        /*for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].GetComponent<Button>().interactable = true;
         }
@@ -176,6 +177,7 @@ public class LevelManager : MonoBehaviour
         QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
         QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
         QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        pointsCalculation.enabled = false;*/
         SceneManager.LoadScene(scene.name);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class FeatureButtonDetection : MonoBehaviour
 {
     LevelManager levelManager;
@@ -38,14 +39,15 @@ public class FeatureButtonDetection : MonoBehaviour
         if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
         {
             Debug.Log("selectAnswer wrong");
+            answerButton.GetComponent<Image>().color = new Vector4(1,0.39f,0.39f,1);
+            answerButton.GetComponent<Button>().interactable = false;
             levelManager.minusHeart();
         }
         else {
             Debug.Log("selectAnswer right");
             //levelManager.hideCanvas(levelManager.QuestionCanvas);
-            gameObject.GetComponent<LevelManager>().currentQuestionBox.GetComponent<BoxController>().answerCorrect();
-            levelManager.QuestionCanvas.SetActive(false);
-            GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+            answerButton.GetComponent<Image>().color = new Vector4(0.39f, 1, 0.39f, 1);
+            StartCoroutine(buffer());
 
             //Time.timeScale = 1;
         }
@@ -71,5 +73,19 @@ public class FeatureButtonDetection : MonoBehaviour
         
     }
 
-
+    IEnumerator buffer() {
+        Debug.Log("Buffer");
+        levelManager.QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        levelManager.QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
+        levelManager.QuestionCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().interactable = false;
+        levelManager.QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = false;
+        yield return new WaitForSeconds(.5f);
+        levelManager.QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        levelManager.QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = true;
+        levelManager.QuestionCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().interactable = true;
+        levelManager.QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = true;
+        gameObject.GetComponent<LevelManager>().currentQuestionBox.GetComponent<BoxController>().answerCorrect();
+        levelManager.QuestionCanvas.SetActive(false);
+        GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+    }
 }
