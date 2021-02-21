@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
+    PointsCalculation pointsCalculation;
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
     public GameObject LevelCanvas;
@@ -18,10 +20,10 @@ public class LevelManager : MonoBehaviour
     public GameObject currentQuestionBox;
     public GameObject[] TipPages;
 
-    private Account activeAccount;
     public List<int> level;
-    PointsCalculation pointsCalculation;
-
+    private Account activeAccount;
+    private bool freezeState = false;
+    private GameObject[] buttons;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class LevelManager : MonoBehaviour
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         pointsCalculation = GameObject.Find("PointsValue").GetComponent<PointsCalculation>();
+        buttons = GameObject.FindGameObjectsWithTag("Buttons");
         displayStars("Stars");
     }
 
@@ -76,7 +79,19 @@ public class LevelManager : MonoBehaviour
             //SceneManager.LoadScene(SceneManager.GetActiveScene());
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
-            StartCoroutine(resetLevel());
+
+            //scene reload
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].GetComponent<Button>().interactable = false;
+                Debug.Log("button uninteractable");
+            }
+            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+            StartCoroutine(loadWarning("Level restart in", 3));
+            
             
         }
         
@@ -93,12 +108,6 @@ public class LevelManager : MonoBehaviour
         GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = "Points: "+GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text;
         displayStars("FinalStarDisplay");
     }
-    IEnumerator resetLevel() {
-
-        yield return new WaitForSeconds(.5f);
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
     public void displayStars(string holderName) {
         int starsRemain = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         GameObject.Find(holderName).transform.GetChild(0).gameObject.SetActive(false);
@@ -114,8 +123,8 @@ public class LevelManager : MonoBehaviour
         activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text);
         activeAccount.saveAccount();
-        GameObject[] buttons;
-        buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        
+        
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].GetComponent<Button>().interactable = false;
@@ -123,5 +132,50 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         displayScoreboard();
         displayScore();
+    }
+
+    public IEnumerator loadWarning(string warningMessage, float sec)
+    {
+        if (sec < 1&&sec!=0)
+        {
+            WarningCanvas.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = warningMessage;
+
+        }
+        else {
+            WarningCanvas.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = warningMessage+" "+sec;
+
+        }
+        WarningCanvas.SetActive(true);
+        if (sec < 1 && sec != 0)
+        {
+            yield return new WaitForSeconds(sec);
+            WarningCanvas.SetActive(false);
+        }
+        else if (sec >= 1||sec<=0) {
+            yield return new WaitForSeconds(1);
+            sec--;
+            Debug.Log("sec " + sec);
+            if (sec <= 0) {
+                
+                WarningCanvas.SetActive(false);
+                reloadScene();
+            } else if(sec>0){
+                StartCoroutine(loadWarning(warningMessage, sec));
+            }
+            
+        }
+        
+    }
+    void reloadScene() {
+        Scene scene = SceneManager.GetActiveScene();
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = true;
+        }
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        SceneManager.LoadScene(scene.name);
     }
 }

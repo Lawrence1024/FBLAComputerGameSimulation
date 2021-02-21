@@ -32,17 +32,12 @@ public class PlayAudio : MonoBehaviour
             startPlayingAudio();
         }
     }
-    public void randomStartPoint() {
-        //int randomStartTime = Random.Range(0, clip.samples - 1); //clip.samples is the lengh of the clip in samples
-        //audioSource.timeSamples = randomStartTime;
-        startPlayingAudio();
-    }
     public void pauseAudio(){
-        audioActive = false;
-        audioSource.Pause();
+        //audioActive = false;
+        //audioSource.Pause();
     }
     public void startPlayingAudio() {
-        audioActive = true;
+        //audioActive = true;
         audioSource.Play();
     }
 }

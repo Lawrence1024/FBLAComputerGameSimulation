@@ -55,6 +55,9 @@ TagManager:
   - name: QuestionLayer
     uniqueID: 35370961
     locked: 0
+  - name: WarningLayer
+    uniqueID: 3846139957
+    locked: 0
   - name: LeaderBoardLayer
     uniqueID: 3819190631
     locked: 0

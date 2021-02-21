@@ -96,7 +96,7 @@ public class PiecePosition : MonoBehaviour
         else
         {
             Debug.Log("You are at the first step!");
-            StartCoroutine(loadWarning());
+            StartCoroutine(levelManager.loadWarning("You are at the first step!", 0.8f));
 
         }
     }
@@ -115,14 +115,10 @@ public class PiecePosition : MonoBehaviour
         else
         {
             Debug.Log("You are at the first step!");
-            StartCoroutine(loadWarning());
+            StartCoroutine(levelManager.loadWarning("You are at the first step!", 0.8f));
         }
     }
 
-    IEnumerator loadWarning() {
-        levelManager.WarningCanvas.SetActive(true);
-        yield return new WaitForSeconds(.8f);
-        levelManager.WarningCanvas.SetActive(false);
-    }
+    
 }
 
