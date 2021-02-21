@@ -30,7 +30,7 @@ public class levelButtonDetection : MonoBehaviour
         Debug.Log("clicked");
         Application.Quit();
     }
-
+    
     public void resumeGame()
     {
         mapManager.PauseMenuCanvas.SetActive(false);

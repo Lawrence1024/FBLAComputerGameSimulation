@@ -40,4 +40,7 @@ public class PlayAudio : MonoBehaviour
         //audioActive = true;
         audioSource.Play();
     }
+    public void changeVolume() { 
+        
+    }
 }

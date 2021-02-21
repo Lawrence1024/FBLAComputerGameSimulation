@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
         ScoreboardCanvas.SetActive(false);
         QuestionCanvas.SetActive(false);
         WarningCanvas.SetActive(false);
+        PauseMenuCanvas.SetActive(false);
         LevelCanvas.SetActive(true);
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         //This is the max star
@@ -44,10 +45,28 @@ public class LevelManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    //Add this part--------------------------------------------------------------------
     void Update()
     {
-
+        if (Input.GetKeyDown("escape"))
+        {
+            activatePauseMenu();
+        }
     }
+    void activatePauseMenu()
+    {
+        PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+        if (PauseMenuCanvas.activeSelf) {
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+            pointsCalculation.gamePause = true;
+        }
+        else{
+            GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+            pointsCalculation.gamePause = false;
+            StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
+        }
+    }
+    //End here--------------------------------------------------------------------
     public void changeInstrucitonPage(int pageNum)
     {
         for (int i = 0; i < TipPages.Length; i++)
@@ -87,7 +106,7 @@ public class LevelManager : MonoBehaviour
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-            pointsCalculation.enabled = false;
+            pointsCalculation.gamePause = true;
             StartCoroutine(loadWarning("Level restart in", 3));
             
             
@@ -184,4 +203,6 @@ public class LevelManager : MonoBehaviour
         pointsCalculation.enabled = false;*/
         SceneManager.LoadScene(scene.name);
     }
+
+
 }

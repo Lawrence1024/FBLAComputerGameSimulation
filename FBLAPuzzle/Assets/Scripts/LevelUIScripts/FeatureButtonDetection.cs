@@ -64,12 +64,12 @@ public class FeatureButtonDetection : MonoBehaviour
     }
 
     public void goMap() {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         levelManager.LoadingCanvas.SetActive(true);
         loading.runLoading("Map");
     }
     public void nextScene(string nextSceneName) {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         levelManager.LoadingCanvas.SetActive(true);
         loading.runLoading(nextSceneName);
         
@@ -91,10 +91,43 @@ public class FeatureButtonDetection : MonoBehaviour
             buttons[i].GetComponent<Button>().interactable = true;
             Debug.Log("button interactable");
         }
-        //idk what happened to detecting butten with tag but it's broken so i'll just hard code
-        //GameObject.Find("TipButton").GetComponent<Button>().interactable = true;
         gameObject.GetComponent<LevelManager>().currentQuestionBox.GetComponent<BoxController>().answerCorrect();
         levelManager.QuestionCanvas.SetActive(false);
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+    }
+    //Also add this part --------------------------------------------------------
+    public void resumeGame()
+    {
+        levelManager.PauseMenuCanvas.SetActive(false);
+        GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+        GameObject.Find("PointsValue").GetComponent<PointsCalculation>().gamePause = false;
+        StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
+        //Time.timeScale = 1;
+    }
+    public void switchToMainMenu()
+    {
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            levelManager.LoadingCanvas.SetActive(true);
+            levelManager.PauseMenuCanvas.SetActive(false);
+            levelManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("MainMenu");
+        }
+        else
+        {
+            levelManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
+    public void switchToMap()
+    {
+        if (SceneManager.GetActiveScene().name != "Map")
+        {
+            levelManager.LoadingCanvas.SetActive(true);
+            levelManager.PauseMenuCanvas.SetActive(false);
+            levelManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
+        }
+        else
+        {
+            levelManager.PauseMenuCanvas.SetActive(false);
+        }
     }
 }
