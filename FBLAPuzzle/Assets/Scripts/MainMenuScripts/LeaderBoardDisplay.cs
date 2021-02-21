@@ -31,20 +31,33 @@ public class LeaderBoardDisplay : MonoBehaviour
             }
             else
             {
-                highToLow.Add(acc);
-                for(int j = i; j >= 1; j--)
+                for (int j = 0; j < highToLow.Count; j++)
                 {
-                    if (acc.getTotalStar() > highToLow[j - 1].getTotalStar())
+                    if (acc.getTotalStar() > highToLow[j].getTotalStar())
                     {
-                        Account tempAcc = highToLow[j - 1];
-                        highToLow[j - 1] = acc;
-                        highToLow[j] = tempAcc;
+                        highToLow.Insert(j, acc);
+                        break;
                     }
-                    else
+                    if (j == highToLow.Count - 1)
                     {
+                        highToLow.Add(acc);
                         break;
                     }
                 }
+                //highToLow.Add(acc);
+                //for(int j = i; j >= 1; j--)
+                //{
+                //    if (acc.getTotalStar() > highToLow[j - 1].getTotalStar())
+                //    {
+                //        Account tempAcc = highToLow[j - 1];
+                //        highToLow[j - 1] = acc;
+                //        highToLow[j] = tempAcc;
+                //    }
+                //    else
+                //    {
+                //        break;
+                //    }
+                //}
             }
         }
         for (int i = 0; i < highToLow.Count; i++) {

@@ -33,17 +33,16 @@ public class ShowScoreBoardData : MonoBehaviour
             }
             else if (acc.pointsList[levelValue]!=-1)
             {
-                highToLow.Add(acc);
-                for (int j = i; j >= 1; j--)
+                for(int j = 0; j < highToLow.Count; j++)
                 {
-                    if (acc.pointsList[levelValue] > highToLow[j - 1].pointsList[levelValue])
+                    if (acc.pointsList[levelValue] > highToLow[j].pointsList[levelValue])
                     {
-                        Account tempAcc = highToLow[j - 1];
-                        highToLow[j - 1] = acc;
-                        highToLow[j] = tempAcc;
+                        highToLow.Insert(j, acc);
+                        break;
                     }
-                    else
+                    if (j == highToLow.Count - 1)
                     {
+                        highToLow.Add(acc);
                         break;
                     }
                 }
