@@ -88,9 +88,21 @@ public class QuestionInteraction : MonoBehaviour
     //Assets/Scripts/QuestionBank/Question1.txt
     void LoadQuestion(string filename)
     {
-        string file = "Assets/Scripts/QuestionBank/" + filename;
+        TextAsset questionData = Resources.Load<TextAsset>("QuestionData");
+        string contents = questionData.text;
+        //Debug.Log("this is the question Data: " + questionData.text);
+
+        // convert string to stream
+        byte[] byteArray = Encoding.UTF8.GetBytes(contents);
+        //byte[] byteArray = Encoding.ASCII.GetBytes(contents);
+        MemoryStream stream = new MemoryStream(byteArray);
+        // convert stream to string
+        //StreamReader reader = new StreamReader(stream);
+        //string text = reader.ReadToEnd();
+
+        //string file = "Assets/Resources/" + filename;
         string line;
-        StreamReader r = new StreamReader(file);
+        StreamReader r = new StreamReader(stream);
 
         using (r)
         {
