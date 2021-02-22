@@ -6,7 +6,7 @@ public class ShowScoreBoardData : MonoBehaviour
 {
     AccountsManager accountsManager;
     public GameObject[] rankTexts;
-    public GameObject[] partyPoppers;
+    public GameObject celebratoryMsgCanvas;
     void Start()
     {
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
@@ -20,7 +20,7 @@ public class ShowScoreBoardData : MonoBehaviour
     }
     public void getAccountsPoints(List<int> levelArr)
     {
-        changePartyPopperStatus(false);
+        celebratoryMsgCanvas.SetActive(false);
         int levelValue = levelArr[0] * 3 + levelArr[1] - 4;
         //ctrl c ctrl v
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
@@ -83,7 +83,8 @@ public class ShowScoreBoardData : MonoBehaviour
             if (highToLow[i].userName == accountsManager.activeAccount.userName) {
                 GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: " + (i + 1);
                 if (highToLow[i].pointsList[levelValue]<= int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)&&i<=5) {
-                    changePartyPopperStatus(true);
+                    celebratoryMsgCanvas.transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (i+1).ToString();
+                    celebratoryMsgCanvas.SetActive(true);
                 }
                 break;
             }
@@ -94,11 +95,4 @@ public class ShowScoreBoardData : MonoBehaviour
         }
     }
 
-    void changePartyPopperStatus(bool status)
-    {
-        for (int i = 0; i < partyPoppers.Length; i++)
-        {
-            partyPoppers[i].SetActive(status);
-        }
-    }
 }
