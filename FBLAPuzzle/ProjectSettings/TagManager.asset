@@ -58,6 +58,9 @@ TagManager:
   - name: WarningLayer
     uniqueID: 3846139957
     locked: 0
+  - name: TutorialLayer
+    uniqueID: 1551012843
+    locked: 0
   - name: LeaderBoardLayer
     uniqueID: 3819190631
     locked: 0

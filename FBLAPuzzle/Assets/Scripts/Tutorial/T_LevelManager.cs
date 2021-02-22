@@ -21,12 +21,15 @@ public class T_LevelManager : MonoBehaviour
     public GameObject[] TipPages;
 
     public List<int> level;
-    //private Account activeAccount;
+    private Account activeAccount;
     private bool freezeState = false;
     private GameObject[] buttons;
     int starsRemain = 3;
     int heartRemain = 3;
-    
+
+    public GameObject TCanvas;
+    public T_TutorialFlowController TFController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +42,12 @@ public class T_LevelManager : MonoBehaviour
         WarningCanvas.SetActive(false);
         LevelCanvas.SetActive(true);
         PauseMenuCanvas.SetActive(false);
-        //activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
+        activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         pointsCalculation = GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>();
         buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        TFController = TCanvas.GetComponent<T_TutorialFlowController>();
         displayStars("Stars");
     }
 
@@ -107,6 +111,20 @@ public class T_LevelManager : MonoBehaviour
             {
                 starsRemain--;
             }
+            if (starsRemain == 2)
+            {
+                activeAccount.tutorialProgress[0] = true;
+            }else if (starsRemain == 1)
+            {
+                Debug.Log("You would only gain a maximum of 1 star in a real game, try to complete level without answering wrong!");
+            }else if (starsRemain == 0)
+            {
+
+            }else if (starsRemain < 0)
+            {
+                starsRemain = 0;
+            }
+
             heartRemain = 3;
 
             //scene reload
@@ -120,7 +138,13 @@ public class T_LevelManager : MonoBehaviour
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             pointsCalculation.enabled = false;
-            StartCoroutine(loadWarning("Level restart in", 3));
+            if (starsRemain == 2 && TFController.currentStep==29)
+            {
+                Debug.Log("SHOW THE MINUS STAR");
+                TFController.nextStep();
+            }
+            
+    //        StartCoroutine(loadWarning("Level restart in", 3));
 
 
         }
@@ -153,6 +177,8 @@ public class T_LevelManager : MonoBehaviour
     public IEnumerator buffer()
     {
         pointsCalculation.levelComplete = true;
+        activeAccount.tutorialProgress[1] = true;
+        Debug.Log("SHOW CONGRATS FINISH TUTORIAL");
         //activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         //if (activeAccount.pointsList[level[0] * 3 + level[1] - 4] < int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
         //{
