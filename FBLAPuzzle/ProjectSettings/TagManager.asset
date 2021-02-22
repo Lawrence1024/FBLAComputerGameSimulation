@@ -61,6 +61,9 @@ TagManager:
   - name: LeaderBoardLayer
     uniqueID: 3819190631
     locked: 0
+  - name: ParticlesLayer
+    uniqueID: 3753103211
+    locked: 0
   - name: LoadingLayer
     uniqueID: 2879699985
     locked: 0
