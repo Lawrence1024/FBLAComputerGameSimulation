@@ -80,7 +80,10 @@ public class ShowScoreBoardData : MonoBehaviour
             if (highToLow[i].userName == accountsManager.activeAccount.userName) {
                 GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: " + (i + 1);
                 Debug.Log("highest score: "+highToLow[i].pointsList[levelValue]);
-                Debug.Log("now score: " + GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text);
+                Debug.Log("now score: " + int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text));
+                if (highToLow[i].pointsList[levelValue]<= int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)) {
+                    Debug.Log("score congrats");
+                }
                 break;
             }
             else{
