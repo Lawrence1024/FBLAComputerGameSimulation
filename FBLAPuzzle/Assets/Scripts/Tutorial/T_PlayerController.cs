@@ -173,37 +173,41 @@ public class T_PlayerController : MonoBehaviour
     }
     void moveFlow(string direct, int times)
     {
-        if (direct == "up")
+        if (newTime - oldTime > 0.35f)
         {
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-            attemptMovement = "up";
-            yPos += 1;
-        }
-        else if (direct == "down")
-        {
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-            attemptMovement = "down";
-            yPos -= 1;
-        }
-        else if (direct == "left")
-        {
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-            attemptMovement = "left";
-            xPos -= 1;
-        }
-        else if (direct == "right")
-        {
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-            attemptMovement = "right";
-            xPos += 1;
-        }
-        piecePosition.addPlayerPos(attemptMovement);
-        piecePosition.addBoxPos(attemptMovement);
-        minorStepCounter++;
-        if (minorStepCounter == times)
-        {
-            minorStepCounter = 0;
-            TFlowController.nextStep();
+            if (direct == "up")
+            {
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                attemptMovement = "up";
+                yPos += 1;
+            }
+            else if (direct == "down")
+            {
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                attemptMovement = "down";
+                yPos -= 1;
+            }
+            else if (direct == "left")
+            {
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                attemptMovement = "left";
+                xPos -= 1;
+            }
+            else if (direct == "right")
+            {
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                attemptMovement = "right";
+                xPos += 1;
+            }
+            piecePosition.addPlayerPos(attemptMovement);
+            piecePosition.addBoxPos(attemptMovement);
+            minorStepCounter++;
+            if (minorStepCounter == times)
+            {
+                minorStepCounter = 0;
+                TFlowController.nextStep();
+            }
+            oldTime = Time.time;
         }
     }
     void OnCollisionEnter2D(Collision2D col)
