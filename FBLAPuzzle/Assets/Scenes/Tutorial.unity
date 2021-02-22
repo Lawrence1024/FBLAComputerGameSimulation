@@ -11451,7 +11451,6 @@ GameObject:
   - component: {fileID: 1503880401}
   - component: {fileID: 1503880400}
   - component: {fileID: 1503880399}
-  - component: {fileID: 1503880404}
   - component: {fileID: 1503880403}
   m_Layer: 5
   m_Name: TutorialCanvas
@@ -11561,20 +11560,6 @@ MonoBehaviour:
   - {fileID: 1787384815}
   - {fileID: 1940144768}
   - {fileID: 1422236312}
---- !u!114 &1503880404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503880398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abe2cf45514cfbb46acb9346b88910c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameCanvas: {fileID: 1391529616}
-  playerController: {fileID: 0}
 --- !u!1 &1540076730
 GameObject:
   m_ObjectHideFlags: 0
@@ -11930,8 +11915,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1584488086}
+  - component: {fileID: 1584488087}
   m_Layer: 5
-  m_Name: KeyImages
+  m_Name: KeyController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11960,6 +11946,23 @@ RectTransform:
   m_AnchoredPosition: {x: 593, y: -286}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1584488087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584488085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3badbcf9ea2ffee418532860c5fc3586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIKeys:
+  - {fileID: 1655372969}
+  - {fileID: 533893358}
+  - {fileID: 548786519}
+  - {fileID: 1666780716}
 --- !u!1 &1623655001
 GameObject:
   m_ObjectHideFlags: 0
