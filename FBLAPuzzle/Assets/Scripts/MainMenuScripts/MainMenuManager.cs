@@ -79,6 +79,5 @@ public class MainMenuManager : MonoBehaviour
         UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
 
-
     }
 }
