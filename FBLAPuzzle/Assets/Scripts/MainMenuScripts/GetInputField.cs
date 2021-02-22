@@ -150,7 +150,7 @@ public class GetInputField : MonoBehaviour
                 accManager.activeAccount.password = pwd;
                 accManager.activeAccount.saveAccount();
                 Debug.Log("The current Active Account: " + accManager.activeAccount.password);
-                accManager.activeAccount = null;
+                //accManager.activeAccount = null;
             }
         }
     }

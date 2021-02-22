@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public GameObject FeatureCanvas;
     public GameObject CelebratoryMessagesCanvas;
     public GameObject currentQuestionBox;
+    public GameObject playerSprite;
     public GameObject[] TipPages;
 
     public List<int> level;
@@ -43,6 +44,7 @@ public class LevelManager : MonoBehaviour
         pointsCalculation = GameObject.Find("PointsValue").GetComponent<PointsCalculation>();
         buttons = GameObject.FindGameObjectsWithTag("Buttons");
         displayStars("Stars");
+        playerSprite.GetComponent<SpriteRenderer>().color = activeAccount.avatarColor;
     }
 
     // Update is called once per frame

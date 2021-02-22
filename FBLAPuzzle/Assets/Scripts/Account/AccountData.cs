@@ -22,9 +22,10 @@ public class AccountData
         starsList = account.starsList;
         potentialStarsList = account.potentialStarsList;
         pointsList = account.pointsList;
-        avatarColor.Add(account.avatarColor.z);
-        avatarColor.Add(account.avatarColor.y);
+        avatarColor = new List<float>();
         avatarColor.Add(account.avatarColor.x);
+        avatarColor.Add(account.avatarColor.y);
+        avatarColor.Add(account.avatarColor.z);
         avatarColor.Add(account.avatarColor.w);
         tutorialProgress = account.tutorialProgress;
     }
