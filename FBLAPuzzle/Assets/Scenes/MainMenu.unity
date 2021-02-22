@@ -4531,7 +4531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.36305448, b: 0.0141509175, a: 1}
+  m_Color: {r: 1, g: 0.3529412, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4597,7 +4597,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 400986511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 400986509}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &402022426
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,7 +6182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.25943398, b: 0.6710345, a: 1}
+  m_Color: {r: 1, g: 0.23529412, b: 0.6666667, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6226,7 +6248,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 616939667}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 616939665}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &619038539
 GameObject:
   m_ObjectHideFlags: 0
@@ -8850,7 +8894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28960717, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.29411766, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8916,7 +8960,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1017073411}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1017073409}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1025017501
 GameObject:
   m_ObjectHideFlags: 0
@@ -9578,7 +9644,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1099147011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1099147009}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1103585273
 GameObject:
   m_ObjectHideFlags: 0
@@ -9830,7 +9918,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1122035787}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1122035785}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1128144547 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2861369788607246226, guid: 1f2f5ac15db033c4e83e68202a9cff0c,
@@ -11315,7 +11425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
+  m_Color: {r: 1, g: 0.23529412, b: 0.23529412, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11381,7 +11491,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1346989365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1346989363}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1399206269
 GameObject:
   m_ObjectHideFlags: 0
@@ -11633,7 +11765,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1411674300}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468731934}
+        m_MethodName: chooseColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1411674298}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 468731934}
+        m_MethodName: inactiveAvatarBoard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468731929}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1414767645
 GameObject:
   m_ObjectHideFlags: 0
