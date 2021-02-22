@@ -43,4 +43,11 @@ public class T_UI_KeysControl : MonoBehaviour
         }
         UIKeys[index].GetComponentInChildren<SpriteRenderer>().color = new Vector4(0.62f, 0.93f, 1f, 1f);
     }
+    public void darkAllKeys()
+    {
+        foreach(GameObject key in UIKeys)
+        {
+            key.GetComponentInChildren<SpriteRenderer>().color = new Vector4(1f, 1f, 1f, 1f);
+        }
+    }
 }
