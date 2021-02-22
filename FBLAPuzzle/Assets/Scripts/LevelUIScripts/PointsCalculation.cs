@@ -27,14 +27,17 @@ public class PointsCalculation : MonoBehaviour
 
     public IEnumerator pointsCountDown()
     {
-        points--;
+        if (!levelComplete && !gamePause) {
+            points--;
+        }
         //parser.nextScene(sceneCounter, sceneNum);
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(.8f);
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text =points.ToString();
         if (points > 0&& !levelComplete&&!gamePause)
         {
             StartCoroutine(pointsCountDown());
         }else if (points<=0) {
+            Debug.Log("Points calc");
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
             featureButtonDetection.tipButton.SetActive(true);
         }

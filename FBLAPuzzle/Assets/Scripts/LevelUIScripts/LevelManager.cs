@@ -58,12 +58,14 @@ public class LevelManager : MonoBehaviour
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
         if (PauseMenuCanvas.activeSelf) {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
             pointsCalculation.gamePause = true;
         }
         else{
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
             pointsCalculation.gamePause = false;
             StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
         }
     }
     //End here--------------------------------------------------------------------
@@ -116,7 +118,8 @@ public class LevelManager : MonoBehaviour
     public void displayScoreboard()
     {
         //FeatureCanvas.active=false;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        pointsCalculation.levelComplete = true;
         ScoreboardCanvas.SetActive(true);
     }
     public void displayScore() {
@@ -138,9 +141,11 @@ public class LevelManager : MonoBehaviour
     {
         pointsCalculation.levelComplete = true;
         activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
+
+        //hard code -1
         if (activeAccount.pointsList[level[0] * 3 + level[1] - 4]< int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
         {
-            activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text);
+            activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)-1;
         }
         activeAccount.saveAccount();
         

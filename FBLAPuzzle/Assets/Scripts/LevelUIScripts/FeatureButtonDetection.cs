@@ -96,9 +96,17 @@ public class FeatureButtonDetection : MonoBehaviour
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
     }
     //Also add this part --------------------------------------------------------
+
+    public void quitProgram()
+    {
+        Debug.Log("clicked");
+        Application.Quit();
+    }
+
     public void resumeGame()
     {
         levelManager.PauseMenuCanvas.SetActive(false);
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
         GameObject.Find("PointsValue").GetComponent<PointsCalculation>().gamePause = false;
         StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());

@@ -42,6 +42,14 @@ public class MapManager : MonoBehaviour
     }
     void activatePauseMenu()
     {
+
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+        if (PauseMenuCanvas.activeSelf)
+        {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+        }
+        else {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
+        }
     }
 }

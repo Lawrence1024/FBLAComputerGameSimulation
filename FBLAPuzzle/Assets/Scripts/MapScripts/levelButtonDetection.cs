@@ -34,6 +34,7 @@ public class levelButtonDetection : MonoBehaviour
     public void resumeGame()
     {
         mapManager.PauseMenuCanvas.SetActive(false);
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
     }
     public void switchToMainMenu()
     {

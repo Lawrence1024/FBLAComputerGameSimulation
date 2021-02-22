@@ -71,9 +71,27 @@ public class ShowScoreBoardData : MonoBehaviour
 
                 //text = text + getTotalStar(highToLow[i]);
                 rankTexts[i].GetComponent<TMPro.TextMeshProUGUI>().text = text;
-                rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = highToLow[i].pointsList[levelValue].ToString();
+//hard code -1 points (not yet)
+                rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (highToLow[i].pointsList[levelValue]).ToString();
+            }
+        }
+         for (int i = 0; i < highToLow.Count; i++) {
+            //&&highToLow[i].pointsList[levelValue]== int.Parse(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text)
+            if (highToLow[i].userName == accountsManager.activeAccount.userName) {
+                GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: " + (i + 1);
+                Debug.Log("highest score: "+highToLow[i].pointsList[levelValue]);
+                Debug.Log("now score: " + GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text);
+                break;
+            }
+            else{
+                GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: No Rank";
             }
         }
 
+    }
+
+    void displayRank()
+    {
+        //for()
     }
 }
