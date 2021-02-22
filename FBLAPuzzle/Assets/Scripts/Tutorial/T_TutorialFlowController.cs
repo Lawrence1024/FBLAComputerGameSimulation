@@ -36,6 +36,13 @@ public class T_TutorialFlowController : MonoBehaviour
             answerButtons[2].GetComponent<Button>().interactable = false;
             answerButtons[3].GetComponent<Button>().interactable = false;
         }
+        else if (currentStep == 21)
+        {
+            answerButtons[0].GetComponent<Button>().interactable = true;
+            answerButtons[1].GetComponent<Button>().interactable = true;
+            answerButtons[2].GetComponent<Button>().interactable = true;
+            answerButtons[3].GetComponent<Button>().interactable = true;
+        }
     }
     public void nextStep()
     {

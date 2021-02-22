@@ -70,9 +70,9 @@ public class T_PlayerController : MonoBehaviour
         if(step>=0 && step <= 17)
         {
             streakMovement0To17();
-        }else if (step == 21 && Input.GetAxisRaw("Vertical") == -1f)
+        }else if (step >= 21 && step <= 31)
         {
-            moveFlow("down", 4);
+            streakMovement21To31();
         }
         
     }
@@ -153,6 +153,22 @@ public class T_PlayerController : MonoBehaviour
         else if (TFlowController.currentStep == 17 && left)
         {
             moveFlow("left", 2);
+        }
+    }
+
+    void streakMovement21To31()
+    {
+        bool up = Input.GetAxisRaw("Vertical") == 1f;
+        bool down = Input.GetAxisRaw("Vertical") == -1f;
+        bool left = Input.GetAxisRaw("Horizontal") == -1f;
+        bool right = Input.GetAxisRaw("Horizontal") == 1f;
+        if (TFlowController.currentStep == 21 && down)
+        {
+            moveFlow("down", 4);
+        }
+        else if (TFlowController.currentStep == 23)
+        {
+            
         }
     }
     void moveFlow(string direct, int times)
