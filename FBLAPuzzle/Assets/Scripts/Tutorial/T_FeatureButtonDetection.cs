@@ -119,4 +119,48 @@ public class T_FeatureButtonDetection : MonoBehaviour
         levelManager.QuestionCanvas.SetActive(false);
         GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = true;
     }
+
+    public void quitProgram()
+    {
+        Debug.Log("clicked");
+        Application.Quit();
+    }
+
+    public void resumeGame()
+    {
+        levelManager.PauseMenuCanvas.SetActive(false);
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
+        GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = true;
+        GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>().stopTime = false;
+        //StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
+        //Time.timeScale = 1;
+    }
+    public void switchToMainMenu()
+    {
+        //showScoreBoardData.SetActive(false);
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            levelManager.LoadingCanvas.SetActive(true);
+            levelManager.PauseMenuCanvas.SetActive(false);
+            levelManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("MainMenu");
+        }
+        else
+        {
+            levelManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
+    public void switchToMap()
+    {
+        //showScoreBoardData.SetActive(false);
+        if (SceneManager.GetActiveScene().name != "Map")
+        {
+            levelManager.LoadingCanvas.SetActive(true);
+            levelManager.PauseMenuCanvas.SetActive(false);
+            levelManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
+        }
+        else
+        {
+            levelManager.PauseMenuCanvas.SetActive(false);
+        }
+    }
 }

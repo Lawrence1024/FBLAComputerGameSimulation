@@ -25,7 +25,8 @@ public class Loading : MonoBehaviour
         //audioObject.GetComponent<AudioSource>().Pause();
         //not disabling the audio
         //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().pauseAudio();
-        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+//disable all audioplayer
+        //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
         loadingCounter = Random.Range(4, 7);
         Debug.Log("load scene "+sceneName);
         StartCoroutine(Buffer(sceneName));        
@@ -55,7 +56,7 @@ public class Loading : MonoBehaviour
             //Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
             //not disabling the audio
             //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().startPlayingAudio();
-            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
             SceneManager.LoadScene(sceneName);
             //SceneManager.MoveGameObjectToScene(GameObject.Find("AccountsManager"), sceneToLoad);
         }

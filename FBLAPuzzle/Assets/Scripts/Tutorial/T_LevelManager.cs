@@ -38,6 +38,7 @@ public class T_LevelManager : MonoBehaviour
         QuestionCanvas.SetActive(false);
         WarningCanvas.SetActive(false);
         LevelCanvas.SetActive(true);
+        PauseMenuCanvas.SetActive(false);
         //activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
@@ -49,7 +50,27 @@ public class T_LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown("escape"))
+        {
+            activatePauseMenu();
+        }
+    }
+    void activatePauseMenu()
+    {
+        PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+        if (PauseMenuCanvas.activeSelf)
+        {
+            GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = false;
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+            pointsCalculation.stopTime = true;
+        }
+        else
+        {
+            GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = true;
+            pointsCalculation.stopTime = false;
+            StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
+        }
     }
     public void changeInstrucitonPage(int pageNum)
     {
