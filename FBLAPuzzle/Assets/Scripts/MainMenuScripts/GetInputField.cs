@@ -101,6 +101,14 @@ public class GetInputField : MonoBehaviour
         }
     }
 
+    public void createAccount(GameObject UserNameInputBoxCanvas)
+    {
+        Debug.Log("Click on hyperlink");
+        UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(true);
+        UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
+
+    }
     //enteredCreatedName() is for creating new account
     public void enteredCreateName(GameObject textObj) {
         string name = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
@@ -167,17 +175,30 @@ public class GetInputField : MonoBehaviour
         GameObject tempObj = mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(3).gameObject;
         tempObj.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= warningNote;
         tempObj.SetActive(true);
+        for (int i = 0; i < mainMenuManager.buttonsToDisableOnWarning.Length; i++)
+        {
+            Debug.Log("Might Cause Main Menu Bug");
+            mainMenuManager.buttonsToDisableOnWarning[i].GetComponent<Button>().interactable = false;
+        }
         yield return new WaitForSeconds(1f);
         tempObj.SetActive(false);
+        
         if (warningNote == "Sign in Successfully!")
         {
             mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
+            //mainMenuManager.LogOutButton.SetActive(true);
+            GameObject.Find("MainPageCanvas").transform.GetChild(6).gameObject.SetActive(true);
         }
         else if (warningNote == "Account Created Successfully!") {
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < mainMenuManager.buttonsToDisableOnWarning.Length; i++)
+        {
+            
+            mainMenuManager.buttonsToDisableOnWarning[i].GetComponent<Button>().interactable = true;
         }
     }
 }

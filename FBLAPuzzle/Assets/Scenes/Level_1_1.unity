@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 76286407}
   - component: {fileID: 76286406}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24846,7 +24846,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 146916017}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.387716
+  m_Size: 0.38771603
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -136,4 +136,12 @@ public class ButtonDetection : MonoBehaviour
             mainMenuManager.PauseMenuCanvas.SetActive(false);
         }
     }
+
+    public void LogOut(GameObject LOBut) {
+        GameObject.Find("AccountsManager").transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.Find("AccountsManager").transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        GameObject.Find("AccountsManager").transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Button>().interactable=true;
+        //mainMenuManager.UserNameInputBoxCanvas.SetActive(true);
+        LOBut.SetActive(false);
+    }
 }
