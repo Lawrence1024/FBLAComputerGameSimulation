@@ -46,7 +46,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
     {
         if(TFController.currentStep>=18 && TFController.currentStep <= 20 || TFController.currentStep==29)
         {
-            TFController.currentStep++;
+            TFController.nextStep();
         }
         if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
         {
