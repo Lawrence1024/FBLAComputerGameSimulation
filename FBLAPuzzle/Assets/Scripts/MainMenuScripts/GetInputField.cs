@@ -177,6 +177,7 @@ public class GetInputField : MonoBehaviour
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
+            mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(true);
         }
     }
 }
