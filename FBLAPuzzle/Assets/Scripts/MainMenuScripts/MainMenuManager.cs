@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject LeaderBoardCanvas;
     public GameObject UserNameInputBoxCanvas;
     public GameObject[] InstructionPages;
+    public GameObject[] buttonsToDisableOnWarning;
     // Start is called before the first frame update
     void Start()
     {

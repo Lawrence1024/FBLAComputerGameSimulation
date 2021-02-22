@@ -167,8 +167,14 @@ public class GetInputField : MonoBehaviour
         GameObject tempObj = mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(3).gameObject;
         tempObj.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= warningNote;
         tempObj.SetActive(true);
+        for (int i = 0; i < mainMenuManager.buttonsToDisableOnWarning.Length; i++)
+        {
+            Debug.Log("Might Cause Main Menu Bug");
+            mainMenuManager.buttonsToDisableOnWarning[i].GetComponent<Button>().interactable = false;
+        }
         yield return new WaitForSeconds(1f);
         tempObj.SetActive(false);
+        
         if (warningNote == "Sign in Successfully!")
         {
             mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
@@ -178,6 +184,11 @@ public class GetInputField : MonoBehaviour
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(true);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(true);
+        }
+        for (int i = 0; i < mainMenuManager.buttonsToDisableOnWarning.Length; i++)
+        {
+            
+            mainMenuManager.buttonsToDisableOnWarning[i].GetComponent<Button>().interactable = true;
         }
     }
 }
