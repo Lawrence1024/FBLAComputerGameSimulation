@@ -30,7 +30,7 @@ public class ShowScoreBoardData : MonoBehaviour
         for (int i = 0; i < accountsManager.accounts.Count; i++)
         {
             Account acc = accountsManager.accounts[i];
-            if (i == 0)
+            if ((i == 0 && acc.pointsList[levelValue] != -1)||(highToLow.Count==0 && acc.pointsList[levelValue] != -1))
             {
                 highToLow.Add(acc);
             }
