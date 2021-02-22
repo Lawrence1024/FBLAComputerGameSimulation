@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject InstructionCanvas;
     public GameObject LeaderBoardCanvas;
     public GameObject UserNameInputBoxCanvas;
+    public GameObject LogOutButton;
     public GameObject[] InstructionPages;
     public GameObject[] buttonsToDisableOnWarning;
     // Start is called before the first frame update
@@ -30,6 +31,15 @@ public class MainMenuManager : MonoBehaviour
         for (int i = 0; i < InstructionPages.Length; i++)
         {
             InstructionPages[i].SetActive(false);
+        }
+        GameObject.Find("Counter").GetComponent<EnterMainMenuCounter>().IncreaseMainMenuCounter();
+        if (GameObject.Find("Counter").GetComponent<EnterMainMenuCounter>().mainMenuCounter > 1)
+        {
+            Debug.Log("Counter " + GameObject.Find("Counter").GetComponent<EnterMainMenuCounter>().mainMenuCounter);
+            LogOutButton.SetActive(true);
+        }
+        else {
+            LogOutButton.SetActive(false);
         }
     }
 
@@ -64,7 +74,7 @@ public class MainMenuManager : MonoBehaviour
     //reference in button
     public void createAccount()
     {
-        
+        Debug.Log("Click on hyperlink");
         UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(true);
         UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);

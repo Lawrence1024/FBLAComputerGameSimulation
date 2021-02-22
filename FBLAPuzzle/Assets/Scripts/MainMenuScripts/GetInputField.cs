@@ -101,6 +101,14 @@ public class GetInputField : MonoBehaviour
         }
     }
 
+    public void createAccount(GameObject UserNameInputBoxCanvas)
+    {
+        Debug.Log("Click on hyperlink");
+        UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(true);
+        UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
+        UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
+
+    }
     //enteredCreatedName() is for creating new account
     public void enteredCreateName(GameObject textObj) {
         string name = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
@@ -178,6 +186,8 @@ public class GetInputField : MonoBehaviour
         if (warningNote == "Sign in Successfully!")
         {
             mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
+            //mainMenuManager.LogOutButton.SetActive(true);
+            GameObject.Find("MainPageCanvas").transform.GetChild(6).gameObject.SetActive(true);
         }
         else if (warningNote == "Account Created Successfully!") {
             mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
