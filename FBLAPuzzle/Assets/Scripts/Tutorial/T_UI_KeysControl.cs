@@ -6,17 +6,19 @@ public class T_UI_KeysControl : MonoBehaviour
 {
     //The keys are in the order of "WSAD" 
     public List<GameObject> UIKeys;
+    private float oldTime;
+    private float newTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        oldTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        newTime = Time.time;
     }
     public void glow(string direction)
     {
@@ -42,5 +44,12 @@ public class T_UI_KeysControl : MonoBehaviour
             Debug.Log("There is an error in T_UI_KeysControl glow function. Error: invalid input");
         }
         UIKeys[index].GetComponentInChildren<SpriteRenderer>().color = new Vector4(0.62f, 0.93f, 1f, 1f);
+    }
+    public void darkAllKeys()
+    {
+        foreach(GameObject key in UIKeys)
+        {
+            key.GetComponentInChildren<SpriteRenderer>().color = new Vector4(1f, 1f, 1f, 1f);
+        }
     }
 }
