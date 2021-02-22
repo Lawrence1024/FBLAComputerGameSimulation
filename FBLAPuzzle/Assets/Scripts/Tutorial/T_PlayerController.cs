@@ -29,6 +29,9 @@ public class T_PlayerController : MonoBehaviour
     private float newTime;
     private float oldTime = 0f;
 
+    public T_TutorialFlowController TFlowController;
+    public int minorStepCounter = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,19 +55,139 @@ public class T_PlayerController : MonoBehaviour
         bool state4 = newTime - oldTime > 0.35f;
         if (state1 && state2 && state3 && state4)
         {
-            //if (thereIsObstacle())
-            //{
-            //    //makeMovement();
-            //}
-            //else
-            //{
-            makeMovement();
-            piecePosition.addPlayerPos(attemptMovement);
-            piecePosition.addBoxPos(attemptMovement);
-            //    //    printArray(positionHistory, "Movement: ");
-            //}
-            //canMove = false;
-            //StartCoroutine(resumeMove(0.5f));
+            doTFlowController();
+        }
+        //if (state1 && state2 && state3 && state4)
+        //{
+        //    makeMovement();
+        //    piecePosition.addPlayerPos(attemptMovement);
+        //    piecePosition.addBoxPos(attemptMovement);
+        //}
+    }
+    private void doTFlowController()
+    {
+        int step = TFlowController.currentStep;
+        if(step>=0 && step <= 17)
+        {
+            streakMovement0To17();
+        }else if (step == 21 && Input.GetAxisRaw("Vertical") == -1f)
+        {
+            moveFlow("down", 4);
+        }
+        
+    }
+    void streakMovement0To17()
+    {
+        bool up = Input.GetAxisRaw("Vertical") == 1f;
+        bool down = Input.GetAxisRaw("Vertical") == -1f;
+        bool left = Input.GetAxisRaw("Horizontal") == -1f;
+        bool right = Input.GetAxisRaw("Horizontal") == 1f;
+        if (TFlowController.currentStep == 0 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 1 && down)
+        {
+            moveFlow("down", 1);
+        }
+        else if (TFlowController.currentStep == 2 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 3 && right)
+        {
+            moveFlow("right", 1);
+        }
+        else if (TFlowController.currentStep == 4 && right)
+        {
+            moveFlow("right", 2);
+        }
+        else if (TFlowController.currentStep == 5 && down)
+        {
+            moveFlow("down", 2);
+        }
+        else if (TFlowController.currentStep == 6 && right)
+        {
+            moveFlow("right", 2);
+        }
+        else if (TFlowController.currentStep == 7 && up)
+        {
+            moveFlow("up", 3);
+        }
+        else if (TFlowController.currentStep == 8 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 9 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 10 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 11 && down)
+        {
+            moveFlow("down", 1);
+        }
+        else if (TFlowController.currentStep == 12 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 13 && up)
+        {
+            moveFlow("up", 2);
+        }
+        else if (TFlowController.currentStep == 14 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 15 && right)
+        {
+            moveFlow("right", 1);
+        }
+        else if (TFlowController.currentStep == 16 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 17 && left)
+        {
+            moveFlow("left", 2);
+        }
+    }
+    void moveFlow(string direct, int times)
+    {
+        if (direct == "up")
+        {
+            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+            attemptMovement = "up";
+            yPos += 1;
+        }
+        else if (direct == "down")
+        {
+            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+            attemptMovement = "down";
+            yPos -= 1;
+        }
+        else if (direct == "left")
+        {
+            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+            attemptMovement = "left";
+            xPos -= 1;
+        }
+        else if (direct == "right")
+        {
+            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+            attemptMovement = "right";
+            xPos += 1;
+        }
+        piecePosition.addPlayerPos(attemptMovement);
+        piecePosition.addBoxPos(attemptMovement);
+        minorStepCounter++;
+        if (minorStepCounter == times)
+        {
+            minorStepCounter = 0;
+            TFlowController.nextStep();
         }
     }
     void OnCollisionEnter2D(Collision2D col)
@@ -236,16 +359,16 @@ public class T_PlayerController : MonoBehaviour
         transform.position = startingVectPosition;
         movePoint.position = startingVectPosition;
     }
-    IEnumerator checkIfBug()
-    {
-        yield return new WaitForSeconds(0.2f);
-        bool condition1 = Physics2D.OverlapCircle(movePoint.position, 0.02f, whatStopsMovement);
-        //bool condition2 = xPos == player.GetComponent<T_PlayerController>().xPos && yPos == player.GetComponent<T_PlayerController>().yPos;
-        if (condition1)
-        {
-            //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
-            //Debug.Log("Player Position: [" + player.GetComponent<T_PlayerController>().xPos + "," + player.GetComponent<T_PlayerController>().yPos + "]");
-            rebound();
-        }
-    }
+    //IEnumerator checkIfBug()
+    //{
+    //    yield return new WaitForSeconds(0.2f);
+    //    bool condition1 = Physics2D.OverlapCircle(movePoint.position, 0.02f, whatStopsMovement);
+    //    //bool condition2 = xPos == player.GetComponent<T_PlayerController>().xPos && yPos == player.GetComponent<T_PlayerController>().yPos;
+    //    if (condition1)
+    //    {
+    //        //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
+    //        //Debug.Log("Player Position: [" + player.GetComponent<T_PlayerController>().xPos + "," + player.GetComponent<T_PlayerController>().yPos + "]");
+    //        rebound();
+    //    }
+    //}
 }

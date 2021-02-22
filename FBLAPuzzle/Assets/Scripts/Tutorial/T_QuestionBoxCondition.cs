@@ -22,11 +22,15 @@ public class T_QuestionBoxCondition : MonoBehaviour
     string correctAnswer;
     private GameObject[] buttons;
 
+    public GameObject TCanvas;
+    public T_TutorialFlowController TFController;
+
     void Start()
     {
         questionInteraction = GameObject.Find("LevelManager").GetComponent<QuestionInteraction>();
         levelManager = GameObject.Find("LevelManager").GetComponent<T_LevelManager>();
         buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        TFController = TCanvas.GetComponent<T_TutorialFlowController>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,15 @@ public class T_QuestionBoxCondition : MonoBehaviour
             checkCorrectAnswer(questionInteraction.AnswerButton2, 2);
             checkCorrectAnswer(questionInteraction.AnswerButton3, 3);
             checkCorrectAnswer(questionInteraction.AnswerButton4, 4);
+            //Deactive some answers in tutorial mode
+            if (TFController.currentStep == 18)
+            {
+                questionInteraction.AnswerButton1.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton2.GetComponent<Button>().interactable = true;
+                questionInteraction.AnswerButton3.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton4.GetComponent<Button>().interactable = false;
+            }
+
 
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -70,7 +83,6 @@ public class T_QuestionBoxCondition : MonoBehaviour
             levelManager.QuestionCanvas.SetActive(true);
         }
     }
-
 
     void checkCorrectAnswer(GameObject button, int buttonNum)
     {

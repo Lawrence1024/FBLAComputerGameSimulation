@@ -10,6 +10,9 @@ public class T_FeatureButtonDetection : MonoBehaviour
     public GameObject tipButton;
     public GameObject gameCanvas;
     public GameObject[] buttons;
+
+    public GameObject TCanvas;
+    public T_TutorialFlowController TFController;
     //public string nextSceneName;
     void Start()
     {
@@ -17,6 +20,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
         loading = levelManager.LoadingCanvas.transform.GetChild(0).GetComponent<Loading>();
         tipButton.SetActive(false);
         //buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        TFController = TCanvas.GetComponent<T_TutorialFlowController>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,10 @@ public class T_FeatureButtonDetection : MonoBehaviour
 
     public void selectAnswer(GameObject answerButton)
     {
+        if(TFController.currentStep>=18 && TFController.currentStep <= 20)
+        {
+            TFController.currentStep++;
+        }
         if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
         {
             Debug.Log("selectAnswer wrong");

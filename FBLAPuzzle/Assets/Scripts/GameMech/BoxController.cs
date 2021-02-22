@@ -175,7 +175,7 @@ public class BoxController : MonoBehaviour
             positionHistory[positionHistory.Count - 1] = new List<int> { xPos, yPos };
             movementHistory[movementHistory.Count - 1] = lastPlayerMovement;
         }
-        StartCoroutine(checkIfBug());
+        //StartCoroutine(checkIfBug());
         if (checkIfEnterQuestion()&&!answered)
         {
             gameObject.GetComponentInParent<BoxManager>().checkIfWin();

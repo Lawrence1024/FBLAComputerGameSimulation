@@ -108,7 +108,7 @@ public class T_LevelManager : MonoBehaviour
     public void displayScoreboard()
     {
         //FeatureCanvas.active=false;
-        Time.timeScale = 0;
+        pointsCalculation.levelComplete = true;
         ScoreboardCanvas.SetActive(true);
     }
     public void displayScore()
