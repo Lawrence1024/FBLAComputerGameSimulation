@@ -6,18 +6,21 @@ public class ShowScoreBoardData : MonoBehaviour
 {
     AccountsManager accountsManager;
     public GameObject[] rankTexts;
+    public GameObject[] partyPoppers;
     void Start()
     {
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
     public void getAccountsPoints(List<int> levelArr)
     {
+        changePartyPopperStatus(false);
         int levelValue = levelArr[0] * 3 + levelArr[1] - 4;
         //ctrl c ctrl v
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
@@ -75,26 +78,27 @@ public class ShowScoreBoardData : MonoBehaviour
                 rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (highToLow[i].pointsList[levelValue]).ToString();
             }
         }
-         for (int i = 0; i < highToLow.Count; i++) {
-            //&&highToLow[i].pointsList[levelValue]== int.Parse(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text)
+        for (int i = 0; i < highToLow.Count; i++) {
+        //&&highToLow[i].pointsList[levelValue]== int.Parse(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text)
             if (highToLow[i].userName == accountsManager.activeAccount.userName) {
                 GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: " + (i + 1);
-                Debug.Log("highest score: "+highToLow[i].pointsList[levelValue]);
-                Debug.Log("now score: " + int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text));
-                if (highToLow[i].pointsList[levelValue]<= int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)) {
-                    Debug.Log("score congrats");
+                if (highToLow[i].pointsList[levelValue]<= int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)&&i<=5) {
+                    changePartyPopperStatus(true);
                 }
                 break;
             }
             else{
+
                 GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: No Rank";
             }
         }
-
     }
 
-    void displayRank()
+    void changePartyPopperStatus(bool status)
     {
-        //for()
+        for (int i = 0; i < partyPoppers.Length; i++)
+        {
+            partyPoppers[i].SetActive(status);
+        }
     }
 }
