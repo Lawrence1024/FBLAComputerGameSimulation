@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public GameObject QuestionCanvas;
     public GameObject WarningCanvas;
     public GameObject FeatureCanvas;
+    public GameObject CelebratoryMessagesCanvas;
     public GameObject currentQuestionBox;
     public GameObject[] TipPages;
 

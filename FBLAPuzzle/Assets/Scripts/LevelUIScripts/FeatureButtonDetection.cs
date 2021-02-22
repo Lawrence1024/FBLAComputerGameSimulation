@@ -10,12 +10,15 @@ public class FeatureButtonDetection : MonoBehaviour
     public GameObject tipButton;
     public GameObject gameCanvas;
     public GameObject[] buttons;
+
+    GameObject showScoreBoardData;
     //public string nextSceneName;
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         loading = levelManager.LoadingCanvas.transform.GetChild(0).GetComponent<Loading>();
         tipButton.SetActive(false);
+        showScoreBoardData = levelManager.CelebratoryMessagesCanvas;
         //buttons = GameObject.FindGameObjectsWithTag("Buttons");
     }
 
@@ -65,11 +68,13 @@ public class FeatureButtonDetection : MonoBehaviour
 
     public void goMap() {
         //Time.timeScale = 1;
+        showScoreBoardData.SetActive(false);
         levelManager.LoadingCanvas.SetActive(true);
         loading.runLoading("Map");
     }
     public void nextScene(string nextSceneName) {
         //Time.timeScale = 1;
+        showScoreBoardData.SetActive(false);
         levelManager.LoadingCanvas.SetActive(true);
         loading.runLoading(nextSceneName);
         
@@ -114,6 +119,7 @@ public class FeatureButtonDetection : MonoBehaviour
     }
     public void switchToMainMenu()
     {
+        showScoreBoardData.SetActive(false);
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
             levelManager.LoadingCanvas.SetActive(true);
@@ -127,6 +133,7 @@ public class FeatureButtonDetection : MonoBehaviour
     }
     public void switchToMap()
     {
+        showScoreBoardData.SetActive(false);
         if (SceneManager.GetActiveScene().name != "Map")
         {
             levelManager.LoadingCanvas.SetActive(true);

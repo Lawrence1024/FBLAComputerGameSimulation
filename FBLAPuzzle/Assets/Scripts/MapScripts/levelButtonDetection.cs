@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class levelButtonDetection : MonoBehaviour
 {
+    
     MapManager mapManager;
     // Start is called before the first frame update
     void Start()
     {
         mapManager= GameObject.Find("MapManager").GetComponent<MapManager>();
+        
     }
 
     // Update is called once per frame
