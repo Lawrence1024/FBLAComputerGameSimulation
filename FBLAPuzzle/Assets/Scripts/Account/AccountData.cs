@@ -11,6 +11,8 @@ public class AccountData
     public List<int> starsList;
     public List<int> potentialStarsList;
     public List<int> pointsList;
+    public List<float> avatarColor;
+    public List<bool> tutorialProgress;
 
     public AccountData(Account account)
     {
@@ -20,5 +22,10 @@ public class AccountData
         starsList = account.starsList;
         potentialStarsList = account.potentialStarsList;
         pointsList = account.pointsList;
+        avatarColor.Add(account.avatarColor.z);
+        avatarColor.Add(account.avatarColor.y);
+        avatarColor.Add(account.avatarColor.x);
+        avatarColor.Add(account.avatarColor.w);
+        tutorialProgress = account.tutorialProgress;
     }
 }
