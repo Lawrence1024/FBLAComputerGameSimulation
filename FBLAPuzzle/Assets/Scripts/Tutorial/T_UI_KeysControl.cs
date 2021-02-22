@@ -6,17 +6,19 @@ public class T_UI_KeysControl : MonoBehaviour
 {
     //The keys are in the order of "WSAD" 
     public List<GameObject> UIKeys;
+    private float oldTime;
+    private float newTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        oldTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        newTime = Time.time;
     }
     public void glow(string direction)
     {
