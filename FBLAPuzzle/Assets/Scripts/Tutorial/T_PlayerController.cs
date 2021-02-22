@@ -166,9 +166,25 @@ public class T_PlayerController : MonoBehaviour
         {
             moveFlow("down", 4);
         }
-        else if (TFlowController.currentStep == 23)
+        else if (TFlowController.currentStep == 24 && up)
         {
-            
+            moveFlow("up", 2);
+        }
+        else if (TFlowController.currentStep == 25 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 26 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 27 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 28 && down)
+        {
+            moveFlow("down", 1);
         }
     }
     void moveFlow(string direct, int times)

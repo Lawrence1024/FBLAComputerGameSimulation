@@ -132,6 +132,37 @@ public class T_TutorialFlowController : MonoBehaviour
             answerButtons[1].GetComponent<Button>().interactable = true;
             answerButtons[2].GetComponent<Button>().interactable = true;
             answerButtons[3].GetComponent<Button>().interactable = true;
+            keysControl.darkAllKeys();
+            keysControl.glow("down");
+        }
+        else if (currentStep == 22)
+        {
+            keysControl.darkAllKeys();
+        }
+        else if (currentStep == 24)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("up");
+        }
+        else if (currentStep == 25)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("left");
+        }
+        else if (currentStep == 26)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("up");
+        }
+        else if (currentStep == 27)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("left");
+        }
+        else if (currentStep == 28)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("down");
         }
     }
     public void nextStep()

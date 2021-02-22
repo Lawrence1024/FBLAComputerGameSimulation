@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 18058899}
   - component: {fileID: 18058898}
   - component: {fileID: 18058897}
+  - component: {fileID: 18058900}
   m_Layer: 5
   m_Name: FeatureCanvas
   m_TagString: Untagged
@@ -225,6 +226,22 @@ Canvas:
   m_SortingLayerID: -1408022157
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &18058900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18058895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f1ff54d61145444a10560c809e6601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TCanvas: {fileID: 1503880398}
+  TFController: {fileID: 0}
+  backBut: {fileID: 1563675802}
+  resetBut: {fileID: 1494389517}
 --- !u!1 &58898801
 GameObject:
   m_ObjectHideFlags: 0
@@ -11560,6 +11577,7 @@ MonoBehaviour:
   - {fileID: 1787384815}
   - {fileID: 1940144768}
   - {fileID: 1422236312}
+  keysControl: {fileID: 0}
 --- !u!1 &1540076730
 GameObject:
   m_ObjectHideFlags: 0

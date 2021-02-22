@@ -73,6 +73,13 @@ public class T_QuestionBoxCondition : MonoBehaviour
                 questionInteraction.AnswerButton3.GetComponent<Button>().interactable = false;
                 questionInteraction.AnswerButton4.GetComponent<Button>().interactable = false;
             }
+            else if (TFController.currentStep == 29)
+            {
+                questionInteraction.AnswerButton1.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton2.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton3.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton4.GetComponent<Button>().interactable = true;
+            }
 
 
             for (int i = 0; i < buttons.Length; i++)
