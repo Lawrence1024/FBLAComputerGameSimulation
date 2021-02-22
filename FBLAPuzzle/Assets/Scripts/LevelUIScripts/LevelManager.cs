@@ -143,8 +143,10 @@ public class LevelManager : MonoBehaviour
     public IEnumerator buffer()
     {
         pointsCalculation.levelComplete = true;
-        activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
-
+        if(activeAccount.starsList[level[0] * 3 + level[1] - 4] == -1)
+        {
+            activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
+        }
         //hard code -1
         if (activeAccount.pointsList[level[0] * 3 + level[1] - 4]< int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
         {
