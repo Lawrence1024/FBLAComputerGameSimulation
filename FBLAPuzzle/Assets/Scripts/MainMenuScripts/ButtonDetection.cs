@@ -144,4 +144,9 @@ public class ButtonDetection : MonoBehaviour
         //mainMenuManager.UserNameInputBoxCanvas.SetActive(true);
         LOBut.SetActive(false);
     }
+    public void TutorialTransition() {
+        mainMenuManager.LoadingCanvas.SetActive(true);
+        mainMenuManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Tutorial");
+        //SceneManager.LoadScene("Tutorial");
+    }
 }
