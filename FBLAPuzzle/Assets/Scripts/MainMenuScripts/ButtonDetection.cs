@@ -110,6 +110,7 @@ public class ButtonDetection : MonoBehaviour
 
     public void resumeGame() {
         mainMenuManager.PauseMenuCanvas.SetActive(false);
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
     }
     public void switchToMainMenu() {
         if (SceneManager.GetActiveScene().name != "MainMenu")
