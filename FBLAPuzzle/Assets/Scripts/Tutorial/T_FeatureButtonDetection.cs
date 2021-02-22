@@ -44,7 +44,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
 
     public void selectAnswer(GameObject answerButton)
     {
-        if(TFController.currentStep>=18 && TFController.currentStep <= 20)
+        if(TFController.currentStep>=18 && TFController.currentStep <= 20 || TFController.currentStep==29)
         {
             TFController.currentStep++;
         }
@@ -68,10 +68,18 @@ public class T_FeatureButtonDetection : MonoBehaviour
     public void lastStep()
     {
         gameCanvas.GetComponent<T_PiecePosition>().whenHitBackButton();
+        if (TFController.currentStep == 22)
+        {
+            TFController.nextStep();
+        }
     }
     public void resetBoard()
     {
         gameCanvas.GetComponent<T_PiecePosition>().whenHitResetButton();
+        if (TFController.currentStep == 23)
+        {
+            TFController.nextStep();
+        }
     }
 
     public void goMap()
