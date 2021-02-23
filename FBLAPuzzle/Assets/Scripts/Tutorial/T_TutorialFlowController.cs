@@ -10,6 +10,7 @@ public class T_TutorialFlowController : MonoBehaviour
     public T_BoxManager boxManager;
     public int currentStep = 0;
     public List<GameObject> answerButtons;
+    public GameObject keysControlObj;
     public T_UI_KeysControl keysControl;
     public GameObject instructionText;
     public GameObject arrow;
@@ -20,7 +21,7 @@ public class T_TutorialFlowController : MonoBehaviour
     {
         playerController = gameCanvas.GetComponentInChildren<T_PlayerController>();
         boxManager = gameCanvas.GetComponentInChildren<T_BoxManager>();
-        keysControl = GetComponentInChildren<T_UI_KeysControl>();
+        keysControl = keysControlObj.GetComponent<T_UI_KeysControl>();
         arrow.SetActive(false);
         arrowGoToPosition = new Vector3(0f, 0f, 0f);
         arrow.transform.position = new Vector3(0f, 0f, 0f);
@@ -271,6 +272,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 29)
         {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Click on a wrong answer";
             arrow.transform.position = new Vector3(-2.901f, -4.199f, 0f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
