@@ -104,51 +104,68 @@ public class T_LevelManager : MonoBehaviour
             //    activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] - 1;
             //}
             //activeAccount.saveAccount();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene());
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
             if (starsRemain > 0)
             {
                 starsRemain--;
             }
-            if (starsRemain == 2)
+            if (TFController.currentStep > 40)
             {
-                activeAccount.tutorialProgress[0] = true;
-            }else if (starsRemain == 1)
-            {
-                Debug.Log("You would only gain a maximum of 1 star in a real game, try to complete level without answering wrong!");
-            }else if (starsRemain == 0)
-            {
-
-            }else if (starsRemain < 0)
-            {
-                starsRemain = 0;
+                if (starsRemain == 2)
+                {
+                    string s="You would only gain a maximum of 2 star in a real game, try to complete level without answering wrong!";
+                    TFController.instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = s;
+                    reloadScenePrep();
+                    StartCoroutine(loadWarning("Level restart in", 3));
+                }
+                else if (starsRemain == 1)
+                {
+                    string s = "You would only gain a maximum of 1 star in a real game, try to complete level without answering wrong!";
+                    TFController.instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = s; 
+                    reloadScenePrep();
+                    StartCoroutine(loadWarning("Level restart in", 3));
+                }
+                else if (starsRemain == 0)
+                {
+                    Debug.Log("Died after the tutorial?");
+                }
             }
-
+            else
+            {
+                if (starsRemain == 2)
+                {
+                    activeAccount.tutorialProgress[0] = true;
+                }
+            }
             heartRemain = 3;
+            reloadScenePrep();
 
-            //scene reload
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                buttons[i].GetComponent<Button>().interactable = false;
-                Debug.Log("button uninteractable");
-            }
-            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-            QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-            pointsCalculation.enabled = false;
-            if (starsRemain == 2 && TFController.currentStep==29)
-            {
-                Debug.Log("SHOW THE MINUS STAR");
-                TFController.nextStep();
-            }
-            
-    //        StartCoroutine(loadWarning("Level restart in", 3));
+            //if (starsRemain == 2 && TFController.currentStep==29)
+            //{
+            //    Debug.Log("SHOW THE MINUS STAR");
+            //    TFController.nextStep();
+            //}
+
+            //        StartCoroutine(loadWarning("Level restart in", 3));
 
 
         }
 
+    }
+    //scene reload preperation
+    public void reloadScenePrep()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponent<Button>().interactable = false;
+            Debug.Log("button uninteractable");
+        }
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        pointsCalculation.enabled = false;
     }
     public void displayScoreboard()
     {
@@ -178,6 +195,7 @@ public class T_LevelManager : MonoBehaviour
     {
         pointsCalculation.levelComplete = true;
         activeAccount.tutorialProgress[1] = true;
+        activeAccount.tutorialProgress[0] = false;
         Debug.Log("SHOW CONGRATS FINISH TUTORIAL");
         //activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         //if (activeAccount.pointsList[level[0] * 3 + level[1] - 4] < int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
