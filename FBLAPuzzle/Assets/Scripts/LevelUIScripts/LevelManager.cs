@@ -154,7 +154,14 @@ public class LevelManager : MonoBehaviour
         //hard code -1
         if (activeAccount.pointsList[level[0] * 3 + level[1] - 4]< int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
         {
-            activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)-1;
+            if (int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text) == 0)
+            {
+                activeAccount.pointsList[level[0] * 3 + level[1] - 4] = 0;
+            }
+            else
+            {
+                activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text) - 1;
+            }
         }
         activeAccount.saveAccount();
         
