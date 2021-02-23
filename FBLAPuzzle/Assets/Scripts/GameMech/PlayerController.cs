@@ -146,23 +146,27 @@ public class PlayerController : MonoBehaviour
         float scale = 1f;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * scale, 0f, 0f);
             attemptMovement="right";
             xPos += 1;
         }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * scale, 0f, 0f);
             attemptMovement = "left";
             xPos -= 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * scale, 0f);
             attemptMovement = "up";
             yPos += 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * scale, 0f);
             attemptMovement = "down";
             yPos -= 1;

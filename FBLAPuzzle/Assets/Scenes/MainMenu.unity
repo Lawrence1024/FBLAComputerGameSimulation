@@ -18107,6 +18107,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d60d6bba2b28480468084e9691441bd9, type: 3}
   - {fileID: 8300000, guid: 1da3f3ebb800eec4c9c0086fbb91cb53, type: 3}
   audioSource: {fileID: 0}
+  movementSound: {fileID: 8300000, guid: 0e5adf4393d9d404fb0cccf21fc35655, type: 3}
+  movementAudioSource: {fileID: 0}
 --- !u!1 &1470735543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2861369788262749574, guid: 1f2f5ac15db033c4e83e68202a9cff0c,
