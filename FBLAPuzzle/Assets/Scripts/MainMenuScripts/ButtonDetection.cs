@@ -138,6 +138,10 @@ public class ButtonDetection : MonoBehaviour
     }
 
     public void LogOut(GameObject LOBut) {
+        mainMenuManager.PauseMenuCanvas.SetActive(false);
+        mainMenuManager.InstructionCanvas.SetActive(false);
+        mainMenuManager.LoadingCanvas.SetActive(false);
+        mainMenuManager.LeaderBoardCanvas.SetActive(false);
         GameObject.Find("AccountsManager").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("AccountsManager").transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(true);
         GameObject.Find("AccountsManager").transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Button>().interactable=true;
