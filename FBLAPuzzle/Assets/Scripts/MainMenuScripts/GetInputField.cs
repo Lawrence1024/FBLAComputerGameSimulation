@@ -13,16 +13,6 @@ public class GetInputField : MonoBehaviour
     public GameObject accManagerObj;
     private AccountsManager accManager;
     private string warningNote = "";
-    /*
-        Children for UserNameInputBoxCanvas
-        0. Login
-        1. Create Account Hyperlink
-        2. Create Account Canvas
-        3. Warning for login but account doesn't exist
-        4. Warning for creating account but already exist
-        5. Account create successfully sign
-        6. Wrong password sign
-     */
     void Start()
     {
         mainMenuManager = GameObject.Find("SceneManager").GetComponent<MainMenuManager>();
@@ -119,9 +109,11 @@ public class GetInputField : MonoBehaviour
         }
         else {
             name = name.Substring(0, name.Length - 1);
-            if (name.Length > 19)
+            if (name.Length > 17)
             {
                 Debug.Log("Username Too Long");
+                warningNote = "Username too long!";
+                StartCoroutine(displayWarning());
             }
             else
             {
