@@ -5256,13 +5256,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d12e0ee6bad7e3b469bdb701902d6389, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10380,7 +10380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000019073, y: 78}
+  m_AnchoredPosition: {x: -1.14e-13, y: -1376}
   m_SizeDelta: {x: 1117.5616, y: 2448.6025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1540627062
@@ -10402,7 +10402,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Thank you for playing the game. \nYou now are a expert in FBLA.\nasdf\nzxcv\nqewr\nfghj\nvbnm\nasdf\nhjkl\nasdf\nasdf\nqwer\nwert\nfvbx\nfgjk\nryif"
+  m_text: "Thank you for playing this game. \nYou now are an expert in FBLA!\nWe
+    enjoyed programming this game, so we hope that you also enjoyed playing it :)\n\nTeam
+    Members: \nKaren Shieh\nLawrence Shieh\n\nSchool:\nMark Keppel High School\n\nGame
+    Engine:\nUnity\n\nIllistration:\nKaren Shieh\n\nMusic: "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec91163bce90dd144b17a57097c311ff, type: 2}
   m_sharedMaterial: {fileID: 6720403506706157979, guid: ec91163bce90dd144b17a57097c311ff,

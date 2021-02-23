@@ -38,7 +38,7 @@ public class EndSceneManager : MonoBehaviour
     IEnumerator startScroll() {
         
         yield return new WaitForSeconds(0.005f);
-        if (creditText.transform.position[1] < 5)
+        if (creditText.transform.position[1] < 8)
         {
             creditText.transform.position = new Vector3(creditText.transform.position[0], creditText.transform.position[1] + 0.005f, 0);
             Debug.Log("y pos < 100 "+ creditText.transform.position[1]);
