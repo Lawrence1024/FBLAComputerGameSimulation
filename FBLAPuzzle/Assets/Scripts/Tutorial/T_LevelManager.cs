@@ -224,7 +224,7 @@ public class T_LevelManager : MonoBehaviour
         //ScoreboardCanvas.GetComponent<ScoreBoardDisplay>().getAccountsPoints(level);
         //ScoreboardCanvas.GetComponent<ScoreBoardDispaly>().getAccountsPoints(level);
         //    ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
-        StartCoroutine(loadWarning("You are ready to move on! Loading MainMenu in ", 3));
+        StartCoroutine(loadWarning("You are ready to move on! Loading Main Menu in ", 5));
     }
 
     public IEnumerator loadWarning(string warningMessage, float sec)

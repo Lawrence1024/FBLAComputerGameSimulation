@@ -140,6 +140,7 @@ public class T_BoxController : MonoBehaviour
             movePoint.position += new Vector3(scale, 0f, 0f);
             xPos += 1;
         }
+        GetComponentInParent<T_BoxManager>().checkIfWin();
         //    positionHistory[positionHistory.Count-1]=(new List<int> { xPos, yPos });
         foreach (List<int> temp in positionHistory)
         {
