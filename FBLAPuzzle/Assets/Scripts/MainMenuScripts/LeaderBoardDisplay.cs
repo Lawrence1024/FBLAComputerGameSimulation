@@ -6,6 +6,7 @@ public class LeaderBoardDisplay : MonoBehaviour
 {
     AccountsManager accountsManager;
     public GameObject[] rankTexts;
+    public GameObject celebratoryMsgCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class LeaderBoardDisplay : MonoBehaviour
         
     }
     public void getAccountsTotalStars() {
+        celebratoryMsgCanvas.SetActive(false);
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
         //List<string> names=new List<string>();
         //List<int> stars = new List<int>();
@@ -68,6 +70,10 @@ public class LeaderBoardDisplay : MonoBehaviour
             //text = text + getTotalStar(highToLow[i]);
             rankTexts[i].GetComponent<TMPro.TextMeshProUGUI>().text= text;
             rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= highToLow[i].getTotalStar().ToString();
+            if (highToLow[i].userName == accountsManager.activeAccount.userName&&i<5) {
+                celebratoryMsgCanvas.transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (i + 1).ToString();
+                celebratoryMsgCanvas.SetActive(true);
+            }
         }
     }
 }

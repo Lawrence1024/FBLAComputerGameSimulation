@@ -82,7 +82,7 @@ public class ShowScoreBoardData : MonoBehaviour
         //&&highToLow[i].pointsList[levelValue]== int.Parse(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text)
             if (highToLow[i].userName == accountsManager.activeAccount.userName) {
                 GameObject.Find("Rank").GetComponent<TMPro.TextMeshProUGUI>().text = "Highest Rank: " + (i + 1);
-                if (highToLow[i].pointsList[levelValue]<= int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)&&i<=5) {
+                if (highToLow[i].pointsList[levelValue]<= int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text)&&i<5) {
                     celebratoryMsgCanvas.transform.GetChild(3).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = (i+1).ToString();
                     celebratoryMsgCanvas.SetActive(true);
                 }
