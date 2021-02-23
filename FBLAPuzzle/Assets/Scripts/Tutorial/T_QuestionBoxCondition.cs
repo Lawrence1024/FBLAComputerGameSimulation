@@ -87,6 +87,13 @@ public class T_QuestionBoxCondition : MonoBehaviour
                 buttons[i].GetComponent<Button>().interactable = false;
                 Debug.Log("button uninteractable");
             }
+            if (levelManager.garunteeCorrect)
+            {
+                questionInteraction.AnswerButton1.GetComponent<Button>().interactable = true;
+                questionInteraction.AnswerButton2.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton3.GetComponent<Button>().interactable = false;
+                questionInteraction.AnswerButton4.GetComponent<Button>().interactable = false;
+            }
             levelManager.QuestionCanvas.SetActive(true);
         }
     }

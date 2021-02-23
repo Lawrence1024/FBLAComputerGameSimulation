@@ -38,6 +38,14 @@ public class T_TutorialFlowController : MonoBehaviour
         {
             currentStep = 41;
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the boxes into question areas and complete questions!";
+            if (activeAccount.tutorialFeatures[1] == 2)
+            {
+                instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You would only gain a maximum of 2 star in a real game, try to complete level without answering wrong!";
+            }
+            else if (activeAccount.tutorialFeatures[1] == 1)
+            {
+                instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You would only gain a maximum of 1 star in a real game, try to complete level without answering wrong!";
+            }
         }
 
     }
@@ -291,6 +299,7 @@ public class T_TutorialFlowController : MonoBehaviour
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
             arrow.SetActive(true);
+            keysControl.darkAllKeys();
         }
         else if (currentStep == 30)
         {
@@ -351,6 +360,8 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 40)
         {
             okButton.SetActive(false);
+            activeAccount.tutorialFeatures[0] = 3;
+            activeAccount.tutorialFeatures[1] = 3;
             StartCoroutine(levelManager.loadWarning("Level restart in", 3));
         }
     }

@@ -13,6 +13,7 @@ public class Account
     public List<int> pointsList;
     public Vector4 avatarColor;
     public List<bool> tutorialProgress;
+    public List<int> tutorialFeatures;
     //constructor
     public Account(string name)
     {
@@ -24,6 +25,7 @@ public class Account
         pointsList = new List<int> { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1 };
         avatarColor = new Vector4(1f, 1f, 1f, 1f);
         tutorialProgress = new List<bool> { false, false };
+        tutorialFeatures = new List<int> { 3, 3 };
     }
     //setter/getter
 
@@ -46,6 +48,7 @@ public class Account
         pointsList = data.pointsList;
         avatarColor = new Vector4(data.avatarColor[0], data.avatarColor[1], data.avatarColor[2], data.avatarColor[3]);
         tutorialProgress = data.tutorialProgress;
+        tutorialFeatures = data.tutorialFeatures;
     }
     public int getTotalStar()
     {

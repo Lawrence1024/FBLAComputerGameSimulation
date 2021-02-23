@@ -13,6 +13,7 @@ public class AccountData
     public List<int> pointsList;
     public List<float> avatarColor;
     public List<bool> tutorialProgress;
+    public List<int> tutorialFeatures;
 
     public AccountData(Account account)
     {
@@ -28,5 +29,6 @@ public class AccountData
         avatarColor.Add(account.avatarColor.z);
         avatarColor.Add(account.avatarColor.w);
         tutorialProgress = account.tutorialProgress;
+        tutorialFeatures = account.tutorialFeatures;
     }
 }
