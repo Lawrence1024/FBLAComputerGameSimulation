@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class EndSceneManager : MonoBehaviour
 {
+    AccountsManager accountManager;
     // Start is called before the first frame update
     public GameObject creditText;
     public GameObject partyPopper1;
@@ -12,6 +13,7 @@ public class EndSceneManager : MonoBehaviour
     public GameObject secondBackground;
     public GameObject TheEndText;
     public GameObject LoadingCanvas;
+    public GameObject skipButton;
     private ParticleSystem ps1;
     private ParticleSystem ps2;
     private Vector4 secondBackgroundColor;
@@ -20,27 +22,39 @@ public class EndSceneManager : MonoBehaviour
 
     void Start()
     {
+        accountManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
         StartCoroutine(startScroll());
         LoadingCanvas.SetActive(false);
         ps1 = partyPopper1.GetComponent<ParticleSystem>();
         ps2 = partyPopper2.GetComponent<ParticleSystem>();
         secondBackgroundColor = secondBackground.GetComponent<Image>().color;
         TheEndText.SetActive(false);
+        if (accountManager.activeAccount.endSceneActivated) {
+            skipButton.SetActive(true);
+        }
+        else
+        {
+            accountManager.activeAccount.endSceneActivated = true;
+            skipButton.SetActive(false);
+
+        }
 
     }   
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("escape")) {
+            Application.Quit();
+        }
     }
     void dimScene() { 
         
     }
     IEnumerator startScroll() {
         
-        yield return new WaitForSeconds(0.005f);
-        if (creditText.transform.position[1] < 12)
+        yield return new WaitForSeconds(0.00005f);
+        if (creditText.transform.position[1] < 14)
         {
             creditText.transform.position = new Vector3(creditText.transform.position[0], creditText.transform.position[1] + 0.005f, 0);
             Debug.Log("y pos < 100 "+ creditText.transform.position[1]);
