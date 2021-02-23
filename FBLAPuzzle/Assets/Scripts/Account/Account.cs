@@ -14,6 +14,7 @@ public class Account
     public Vector4 avatarColor;
     public List<bool> tutorialProgress;
     public List<int> tutorialFeatures;
+    public bool endSceneActivated;
     //constructor
     public Account(string name)
     {
@@ -26,6 +27,7 @@ public class Account
         avatarColor = new Vector4(1f, 1f, 1f, 1f);
         tutorialProgress = new List<bool> { false, false };
         tutorialFeatures = new List<int> { 3, 3 };
+        endSceneActivated = false;
     }
     //setter/getter
 
@@ -49,6 +51,7 @@ public class Account
         avatarColor = new Vector4(data.avatarColor[0], data.avatarColor[1], data.avatarColor[2], data.avatarColor[3]);
         tutorialProgress = data.tutorialProgress;
         tutorialFeatures = data.tutorialFeatures;
+        endSceneActivated = data.endSceneActivated;
     }
     public int getTotalStar()
     {

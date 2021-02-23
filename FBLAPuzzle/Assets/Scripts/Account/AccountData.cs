@@ -14,6 +14,7 @@ public class AccountData
     public List<float> avatarColor;
     public List<bool> tutorialProgress;
     public List<int> tutorialFeatures;
+    public bool endSceneActivated;
 
     public AccountData(Account account)
     {
@@ -30,5 +31,6 @@ public class AccountData
         avatarColor.Add(account.avatarColor.w);
         tutorialProgress = account.tutorialProgress;
         tutorialFeatures = account.tutorialFeatures;
+        endSceneActivated = account.endSceneActivated;
     }
 }
