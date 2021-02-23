@@ -17,6 +17,11 @@ public class T_PointsCalculation : MonoBehaviour
         points = 1000;
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
         StartCoroutine(pointsCountDown());
+        Debug.Log(GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.tutorialProgress[0]);
+        if (GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.tutorialProgress[0])
+        {
+            stopTime = false;
+        }
     }
 
     // Update is called once per frame

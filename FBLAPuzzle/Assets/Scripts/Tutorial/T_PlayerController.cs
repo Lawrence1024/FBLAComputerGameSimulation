@@ -32,6 +32,8 @@ public class T_PlayerController : MonoBehaviour
     public T_TutorialFlowController TFlowController;
     public int minorStepCounter = 0;
 
+    public Account activeAccount;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,7 @@ public class T_PlayerController : MonoBehaviour
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<T_PiecePosition>();
+        activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
     }
 
     // Update is called once per frame
@@ -53,16 +56,17 @@ public class T_PlayerController : MonoBehaviour
         bool state2 = (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f);
         bool state3 = canMove;
         bool state4 = newTime - oldTime > 0.35f;
-        if (state1 && state2 && state3 && state4)
+        bool state5 = TFlowController.currentStep > 40;
+        if (state1 && state2 && state3 && state4 && !state5)
         {
             doTFlowController();
         }
-        //if (state1 && state2 && state3 && state4)
-        //{
-        //    makeMovement();
-        //    piecePosition.addPlayerPos(attemptMovement);
-        //    piecePosition.addBoxPos(attemptMovement);
-        //}
+        if (state1 && state2 && state3 && state4 && state5)
+        {
+            makeMovement();
+            piecePosition.addPlayerPos(attemptMovement);
+            piecePosition.addBoxPos(attemptMovement);
+        }
     }
     private void doTFlowController()
     {
