@@ -147,10 +147,6 @@ public class LevelManager : MonoBehaviour
         {
             activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         }
-        else
-        {
-            activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = 3;
-        }
         //hard code -1
         if (activeAccount.pointsList[level[0] * 3 + level[1] - 4]< int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
         {
@@ -177,6 +173,7 @@ public class LevelManager : MonoBehaviour
         //ScoreboardCanvas.GetComponent<ScoreBoardDisplay>().getAccountsPoints(level);
         //ScoreboardCanvas.GetComponent<ScoreBoardDispaly>().getAccountsPoints(level);
         ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
+        activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = 3;
     }
 
     public IEnumerator loadWarning(string warningMessage, float sec)

@@ -124,7 +124,7 @@ public class FeatureButtonDetection : MonoBehaviour
         {
             if (GameObject.Find("AccountsManager") != null)
             {
-                GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.potentialStarsList[levelManager.level[0] * 3 + levelManager.level[1] - 1] = 3;
+                GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.potentialStarsList[levelManager.level[0] * 3 + levelManager.level[1] - 4] = 3;
             }
             levelManager.LoadingCanvas.SetActive(true);
             levelManager.PauseMenuCanvas.SetActive(false);
@@ -142,7 +142,7 @@ public class FeatureButtonDetection : MonoBehaviour
         {
             if (GameObject.Find("AccountsManager") != null)
             {
-                GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.potentialStarsList[levelManager.level[0] * 3 + levelManager.level[1] - 1] = 3;
+                GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.potentialStarsList[levelManager.level[0] * 3 + levelManager.level[1] - 4] = 3;
             }
             levelManager.LoadingCanvas.SetActive(true);
             levelManager.PauseMenuCanvas.SetActive(false);
