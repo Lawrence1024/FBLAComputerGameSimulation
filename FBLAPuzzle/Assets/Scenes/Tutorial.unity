@@ -5152,6 +5152,7 @@ MonoBehaviour:
   WarningCanvas: {fileID: 122738316}
   FeatureCanvas: {fileID: 18058895}
   currentQuestionBox: {fileID: 0}
+  playerSprite: {fileID: 663593321}
   TipPages:
   - {fileID: 0}
   - {fileID: 0}
@@ -5163,6 +5164,7 @@ MonoBehaviour:
   level: 0100000001000000
   TCanvas: {fileID: 1503880398}
   TFController: {fileID: 0}
+  garunteeCorrect: 0
 --- !u!1 &611953781
 GameObject:
   m_ObjectHideFlags: 0
@@ -16388,7 +16390,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 924924240}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.387716
+  m_Size: 0.38771603
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

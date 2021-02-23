@@ -18,6 +18,7 @@ public class T_LevelManager : MonoBehaviour
     public GameObject WarningCanvas;
     public GameObject FeatureCanvas;
     public GameObject currentQuestionBox;
+    public GameObject playerSprite;
     public GameObject[] TipPages;
 
     public List<int> level;
@@ -49,6 +50,7 @@ public class T_LevelManager : MonoBehaviour
         buttons = GameObject.FindGameObjectsWithTag("Buttons");
         TFController = TCanvas.GetComponent<T_TutorialFlowController>();
         displayStars("Stars");
+        playerSprite.GetComponent<SpriteRenderer>().color = activeAccount.avatarColor;
     }
 
     // Update is called once per frame
@@ -216,12 +218,13 @@ public class T_LevelManager : MonoBehaviour
             buttons[i].GetComponent<Button>().interactable = false;
         }
         yield return new WaitForSeconds(1f);
-    //    displayScoreboard();
-    //    displayScore();
+        //    displayScoreboard();
+        //    displayScore();
         //getAccountsPoints
         //ScoreboardCanvas.GetComponent<ScoreBoardDisplay>().getAccountsPoints(level);
         //ScoreboardCanvas.GetComponent<ScoreBoardDispaly>().getAccountsPoints(level);
-    //    ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
+        //    ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
+        StartCoroutine(loadWarning("You are ready to move on! Loading MainMenu in ", 3));
     }
 
     public IEnumerator loadWarning(string warningMessage, float sec)
@@ -247,11 +250,15 @@ public class T_LevelManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             sec--;
             Debug.Log("sec " + sec);
-            if (sec <= 0)
+            if (sec <= 0 && warningMessage == "Level restart in")
             {
 
                 WarningCanvas.SetActive(false);
                 reloadScene();
+            } else if (sec <= 0) {
+                LoadingCanvas.SetActive(true);
+                GameObject.Find("LoadingBackground").GetComponent<Loading>().runLoading("MainMenu");
+
             }
             else if (sec > 0)
             {

@@ -11,6 +11,7 @@ public class EndSceneManager : MonoBehaviour
     public GameObject partyPopper2;
     public GameObject secondBackground;
     public GameObject TheEndText;
+    public GameObject LoadingCanvas;
     private ParticleSystem ps1;
     private ParticleSystem ps2;
     private Vector4 secondBackgroundColor;
@@ -20,6 +21,7 @@ public class EndSceneManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(startScroll());
+        LoadingCanvas.SetActive(false);
         ps1 = partyPopper1.GetComponent<ParticleSystem>();
         ps2 = partyPopper2.GetComponent<ParticleSystem>();
         secondBackgroundColor = secondBackground.GetComponent<Image>().color;
@@ -38,7 +40,7 @@ public class EndSceneManager : MonoBehaviour
     IEnumerator startScroll() {
         
         yield return new WaitForSeconds(0.005f);
-        if (creditText.transform.position[1] < 8)
+        if (creditText.transform.position[1] < 12)
         {
             creditText.transform.position = new Vector3(creditText.transform.position[0], creditText.transform.position[1] + 0.005f, 0);
             Debug.Log("y pos < 100 "+ creditText.transform.position[1]);
@@ -68,5 +70,9 @@ public class EndSceneManager : MonoBehaviour
         TheEndText.SetActive(true);
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("MainMenu");
-    } 
+    }
+    public void skip() {
+        LoadingCanvas.SetActive(true);
+        LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("MainMenu");
+    }
 }
