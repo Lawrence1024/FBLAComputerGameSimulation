@@ -17,12 +17,15 @@ public class EndSceneManager : MonoBehaviour
     private ParticleSystem ps1;
     private ParticleSystem ps2;
     private Vector4 secondBackgroundColor;
+    private float convertingScale;
 
     //public GameObject 
 
     void Start()
     {
         accountManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
+        convertingScale = findConvertingScale();
+        Debug.Log(convertingScale);
         StartCoroutine(startScroll());
         LoadingCanvas.SetActive(false);
         ps1 = partyPopper1.GetComponent<ParticleSystem>();
@@ -48,13 +51,21 @@ public class EndSceneManager : MonoBehaviour
             Application.Quit();
         }
     }
+    public float findConvertingScale()
+    {
+        float initialX = creditText.transform.position.x;
+        creditText.transform.localPosition += new Vector3(107.8949f, 0f, 0f);
+        float finalX = creditText.transform.position.x;
+        creditText.transform.localPosition += new Vector3(-107.8949f, 0f, 0f);
+        return finalX - initialX;
+    }
     void dimScene() { 
         
     }
     IEnumerator startScroll() {
         
         yield return new WaitForSeconds(0.00005f);
-        if (creditText.transform.position[1] < 14)
+        if (creditText.transform.position[1] < 14* convertingScale)
         {
             creditText.transform.position = new Vector3(creditText.transform.position[0], creditText.transform.position[1] + 0.005f, 0);
             Debug.Log("y pos < 100 "+ creditText.transform.position[1]);
