@@ -19,6 +19,7 @@ public class T_TutorialFlowController : MonoBehaviour
     public GameObject okButton;
     public T_LevelManager levelManager;
     public Account activeAccount;
+    private float convertingScale;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class T_TutorialFlowController : MonoBehaviour
         arrowMovingToggle = true;
         okButton.SetActive(false);
         levelManager = GameObject.Find("LevelManager").GetComponent<T_LevelManager>();
+        convertingScale=playerController.findConvertingScale();
         if (activeAccount.tutorialProgress[0])
         {
             currentStep = 41;
@@ -63,12 +65,12 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 18 || currentStep == 19 || currentStep == 20 || currentStep == 22 || currentStep == 29 || currentStep == 30 || (currentStep >= 31 && currentStep <= 37))
         {
             moveArrowLeftRight();
-            arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime);
+            arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime* convertingScale);
         }
         else if (currentStep == 23)
         {
             moveArrowUpDown();
-            arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime);
+            arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime* convertingScale);
         }
     }
     public void moveArrowLeftRight()
@@ -78,11 +80,11 @@ public class T_TutorialFlowController : MonoBehaviour
             arrowMovingToggle = !arrowMovingToggle;
             if (arrowMovingToggle)
             {
-                arrowGoToPosition = arrow.transform.position + new Vector3(1f, 0f, 0f);
+                arrowGoToPosition = arrow.transform.position + new Vector3(convertingScale, 0f, 0f);
             }
             else
             {
-                arrowGoToPosition = arrow.transform.position + new Vector3(-1f, 0f, 0f);
+                arrowGoToPosition = arrow.transform.position + new Vector3(-convertingScale, 0f, 0f);
             }
         }
     }
@@ -93,11 +95,11 @@ public class T_TutorialFlowController : MonoBehaviour
             arrowMovingToggle = !arrowMovingToggle;
             if (arrowMovingToggle)
             {
-                arrowGoToPosition = arrow.transform.position + new Vector3(0f, 1f, 0f);
+                arrowGoToPosition = arrow.transform.position + new Vector3(0f, convertingScale, 0f);
             }
             else
             {
-                arrowGoToPosition = arrow.transform.position + new Vector3(0f, -1f, 0f);
+                arrowGoToPosition = arrow.transform.position + new Vector3(0f, -convertingScale, 0f);
             }
         }
     }
@@ -209,7 +211,7 @@ public class T_TutorialFlowController : MonoBehaviour
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "A question will display.\n Click on a wrong answer.";
             arrow.SetActive(true);
             arrowMovingToggle = true;
-            arrow.transform.position = new Vector3(-2.901f, -1.733f, 0f);
+            arrow.transform.position = new Vector3(-2.901f* convertingScale, -1.733f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
         }
         else if (currentStep == 19)
@@ -220,7 +222,7 @@ public class T_TutorialFlowController : MonoBehaviour
             answerButtons[2].GetComponent<Button>().interactable = true;
             answerButtons[3].GetComponent<Button>().interactable = false;
             arrowMovingToggle = true;
-            arrow.transform.position = new Vector3(-2.901f, -2.966f, 0f);
+            arrow.transform.position = new Vector3(-2.901f* convertingScale, -2.966f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
         }
         else if (currentStep == 20)
@@ -231,7 +233,7 @@ public class T_TutorialFlowController : MonoBehaviour
             answerButtons[2].GetComponent<Button>().interactable = false;
             answerButtons[3].GetComponent<Button>().interactable = false;
             arrowMovingToggle = true;
-            arrow.transform.position = new Vector3(2.146f, -0.463f, 0f);
+            arrow.transform.position = new Vector3(2.146f* convertingScale, -0.463f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
         }
         else if (currentStep == 21)
@@ -249,7 +251,7 @@ public class T_TutorialFlowController : MonoBehaviour
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Oops, we went to far. Click the button to resume last move.";
             arrowMovingToggle = true;
-            arrow.transform.position = new Vector3(-5.059f, 3.318f, 0f);
+            arrow.transform.position = new Vector3(-5.059f* convertingScale, 3.318f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
             arrow.SetActive(true);
             keysControl.darkAllKeys();
@@ -257,7 +259,7 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 23)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's reset the board with the other button.";
-            arrow.transform.position = new Vector3(-8.212f, 1.744f, 0f);
+            arrow.transform.position = new Vector3(-8.212f* convertingScale, 1.744f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
             arrowMovingToggle = true;
             arrowGoToPosition = arrow.transform.position;
@@ -294,7 +296,7 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 29)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Click on a wrong answer";
-            arrow.transform.position = new Vector3(-2.901f, -4.199f, 0f);
+            arrow.transform.position = new Vector3(-2.901f* convertingScale, -4.199f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
             arrow.SetActive(true);
@@ -303,7 +305,7 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 30)
         {
             okButton.SetActive(true);
-            arrow.transform.position = new Vector3(4.087f, 4.477f, 0f);
+            arrow.transform.position = new Vector3(4.087f* convertingScale, 4.477f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
@@ -313,7 +315,7 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 31)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "When you loose all three hearts, you will loose a star";
-            arrow.transform.position = new Vector3(4.087f, 3.401f, 0f);
+            arrow.transform.position = new Vector3(4.087f* convertingScale, 3.401f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
@@ -333,7 +335,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 35)
         {
-            arrow.transform.position = new Vector3(-3.422f, 4.414f, 0f);
+            arrow.transform.position = new Vector3(-3.422f* convertingScale, 4.414f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;

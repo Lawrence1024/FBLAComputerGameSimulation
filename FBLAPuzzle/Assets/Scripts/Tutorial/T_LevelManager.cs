@@ -98,6 +98,7 @@ public class T_LevelManager : MonoBehaviour
             {
                 garunteeCorrect = true;
                 doGarunteeCorrect();
+                TFController.instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "For the purpose of the tutorial, we will eliminate the wrong answers for you!";
             }
         }
         else if (GameObject.Find("Hearts").transform.childCount <= 1)
