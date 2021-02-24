@@ -35,6 +35,7 @@ public class ButtonDetection : MonoBehaviour
         LastPageButton.GetComponent<Button>().onClick.AddListener(executeLastPageButton);*/
         ScrollRect.verticalNormalizedPosition = 1f;
         if (pageCounter <= 0) {
+            PageCount.SetActive(false);
             LastPageButton.SetActive(false);
         }
     }
@@ -57,7 +58,8 @@ public class ButtonDetection : MonoBehaviour
         LastPageButton.SetActive(false);
         mainMenuManager.changeInstrucitonPage(pageCounter);
         NextPageButton.SetActive(true);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = "1/16";
+        PageCount.SetActive(false);
+        
         mainMenuManager.InstructionCanvas.SetActive(true);
 
     }
@@ -78,6 +80,7 @@ public class ButtonDetection : MonoBehaviour
     public void executeNextPageButton()
     {
         pageCounter++;
+        PageCount.SetActive(true);
         Debug.Log("page Counter" + pageCounter + " instructionpages " + mainMenuManager.InstructionPages.Length);
         if (pageCounter > 0)
         {
@@ -87,7 +90,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(false);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter+1)+"/16";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter)+"/15";
         Debug.Log("Next");
 
     }
@@ -96,6 +99,7 @@ public class ButtonDetection : MonoBehaviour
         pageCounter--;
         if (pageCounter <= 0)
         {
+            PageCount.SetActive(false);
             LastPageButton.SetActive(false);
         }
         if (pageCounter < mainMenuManager.InstructionPages.Length-1)
@@ -103,7 +107,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(true);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/16";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/15";
         Debug.Log("Last");
 
     }
