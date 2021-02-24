@@ -32,15 +32,8 @@ public class EndSceneManager : MonoBehaviour
         ps2 = partyPopper2.GetComponent<ParticleSystem>();
         secondBackgroundColor = secondBackground.GetComponent<Image>().color;
         TheEndText.SetActive(false);
-        if (accountManager.activeAccount.endSceneActivated) {
-            skipButton.SetActive(true);
-        }
-        else
-        {
-            accountManager.activeAccount.endSceneActivated = true;
-            skipButton.SetActive(false);
 
-        }
+        setButton();
 
     }   
 
@@ -49,6 +42,20 @@ public class EndSceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown("escape")) {
             Application.Quit();
+        }
+    }
+    public void setButton() {
+        if (accountManager.activeAccount.endSceneActivated)
+        {
+            skipButton.SetActive(true);
+            Debug.Log("button true");
+        }
+        else
+        {
+            accountManager.activeAccount.endSceneActivated = true;
+            accountManager.activeAccount.saveAccount();
+            skipButton.SetActive(false);
+            Debug.Log("button false");
         }
     }
     public float findConvertingScale()

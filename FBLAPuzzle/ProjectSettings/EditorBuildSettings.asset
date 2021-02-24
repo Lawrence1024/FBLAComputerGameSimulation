@@ -29,28 +29,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_2_2.unity
     guid: eab28dcb1306e5143b5c8a414a1fda91
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Level_2_3.unity
+    guid: 62bb83111c643684dacb470ae0b4b01e
+  - enabled: 1
+    path: Assets/Scenes/Level_3_1.unity
+    guid: d7c264117d6c2bc49b8adb9995e69510
+  - enabled: 1
+    path: Assets/Scenes/Level_3_2.unity
+    guid: e62efb6d6146c3c47acb1c79cc399414
+  - enabled: 1
+    path: Assets/Scenes/Level_3_3.unity
+    guid: 84f658ec3ec53e64b872c90b758e66d3
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 2a51a9bc5075cb241991d963cbf7a76b
+  - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: d0776f755747b4c419af0ba254d2955f
-  - enabled: 0
-    path: Assets/Scenes/VideoScenes/1-1.unity
-    guid: 69914444f9d7b384685954067638ca2a
-  - enabled: 0
-    path: Assets/Scenes/VideoScenes/1-2.unity
-    guid: 9c20796f0ee70f648ac38391d80da832
-  - enabled: 0
-    path: Assets/Scenes/VideoScenes/2-1.unity
-    guid: bc710151e1f71c94bb92ff029a9aaf70
-  - enabled: 0
-    path: Assets/Scenes/VideoScenes/3-1.unity
-    guid: f8fe57c9937513b4d9a6afa5bef8ea14
-  - enabled: 0
-    path: Assets/Scenes/VideoScenes/3-2.unity
-    guid: 94d96dba7e7642b4f9ca59d44ab3d646
-  - enabled: 0
-    path: Assets/Scenes/VideoScenes/3-3.unity
-    guid: 1d3c7446f156bad4ead970269c73240b
-  - enabled: 1
-    path: Assets/Scenes/VideoScenes/v boss.unity
-    guid: 37b61347d13d76742a39fb01193c9a3d
   m_configObjects: {}
