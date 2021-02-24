@@ -21341,8 +21341,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0000038146973, y: 25}
-  m_SizeDelta: {x: 288.33542, y: 50}
+  m_AnchoredPosition: {x: -0.0000038146973, y: 25}
+  m_SizeDelta: {x: 387.57706, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297331845
 MonoBehaviour:
@@ -21363,7 +21363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Highest Rank: '
+  m_text: 'Highest Rank: No Rank'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec91163bce90dd144b17a57097c311ff, type: 2}
   m_sharedMaterial: {fileID: 6720403506706157979, guid: ec91163bce90dd144b17a57097c311ff,
@@ -21791,8 +21791,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 954091901}
   m_HandleRect: {fileID: 954091900}
   m_Direction: 2
-  m_Value: 0.99999887
-  m_Size: 0.193858
+  m_Value: 0.9999999
+  m_Size: 0.19385797
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
