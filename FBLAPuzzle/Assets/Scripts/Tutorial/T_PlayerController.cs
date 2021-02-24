@@ -34,17 +34,20 @@ public class T_PlayerController : MonoBehaviour
 
     public Account activeAccount;
 
+    public float convertingScale;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        movePoint.parent = null;
+        //movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<T_PiecePosition>();
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
+        convertingScale = findConvertingScale();
     }
 
     // Update is called once per frame
@@ -67,6 +70,14 @@ public class T_PlayerController : MonoBehaviour
             piecePosition.addPlayerPos(attemptMovement);
             piecePosition.addBoxPos(attemptMovement);
         }
+    }
+    public float findConvertingScale()
+    {
+        float initialX = movePoint.transform.position.x;
+        movePoint.localPosition += new Vector3(107.8949f, 0f, 0f);
+        float finalX = movePoint.transform.position.x;
+        movePoint.localPosition += new Vector3(-107.8949f, 0f, 0f);
+        return finalX - initialX;
     }
     private void doTFlowController()
     {
@@ -198,25 +209,26 @@ public class T_PlayerController : MonoBehaviour
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             if (direct == "up")
             {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                Debug.Log(convertingScale);
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical")*convertingScale, 0f);
                 attemptMovement = "up";
                 yPos += 1;
             }
             else if (direct == "down")
             {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * convertingScale, 0f);
                 attemptMovement = "down";
                 yPos -= 1;
             }
             else if (direct == "left")
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * convertingScale, 0f, 0f);
                 attemptMovement = "left";
                 xPos -= 1;
             }
             else if (direct == "right")
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * convertingScale, 0f, 0f);
                 attemptMovement = "right";
                 xPos += 1;
             }
@@ -367,25 +379,24 @@ public class T_PlayerController : MonoBehaviour
     }
     public void reversePlayerMove(string lastMove)
     {
-        float scale = 1f;
         if (lastMove == "up")
         {
-            movePoint.position += new Vector3(0f, -scale, 0f);
+            movePoint.position += new Vector3(0f, -convertingScale, 0f);
             yPos -= 1;
         }
         else if (lastMove == "down")
         {
-            movePoint.position += new Vector3(0f, scale, 0f);
+            movePoint.position += new Vector3(0f, convertingScale, 0f);
             yPos += 1;
         }
         else if (lastMove == "left")
         {
-            movePoint.position += new Vector3(scale, 0f, 0f);
+            movePoint.position += new Vector3(convertingScale, 0f, 0f);
             xPos += 1;
         }
         else if (lastMove == "right")
         {
-            movePoint.position += new Vector3(-scale, 0f, 0f);
+            movePoint.position += new Vector3(-convertingScale, 0f, 0f);
             xPos -= 1;
         }
         piecePosition.backPlayerPos();
