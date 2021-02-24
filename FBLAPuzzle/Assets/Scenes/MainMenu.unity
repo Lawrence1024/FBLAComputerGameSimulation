@@ -27135,7 +27135,7 @@ GameObject:
   - component: {fileID: 1935741235}
   - component: {fileID: 1935741234}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PasswordText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
