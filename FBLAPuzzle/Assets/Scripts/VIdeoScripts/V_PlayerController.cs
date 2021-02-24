@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class V_PlayerController : MonoBehaviour
 {
 
     public float moveSpeed = 3f;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public int yPos;
     public List<int> startingPosition;
     public Vector3 startingVectPosition;
-    public List<List<int>> positionHistory=new List<List<int>>();
+    public List<List<int>> positionHistory = new List<List<int>>();
 
     public GameObject gameCanvas;
     private PiecePosition piecePosition;
@@ -27,18 +27,18 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     private int testCounter = 0;
     private float newTime;
-    private float oldTime=0f;
+    private float oldTime = 0f;
 
     private float localScale = 107.8949f;
     public float convertingScale;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         //movePoint.parent = null;
         movePoint.position = transform.position;
-        positionHistory.Add(new List<int> {xPos,yPos});
+        positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<PiecePosition>();
@@ -62,9 +62,9 @@ public class PlayerController : MonoBehaviour
             //}
             //else
             //{
-                makeMovement();
-                piecePosition.addPlayerPos(attemptMovement);
-                piecePosition.addBoxPos(attemptMovement);
+            makeMovement();
+            piecePosition.addPlayerPos(attemptMovement);
+            piecePosition.addBoxPos(attemptMovement);
             //    //    printArray(positionHistory, "Movement: ");
             //}
             //canMove = false;
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             rebound();
         }
     }
-        bool thereIsObstacle()
+    bool thereIsObstacle()
     {
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
         {
@@ -105,12 +105,13 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-    bool moveWhenNoObstacle() {
+    bool moveWhenNoObstacle()
+    {
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
         {
             if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
             {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal")*1f, 0f, 0f);
+                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 1f, 0f, 0f);
             }
             else
             {
@@ -133,14 +134,14 @@ public class PlayerController : MonoBehaviour
     void printArray(List<int> temp)
     {
         string msg = "[";
-        for(int i = 0; i < temp.Count; i++)
+        for (int i = 0; i < temp.Count; i++)
         {
             msg += temp[i] + ",";
         }
         msg += "]";
         Debug.Log(msg);
     }
-    void printArray(ArrayList temp,string s)
+    void printArray(ArrayList temp, string s)
     {
         string msg = "[";
         for (int i = 0; i < temp.Count; i++)
@@ -152,10 +153,10 @@ public class PlayerController : MonoBehaviour
     }
     void printArray(List<List<int>> temp, string s)
     {
-        string msg = s+"[";
-        foreach(List<int> myL in temp)
+        string msg = s + "[";
+        foreach (List<int> myL in temp)
         {
-            msg+=("["+myL[0] + "," + myL[1]+"],");
+            msg += ("[" + myL[0] + "," + myL[1] + "],");
         }
         msg += "]";
         Debug.Log(msg);
@@ -166,27 +167,28 @@ public class PlayerController : MonoBehaviour
         Vector2 beforeGlobal = movePoint.transform.position;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * localScale, 0f, 0f);
-            attemptMovement="right";
+            attemptMovement = "right";
             xPos += 1;
-        }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
+        }
+        else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+           //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * localScale, 0f, 0f);
             attemptMovement = "left";
             xPos -= 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(0f, Input.GetAxisRaw("Vertical") * localScale, 0f);
             attemptMovement = "up";
             yPos += 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(0f, Input.GetAxisRaw("Vertical") * localScale, 0f);
             attemptMovement = "down";
             yPos -= 1;
@@ -198,8 +200,8 @@ public class PlayerController : MonoBehaviour
         Vector2 afterGlobal = movePoint.transform.position;
         Vector2 deltaLocal = afterLocal - beforeLocal;
         Vector2 deltaGlobal = afterGlobal - beforeGlobal;
-        Debug.Log("DeltaLocal: "+ deltaLocal);
-        Debug.Log("DeltaGlobal: "+deltaGlobal);
+        Debug.Log("DeltaLocal: " + deltaLocal);
+        Debug.Log("DeltaGlobal: " + deltaGlobal);
 
         oldTime = Time.time;
     }
@@ -223,8 +225,8 @@ public class PlayerController : MonoBehaviour
         piecePosition.backBoxPos();
         //StartCoroutine(resumeMove(2f));
         //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
-    //    printArray(positionHistory,"Rebound: ");
-        
+        //    printArray(positionHistory,"Rebound: ");
+
     }
     public void reversePlayerMove(string lastMove)
     {
