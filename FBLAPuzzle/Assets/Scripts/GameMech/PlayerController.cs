@@ -166,27 +166,27 @@ public class PlayerController : MonoBehaviour
         Vector2 beforeGlobal = movePoint.transform.position;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * localScale, 0f, 0f);
             attemptMovement="right";
             xPos += 1;
         }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * localScale, 0f, 0f);
             attemptMovement = "left";
             xPos -= 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(0f, Input.GetAxisRaw("Vertical") * localScale, 0f);
             attemptMovement = "up";
             yPos += 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
-        //    GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             movePoint.localPosition += new Vector3(0f, Input.GetAxisRaw("Vertical") * localScale, 0f);
             attemptMovement = "down";
             yPos -= 1;

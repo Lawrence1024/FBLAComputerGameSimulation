@@ -16706,7 +16706,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1241000567}
   m_HandleRect: {fileID: 1241000566}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.19385797
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -30416,7 +30416,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138643280}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 95302c71b855e534a911c1b88b3537b6, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: c7ddf30d0a84dbd40a7c2f305d416e6a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

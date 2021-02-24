@@ -38,4 +38,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/VideoScenes/1-2.unity
     guid: 9c20796f0ee70f648ac38391d80da832
+  - enabled: 0
+    path: Assets/Scenes/VideoScenes/2-1.unity
+    guid: bc710151e1f71c94bb92ff029a9aaf70
+  - enabled: 0
+    path: Assets/Scenes/VideoScenes/3-1.unity
+    guid: f8fe57c9937513b4d9a6afa5bef8ea14
+  - enabled: 0
+    path: Assets/Scenes/VideoScenes/3-2.unity
+    guid: 94d96dba7e7642b4f9ca59d44ab3d646
+  - enabled: 0
+    path: Assets/Scenes/VideoScenes/3-3.unity
+    guid: 1d3c7446f156bad4ead970269c73240b
+  - enabled: 1
+    path: Assets/Scenes/VideoScenes/v boss.unity
+    guid: 37b61347d13d76742a39fb01193c9a3d
   m_configObjects: {}
