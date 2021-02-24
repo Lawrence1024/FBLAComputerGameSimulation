@@ -76,3 +76,6 @@ TagManager:
   - name: PauseLayer
     uniqueID: 1916265901
     locked: 0
+  - name: BlockerLayer
+    uniqueID: 1728704885
+    locked: 0
