@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float oldTime=0f;
 
     private float localScale = 107.8949f;
+    public float convertingScale;
     
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<PiecePosition>();
+        convertingScale = findConvertingScale();
     }
 
     // Update is called once per frame
@@ -68,6 +70,21 @@ public class PlayerController : MonoBehaviour
             //canMove = false;
             //StartCoroutine(resumeMove(0.5f));
         }
+    }
+    public float findConvertingScale()
+    {
+        //Vector2 beforeLocal = movePoint.transform.localPosition;
+        //Vector2 beforeGlobal = movePoint.transform.position;
+        float initialX = movePoint.transform.position.x;
+        movePoint.localPosition += new Vector3(localScale, 0f, 0f);
+        float finalX = movePoint.transform.position.x;
+        //Vector2 afterLocal = movePoint.transform.localPosition;
+        //Vector2 afterGlobal = movePoint.transform.position;
+        //Vector2 deltaLocal = afterLocal - beforeLocal;
+        //Vector2 deltaGlobal = afterGlobal - beforeGlobal;
+        //Debug.Log("DeltaLocal: " + deltaLocal);
+        movePoint.localPosition += new Vector3(-localScale, 0f, 0f);
+        return finalX - initialX;
     }
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -145,6 +162,8 @@ public class PlayerController : MonoBehaviour
     }
     void makeMovement()
     {
+        Vector2 beforeLocal = movePoint.transform.localPosition;
+        Vector2 beforeGlobal = movePoint.transform.position;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
@@ -175,6 +194,13 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
         //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
         //   piecePosition.updatePos(movementHistory[movementHistory.Count-1].ToString());
+        Vector2 afterLocal = movePoint.transform.localPosition;
+        Vector2 afterGlobal = movePoint.transform.position;
+        Vector2 deltaLocal = afterLocal - beforeLocal;
+        Vector2 deltaGlobal = afterGlobal - beforeGlobal;
+        Debug.Log("DeltaLocal: "+ deltaLocal);
+        Debug.Log("DeltaGlobal: "+deltaGlobal);
+
         oldTime = Time.time;
     }
     bool thereIsBox()

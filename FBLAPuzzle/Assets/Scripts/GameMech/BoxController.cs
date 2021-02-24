@@ -30,6 +30,7 @@ public class BoxController : MonoBehaviour
     public Sprite correctSprite;
 
     private float localScale = 107.8949f;
+    public float convertingScale;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class BoxController : MonoBehaviour
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<PiecePosition>();
+        convertingScale = player.GetComponent<PlayerController>().findConvertingScale();
     }
 
     // Update is called once per frame
@@ -62,20 +64,21 @@ public class BoxController : MonoBehaviour
     }
     bool thereIsObstacle()
     {
-        bool obstUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.8f, 0f), 0.2f* (localScale / 107.8949f), whatStopsMovement);
-        bool boxUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, localScale, 0f), 0.2f* localScale, boxLayer);
-        bool obstDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -localScale, 0f), 0.2f* localScale, whatStopsMovement);
-        bool boxDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -localScale, 0f), 0.2f* localScale, boxLayer);
-        bool obstLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-localScale, 0f, 0f), 0.2f* localScale, whatStopsMovement);
-        bool boxLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-localScale, 0f, 0f), 0.2f* localScale, boxLayer);
-        bool obstRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(localScale, 0f, 0f), 0.2f* localScale, whatStopsMovement);
-        bool boxRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(localScale, 0f, 0f), 0.2f* localScale, boxLayer);
-        Debug.Log("movePoint.localPosition: " + movePoint.localPosition);
-        Debug.Log("After Local Position: " + (movePoint.localPosition + new Vector3(0f, localScale, 0f)));
-        Debug.Log("movePoint.position: " + movePoint.position);
-        Debug.Log("After Position: " + (movePoint.position + new Vector3(0f, 1f, 0f)));
-        Debug.Log("local: "+ Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, localScale, 0f), 0.2f * localScale, whatStopsMovement));
-        Debug.Log("global: " + Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 1f, 0f), 0.2f, whatStopsMovement));
+        bool obstUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, convertingScale, 0f), 0.2f* convertingScale, whatStopsMovement);
+        bool boxUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, convertingScale, 0f), 0.2f* convertingScale, boxLayer);
+        bool obstDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -convertingScale, 0f), 0.2f* convertingScale, whatStopsMovement);
+        bool boxDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -convertingScale, 0f), 0.2f* convertingScale, boxLayer);
+        bool obstLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-convertingScale, 0f, 0f), 0.2f* convertingScale, whatStopsMovement);
+        bool boxLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-convertingScale, 0f, 0f), 0.2f* convertingScale, boxLayer);
+        bool obstRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(convertingScale, 0f, 0f), 0.2f* convertingScale, whatStopsMovement);
+        bool boxRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(convertingScale, 0f, 0f), 0.2f* convertingScale, boxLayer);
+        //Debug.Log("movePoint.localPosition: " + movePoint.localPosition);
+        //Debug.Log("After Local Position: " + (movePoint.localPosition + new Vector3(0f, localScale, 0f)));
+        //Debug.Log("movePoint.position: " + movePoint.position);
+        //Debug.Log("After Position: " + (movePoint.position + new Vector3(0f, 1f, 0f)));
+        //Debug.Log("local: "+ Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, localScale, 0f), 0.2f * localScale, whatStopsMovement));
+        //Debug.Log("global: " + Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 1f, 0f), 0.2f, whatStopsMovement));
+        Debug.Log(convertingScale);
         if (lastPlayerMovement=="up"&& (obstUp || boxUp))
         {
             return true;
@@ -226,22 +229,22 @@ public class BoxController : MonoBehaviour
         string lastMove = movementHistory[movementHistory.Count - 1].ToString();
         if (lastMove == "up")
         {
-            movePoint.position += new Vector3(0f, -1f, 0f);
+            movePoint.localPosition += new Vector3(0f, -localScale, 0f);
             yPos -= 1;
         }
         else if (lastMove == "down")
         {
-            movePoint.position += new Vector3(0f, 1f, 0f);
+            movePoint.localPosition += new Vector3(0f, localScale, 0f);
             yPos += 1;
         }
         else if (lastMove == "left")
         {
-            movePoint.position += new Vector3(1f, 0f, 0f);
+            movePoint.localPosition += new Vector3(localScale, 0f, 0f);
             xPos += 1;
         }
         else if (lastMove == "right")
         {
-            movePoint.position += new Vector3(-1f, 0f, 0f);
+            movePoint.localPosition += new Vector3(-localScale, 0f, 0f);
             xPos -= 1;
         }else if (lastMove == "-")
         {
