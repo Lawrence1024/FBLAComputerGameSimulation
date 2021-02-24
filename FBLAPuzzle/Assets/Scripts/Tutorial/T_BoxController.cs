@@ -42,7 +42,7 @@ public class T_BoxController : MonoBehaviour
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<PiecePosition>();
-        convertingScale = player.GetComponent<T_PlayerController>().convertingScale;
+        convertingScale = player.GetComponent<T_PlayerController>().findConvertingScale();
     }
 
     // Update is called once per frame
