@@ -63,7 +63,16 @@ public class EndSceneManager : MonoBehaviour
         
     }
     IEnumerator startScroll() {
-        
+        if (accountManager.activeAccount.endSceneActivated)
+        {
+            skipButton.SetActive(true);
+        }
+        else
+        {
+            accountManager.activeAccount.endSceneActivated = true;
+            skipButton.SetActive(false);
+
+        }
         yield return new WaitForSeconds(0.00005f);
         if (creditText.transform.position[1] < 14* convertingScale)
         {
