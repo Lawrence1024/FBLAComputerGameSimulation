@@ -14,6 +14,8 @@ public class ButtonDetection : MonoBehaviour
     public GameObject ExistButton;*/
     public GameObject NextPageButton;
     public GameObject LastPageButton;
+    public GameObject PageCount;
+
 
     public ScrollRect ScrollRect;
     int pageCounter = 0;
@@ -55,6 +57,7 @@ public class ButtonDetection : MonoBehaviour
         LastPageButton.SetActive(false);
         mainMenuManager.changeInstrucitonPage(pageCounter);
         NextPageButton.SetActive(true);
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = "1/16";
         mainMenuManager.InstructionCanvas.SetActive(true);
 
     }
@@ -84,6 +87,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(false);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter+1)+"/16";
         Debug.Log("Next");
 
     }
@@ -99,7 +103,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(true);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/16";
         Debug.Log("Last");
 
     }
