@@ -53,7 +53,6 @@ public class PlayAudio : MonoBehaviour
     }
     public void playMovementSound()
     {
-        Debug.Log("play movement");
         movementAudioSource.Play();
     }
 }

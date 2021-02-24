@@ -35,7 +35,7 @@ public class Loading : MonoBehaviour
     IEnumerator Buffer(string sceneName)
     {
         loadingCounter--;
-        Debug.Log("Loading text: " + loadingText);
+        //Debug.Log("Loading text: " + loadingText);
         //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.5f);
         if (loadingText.Length < 10)

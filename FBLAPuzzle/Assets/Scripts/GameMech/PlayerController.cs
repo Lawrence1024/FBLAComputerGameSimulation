@@ -28,12 +28,14 @@ public class PlayerController : MonoBehaviour
     private int testCounter = 0;
     private float newTime;
     private float oldTime=0f;
+
+    private float localScale = 107.8949f;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        movePoint.parent = null;
+        //movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> {xPos,yPos});
         startingPosition = new List<int> { xPos, yPos };
@@ -143,31 +145,30 @@ public class PlayerController : MonoBehaviour
     }
     void makeMovement()
     {
-        float scale = 1f;
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * scale, 0f, 0f);
+            movePoint.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * localScale, 0f, 0f);
             attemptMovement="right";
             xPos += 1;
         }else if ((Input.GetAxisRaw("Horizontal")) == -1f)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
-            movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * scale, 0f, 0f);
+            movePoint.localPosition += new Vector3(Input.GetAxisRaw("Horizontal") * localScale, 0f, 0f);
             attemptMovement = "left";
             xPos -= 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == 1f)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * scale, 0f);
+            movePoint.localPosition += new Vector3(0f, Input.GetAxisRaw("Vertical") * localScale, 0f);
             attemptMovement = "up";
             yPos += 1;
         }
         else if ((Input.GetAxisRaw("Vertical")) == -1f)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
-            movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * scale, 0f);
+            movePoint.localPosition += new Vector3(0f, Input.GetAxisRaw("Vertical") * localScale, 0f);
             attemptMovement = "down";
             yPos -= 1;
         }
@@ -201,29 +202,29 @@ public class PlayerController : MonoBehaviour
     }
     public void reversePlayerMove(string lastMove)
     {
-        float scale = 1f;
         if (lastMove == "up")
         {
-            movePoint.position += new Vector3(0f, -scale, 0f);
+            movePoint.localPosition += new Vector3(0f, -localScale, 0f);
             yPos -= 1;
         }
         else if (lastMove == "down")
         {
-            movePoint.position += new Vector3(0f, scale, 0f);
+            movePoint.localPosition += new Vector3(0f, localScale, 0f);
             yPos += 1;
         }
         else if (lastMove == "left")
         {
-            movePoint.position += new Vector3(scale, 0f, 0f);
+            movePoint.localPosition += new Vector3(localScale, 0f, 0f);
             xPos += 1;
         }
         else if (lastMove == "right")
         {
-            movePoint.position += new Vector3(-scale, 0f, 0f);
+            movePoint.localPosition += new Vector3(-localScale, 0f, 0f);
             xPos -= 1;
         }
         piecePosition.backPlayerPos();
         //piecePosition.backBoxPos();
+
     }
     IEnumerator resumeMove(float time)
     {

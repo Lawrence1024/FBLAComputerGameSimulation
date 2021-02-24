@@ -29,11 +29,13 @@ public class BoxController : MonoBehaviour
     public bool answered = false;
     public Sprite correctSprite;
 
+    private float localScale = 107.8949f;
+
     // Start is called before the first frame update
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        movePoint.parent = null;
+        //movePoint.parent = null;
         movePoint.position = transform.position;
         //Debug.Log("MovePoint POsition: " + movePoint.position);
         positionHistory.Add(new List<int> { xPos, yPos });
@@ -47,7 +49,7 @@ public class BoxController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         ifOverLap();
-
+        //Debug.Log(Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, localScale, 0f), 0.2f * localScale, whatStopsMovement));
 
     }
     bool ifOverLap()
@@ -60,14 +62,20 @@ public class BoxController : MonoBehaviour
     }
     bool thereIsObstacle()
     {
-        bool obstUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.99f, 0f), 0.2f, whatStopsMovement);
-        bool boxUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.99f, 0f), 0.2f, boxLayer);
-        bool obstDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -0.99f, 0f), 0.2f, whatStopsMovement);
-        bool boxDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -0.99f, 0f), 0.2f, boxLayer);
-        bool obstLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-0.99f, 0f, 0f), 0.2f, whatStopsMovement);
-        bool boxLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-0.99f, 0f, 0f), 0.2f, boxLayer);
-        bool obstRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, whatStopsMovement);
-        bool boxRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(0.99f, 0f, 0f), 0.2f, boxLayer);
+        bool obstUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 0.8f, 0f), 0.2f* (localScale / 107.8949f), whatStopsMovement);
+        bool boxUp = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, localScale, 0f), 0.2f* localScale, boxLayer);
+        bool obstDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -localScale, 0f), 0.2f* localScale, whatStopsMovement);
+        bool boxDown = Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, -localScale, 0f), 0.2f* localScale, boxLayer);
+        bool obstLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-localScale, 0f, 0f), 0.2f* localScale, whatStopsMovement);
+        bool boxLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-localScale, 0f, 0f), 0.2f* localScale, boxLayer);
+        bool obstRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(localScale, 0f, 0f), 0.2f* localScale, whatStopsMovement);
+        bool boxRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(localScale, 0f, 0f), 0.2f* localScale, boxLayer);
+        Debug.Log("movePoint.localPosition: " + movePoint.localPosition);
+        Debug.Log("After Local Position: " + (movePoint.localPosition + new Vector3(0f, localScale, 0f)));
+        Debug.Log("movePoint.position: " + movePoint.position);
+        Debug.Log("After Position: " + (movePoint.position + new Vector3(0f, 1f, 0f)));
+        Debug.Log("local: "+ Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, localScale, 0f), 0.2f * localScale, whatStopsMovement));
+        Debug.Log("global: " + Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 1f, 0f), 0.2f, whatStopsMovement));
         if (lastPlayerMovement=="up"&& (obstUp || boxUp))
         {
             return true;
@@ -117,22 +125,21 @@ public class BoxController : MonoBehaviour
     }
     void makeMovement()
     {
-        float scale = 1f;
         if (lastPlayerMovement=="up")
         {
-            movePoint.position += new Vector3(0f, scale, 0f);
+            movePoint.localPosition += new Vector3(0f, localScale, 0f);
             yPos += 1;
         }else if (lastPlayerMovement == "down")
         {
-            movePoint.position += new Vector3(0f, -1*scale, 0f);
+            movePoint.localPosition += new Vector3(0f, -1* localScale, 0f);
             yPos -= 1;
         }else if (lastPlayerMovement == "left")
         {
-            movePoint.position += new Vector3(-1*scale, 0f, 0f);
+            movePoint.localPosition += new Vector3(-1* localScale, 0f, 0f);
             xPos -= 1;
         }else if (lastPlayerMovement == "right")
         {
-            movePoint.position += new Vector3(scale, 0f, 0f);
+            movePoint.localPosition += new Vector3(localScale, 0f, 0f);
             xPos += 1;
         }
         GetComponentInParent<BoxManager>().checkIfWin();
