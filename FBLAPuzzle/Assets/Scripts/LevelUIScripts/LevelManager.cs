@@ -8,6 +8,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     PointsCalculation pointsCalculation;
+    FeatureButtonDetection featureButtonDetection;
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
     public GameObject LevelCanvas;
@@ -22,10 +23,10 @@ public class LevelManager : MonoBehaviour
     public GameObject playerSprite;
     public GameObject[] TipPages;
 
+    public GameObject[] buttons;
     public List<int> level;
     private Account activeAccount;
     private bool freezeState = false;
-    private GameObject[] buttons;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +40,10 @@ public class LevelManager : MonoBehaviour
         PauseMenuCanvas.SetActive(false);
         LevelCanvas.SetActive(true);
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
+        featureButtonDetection = GetComponent<FeatureButtonDetection>();
         //This is the max star
         //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         pointsCalculation = GameObject.Find("PointsValue").GetComponent<PointsCalculation>();
-        buttons = GameObject.FindGameObjectsWithTag("Buttons");
         displayStars("Stars");
         playerSprite.GetComponent<SpriteRenderer>().color = activeAccount.avatarColor;
     }

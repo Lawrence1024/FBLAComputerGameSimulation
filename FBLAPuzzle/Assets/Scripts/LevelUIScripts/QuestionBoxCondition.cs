@@ -11,6 +11,7 @@ public class QuestionBoxCondition : MonoBehaviour
 {
     QuestionInteraction questionInteraction;
     LevelManager levelManager;
+    FeatureButtonDetection featureButtonDetection;
     public bool activated = false;
     public int QuestionNumber;
 
@@ -26,7 +27,8 @@ public class QuestionBoxCondition : MonoBehaviour
     {
         questionInteraction= GameObject.Find("LevelManager").GetComponent<QuestionInteraction>();
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        buttons = GameObject.FindGameObjectsWithTag("Buttons");
+        featureButtonDetection = GameObject.Find("LevelManager").GetComponent<FeatureButtonDetection>();
+        buttons = levelManager.buttons;
     }
 
     // Update is called once per frame
