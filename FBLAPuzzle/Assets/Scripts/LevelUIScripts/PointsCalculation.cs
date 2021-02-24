@@ -31,7 +31,7 @@ public class PointsCalculation : MonoBehaviour
             points--;
         }
         //parser.nextScene(sceneCounter, sceneNum);
-        yield return new WaitForSeconds(.9f);
+        yield return new WaitForSeconds(.1f);
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text =points.ToString();
         if (points > 0&& !levelComplete&&!gamePause)
         {

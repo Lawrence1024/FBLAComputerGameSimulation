@@ -18,22 +18,26 @@ public class EndSceneManager : MonoBehaviour
     private ParticleSystem ps2;
     private Vector4 secondBackgroundColor;
     private float convertingScale;
-
+    Vector3 stageDimensions;
     //public GameObject 
 
     void Start()
     {
-        accountManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
+        //accountManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
         convertingScale = findConvertingScale();
-        Debug.Log(convertingScale);
-        StartCoroutine(startScroll());
+        stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        //StartCoroutine(startScroll());
         LoadingCanvas.SetActive(false);
         ps1 = partyPopper1.GetComponent<ParticleSystem>();
         ps2 = partyPopper2.GetComponent<ParticleSystem>();
         secondBackgroundColor = secondBackground.GetComponent<Image>().color;
+        //creditText.transform.position = new Vector3(creditText.transform.position[0], -(stageDimensions[1]+10)*convertingScale, 0);
+        creditText.transform.localPosition = new Vector3(0f, -1605.4f, 0f);
+        //creditText.transform.position = new Vector3(0f, 13.52f, 0f);
+
         TheEndText.SetActive(false);
 
-        setButton();
+        //setButton();
 
     }   
 
@@ -43,6 +47,7 @@ public class EndSceneManager : MonoBehaviour
         if (Input.GetKeyDown("escape")) {
             Application.Quit();
         }
+        creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 13.62f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
     }
     public void setButton() {
         if (accountManager.activeAccount.endSceneActivated)
@@ -71,11 +76,13 @@ public class EndSceneManager : MonoBehaviour
     }
     IEnumerator startScroll() {
         
-        yield return new WaitForSeconds(0.00005f);
-        if (creditText.transform.position[1] < 14* convertingScale)
+        Vector3 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        yield return new WaitForSeconds(0.01f);
+        if (creditText.transform.position.y < 14* convertingScale)
         {
-            creditText.transform.position = new Vector3(creditText.transform.position[0], creditText.transform.position[1] + 0.005f, 0);
-            Debug.Log("y pos < 100 "+ creditText.transform.position[1]);
+            creditText.transform.localPosition = creditText.transform.localPosition + new Vector3(0f, 1.7f, 0f);
+                //new Vector3(creditText.transform.localPosition.x, creditText.transform.localPosition.y + 0.5f, 0);
+            Debug.Log(creditText.transform.position[1] + " scale "+ convertingScale+" height "+stageDimensions[1]);
             StartCoroutine(startScroll());
         }
         else {
@@ -100,7 +107,7 @@ public class EndSceneManager : MonoBehaviour
     }
     IEnumerator displayTheEnd() {
         TheEndText.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("MainMenu");
     }
     public void skip() {
