@@ -33,7 +33,6 @@ public class T_TutorialFlowController : MonoBehaviour
         arrowMovingToggle = true;
         okButton.SetActive(false);
         levelManager = GameObject.Find("LevelManager").GetComponent<T_LevelManager>();
-        activeAccount.tutorialProgress[0] = true;
         if (activeAccount.tutorialProgress[0])
         {
             currentStep = 41;
