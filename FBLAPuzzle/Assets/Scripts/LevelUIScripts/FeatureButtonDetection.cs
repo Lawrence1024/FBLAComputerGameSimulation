@@ -43,12 +43,14 @@ public class FeatureButtonDetection : MonoBehaviour
     public void selectAnswer(GameObject answerButton) {
         if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playWrongSound();
             Debug.Log("selectAnswer wrong");
             answerButton.GetComponent<Image>().color = new Vector4(1,0.39f,0.39f,1);
             answerButton.GetComponent<Button>().interactable = false;
             levelManager.minusHeart();
         }
         else {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playCorrectSound();
             Debug.Log("selectAnswer right");
             //levelManager.hideCanvas(levelManager.QuestionCanvas);
             answerButton.GetComponent<Image>().color = new Vector4(0.39f, 1, 0.39f, 1);
@@ -59,10 +61,12 @@ public class FeatureButtonDetection : MonoBehaviour
     }
     public void lastStep()
     {
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
         gameCanvas.GetComponent<PiecePosition>().whenHitBackButton();
     }
     public void resetBoard()
     {
+        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
         gameCanvas.GetComponent<PiecePosition>().whenHitResetButton();
     }
 

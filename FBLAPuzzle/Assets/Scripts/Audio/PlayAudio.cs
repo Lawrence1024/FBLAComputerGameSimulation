@@ -8,6 +8,10 @@ public class PlayAudio : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip movementSound;
     public AudioSource movementAudioSource;
+    public AudioClip correctSound;
+    public AudioSource correctAudioSource;
+    public AudioClip wrongSound;
+    public AudioSource wrongAudioSource;
     private int randomNumber;
     private bool audioActive=true;
     void Start()
@@ -16,11 +20,19 @@ public class PlayAudio : MonoBehaviour
         //Debug.Log(randomNumber);
         audioSource = gameObject.AddComponent<AudioSource>();
         movementAudioSource=gameObject.AddComponent<AudioSource>();
+        correctAudioSource=gameObject.AddComponent<AudioSource>();
+        wrongAudioSource= gameObject.AddComponent<AudioSource>(); ;
         audioSource.clip = clip[randomNumber];
         audioSource.playOnAwake = false;
-        movementAudioSource.volume = 5;
+        movementAudioSource.volume = .5f;
         movementAudioSource.clip = movementSound;
         movementAudioSource.playOnAwake = false;
+        correctAudioSource.volume = 5;
+        correctAudioSource.clip = correctSound;
+        correctAudioSource.playOnAwake = false;
+        wrongAudioSource.volume = .5f;
+        wrongAudioSource.clip = wrongSound;
+        wrongAudioSource.playOnAwake = false;
         //movementAudioSource.Play();
 
         //startPlayingAudio();
@@ -54,5 +66,11 @@ public class PlayAudio : MonoBehaviour
     public void playMovementSound()
     {
         movementAudioSource.Play();
+    }
+    public void playWrongSound() {
+        wrongAudioSource.Play();
+    }
+    public void playCorrectSound() {
+        correctAudioSource.Play();
     }
 }

@@ -107,6 +107,10 @@ public class GetInputField : MonoBehaviour
         {
             return;
         }
+        else if (!seeIfEnteredCreatedPassword(GameObject.Find("PasswordText"))) {
+            warningNote = "Please enter a password!";
+            StartCoroutine(displayWarning());
+        }
         else {
             name = name.Substring(0, name.Length - 1);
             if (name.Length > 17)
@@ -153,6 +157,14 @@ public class GetInputField : MonoBehaviour
                 //accManager.activeAccount = null;
             }
         }
+    }
+    public bool seeIfEnteredCreatedPassword(GameObject textObj) {
+        string pwd = textObj.GetComponent<TMPro.TextMeshProUGUI>().text;
+        if (string.IsNullOrEmpty(pwd) || pwd.Length == 1)
+        {
+            return false;
+        }
+        return true;
     }
     public void resetInputField(GameObject inputField) {
         TMP_InputField mainInputField;

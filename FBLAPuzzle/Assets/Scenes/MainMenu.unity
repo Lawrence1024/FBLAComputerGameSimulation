@@ -604,7 +604,7 @@ RectTransform:
   - {fileID: 1754743914}
   - {fileID: 848712837}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15537,7 +15537,7 @@ Transform:
   - {fileID: 1459618052}
   - {fileID: 1007738040}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1085005356
 GameObject:
@@ -19089,6 +19089,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   movementSound: {fileID: 8300000, guid: 0e5adf4393d9d404fb0cccf21fc35655, type: 3}
   movementAudioSource: {fileID: 0}
+  correctSound: {fileID: 8300000, guid: 2ad686c2c8b7a0b479952c62e3917fcb, type: 3}
+  correctAudioSource: {fileID: 0}
+  wrongSound: {fileID: 8300000, guid: 384a0e199640e86468add19c84587bfb, type: 3}
+  wrongAudioSource: {fileID: 0}
 --- !u!1 &1470735543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2861369788262749574, guid: 1f2f5ac15db033c4e83e68202a9cff0c,
@@ -27131,7 +27135,7 @@ GameObject:
   - component: {fileID: 1935741235}
   - component: {fileID: 1935741234}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PasswordText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

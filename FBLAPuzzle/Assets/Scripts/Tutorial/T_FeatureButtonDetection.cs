@@ -50,6 +50,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
         }
         if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playWrongSound();
             Debug.Log("selectAnswer wrong");
             answerButton.GetComponent<Image>().color = new Vector4(1, 0.39f, 0.39f, 1);
             answerButton.GetComponent<Button>().interactable = false;
@@ -57,6 +58,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
         }
         else
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playCorrectSound();
             Debug.Log("selectAnswer right");
             //levelManager.hideCanvas(levelManager.QuestionCanvas);
             answerButton.GetComponent<Image>().color = new Vector4(0.39f, 1, 0.39f, 1);
@@ -70,6 +72,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
         gameCanvas.GetComponent<T_PiecePosition>().whenHitBackButton();
         if (TFController.currentStep == 22)
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             TFController.nextStep();
         }
     }
@@ -78,6 +81,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
         gameCanvas.GetComponent<T_PiecePosition>().whenHitResetButton();
         if (TFController.currentStep == 23)
         {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             TFController.nextStep();
         }
     }
