@@ -54,6 +54,7 @@ public class ButtonDetection : MonoBehaviour
         pageCounter = 0;
         LastPageButton.SetActive(false);
         mainMenuManager.changeInstrucitonPage(pageCounter);
+        NextPageButton.SetActive(true);
         mainMenuManager.InstructionCanvas.SetActive(true);
 
     }
