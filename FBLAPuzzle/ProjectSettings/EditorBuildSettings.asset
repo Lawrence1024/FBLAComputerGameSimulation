@@ -5,31 +5,37 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: d0735242b6c8db04b97428a8e822f96c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Map.unity
     guid: cfb3155ab1f30a343ad830e7dbfddbf0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial.unity
     guid: 4f0da96d9beca5f48af232ab496bacf2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level_1_1.unity
     guid: e9f94387f278c4841843df6b0e5235c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level_1_2.unity
     guid: 00b7be6f4d7b4f7408e57541fdcbef23
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level_1_3.unity
     guid: 7422a437eca8c34488350177857c8b0b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level_2_1.unity
     guid: b39e4127a138c4249992c9f73d8a6508
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/Level_2_2.unity
+    guid: eab28dcb1306e5143b5c8a414a1fda91
+  - enabled: 0
     path: Assets/Scenes/EndScene.unity
     guid: d0776f755747b4c419af0ba254d2955f
   - enabled: 0
     path: Assets/Scenes/VideoScenes/1-1.unity
     guid: 69914444f9d7b384685954067638ca2a
+  - enabled: 0
+    path: Assets/Scenes/VideoScenes/1-2.unity
+    guid: 9c20796f0ee70f648ac38391d80da832
   m_configObjects: {}
