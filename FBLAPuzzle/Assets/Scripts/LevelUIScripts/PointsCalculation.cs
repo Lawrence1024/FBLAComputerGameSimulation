@@ -7,7 +7,7 @@ public class PointsCalculation : MonoBehaviour
     // Start is called before the first frame update
     LevelManager levelManager;
     FeatureButtonDetection featureButtonDetection;
-    int points = 1000;
+    public int points = 1000;
     public bool levelComplete = false;
     public bool gamePause = false;
     void Start()

@@ -7,7 +7,7 @@ public class T_PointsCalculation : MonoBehaviour
     // Start is called before the first frame update
     T_LevelManager levelManager;
     T_FeatureButtonDetection featureButtonDetection;
-    int points = 1000;
+    public int points = 1000;
     public bool levelComplete = false;
     public bool stopTime = true;
     void Start()
