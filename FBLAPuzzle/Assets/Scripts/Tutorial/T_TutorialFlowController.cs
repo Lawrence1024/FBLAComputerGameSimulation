@@ -211,7 +211,7 @@ public class T_TutorialFlowController : MonoBehaviour
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "A question will display.\n Click on a wrong answer.";
             arrow.SetActive(true);
             arrowMovingToggle = true;
-            arrow.transform.position = new Vector3(-2.901f* convertingScale, -1.733f* convertingScale, 0f);
+            arrow.transform.position = new Vector3(2.146f * convertingScale, -1.733f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
         }
         else if (currentStep == 19)
@@ -222,7 +222,7 @@ public class T_TutorialFlowController : MonoBehaviour
             answerButtons[2].GetComponent<Button>().interactable = true;
             answerButtons[3].GetComponent<Button>().interactable = false;
             arrowMovingToggle = true;
-            arrow.transform.position = new Vector3(-2.901f* convertingScale, -2.966f* convertingScale, 0f);
+            arrow.transform.position = new Vector3(2.146f * convertingScale, -2.966f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
         }
         else if (currentStep == 20)
@@ -392,7 +392,7 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 44)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Click on a wrong answer";
-            arrow.transform.position = new Vector3(-2.901f* convertingScale, -4.199f* convertingScale, 0f);
+            arrow.transform.position = new Vector3(2.146f * convertingScale, -4.199f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
             arrow.SetActive(true);
@@ -468,6 +468,10 @@ public class T_TutorialFlowController : MonoBehaviour
             levelManager.pointsCalculation.levelComplete = true;
         }
         else if (currentStep == 58)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You can activate the pause menu and quit at anytime by pressing the ESC key.";
+        }
+        else if (currentStep == 59)
         {
             okButton.SetActive(false);
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great job on completing the tutorial.";
