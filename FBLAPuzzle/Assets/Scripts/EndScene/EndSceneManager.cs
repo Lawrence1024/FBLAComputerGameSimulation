@@ -48,8 +48,8 @@ public class EndSceneManager : MonoBehaviour
         if (Input.GetKeyDown("escape")) {
             Application.Quit();
         }
-        creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 13.62f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
-        if (Mathf.Abs(creditText.transform.position.y-13.62f*convertingScale)<=0.05) {
+        creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 19f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
+        if (Mathf.Abs(creditText.transform.position.y-18f*convertingScale)<=0.05) {
             Debug.Log("pos <=0.05");
             if (!opacityChangeActivated) {
                 opacityChangeActivated = true;
@@ -87,7 +87,7 @@ public class EndSceneManager : MonoBehaviour
         
         Vector3 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         yield return new WaitForSeconds(0.01f);
-        if (creditText.transform.position.y < 14* convertingScale)
+        if (creditText.transform.position.y < 24* convertingScale)
         {
             creditText.transform.localPosition = creditText.transform.localPosition + new Vector3(0f, 1.7f, 0f);
                 //new Vector3(creditText.transform.localPosition.x, creditText.transform.localPosition.y + 0.5f, 0);
