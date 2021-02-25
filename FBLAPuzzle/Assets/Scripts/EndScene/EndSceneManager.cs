@@ -24,7 +24,7 @@ public class EndSceneManager : MonoBehaviour
 
     void Start()
     {
-        //accountManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
+        accountManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
         convertingScale = findConvertingScale();
         stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         //StartCoroutine(startScroll());
@@ -38,7 +38,7 @@ public class EndSceneManager : MonoBehaviour
 
         TheEndText.SetActive(false);
 
-        //setButton();
+        setButton();
 
     }   
 

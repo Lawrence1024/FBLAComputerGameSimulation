@@ -27,7 +27,7 @@ public class Loading : MonoBehaviour
         //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().pauseAudio();
 //disable all audioplayer
         GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
-        loadingCounter = Random.Range(4, 7);
+        loadingCounter = Random.Range(2, 5);
         Debug.Log("load scene "+sceneName);
         StartCoroutine(Buffer(sceneName));        
     }
