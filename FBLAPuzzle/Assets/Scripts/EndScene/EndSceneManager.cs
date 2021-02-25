@@ -48,8 +48,8 @@ public class EndSceneManager : MonoBehaviour
         if (Input.GetKeyDown("escape")) {
             Application.Quit();
         }
-        creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 19f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
-        if (Mathf.Abs(creditText.transform.position.y-18f*convertingScale)<=0.05) {
+        creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 13.62f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
+        if (Mathf.Abs(creditText.transform.position.y- 13.62f *convertingScale)<=0.05) {
             Debug.Log("pos <=0.05");
             if (!opacityChangeActivated) {
                 opacityChangeActivated = true;
