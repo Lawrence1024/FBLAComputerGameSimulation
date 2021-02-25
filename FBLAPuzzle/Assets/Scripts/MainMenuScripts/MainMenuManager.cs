@@ -36,7 +36,6 @@ public class MainMenuManager : MonoBehaviour
         GameObject.Find("Counter").GetComponent<EnterMainMenuCounter>().IncreaseMainMenuCounter();
         if (GameObject.Find("Counter").GetComponent<EnterMainMenuCounter>().mainMenuCounter > 1)
         {
-            Debug.Log("Counter " + GameObject.Find("Counter").GetComponent<EnterMainMenuCounter>().mainMenuCounter);
             LogOutButton.SetActive(true);
         }
         else {
@@ -57,7 +56,6 @@ public class MainMenuManager : MonoBehaviour
     void activatePauseMenu()
     {
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
-        Debug.Log("Volume " + GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue);
         PauseMenuCanvas.transform.GetChild(2).gameObject.GetComponent<Slider>().value=GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue;
         if (PauseMenuCanvas.activeSelf)
         {
@@ -79,7 +77,6 @@ public class MainMenuManager : MonoBehaviour
     //reference in button
     public void createAccount()
     {
-        Debug.Log("Click on hyperlink");
         UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(true);
         UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);

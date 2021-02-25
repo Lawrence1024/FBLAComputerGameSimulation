@@ -34,7 +34,6 @@ public class Account
     //public method
     public void saveAccount()
     {
-        Debug.Log("The Account \""+userName+"\" is saved");
         SaveSystem.saveAccount(this);
     }
     public void loadAccount()

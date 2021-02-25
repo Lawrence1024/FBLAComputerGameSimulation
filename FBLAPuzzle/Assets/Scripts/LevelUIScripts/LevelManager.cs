@@ -84,7 +84,6 @@ public class LevelManager : MonoBehaviour
         TipPages[pageNum].SetActive(true);
     }
     public void minusHeart() {
-        //Debug.Log("hearts " + GameObject.Find("Hearts").transform.GetChild(0).gameObject.activeSelf);
         if (GameObject.Find("Hearts").transform.childCount>1) {
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
@@ -108,7 +107,6 @@ public class LevelManager : MonoBehaviour
             for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].GetComponent<Button>().interactable = false;
-                Debug.Log("button uninteractable");
             }
             QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
             QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
@@ -130,7 +128,6 @@ public class LevelManager : MonoBehaviour
     }
     public void displayScore() {
         //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
-        Debug.Log(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text);
         GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = "Points: "+GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text;
         displayStars("FinalStarDisplay");
     }
@@ -199,7 +196,6 @@ public class LevelManager : MonoBehaviour
         else if (sec >= 1||sec<=0) {
             yield return new WaitForSeconds(1);
             sec--;
-            Debug.Log("sec " + sec);
             if (sec <= 0) {
                 
                 WarningCanvas.SetActive(false);

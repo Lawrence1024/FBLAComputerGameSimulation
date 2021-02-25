@@ -51,7 +51,6 @@ public class AccountsManager : MonoBehaviour
         {
             if (name.Equals(accounts[i].userName))
             {
-                Debug.Log("The username is already taken!");
                 return true;
             }
         }

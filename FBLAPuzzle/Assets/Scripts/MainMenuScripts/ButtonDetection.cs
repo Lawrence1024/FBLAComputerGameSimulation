@@ -46,14 +46,12 @@ public class ButtonDetection : MonoBehaviour
         
     }
     public void executePlayButton() {
-        Debug.Log("Play");
         mainMenuManager.LoadingCanvas.SetActive(true);
         //sceneManager.LoadingCanvas.GetComponent<"LoadingBackground">.GetComponent<Loading>().runLoading("Map");
         mainMenuManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading("Map");
         //SceneManager.LoadScene();
     }
     public void executeInstructionButton() {
-        Debug.Log("Instruction");
         pageCounter = 0;
         LastPageButton.SetActive(false);
         mainMenuManager.changeInstrucitonPage(pageCounter);
@@ -66,7 +64,6 @@ public class ButtonDetection : MonoBehaviour
 
     }
     public void executeLeaderBoardButton() {
-        Debug.Log("Leader Board");
         ScrollRect.verticalNormalizedPosition = 1f;
         mainMenuManager.LeaderBoardCanvas.SetActive(true);
         mainMenuManager.LeaderBoardCanvas.GetComponent<LeaderBoardDisplay>().getAccountsTotalStars();
@@ -75,7 +72,6 @@ public class ButtonDetection : MonoBehaviour
     }
     public void executeExistButton(GameObject existObj)
     {
-        Debug.Log("Exist");
         existObj.SetActive(false);
 
     }
@@ -83,7 +79,6 @@ public class ButtonDetection : MonoBehaviour
     {
         pageCounter++;
         PageCount.SetActive(true);
-        Debug.Log("page Counter" + pageCounter + " instructionpages " + mainMenuManager.InstructionPages.Length);
         if (pageCounter > 0)
         {
             LastPageButton.SetActive(true);
@@ -94,7 +89,6 @@ public class ButtonDetection : MonoBehaviour
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
         PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter+1)+"/24";
-        Debug.Log("Next");
 
     }
     public void executeLastPageButton()
@@ -112,12 +106,10 @@ public class ButtonDetection : MonoBehaviour
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
         PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/24";
-        Debug.Log("Last");
 
     }
     public void quitProgram()
     {
-        Debug.Log("clicked");
         Application.Quit();
     }
 

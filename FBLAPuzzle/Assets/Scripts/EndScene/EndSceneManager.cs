@@ -48,7 +48,6 @@ public class EndSceneManager : MonoBehaviour
         }
         creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 13.62f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
         if (Mathf.Abs(creditText.transform.position.y- 13.62f *convertingScale)<=0.05) {
-            Debug.Log("pos <=0.05");
             if (!opacityChangeActivated) {
                 opacityChangeActivated = true;
                 StartCoroutine(decreaseOpacity());
@@ -60,14 +59,12 @@ public class EndSceneManager : MonoBehaviour
         if (accountManager.activeAccount.endSceneActivated)
         {
             skipButton.SetActive(true);
-            Debug.Log("button true");
         }
         else
         {
             accountManager.activeAccount.endSceneActivated = true;
             accountManager.activeAccount.saveAccount();
             skipButton.SetActive(false);
-            Debug.Log("button false");
         }
     }
     public float findConvertingScale()
@@ -90,7 +87,7 @@ public class EndSceneManager : MonoBehaviour
             creditText.transform.localPosition = creditText.transform.localPosition + new Vector3(0f, 1.7f, 0f);
                 //new Vector3(creditText.transform.localPosition.x, creditText.transform.localPosition.y + 0.5f, 0);
             Debug.Log(creditText.transform.position[1] + " scale "+ convertingScale+" height "+stageDimensions[1]);
-            StartCoroutine(startScroll());
+            //StartCoroutine(startScroll());
         }
         else {
             StartCoroutine(decreaseOpacity());
