@@ -90,7 +90,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(false);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter)+"/15";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter)+"/23";
         Debug.Log("Next");
 
     }
@@ -107,7 +107,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(true);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/15";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/23";
         Debug.Log("Last");
 
     }
