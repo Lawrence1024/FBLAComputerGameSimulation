@@ -63,6 +63,7 @@ public class FeatureButtonDetection : MonoBehaviour
     {
         GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
         gameCanvas.GetComponent<PiecePosition>().whenHitBackButton();
+ ////////////////       StartCoroutine(stopSpammingButton());
     }
     public void resetBoard()
     {
@@ -156,5 +157,11 @@ public class FeatureButtonDetection : MonoBehaviour
         {
             levelManager.PauseMenuCanvas.SetActive(false);
         }
+    }
+
+    IEnumerator stopSpammingButton() {
+        buttons[2].GetComponent<Button>().interactable = false;
+        yield return new WaitForSeconds(0.3f);
+        buttons[2].GetComponent<Button>().interactable = true;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChooseAvatar : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class ChooseAvatar : MonoBehaviour
     }
 
     public void chooseColor(GameObject userColor) {
+        Scene currentScene = SceneManager.GetActiveScene();
         if (accManager.activeAccount == null)
         {
             Debug.Log("Error in ChooseAvatar Script chooseColor function: accManager.activeAccount==null");
@@ -57,7 +59,10 @@ public class ChooseAvatar : MonoBehaviour
             accManager.activeAccount.avatarColor = new Vector4(1, 1, 1, 1);
         }
         accManager.activeAccount.saveAccount();
-        accManager.activeAccount = null;
+        if (currentScene.name=="MainMenu") {
+            accManager.activeAccount = null;
+        }
+        
     }
     public void inactiveAvatarBoard(GameObject avatarBoard) {
         avatarBoard.SetActive(false);

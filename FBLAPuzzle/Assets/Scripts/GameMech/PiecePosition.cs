@@ -85,6 +85,9 @@ public class PiecePosition : MonoBehaviour
         if (playerScript.movementHistory.Count != 0)
         {
             GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points = GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points - 20;
+            if (GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points<=0) {
+                GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points = 0;
+            }
             string lastSuccessMove = playerScript.movementHistory[playerScript.movementHistory.Count - 1].ToString();
             playerScript.reversePlayerMove(lastSuccessMove);
             foreach (GameObject box in boxes)
@@ -106,7 +109,10 @@ public class PiecePosition : MonoBehaviour
         if (playerScript.movementHistory.Count != 0)
         {
             GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points = GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points - 50;
-
+            if (GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points <= 0)
+            {
+                GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points = 0;
+            }
             playerScript.resetPlayer();
             foreach (GameObject box in boxes)
             {
