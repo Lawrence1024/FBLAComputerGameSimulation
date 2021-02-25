@@ -62,7 +62,7 @@ public class LevelManager : MonoBehaviour
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
         if (PauseMenuCanvas.activeSelf) {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
-            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
             pointsCalculation.gamePause = true;
         }
         else{

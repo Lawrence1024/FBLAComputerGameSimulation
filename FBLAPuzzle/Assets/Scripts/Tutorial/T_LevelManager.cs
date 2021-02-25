@@ -67,7 +67,7 @@ public class T_LevelManager : MonoBehaviour
         if (PauseMenuCanvas.activeSelf)
         {
             GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = false;
-            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
             pointsCalculation.stopTime = true;
         }
         else

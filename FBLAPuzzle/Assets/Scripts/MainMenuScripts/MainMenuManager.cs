@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -51,12 +52,16 @@ public class MainMenuManager : MonoBehaviour
             activatePauseMenu();
         }
     }
+
+    //active pause menu
     void activatePauseMenu()
     {
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+        Debug.Log("Volume " + GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue);
+        PauseMenuCanvas.transform.GetChild(2).gameObject.GetComponent<Slider>().value=GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue;
         if (PauseMenuCanvas.activeSelf)
         {
-            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
         }
         else
         {

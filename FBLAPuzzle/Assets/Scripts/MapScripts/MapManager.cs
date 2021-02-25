@@ -69,7 +69,7 @@ public class MapManager : MonoBehaviour
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
         if (PauseMenuCanvas.activeSelf)
         {
-            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
+            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
         }
         else {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
