@@ -61,8 +61,12 @@ public class FeatureButtonDetection : MonoBehaviour
     }
     public void lastStep()
     {
-        GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
-        gameCanvas.GetComponent<PiecePosition>().whenHitBackButton();
+        if (GameObject.Find("Player").GetComponent<PlayerController>().movePointCloseEnough)
+        {
+            GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
+            gameCanvas.GetComponent<PiecePosition>().whenHitBackButton();
+        }
+        
  ////////////////       StartCoroutine(stopSpammingButton());
     }
     public void resetBoard()

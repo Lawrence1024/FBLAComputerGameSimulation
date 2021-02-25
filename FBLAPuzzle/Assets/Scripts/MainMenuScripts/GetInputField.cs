@@ -39,6 +39,7 @@ public class GetInputField : MonoBehaviour
             accountExist = accManager.checkIfAccountExist(inputText);
             if (accountExist)
             {
+                Debug.Log(accManager.activeAccount.password);
                 //get the account info and continue
                 //mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
 
@@ -54,7 +55,7 @@ public class GetInputField : MonoBehaviour
 
     public void GetPassword(GameObject userPassword) {
         //Debug.Log("GetPassword");
-        string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().text;
+        string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().value;
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
         if (string.IsNullOrEmpty(password) || password.Length == 1)
         {
@@ -68,6 +69,7 @@ public class GetInputField : MonoBehaviour
         else
         {
             password = password.Substring(0, password.Length - 1);
+            Debug.Log(password);
             bool successLogin = accManager.confirmLogin(password);
             if (!successLogin)
             {
@@ -181,7 +183,6 @@ public class GetInputField : MonoBehaviour
         tempObj.SetActive(true);
         for (int i = 0; i < mainMenuManager.buttonsToDisableOnWarning.Length; i++)
         {
-            Debug.Log("Might Cause Main Menu Bug");
             mainMenuManager.buttonsToDisableOnWarning[i].GetComponent<Button>().interactable = false;
         }
         yield return new WaitForSeconds(1f);

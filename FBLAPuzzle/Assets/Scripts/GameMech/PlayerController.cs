@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private float localScale = 107.8949f;
     public float convertingScale;
+
+    public bool movePointCloseEnough;
     
 
     // Start is called before the first frame update
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
         startingVectPosition = transform.position;
         piecePosition = gameCanvas.GetComponent<PiecePosition>();
         convertingScale = findConvertingScale();
+        movePointCloseEnough = true;
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
         bool state2 = (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f);
         bool state3 = canMove;
         bool state4 = newTime - oldTime > 0.35f;
+        movePointCloseEnough = state1;
         if (state1 && state2 && state3 && state4)
         {
             //if (thereIsObstacle())
