@@ -7,7 +7,7 @@ using TMPro;
 
 public class T_LevelManager : MonoBehaviour
 {
-    T_PointsCalculation pointsCalculation;
+    public T_PointsCalculation pointsCalculation;
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
     public GameObject LevelCanvas;
@@ -119,7 +119,7 @@ public class T_LevelManager : MonoBehaviour
             {
                 activeAccount.tutorialFeatures[1] --;
             }
-            if (TFController.currentStep > 40)
+            if (TFController.currentStep > 55)
             {
                 if (activeAccount.tutorialFeatures[1] == 2)
                 {

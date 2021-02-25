@@ -29,9 +29,12 @@ public class T_FeatureController : MonoBehaviour
         else if (TFController.currentStep == 23)
         {
             backBut.GetComponent<Button>().interactable = false;
-            resetBut.GetComponent<Button>().interactable = true;
         }
         else if (TFController.currentStep == 24)
+        {
+            resetBut.GetComponent<Button>().interactable = true;
+        }
+        else if (TFController.currentStep == 25)
         {
             resetBut.GetComponent<Button>().interactable = false;
         }

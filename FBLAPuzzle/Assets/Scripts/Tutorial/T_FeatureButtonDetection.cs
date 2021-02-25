@@ -44,7 +44,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
 
     public void selectAnswer(GameObject answerButton)
     {
-        if(TFController.currentStep>=18 && TFController.currentStep <= 20 || TFController.currentStep==29)
+        if(TFController.currentStep>=18 && TFController.currentStep <= 20 || TFController.currentStep==44)
         {
             TFController.nextStep();
         }
@@ -79,7 +79,7 @@ public class T_FeatureButtonDetection : MonoBehaviour
     public void resetBoard()
     {
         gameCanvas.GetComponent<T_PiecePosition>().whenHitResetButton();
-        if (TFController.currentStep == 23)
+        if (TFController.currentStep == 24)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playMovementSound();
             TFController.nextStep();

@@ -37,7 +37,7 @@ public class T_TutorialFlowController : MonoBehaviour
         convertingScale=playerController.findConvertingScale();
         if (activeAccount.tutorialProgress[0])
         {
-            currentStep = 41;
+            currentStep = 56;
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the boxes into question areas and complete questions!";
             if (activeAccount.tutorialFeatures[1] == 2)
             {
@@ -62,12 +62,12 @@ public class T_TutorialFlowController : MonoBehaviour
             keysControl.darkAllKeys();
             keysControl.glow("up");
         }
-        else if (currentStep == 18 || currentStep == 19 || currentStep == 20 || currentStep == 22 || currentStep == 29 || currentStep == 30 || (currentStep >= 31 && currentStep <= 37))
+        else if (currentStep == 18 || currentStep == 19 || currentStep == 20 || currentStep == 22 || currentStep == 23 || currentStep == 25 || currentStep == 44 || currentStep == 45 || (currentStep >= 46 && currentStep <= 52))
         {
             moveArrowLeftRight();
             arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime* convertingScale);
         }
-        else if (currentStep == 23)
+        else if (currentStep == 24)
         {
             moveArrowUpDown();
             arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime* convertingScale);
@@ -258,42 +258,138 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 23)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's reset the board with the other button.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You will lose 20 points every time you undo a move.";
+            arrowMovingToggle = true;
+            arrow.transform.position = new Vector3(-3.422f * convertingScale, 4.414f * convertingScale, 0f);
+            arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            arrowGoToPosition = arrow.transform.position;
+            arrow.SetActive(true);
+            okButton.SetActive(true);
+        }
+        else if (currentStep == 24)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's reset the positions of the pieces with the other button.";
             arrow.transform.position = new Vector3(-8.212f* convertingScale, 1.744f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
             arrowMovingToggle = true;
             arrowGoToPosition = arrow.transform.position;
             keysControl.darkAllKeys();
-        }
-        else if (currentStep == 24)
-        {
-            arrow.SetActive(false);
-            arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the brown box into the question area";
-            keysControl.darkAllKeys();
-            keysControl.glow("up");
+            arrow.SetActive(true);
+            okButton.SetActive(false);
         }
         else if (currentStep == 25)
         {
-            keysControl.darkAllKeys();
-            keysControl.glow("left");
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You will lose 50 points every time you reset the positions of the pieces.";
+            arrowMovingToggle = true;
+            arrow.transform.position = new Vector3(-3.422f * convertingScale, 4.414f * convertingScale, 0f);
+            arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            arrowGoToPosition = arrow.transform.position;
+            arrow.SetActive(true);
+            okButton.SetActive(true);
         }
         else if (currentStep == 26)
         {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's try walking into one of the X areas.";
             keysControl.darkAllKeys();
-            keysControl.glow("up");
+            keysControl.glow("left");
+            arrow.SetActive(false);
+            okButton.SetActive(false);
         }
         else if (currentStep == 27)
         {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's try walking into one of the X areas.";
             keysControl.darkAllKeys();
-            keysControl.glow("left");
+            keysControl.glow("up");
         }
         else if (currentStep == 28)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "As you can see, players can walk through the X areas.";
+            keysControl.darkAllKeys();
+            okButton.SetActive(true);
+        }
+        else if (currentStep == 29)
+        {
+            arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's move the green box back into the question area.";
+            okButton.SetActive(false);
+            keysControl.darkAllKeys();
+            keysControl.glow("up");
+        }
+        else if (currentStep == 30)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("right");
+        }
+        else if (currentStep == 31)
         {
             keysControl.darkAllKeys();
             keysControl.glow("down");
         }
-        else if (currentStep == 29)
+        else if (currentStep == 32)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("up");
+        }
+        else if (currentStep == 33)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("right");
+        }
+        else if (currentStep == 34)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("down");
+        }
+        else if (currentStep == 35)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("left");
+        }
+        else if (currentStep == 36)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("up");
+        }
+        else if (currentStep == 37)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("left");
+        }
+        else if (currentStep == 38)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("down");
+        }
+        else if (currentStep == 39)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "When the box is green, questions won't show up again.";
+            okButton.SetActive(true);
+            keysControl.darkAllKeys();
+        }
+        else if (currentStep == 40)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the green box out of the X.";
+            okButton.SetActive(false);
+            keysControl.darkAllKeys();
+            keysControl.glow("down");
+        }
+        else if (currentStep == 41)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's push the other box onto an X.";
+            keysControl.darkAllKeys();
+            keysControl.glow("right");
+        }
+        else if (currentStep == 42)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("up");
+        }
+        else if (currentStep == 43)
+        {
+            keysControl.darkAllKeys();
+            keysControl.glow("left");
+        }
+        else if (currentStep == 44)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Click on a wrong answer";
             arrow.transform.position = new Vector3(-2.901f* convertingScale, -4.199f* convertingScale, 0f);
@@ -302,7 +398,7 @@ public class T_TutorialFlowController : MonoBehaviour
             arrow.SetActive(true);
             keysControl.darkAllKeys();
         }
-        else if (currentStep == 30)
+        else if (currentStep == 45)
         {
             okButton.SetActive(true);
             arrow.transform.position = new Vector3(4.087f* convertingScale, 4.477f* convertingScale, 0f);
@@ -312,7 +408,7 @@ public class T_TutorialFlowController : MonoBehaviour
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Oops, you just lost your last heart. The level will reset.";
             levelManager.QuestionCanvas.SetActive(false);
         }
-        else if (currentStep == 31)
+        else if (currentStep == 46)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "When you lose all three hearts, you will lose a star";
             arrow.transform.position = new Vector3(4.087f* convertingScale, 3.401f* convertingScale, 0f);
@@ -321,19 +417,19 @@ public class T_TutorialFlowController : MonoBehaviour
             arrowMovingToggle = true;
             levelManager.displayStars("Stars");
         }
-        else if (currentStep == 32)
+        else if (currentStep == 47)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "The first trial of each level will determine the stars you get";
         }
-        else if (currentStep == 33)
+        else if (currentStep == 48)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You can't replay a level to get more stars (since you would already know the answers)";
         }
-        else if (currentStep == 34)
+        else if (currentStep == 49)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Stars will be used to determine your ranking on the leader board (on home page)";
         }
-        else if (currentStep == 35)
+        else if (currentStep == 50)
         {
             arrow.transform.position = new Vector3(-3.422f* convertingScale, 4.414f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -341,29 +437,43 @@ public class T_TutorialFlowController : MonoBehaviour
             arrowMovingToggle = true;
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "In a normal game, complete the puzzles faster to get higher points.";
         }
-        else if (currentStep == 36)
+        else if (currentStep == 51)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Points will determine your ranking in that level.";
         }
-        else if (currentStep == 37)
+        else if (currentStep == 52)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You can replay to score higher (It really all comes down to who can move their boxes faster)";
         }
-        else if (currentStep == 38)
+        else if (currentStep == 53)
         {
             arrow.SetActive(false);
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's see if you can complete the tutorial leve on your own.";
         }
-        else if (currentStep == 39)
+        else if (currentStep == 54)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Good Luck And Enjoy!";
         }
-        else if (currentStep == 40)
+        else if (currentStep == 55)
         {
             okButton.SetActive(false);
             activeAccount.tutorialFeatures[0] = 3;
             activeAccount.tutorialFeatures[1] = 3;
             StartCoroutine(levelManager.loadWarning("Level restart in", 3));
+        }
+        else if (currentStep == 57)
+        {
+            okButton.SetActive(true);
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Notice that you only win if the boxes are green AND all of them are on an X area.";
+            levelManager.pointsCalculation.levelComplete = true;
+        }
+        else if (currentStep == 58)
+        {
+            okButton.SetActive(false);
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great job on completing the tutorial.";
+            activeAccount.tutorialFeatures[0] = 3;
+            activeAccount.tutorialFeatures[1] = 3;
+            StartCoroutine(levelManager.buffer());
         }
     }
     public void moveArrow(Vector3 pos, float rot)

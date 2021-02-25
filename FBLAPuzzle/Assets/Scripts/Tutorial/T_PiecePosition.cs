@@ -83,6 +83,12 @@ public class T_PiecePosition : MonoBehaviour
     }
     public void whenHitBackButton()
     {
+        GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>().points = GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>().points - 20;
+        if (GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points <= 0)
+        {
+            GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points = 0;
+        }
+
         if (playerScript.movementHistory.Count != 0)
         {
             string lastSuccessMove = playerScript.movementHistory[playerScript.movementHistory.Count - 1].ToString();
@@ -103,6 +109,12 @@ public class T_PiecePosition : MonoBehaviour
     }
     public void whenHitResetButton()
     {
+        GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>().points = GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>().points - 50;
+        if (GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points <= 0)
+        {
+            GameObject.Find("PointsValue").GetComponent<PointsCalculation>().points = 0;
+        }
+
         if (playerScript.movementHistory.Count != 0)
         {
             playerScript.resetPlayer();

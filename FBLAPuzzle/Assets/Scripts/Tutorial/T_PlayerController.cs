@@ -59,7 +59,7 @@ public class T_PlayerController : MonoBehaviour
         bool state2 = (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f || Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f);
         bool state3 = canMove;
         bool state4 = newTime - oldTime > 0.35f;
-        bool state5 = TFlowController.currentStep > 40;
+        bool state5 = TFlowController.currentStep > 55;
         if (state1 && state2 && state3 && state4 && !state5)
         {
             doTFlowController();
@@ -85,7 +85,7 @@ public class T_PlayerController : MonoBehaviour
         if(step>=0 && step <= 17)
         {
             streakMovement0To17();
-        }else if (step >= 21 && step <= 31)
+        }else if (step >= 21 && step <= 46)
         {
             streakMovement21To31();
         }
@@ -181,26 +181,71 @@ public class T_PlayerController : MonoBehaviour
         {
             moveFlow("down", 4);
         }
-        else if (TFlowController.currentStep == 24 && up)
+        else if (TFlowController.currentStep == 26 && left)
         {
-            moveFlow("up", 2);
+            moveFlow("left", 2);
         }
-        else if (TFlowController.currentStep == 25 && left)
-        {
-            moveFlow("left", 1);
-        }
-        else if (TFlowController.currentStep == 26 && up)
+        else if (TFlowController.currentStep == 27 && up)
         {
             moveFlow("up", 1);
         }
-        else if (TFlowController.currentStep == 27 && left)
+        else if (TFlowController.currentStep == 29 && up)
         {
-            moveFlow("left", 1);
+            moveFlow("up", 2);
         }
-        else if (TFlowController.currentStep == 28 && down)
+        else if (TFlowController.currentStep == 30 && right)
+        {
+            moveFlow("right", 1);
+        }
+        else if (TFlowController.currentStep == 31 && down)
         {
             moveFlow("down", 1);
         }
+        else if (TFlowController.currentStep == 32 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 33 && right)
+        {
+            moveFlow("right", 3);
+        }
+        else if (TFlowController.currentStep == 34 && down)
+        {
+            moveFlow("down", 1);
+        }
+        else if (TFlowController.currentStep == 35 && left)
+        {
+            moveFlow("left", 3);
+        }
+        else if (TFlowController.currentStep == 36 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 37 && left)
+        {
+            moveFlow("left", 1);
+        }
+        else if (TFlowController.currentStep == 38 && down)
+        {
+            moveFlow("down", 1);
+        }
+        else if (TFlowController.currentStep == 40 && down)
+        {
+            moveFlow("down", 2);
+        }
+        else if (TFlowController.currentStep == 41 && right)
+        {
+            moveFlow("right", 2);
+        }
+        else if (TFlowController.currentStep == 42 && up)
+        {
+            moveFlow("up", 1);
+        }
+        else if (TFlowController.currentStep == 43 && left)
+        {
+            moveFlow("left", 1);
+        }
+
     }
     void moveFlow(string direct, int times)
     {

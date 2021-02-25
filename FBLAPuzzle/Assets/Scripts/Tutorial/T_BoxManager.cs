@@ -30,8 +30,8 @@ public class T_BoxManager : MonoBehaviour
         if (win)
         {
             Debug.Log("The Level Is Passed!");
-
-            StartCoroutine(levelManager.buffer());
+            levelManager.TFController.nextStep();
+            //StartCoroutine(levelManager.buffer());
         }
     }
 
