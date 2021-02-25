@@ -18,6 +18,7 @@ public class EndSceneManager : MonoBehaviour
     private ParticleSystem ps2;
     private Vector4 secondBackgroundColor;
     private float convertingScale;
+    private bool opacityChangeActivated=false;
     Vector3 stageDimensions;
     //public GameObject 
 
@@ -48,6 +49,14 @@ public class EndSceneManager : MonoBehaviour
             Application.Quit();
         }
         creditText.transform.position = Vector3.MoveTowards(creditText.transform.position, new Vector3(0f, 13.62f*convertingScale, 0f), 5f* convertingScale * Time.deltaTime);
+        if (Mathf.Abs(creditText.transform.position.y-13.62f*convertingScale)<=0.05) {
+            Debug.Log("pos <=0.05");
+            if (!opacityChangeActivated) {
+                opacityChangeActivated = true;
+                StartCoroutine(decreaseOpacity());
+
+            }
+        }
     }
     public void setButton() {
         if (accountManager.activeAccount.endSceneActivated)
@@ -95,7 +104,7 @@ public class EndSceneManager : MonoBehaviour
         
         //        secondBackgroundColor = secondBackground.GetComponent<Image>().color;
         if (secondBackgroundColor[3]<1) {
-            secondBackground.GetComponent<Image>().color = new Vector4(secondBackgroundColor[0], secondBackgroundColor[1], secondBackgroundColor[2], secondBackgroundColor[3] + 0.05f);
+            secondBackground.GetComponent<Image>().color = new Vector4(secondBackgroundColor[0], secondBackgroundColor[1], secondBackgroundColor[2], secondBackgroundColor[3] + 0.1f);
             secondBackgroundColor = secondBackground.GetComponent<Image>().color;
             StartCoroutine(decreaseOpacity());
         }
@@ -107,7 +116,7 @@ public class EndSceneManager : MonoBehaviour
     }
     IEnumerator displayTheEnd() {
         TheEndText.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
     }
     public void skip() {
