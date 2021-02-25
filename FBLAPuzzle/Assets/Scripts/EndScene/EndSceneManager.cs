@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class EndSceneManager : MonoBehaviour
 {
     AccountsManager accountManager;
-    // Start is called before the first frame update
     public GameObject creditText;
     public GameObject partyPopper1;
     public GameObject partyPopper2;
@@ -20,7 +19,6 @@ public class EndSceneManager : MonoBehaviour
     private float convertingScale;
     private bool opacityChangeActivated=false;
     Vector3 stageDimensions;
-    //public GameObject 
 
     void Start()
     {
