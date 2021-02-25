@@ -128,13 +128,13 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 4)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great! Now try run through the wall to the right";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great! Now try to run through the wall to the right";
             keysControl.darkAllKeys();
             keysControl.glow("right");
         }
         else if (currentStep == 5)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You can't pass walls, try run through bottom border";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You can't pass walls, try to run through bottom border";
             keysControl.darkAllKeys();
             keysControl.glow("down");
         }
@@ -162,13 +162,13 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 10)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great! Let's try push two box at the same time";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great! Let's try to push two boxes at the same time";
             keysControl.darkAllKeys();
             keysControl.glow("left");
         }
         else if (currentStep == 11)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Oops, you can't push two box at the same time. Go around the box";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Oops, you can't push two boxes at the same time. Go around the box";
             keysControl.darkAllKeys();
             keysControl.glow("down");
         }
@@ -179,13 +179,13 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 13)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's push the box to upper boarder";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's push the box to upper border";
             keysControl.darkAllKeys();
             keysControl.glow("up");
         }
         else if (currentStep == 14)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Try push the box out of boarder";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Try push the box out of border";
             keysControl.darkAllKeys();
             keysControl.glow("up");
         }
@@ -216,7 +216,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 19)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You will loose a heart everytime you answer wrong.\nClick on another wrong answer.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You will lose a heart every time you answer wrong.\nClick on another wrong answer.";
             answerButtons[0].GetComponent<Button>().interactable = false;
             answerButtons[1].GetComponent<Button>().interactable = false;
             answerButtons[2].GetComponent<Button>().interactable = true;
@@ -249,7 +249,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 22)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Oops, we went to far. Click the button to resume last move.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Oops, we went to far. Click the button to undo last move.";
             arrowMovingToggle = true;
             arrow.transform.position = new Vector3(-5.059f* convertingScale, 3.318f* convertingScale, 0f);
             arrowGoToPosition = arrow.transform.position;
@@ -314,7 +314,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 31)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "When you loose all three hearts, you will loose a star";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "When you lose all three hearts, you will lose a star";
             arrow.transform.position = new Vector3(4.087f* convertingScale, 3.401f* convertingScale, 0f);
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
             arrowGoToPosition = arrow.transform.position;
@@ -323,7 +323,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 32)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "The first tiral of each level will determine the stars you get";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "The first trial of each level will determine the stars you get";
         }
         else if (currentStep == 33)
         {
@@ -339,7 +339,7 @@ public class T_TutorialFlowController : MonoBehaviour
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             arrowGoToPosition = arrow.transform.position;
             arrowMovingToggle = true;
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "In a normal game, pass levels faster to get higher points.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "In a normal game, complete the puzzles faster to get higher points.";
         }
         else if (currentStep == 36)
         {
