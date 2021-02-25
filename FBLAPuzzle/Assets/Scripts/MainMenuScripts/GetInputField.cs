@@ -55,7 +55,7 @@ public class GetInputField : MonoBehaviour
 
     public void GetPassword(GameObject userPassword) {
         //Debug.Log("GetPassword");
-        string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().value;
+        string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().text;
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
         if (string.IsNullOrEmpty(password) || password.Length == 1)
         {
@@ -205,5 +205,6 @@ public class GetInputField : MonoBehaviour
             
             mainMenuManager.buttonsToDisableOnWarning[i].GetComponent<Button>().interactable = true;
         }
+        warningNote = "";
     }
 }

@@ -38,7 +38,7 @@ public class T_TutorialFlowController : MonoBehaviour
         if (activeAccount.tutorialProgress[0])
         {
             currentStep = 56;
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the boxes into question areas and complete questions!";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the boxes into the X areas and complete questions!";
             if (activeAccount.tutorialFeatures[1] == 2)
             {
                 instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You would only gain a maximum of 2 star in a real game, try to complete level without answering wrong!";
@@ -202,7 +202,7 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 17)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the box into question area";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the box into an X area";
             keysControl.darkAllKeys();
             keysControl.glow("left");
         }
@@ -310,7 +310,7 @@ public class T_TutorialFlowController : MonoBehaviour
         else if (currentStep == 29)
         {
             arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's move the green box back into the question area.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's move the green box back into the X area.";
             okButton.SetActive(false);
             keysControl.darkAllKeys();
             keysControl.glow("up");
