@@ -37,7 +37,7 @@ public class T_TutorialFlowController : MonoBehaviour
         convertingScale=playerController.findConvertingScale();
         if (activeAccount.tutorialProgress[0])
         {
-            currentStep = 56;
+            currentStep = 58;
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Push the boxes into the X areas and complete questions!";
             if (activeAccount.tutorialFeatures[1] == 2)
             {
@@ -62,7 +62,7 @@ public class T_TutorialFlowController : MonoBehaviour
             keysControl.darkAllKeys();
             keysControl.glow("up");
         }
-        else if (currentStep == 18 || currentStep == 19 || currentStep == 20 || currentStep == 22 || currentStep == 23 || currentStep == 25 || currentStep == 44 || currentStep == 45 || (currentStep >= 46 && currentStep <= 52))
+        else if (currentStep == 18 || currentStep == 19 || currentStep == 20 || currentStep == 22 || currentStep == 23 || currentStep == 25 || currentStep == 44 || currentStep == 45 || (currentStep >= 46 && currentStep <= 54))
         {
             moveArrowLeftRight();
             arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime* convertingScale);
@@ -447,31 +447,47 @@ public class T_TutorialFlowController : MonoBehaviour
         }
         else if (currentStep == 53)
         {
-            arrow.SetActive(false);
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's see if you can complete the tutorial leve on your own.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Your points will not get less than 0";
+            okButton.SetActive(true);
         }
         else if (currentStep == 54)
         {
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Good Luck And Enjoy!";
+            arrow.transform.position = new Vector3(-4.822f * convertingScale, 2.314f * convertingScale, 0f);
+            arrow.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            arrowGoToPosition = arrow.transform.position;
+            arrowMovingToggle = true;
+            levelManager.GetComponent<T_FeatureButtonDetection>().tipButton.SetActive(true);
+            levelManager.pointsCalculation.points = 0;
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "In a normal game, a tip button will show up after your points reach 0. If you are stuck, click on it to view a video about how to solve the level.";
         }
         else if (currentStep == 55)
+        {
+            levelManager.GetComponent<T_FeatureButtonDetection>().tipButton.SetActive(false);
+            arrow.SetActive(false);
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's see if you can complete the tutorial leve on your own.";
+        }
+        else if (currentStep == 56)
+        {
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Good Luck And Enjoy!";
+        }
+        else if (currentStep == 57)
         {
             okButton.SetActive(false);
             activeAccount.tutorialFeatures[0] = 3;
             activeAccount.tutorialFeatures[1] = 3;
             StartCoroutine(levelManager.loadWarning("Level restart in", 3));
         }
-        else if (currentStep == 57)
+        else if (currentStep == 59)
         {
             okButton.SetActive(true);
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Notice that you only win if the boxes are green AND all of them are on an X area.";
             levelManager.pointsCalculation.levelComplete = true;
         }
-        else if (currentStep == 58)
+        else if (currentStep == 60)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "You can activate the pause menu and quit at anytime by pressing the ESC key.";
         }
-        else if (currentStep == 59)
+        else if (currentStep == 61)
         {
             okButton.SetActive(false);
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Great job on completing the tutorial.";

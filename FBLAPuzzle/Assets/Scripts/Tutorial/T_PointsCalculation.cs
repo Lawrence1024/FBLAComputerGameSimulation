@@ -47,7 +47,7 @@ public class T_PointsCalculation : MonoBehaviour
         {
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
             Debug.Log("Time=0, tip button is disabled in tutorial");
-            //featureButtonDetection.tipButton.SetActive(true);
+            featureButtonDetection.tipButton.SetActive(true);
         }
 
     }

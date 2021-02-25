@@ -31,7 +31,8 @@ public class T_FeatureButtonDetection : MonoBehaviour
     public void activateTips()
     {
         Debug.Log("Tips");
-        levelManager.TipsCanvas.SetActive(true);
+        StartCoroutine(levelManager.displayMessage("There is no solution video for the tutorial",1.5f));
+        //levelManager.TipsCanvas.SetActive(true);
     }
 
     public void executeExistButton(GameObject existObj)
