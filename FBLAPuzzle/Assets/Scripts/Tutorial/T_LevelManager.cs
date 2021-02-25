@@ -171,9 +171,9 @@ public class T_LevelManager : MonoBehaviour
             Debug.Log("button uninteractable");
         }
         QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
+        QuestionCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().interactable = false;
+        QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = false;
         pointsCalculation.enabled = false;
     }
     public void displayScoreboard()
