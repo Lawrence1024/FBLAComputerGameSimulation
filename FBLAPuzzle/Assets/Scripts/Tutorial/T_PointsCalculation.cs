@@ -46,7 +46,7 @@ public class T_PointsCalculation : MonoBehaviour
      */
     IEnumerator pointsCountDown()
     {
-        if (!stopTime)
+        if (!stopTime&& points > 0)
         {
             points--;
         }

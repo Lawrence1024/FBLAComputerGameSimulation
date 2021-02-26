@@ -42,7 +42,7 @@ public class PointsCalculation : MonoBehaviour
      */
     public IEnumerator pointsCountDown()
     {
-        if (!levelComplete && !gamePause) {
+        if (!levelComplete && !gamePause&& points > 0) {
             points--;
         }
         yield return new WaitForSeconds(.12f);
