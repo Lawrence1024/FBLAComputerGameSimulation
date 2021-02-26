@@ -19,7 +19,7 @@ How to Run the Game
    1. Download the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/zw8uktvhfj8xoo7/GoldCost%20Test.zip?dl=0 "Click here"))
       * You do not have to have a Dropbox account to download
       * Click the download button on the top right corner
-   2. Right click on the folder and unzip the folder (click on extract all)
+   2. Right click on the folder and unzip it (click on extract all)
    3. Open the unzipped folder and double click on FBLAPuzzle.exe
       * This game is a standalone game 
 
