@@ -56,7 +56,7 @@ public class ButtonDetection : MonoBehaviour
         LastPageButton.SetActive(false);
         mainMenuManager.changeInstrucitonPage(pageCounter);
         NextPageButton.SetActive(true);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/24";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/"+ mainMenuManager.InstructionPages.Length;
 
         PageCount.SetActive(true);
         
@@ -88,7 +88,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(false);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter+1)+"/24";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter+1)+ "/" +mainMenuManager.InstructionPages.Length;
 
     }
     public void executeLastPageButton()
@@ -105,7 +105,7 @@ public class ButtonDetection : MonoBehaviour
             NextPageButton.SetActive(true);
         }
         mainMenuManager.changeInstrucitonPage(pageCounter);
-        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/24";
+        PageCount.GetComponent<TMPro.TextMeshProUGUI>().text = (pageCounter + 1) + "/" + mainMenuManager.InstructionPages.Length;
 
     }
     public void quitProgram()
