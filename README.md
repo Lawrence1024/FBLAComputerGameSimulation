@@ -1,6 +1,6 @@
 # FBLAComputerGameSimulation
 
-This is a puzzle game created using Unity Engine and linked to GitHub. To access the graphical README file, please [click here](https://github.com/karen93shieh/FBLAComputerGameSimulation). To read the programming scripts, navigate [here](https://github.com/karen93shieh/FBLAComputerGameSimulation/tree/main/FBLAPuzzle/Assets/Scripts). Scripts are under different folders related to their functions.
+This is a puzzle game created using Unity Engine and linked to GitHub. To access the graphical README file, please [click here](https://github.com/karen93shieh/FBLAComputerGameSimulation). To read the programming scripts, navigate [here](https://github.com/karen93shieh/FBLAComputerGameSimulation/tree/main/FBLAPuzzle/Assets/Scripts). Scripts are under different folders related to their functionalities.
 
 Table of Contents
 =================
