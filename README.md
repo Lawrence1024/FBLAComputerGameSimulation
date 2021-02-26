@@ -16,7 +16,7 @@ Table of Contents
 
 How to Run the Game
 ============
-   1. Dowload the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/zw8uktvhfj8xoo7/GoldCost%20Test.zip?dl=0 "Click here"))
+   1. Download the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/zw8uktvhfj8xoo7/GoldCost%20Test.zip?dl=0 "Click here"))
       * You do not have to have a Dropbox account to download
       * Click the download button on the top right corner
    2. Right click on the folder and unzip the folder (click on extract all)
