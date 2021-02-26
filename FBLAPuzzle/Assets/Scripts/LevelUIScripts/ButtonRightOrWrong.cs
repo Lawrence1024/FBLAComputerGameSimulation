@@ -2,7 +2,7 @@
 //FileType: C# File
 //Author: Karen Shieh, Lawrence Shieh
 //Date: Feb. 26, 2021
-//Description: A place holder to see if the anwer button is correct or incorrect. 
+//Description: RightOrWrong is a place holder to see if the anwer button is correct or incorrect. 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
