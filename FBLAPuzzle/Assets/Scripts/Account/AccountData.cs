@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿//FileName: AccountData.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: AccountData will contain information of Account in a format that could be converted into a binary file.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class AccountData
 {
+    //fields
     public string userName;
     public string password;
     public int totalStar;
@@ -15,7 +21,7 @@ public class AccountData
     public List<bool> tutorialProgress;
     public List<int> tutorialFeatures;
     public bool endSceneActivated;
-
+    //constructor
     public AccountData(Account account)
     {
         userName = account.userName;
