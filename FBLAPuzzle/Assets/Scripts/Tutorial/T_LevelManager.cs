@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿//FileName: T_LevelManager.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: T_LevelManager contains the canvas (a type of game element in Unity) in the level, so when the canvas are 
+//             deactivated, other scripts can still have access to the canvas and set them to activate. (You cannot use 
+//             GameObject.Find("NameOfObject") to find a gameobject that is deactivated). (For tutorial).
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,18 +27,18 @@ public class T_LevelManager : MonoBehaviour
     public GameObject currentQuestionBox;
     public GameObject playerSprite;
     public GameObject[] TipPages;
-
     public List<int> level;
     private Account activeAccount;
     private GameObject[] buttons;
-
     public GameObject TCanvas;
     public T_TutorialFlowController TFController;
-
     public bool garunteeCorrect = false;
-
-
-    // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Set all the unnecessary canvas to deactive. Change the player (moving box) color to the user's chosen avatar color. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: The canvas are deactivated. Color of player changes. 
+     */
     void Start()
     {
         LoadingCanvas.SetActive(false);
@@ -47,8 +55,12 @@ public class T_LevelManager : MonoBehaviour
         displayStars("Stars");
         playerSprite.GetComponent<SpriteRenderer>().color = activeAccount.avatarColor;
     }
-
-    // Update is called once per frame
+    /* Method Name: Update()
+     * Summary: Detect if the escape key is pressed. If so, it calls activatePauseMenu().
+     * @param N/A
+     * @return N/A
+     * Special Effects: Call activatePauseMenu().
+     */
     void Update()
     {
         if (Input.GetKeyDown("escape"))
@@ -56,6 +68,14 @@ public class T_LevelManager : MonoBehaviour
             activatePauseMenu();
         }
     }
+    /* Method Name: activatePauseMenu()
+     * Summary: Activate (if the pause menu is not activated) or deactivate (if the pause men is activated) the pause menu. Also 4
+     *          update the volume slider's value to the current volume. If the pasue menu is not activated it calls changeVolume(float val)
+     *          in the game object "AudioPlayer" to set the volume to 1. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: Activate/deactivate the pause menu and change volume of background music.
+     */
     void activatePauseMenu()
     {
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
@@ -74,6 +94,12 @@ public class T_LevelManager : MonoBehaviour
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
         }
     }
+    /* Method Name: changeInstrucitonPage(int pageNum)
+     * Summary: Change the instruction page according to the input pageNum.
+     * @param pageNum: the number of the page to be activated.
+     * @return N/A
+     * Special Effects: Activate/deactivate the instruction pages. 
+     */
     public void changeInstrucitonPage(int pageNum)
     {
         for (int i = 0; i < TipPages.Length; i++)
@@ -82,6 +108,13 @@ public class T_LevelManager : MonoBehaviour
         }
         TipPages[pageNum].SetActive(true);
     }
+    /* Method Name: minusHeart()
+     * Summary: A heart is minus from the canvas. If all 3 hearts are lost, a star is minused. It calls loadWarning() to reload the 
+     *          scene if all three hearts are lost. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: Change of heart count / star count on the canvas.
+     */
     public void minusHeart()
     {
         if (GameObject.Find("Hearts").transform.childCount > 1)
@@ -131,10 +164,7 @@ public class T_LevelManager : MonoBehaviour
             }
             activeAccount.tutorialFeatures[0] = 3;
             reloadScenePrep();
-
-
         }
-
     }
     //scene reload preperation
     public void reloadScenePrep()
@@ -149,16 +179,34 @@ public class T_LevelManager : MonoBehaviour
         QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = false;
         pointsCalculation.enabled = false;
     }
+    /* Method Name: displayScoreboard()
+     * Summary: Display the scoreboard and set levelComplete in teh pointsCalculation script to true.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Scoreboard displayed. 
+     */
     public void displayScoreboard()
     {
         pointsCalculation.levelComplete = true;
         ScoreboardCanvas.SetActive(true);
     }
+    /* Method Name: displayScore()
+     * Summary: Display the score you get in this level. Calls displayStars(string holdername).
+     * @param N/A
+     * @return N/A
+     * Special Effects: Score displayed. 
+     */
     public void displayScore()
     {
         GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text;
         displayStars("FinalStarDisplay");
     }
+    /* Method Name: displayStars()
+     * Summary: Display the number of stars reamining onto the scoreboard. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: Stars displayed. 
+     */
     public void displayStars(string holderName)
     {
         int starsRemain = activeAccount.tutorialFeatures[1];
@@ -170,13 +218,18 @@ public class T_LevelManager : MonoBehaviour
             GameObject.Find(holderName).transform.GetChild(i).gameObject.SetActive(true);
         }
     }
+    /* Method Name: buffer()
+     * Summary: Get the points value and star values of this level and store it in the active account's information. Display the rank
+     *          on the score board
+     * @param N/A
+     * @return N/A
+     * Special Effects: Stars displayed and rank displayed. 
+     */
     public IEnumerator buffer()
     {
         pointsCalculation.levelComplete = true;
         activeAccount.tutorialProgress[1] = true;
         activeAccount.tutorialProgress[0] = false;
-
-
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].GetComponent<Button>().interactable = false;
@@ -191,17 +244,22 @@ public class T_LevelManager : MonoBehaviour
         yield return new WaitForSeconds(sec);
         WarningCanvas.SetActive(false);
     }
+    /* Method Name: loadWarning(string warningMessage, float sec)
+     * Summary: Display the warningMessage with the second given.
+     * @param warningMessage: The information that is displayed. 
+     * @param sec: The time to display. 
+     * @return N/A
+     * Special Effects: Warning message displayed
+     */
     public IEnumerator loadWarning(string warningMessage, float sec)
     {
         if (sec < 1 && sec != 0)
         {
             WarningCanvas.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = warningMessage;
-
         }
         else
         {
             WarningCanvas.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = warningMessage + " " + sec;
-
         }
         WarningCanvas.SetActive(true);
         if (sec < 1 && sec != 0)
@@ -215,34 +273,27 @@ public class T_LevelManager : MonoBehaviour
             sec--;
             if (sec <= 0 && warningMessage == "Level restart in")
             {
-
                 WarningCanvas.SetActive(false);
                 reloadScene();
             } else if (sec <= 0) {
                 LoadingCanvas.SetActive(true);
                 GameObject.Find("LoadingBackground").GetComponent<Loading>().runLoading("MainMenu");
-
             }
             else if (sec > 0)
             {
                 StartCoroutine(loadWarning(warningMessage, sec));
             }
-
         }
-
     }
+    /* Method Name: reloadScene()
+     * Summary: Get the current scene and reload.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Reload current scene.
+     */
     void reloadScene()
     {
         Scene scene = SceneManager.GetActiveScene();
-        /*for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].GetComponent<Button>().interactable = true;
-        }
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        pointsCalculation.enabled = false;*/
         SceneManager.LoadScene(scene.name);
     }
     public void doGarunteeCorrect()
