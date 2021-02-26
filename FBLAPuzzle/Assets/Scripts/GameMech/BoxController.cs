@@ -32,6 +32,12 @@ public class BoxController : MonoBehaviour
     private float localScale = 107.8949f;
     public float convertingScale;
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Find an initialize the starting position,find the converting scale, and basically initialize different values.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
@@ -43,11 +49,16 @@ public class BoxController : MonoBehaviour
         convertingScale = player.GetComponent<PlayerController>().findConvertingScale();
     }
     // Update is called once per frame
+    /* Method Name: Update()
+    * Summary: For each frame of the game, have the sprite of the box move towards the box's move point.
+    * @param N/A
+    * @return N/A
+    * Special Effects: Box is constantly moved to its move point.
+    */
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         ifOverLap();
-
     }
     /* Method Name: ifOverLap()
      * Summary: Check if the player's position overlap with the box.

@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
     public float convertingScale;
     public bool movePointCloseEnough;
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Initialize the different variables.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     void Start()
     {
         movePoint.position = transform.position;
@@ -39,8 +45,14 @@ public class PlayerController : MonoBehaviour
         convertingScale = findConvertingScale();
         movePointCloseEnough = true;
     }
-
     // Update is called once per frame
+    /* Method Name: Update()
+    * Summary: The player will move towards the move point every frame. If certain conditions are met, the move point can move once more.
+    *          As a result, the player will be able to move on the board.
+    * @param N/A
+    * @return N/A
+    * Special Effects: Everytime the move point is moved, the method calls on other methods to recored the position and movement history.
+    */
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);

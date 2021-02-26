@@ -14,6 +14,12 @@ public class AccountsManager : MonoBehaviour
     private int activeIndex=-1;
     public Account activeAccount=null;
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Go through the secured folder and look for any prexisting user data. Only fetch files that is the type ".account".
+     * @param N/A
+     * @return N/A
+     * Special Effects: A list of Account is created.
+     */
     void Start()
     {
         accounts = new List<Account>();

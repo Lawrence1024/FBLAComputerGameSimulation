@@ -20,6 +20,12 @@ public class Account
     public List<int> tutorialFeatures;
     public bool endSceneActivated;
     //constructor
+    /* Constructor Name: Account(string name)
+     * Summary: Given a username, create an empty account with default values.
+     * @param name: The registered username.
+     * @return the instance of the new created account.
+     * Special Effects: N/A
+     */
     public Account(string name)
     {
         userName = name;

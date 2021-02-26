@@ -15,6 +15,12 @@ public class PiecePosition : MonoBehaviour
     private BoxManager boxManagerScript;
     private List<GameObject> boxes;
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Initialize the value of different variables
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();

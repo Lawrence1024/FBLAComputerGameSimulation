@@ -39,7 +39,7 @@ public class EndSceneManager : MonoBehaviour
         TheEndText.SetActive(false);
         setButton();
     }
-    /* Method Name: update()
+    /* Method Name: Update()
     * Summary: If user pressed the esc key the program quits. The credit text moves up until hitting a upper boundery. When it hits the
     *          boundery decreaseOpacity() is called.
     * @param N/A

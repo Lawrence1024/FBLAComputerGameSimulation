@@ -12,6 +12,12 @@ public class BoxManager : MonoBehaviour
     public List<GameObject> allBoxes;
     LevelManager levelManager;
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Initialize the value of levelManager.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();

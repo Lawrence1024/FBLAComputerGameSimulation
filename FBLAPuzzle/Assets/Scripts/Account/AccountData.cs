@@ -22,6 +22,12 @@ public class AccountData
     public List<int> tutorialFeatures;
     public bool endSceneActivated;
     //constructor
+    /* Constructor Name: AccountData(Account account)
+     * Summary: Given an account, use the information and construct an AccountData class.
+     * @param account: An instance of account to be converted into AccountData.
+     * @return the instance of the new created AccountData.
+     * Special Effects: Unity vectors are breaken down into a list in order to be stored in binary files.
+     */
     public AccountData(Account account)
     {
         userName = account.userName;
