@@ -1,4 +1,4 @@
-﻿//FileName: MapManager.cs
+﻿//FileName: MainMenuManager.cs
 //FileType: C# File
 //Author: Karen Shieh, Lawrence Shieh
 //Date: Feb. 26, 2021
@@ -34,7 +34,6 @@ public class MainMenuManager : MonoBehaviour
         InstructionCanvas.SetActive(false);
         LeaderBoardCanvas.SetActive(false);
         MainPageCanvas.SetActive(true);
-        //get the new account box and warnings and deactivate 
         UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(3).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(false);
