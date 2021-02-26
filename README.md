@@ -62,6 +62,7 @@ Cool Features
    6. Leaderboard and scoreboard
       * The leaderboard on the main menu ranks the players according to their star count
       * The scoreboard on each level ranks the players according to their points in that level
+      * If you placed in the first 5 on the leaderboard or scoreboard, celebratory fireworks will display.
    7. Lives, stars, and points in a level
       * In each level, users starts with 3 hearts and 3 stars
       * A question related to FBLA is prompted each time an unanswered box is pushed into the X area
