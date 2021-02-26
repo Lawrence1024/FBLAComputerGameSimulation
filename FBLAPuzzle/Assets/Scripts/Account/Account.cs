@@ -45,7 +45,8 @@ public class Account
         SaveSystem.saveAccount(this);
     }
     /* Method Name: loadAccount()
-     * Summary: Call on the loadAccount method in the SaveSystem object and retreieve an instance of AccountData from previously saved files. Fill this instance of Account with the retrieved data.
+     * Summary: Call on the loadAccount method in the SaveSystem object and retreieve an instance of AccountData from previously saved files.
+     *          Fill this instance of Account with the retrieved data.
      * @param N/A
      * @return N/A
      * Special Effects: This instance of Account have the updated player information fetched from previously saved files.
