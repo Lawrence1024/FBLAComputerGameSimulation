@@ -48,6 +48,7 @@ public class T_QuestionBoxCondition : MonoBehaviour
     /* Method Name: checkBoxQuestionStatus()
      * Summary: If the question box wasn't answered yet, it set the question canvas to active. It calls functions in questionInteraction
      *          scripts to get the string value to display on the buttons and question panel, and check which button is correct or not.
+     *          Some buttons are disablee during toturial.
      * @param N/A
      * @return N/A
      * Special Effects: Assign different texts to buttons and question panel.
@@ -76,7 +77,6 @@ public class T_QuestionBoxCondition : MonoBehaviour
             checkCorrectAnswer(questionInteraction.AnswerButton2, 2);
             checkCorrectAnswer(questionInteraction.AnswerButton3, 3);
             checkCorrectAnswer(questionInteraction.AnswerButton4, 4);
-            //Deactive some answers in tutorial mode
             if (TFController.currentStep == 18)
             {
                 questionInteraction.AnswerButton1.GetComponent<Button>().interactable = false;
