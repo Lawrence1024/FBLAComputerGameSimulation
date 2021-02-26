@@ -15,7 +15,6 @@ public class QuestionInteraction : MonoBehaviour
     public GameObject AnswerButton2;
     public GameObject AnswerButton3;
     public GameObject AnswerButton4;
-    
     struct QuestionLine {
         public string question;
         public string answer1;
@@ -33,63 +32,108 @@ public class QuestionInteraction : MonoBehaviour
             correctAnswer = ca;
         }
     }
-    
-
+    /* Method Name: Start()
+     * Summary: Get the game object "LevelManager"'s script "LevelManager" (a script attatched to the LevelManager). Call 
+     *          LoadQuestion(string filename) to load the csv (question bank) file.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Create a new lines list.
+     */
     void Start()
     {
         levelManager= GameObject.Find("LevelManager").GetComponent<LevelManager>();
         lines = new List<QuestionLine>();
         LoadQuestion("QuestionData.csv");
     }
-
     // Update is called once per frame
     void Update()
     {
 
     }
-
+    /* Method Name: loadQuestion()
+     * Summary: Call LoadQuestion(string filename) to load the csv (question bank) file.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Create a new lines list.
+     */
     public void loadQuestion() {
         lines = new List<QuestionLine>();
         LoadQuestion("QuestionData.csv");
         
-        
     }
+    /* Method Name: getQuestion(int num)
+     * Summary: Get the line number question.
+     * @param int num: The line number of the question.
+     * @return lines[num].question: A string that contains the question.
+     * Special Effects: N/A
+     */
     public string getQuestion(int num) {
         return lines[num].question;
     }
+    /* Method Name: getAnswer1(int num)
+      * Summary: Get the line number aswer.
+      * @param int num: The line number of the answer.
+      * @return lines[num].answer1: A string that contains the answer.
+      * Special Effects: N/A
+      */
     public string getAnswer1(int num)
     {
         return lines[num].answer1;
     }
+    /* Method Name: getAnswer2(int num)
+      * Summary: Get the line number aswer.
+      * @param int num: The line number of the answer.
+      * @return lines[num].answer1: A string that contains the answer.
+      * Special Effects: N/A
+      */
     public string getAnswer2(int num)
     {
         return lines[num].answer2;
     }
+    /* Method Name: getAnswer3(int num)
+      * Summary: Get the line number aswer.
+      * @param int num: The line number of the answer.
+      * @return lines[num].answer1: A string that contains the answer.
+      * Special Effects: N/A
+      */
     public string getAnswer3(int num)
     {
         return lines[num].answer3;
     }
+    /* Method Name: getAnswer4(int num)
+      * Summary: Get the line number aswer.
+      * @param int num: The line number of the answer.
+      * @return lines[num].answer1: A string that contains the answer.
+      * Special Effects: N/A
+      */
     public string getAnswer4(int num)
     {
         return lines[num].answer4;
     }
+    /* Method Name: getCorrectAnswer(int num)
+      * Summary: Get the correct answer of the question.
+      * @param int num: The line number of the answer.
+      * @return lines[num].answer1: A string that contains the answer number.
+      * Special Effects: N/A
+      */
     public string getCorrectAnswer(int num)
     {
         return lines[num].correctAnswer;
     }
-
+    /* Method Name: LoadQuestion(string filename)
+      * Summary: Load the question and answer and put them into a list. 
+      * @param filename: The name of the csv file.
+      * @return N/A
+      * Special Effects: List added
+      */
     void LoadQuestion(string filename)
     {
         TextAsset questionData = Resources.Load<TextAsset>("QuestionData");
         string contents = questionData.text;
-
-        // convert string to stream
         byte[] byteArray = Encoding.UTF8.GetBytes(contents);
         MemoryStream stream = new MemoryStream(byteArray);
-        // convert stream to string
         string line;
         StreamReader r = new StreamReader(stream);
-
         using (r)
         {
             do
@@ -97,7 +141,6 @@ public class QuestionInteraction : MonoBehaviour
                 line = r.ReadLine();
                 if (line != null)
                 {
-
                     string[] line_values = SplitCsvLine(line);
                     QuestionLine line_entry = new QuestionLine(line_values[0].ToString(), line_values[1].ToString(), line_values[2].ToString(), line_values[3].ToString(), line_values[4].ToString(), line_values[5].ToString());
                     lines.Add(line_entry);
@@ -106,9 +149,13 @@ public class QuestionInteraction : MonoBehaviour
             while (line != null);
             r.Close();
         }
-
     }
-
+    /* Method Name: SplitCsvLine(string line)
+      * Summary: Split up the csv file. 
+      * @param line: The line to split the csv file.
+      * @return values: The cell value in the csv file. 
+      * Special Effects: N/A
+      */
     string[] SplitCsvLine(string line)
     {
         string pattern = @"
