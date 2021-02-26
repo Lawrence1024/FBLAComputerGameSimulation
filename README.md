@@ -76,6 +76,15 @@ Additional Notes
    1. All drawing (except the FBLA logo) in the game are drawn by our team members using PhotoShop
    2. All levels (positions of boxes, obstacle and player) are designed by our team members.
    3. Background music and sound effects came from YouTube
+      * No Copyright | Calm Jazz Music | Background Chill | Cafe Music | Relaxing Work & Study
+        * https://www.youtube.com/watch?v=DVEUcbPkb-c
+      * Funny Sound Effects for Youtube Videos - NON-COPYRIGHTED SOUND EFFECTS!
+        * https://www.youtube.com/watch?v=7DwPU-Vs2qI
+      * Freesound Music
+        * https://www.youtube.com/watch?v=jxXxkAFxuBE&list=RDQMhXfrKN6EdLY&index=1
+
+
+
 
 
 
