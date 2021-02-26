@@ -1,6 +1,6 @@
 # FBLAComputerGameSimulation
 
-This is a puzzle game created using Unity Engine and linked to GitHub. To access the graphical README file, please [click here](https://github.com/karen93shieh/FBLAComputerGameSimulation). To read the programming scripts, nevigate to [here](https://github.com/karen93shieh/FBLAComputerGameSimulation/tree/main/FBLAPuzzle/Assets/Scripts). Scripts are under different folder related to their functions.
+This is a puzzle game created using Unity Engine and linked to GitHub. To access the graphical README file, please [click here](https://github.com/karen93shieh/FBLAComputerGameSimulation). To read the programming scripts, navigate [here](https://github.com/karen93shieh/FBLAComputerGameSimulation/tree/main/FBLAPuzzle/Assets/Scripts). Scripts are under different folders related to their functions.
 
 Table of Contents
 =================
@@ -19,7 +19,7 @@ How to Run the Game
    1. Download the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/zw8uktvhfj8xoo7/GoldCost%20Test.zip?dl=0 "Click here"))
       * You do not have to have a Dropbox account to download
       * Click the download button on the top right corner
-   2. Right click on the folder and unzip it (click on extract all)
+   2. Right-click on the folder and unzip it (click on extract all)
    3. Open the unzipped folder and double click on FBLAPuzzle.exe
       * This game is a standalone game 
 
@@ -31,7 +31,7 @@ Account and Game
 ============
    1. Once open the FBLAPuzzle.exe file you will see a login page
       * If you do not have an account in the game, click on the create new account link on the bottom right corner 
-   2. Once you have an account, login to play the game
+   2. Once you have an account, log in to play the game
    3. Your information (username, password, records on levels, etc.) will be saved on your computer
    4. This multi-player function enables users to have fun and compete with each other
 
@@ -50,7 +50,7 @@ Cool Features
       * Users can choose their avatar when they create an account
       * Users can change their avatar by clicking the avatar on the map page 
    2. ESC key
-      * User can change the volume of the game from there and nevigate to different scenes
+      * User can change the volume of the game from there and navigate to different scenes
    3. Instructions and Tutorial
       * Graphical instructions are provided 
       * A tutorial is provided at the end of the instructions
@@ -64,22 +64,22 @@ Cool Features
       * The scoreboard on each level ranks the players according to their points in that level
       * If you placed in the first 5 on the leaderboard or scoreboard, celebratory fireworks will display
    7. Lives, stars, and points in a level
-      * In each level, users starts with 3 hearts and 3 stars
+      * In each level, users start with 3 hearts and 3 stars
       * A question related to FBLA is prompted each time an unanswered box is pushed into the X area
-        * Incorrect answer will cause the user to lose a heart
-        * When all three hearts are lost, you lose a star and the level restarts
-      * The first trial of each level will determine how many stars you get in that level
+        * Each incorrect answer will cause the user to lose a heart
+        * When all three hearts are lost, you lose a star, and the level restarts
+      * The first trial of each level will determine how many stars you get for that level
       * Points will be determined by how fast you complete the level 
-        * Users can replay the level to earn a higher points
+        * Users can replay the level to score higher points
    8. Question Database
       * The question bank is a .csv file
-      * Question bank could be easily replaced with a different .csv files to display different questions
+      * Question bank could be easily replaced with different .csv files to display different questions
       * Notice that the question bank can only be replaced before the game is built
 
 Additional Notes
 ============
    1. All drawing (except the FBLA logo) in the game are drawn by our team members using PhotoShop
-   2. All levels (positions of boxes, obstacle and player) are designed by our team members
+   2. All levels (positions of boxes, obstacle, and player) are designed by our team members
    3. Background music and sound effects came from YouTube
       * No Copyright | Calm Jazz Music | Background Chill | Cafe Music | Relaxing Work & Study
         * https://www.youtube.com/watch?v=DVEUcbPkb-c
