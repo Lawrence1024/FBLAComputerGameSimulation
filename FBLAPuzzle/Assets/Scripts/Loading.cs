@@ -28,15 +28,12 @@ public class Loading : MonoBehaviour
 //disable all audioplayer
         GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
         loadingCounter = Random.Range(2, 5);
-        Debug.Log("load scene "+sceneName);
         StartCoroutine(Buffer(sceneName));        
     }
 
     IEnumerator Buffer(string sceneName)
     {
         loadingCounter--;
-        //Debug.Log("Loading text: " + loadingText);
-        //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.5f);
         if (loadingText.Length < 10)
         {

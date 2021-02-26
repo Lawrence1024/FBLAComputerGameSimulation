@@ -38,7 +38,6 @@ public class BoxController : MonoBehaviour
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         //movePoint.parent = null;
         movePoint.position = transform.position;
-        //Debug.Log("MovePoint POsition: " + movePoint.position);
         positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
@@ -51,7 +50,6 @@ public class BoxController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         ifOverLap();
-        //Debug.Log(Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, localScale, 0f), 0.2f * localScale, whatStopsMovement));
 
     }
     bool ifOverLap()
@@ -72,13 +70,6 @@ public class BoxController : MonoBehaviour
         bool boxLeft = Physics2D.OverlapCircle(movePoint.position + new Vector3(-convertingScale, 0f, 0f), 0.2f* convertingScale, boxLayer);
         bool obstRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(convertingScale, 0f, 0f), 0.2f* convertingScale, whatStopsMovement);
         bool boxRight = Physics2D.OverlapCircle(movePoint.position + new Vector3(convertingScale, 0f, 0f), 0.2f* convertingScale, boxLayer);
-        //Debug.Log("movePoint.localPosition: " + movePoint.localPosition);
-        //Debug.Log("After Local Position: " + (movePoint.localPosition + new Vector3(0f, localScale, 0f)));
-        //Debug.Log("movePoint.position: " + movePoint.position);
-        //Debug.Log("After Position: " + (movePoint.position + new Vector3(0f, 1f, 0f)));
-        //Debug.Log("local: "+ Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, localScale, 0f), 0.2f * localScale, whatStopsMovement));
-        //Debug.Log("global: " + Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, 1f, 0f), 0.2f, whatStopsMovement));
-        Debug.Log(convertingScale);
         if (lastPlayerMovement=="up"&& (obstUp || boxUp))
         {
             return true;
@@ -146,13 +137,6 @@ public class BoxController : MonoBehaviour
             xPos += 1;
         }
         GetComponentInParent<BoxManager>().checkIfWin();
-    //    positionHistory[positionHistory.Count-1]=(new List<int> { xPos, yPos });
-        foreach(List<int> temp in positionHistory)
-        {
-     //       Debug.Log("[" + temp[0] + "," + temp[1] + "]");
-        }
-     //   movementHistory[movementHistory.Count-1]=lastPlayerMovement;
-        //Debug.Log("[" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
     }
     bool thereIsBox()
     {
@@ -201,8 +185,6 @@ public class BoxController : MonoBehaviour
         bool condition2 = xPos == player.GetComponent<PlayerController>().xPos && yPos == player.GetComponent<PlayerController>().yPos;
         if (condition2)
         {
-            //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
-            //Debug.Log("Player Position: [" + player.GetComponent<PlayerController>().xPos + "," + player.GetComponent<PlayerController>().yPos + "]");
             player.GetComponent<PlayerController>().rebound();
         }
     }
@@ -216,7 +198,6 @@ public class BoxController : MonoBehaviour
     }
     public void answerQuestion()
     {
-        Debug.Log("You Entered A Question Box");
         gameObject.GetComponent<QuestionBoxCondition>().checkBoxQuestionStatus();
         levelManager.currentQuestionBox = gameObject;
         StartCoroutine(buffer());
@@ -225,7 +206,6 @@ public class BoxController : MonoBehaviour
     }
     public void reverseBoxMove()
     {
-    //    printArray(movementHistory, "Box Movement History: ");
         string lastMove = movementHistory[movementHistory.Count - 1].ToString();
         if (lastMove == "up")
         {
@@ -266,8 +246,6 @@ public class BoxController : MonoBehaviour
     public void answerCorrect()
     {
         answered = true;
-        //Debug.Log("test");
-        //Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
         gameObject.GetComponent<SpriteRenderer>().sprite = correctSprite;
         gameObject.GetComponentInParent<BoxManager>().checkIfWin();
     }
@@ -279,7 +257,6 @@ public class BoxController : MonoBehaviour
             msg += temp[i] + ",";
         }
         msg += "]";
-        Debug.Log(msg);
     }
     void printArray(ArrayList temp, string s)
     {
@@ -289,7 +266,6 @@ public class BoxController : MonoBehaviour
             msg += temp[i] + ",";
         }
         msg += "]";
-        Debug.Log(s + msg);
     }
     void printArray(List<List<int>> temp, string s)
     {
@@ -299,7 +275,6 @@ public class BoxController : MonoBehaviour
             msg += ("[" + myL[0] + "," + myL[1] + "],");
         }
         msg += "]";
-        Debug.Log(msg);
     }
 
     IEnumerator buffer()

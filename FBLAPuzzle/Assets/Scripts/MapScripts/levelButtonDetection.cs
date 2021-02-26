@@ -20,8 +20,6 @@ public class levelButtonDetection : MonoBehaviour
         
     }
     public void changeLevel(GameObject levelButton) {
-        Debug.Log(levelButton.name);
-        //SceneManager.LoadScene(levelButton.name);
         mapManager.LoadingCanvas.SetActive(true);
         mapManager.LoadingCanvas.transform.GetChild(0).gameObject.GetComponent<Loading>().runLoading(levelButton.name);
     }
@@ -29,7 +27,6 @@ public class levelButtonDetection : MonoBehaviour
 
     public void quitProgram()
     {
-        Debug.Log("clicked");
         Application.Quit();
     }
     

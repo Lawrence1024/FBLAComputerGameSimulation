@@ -37,7 +37,6 @@ public class PointsCalculation : MonoBehaviour
         {
             StartCoroutine(pointsCountDown());
         }else if (points<=0) {
-            Debug.Log("Points calc");
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
             featureButtonDetection.tipButton.SetActive(true);
         }

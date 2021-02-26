@@ -19,7 +19,6 @@ public class FeatureButtonDetection : MonoBehaviour
         loading = levelManager.LoadingCanvas.transform.GetChild(0).GetComponent<Loading>();
         tipButton.SetActive(false);
         showScoreBoardData = levelManager.CelebratoryMessagesCanvas;
-        //buttons = GameObject.FindGameObjectsWithTag("Buttons");
     }
 
     // Update is called once per frame
@@ -28,13 +27,11 @@ public class FeatureButtonDetection : MonoBehaviour
         
     }
     public void activateTips() {
-        Debug.Log("Tips"); 
         levelManager.TipsCanvas.SetActive(true);
     }
     
     public void executeExistButton(GameObject existObj)
     {
-        Debug.Log("Exist");
         existObj.SetActive(false);
 
     }
@@ -44,19 +41,14 @@ public class FeatureButtonDetection : MonoBehaviour
         if (answerButton.GetComponent<ButtonRightOrWrong>().RightOrWrong == "wrong")
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playWrongSound();
-            Debug.Log("selectAnswer wrong");
             answerButton.GetComponent<Image>().color = new Vector4(1,0.39f,0.39f,1);
             answerButton.GetComponent<Button>().interactable = false;
             levelManager.minusHeart();
         }
         else {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().playCorrectSound();
-            Debug.Log("selectAnswer right");
-            //levelManager.hideCanvas(levelManager.QuestionCanvas);
             answerButton.GetComponent<Image>().color = new Vector4(0.39f, 1, 0.39f, 1);
             StartCoroutine(buffer());
-
-            //Time.timeScale = 1;
         }
     }
     public void lastStep()
@@ -67,7 +59,6 @@ public class FeatureButtonDetection : MonoBehaviour
             gameCanvas.GetComponent<PiecePosition>().whenHitBackButton();
         }
         
- ////////////////       StartCoroutine(stopSpammingButton());
     }
     public void resetBoard()
     {
@@ -76,21 +67,17 @@ public class FeatureButtonDetection : MonoBehaviour
     }
 
     public void goMap() {
-        //Time.timeScale = 1;
         showScoreBoardData.SetActive(false);
         levelManager.LoadingCanvas.SetActive(true);
         loading.runLoading("Map");
     }
     public void nextScene(string nextSceneName) {
-        //Time.timeScale = 1;
         showScoreBoardData.SetActive(false);
         levelManager.LoadingCanvas.SetActive(true);
         loading.runLoading(nextSceneName);
-        
     }
 
     IEnumerator buffer() {
-        Debug.Log("Buffer");
         levelManager.QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
         levelManager.QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
         levelManager.QuestionCanvas.transform.GetChild(3).gameObject.GetComponent<Button>().interactable = false;
@@ -103,17 +90,14 @@ public class FeatureButtonDetection : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].GetComponent<Button>().interactable = true;
-            Debug.Log("button interactable");
         }
         gameObject.GetComponent<LevelManager>().currentQuestionBox.GetComponent<BoxController>().answerCorrect();
         levelManager.QuestionCanvas.SetActive(false);
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
     }
-    //Also add this part --------------------------------------------------------
 
     public void quitProgram()
     {
-        Debug.Log("clicked");
         Application.Quit();
     }
 
@@ -124,7 +108,6 @@ public class FeatureButtonDetection : MonoBehaviour
         GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
         GameObject.Find("PointsValue").GetComponent<PointsCalculation>().gamePause = false;
         StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
-        //Time.timeScale = 1;
     }
     public void switchToMainMenu()
     {
@@ -163,9 +146,4 @@ public class FeatureButtonDetection : MonoBehaviour
         }
     }
 
-    IEnumerator stopSpammingButton() {
-        buttons[2].GetComponent<Button>().interactable = false;
-        yield return new WaitForSeconds(0.3f);
-        buttons[2].GetComponent<Button>().interactable = true;
-    }
 }

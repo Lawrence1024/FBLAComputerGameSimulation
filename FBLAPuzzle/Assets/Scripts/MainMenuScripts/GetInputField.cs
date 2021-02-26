@@ -26,7 +26,6 @@ public class GetInputField : MonoBehaviour
     //GetName() is for Login (assume account already created)
     public void GetName(GameObject userName)
     {
-        //Debug.Log("GetName");
         string inputText = userName.GetComponent<TMPro.TextMeshProUGUI>().text;
         if (string.IsNullOrEmpty(inputText) || inputText.Length==1)
         {
@@ -54,7 +53,6 @@ public class GetInputField : MonoBehaviour
     }
 
     public void GetPassword(GameObject userPassword) {
-        //Debug.Log("GetPassword");
         string password = userPassword.GetComponent<TMPro.TextMeshProUGUI>().text;
         //Get the username bank and check if there's duplicate, if account already exist, accountTaken=true;
         if (string.IsNullOrEmpty(password) || password.Length == 1)
@@ -69,11 +67,9 @@ public class GetInputField : MonoBehaviour
         else
         {
             password = password.Substring(0, password.Length - 1);
-            Debug.Log(password);
             bool successLogin = accManager.confirmLogin(password);
             if (!successLogin)
             {
-                //Debug.Log("asdfasdfasdf");
                 if (warningNote != "Account does not exist! Please create a new account")
                 {
                     warningNote = "Incorrect Password!";
@@ -83,19 +79,13 @@ public class GetInputField : MonoBehaviour
             else
             {
                 warningNote = "Sign in Successfully!";
-                foreach(int i in accManager.activeAccount.potentialStarsList)
-                {
-                    Debug.Log("Potential Stars: "+i);
-                }
                 StartCoroutine(displayWarning());
-                //mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
             }
         }
     }
 
     public void createAccount(GameObject UserNameInputBoxCanvas)
     {
-        Debug.Log("Click on hyperlink");
         UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(true);
         UserNameInputBoxCanvas.transform.GetChild(0).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(1).gameObject.SetActive(false);
@@ -117,7 +107,6 @@ public class GetInputField : MonoBehaviour
             name = name.Substring(0, name.Length - 1);
             if (name.Length > 17)
             {
-                Debug.Log("Username Too Long");
                 warningNote = "Username too long!";
                 StartCoroutine(displayWarning());
             }
@@ -151,11 +140,8 @@ public class GetInputField : MonoBehaviour
             pwd = pwd.Substring(0, pwd.Length - 1);
             if (!(accManager.activeAccount == null))
             {
-                //Debug.Log("Active Account: " + accManager.activeAccount.userName);
-                //Debug.Log("This is here: " + pwd);
                 accManager.activeAccount.password = pwd;
                 accManager.activeAccount.saveAccount();
-                Debug.Log("The current Active Account: " + accManager.activeAccount.password);
                 //accManager.activeAccount = null;
             }
         }
@@ -172,11 +158,7 @@ public class GetInputField : MonoBehaviour
         TMP_InputField mainInputField;
         mainInputField=inputField.GetComponent<TMP_InputField>();
         mainInputField.text = "";
-        Debug.Log("text: "+ mainInputField.text);
-        //inputField.Select();
-        //inputField.text="";
     }
-    //displayWarning() takes in the display warning image (child number)
     IEnumerator displayWarning() {
         GameObject tempObj = mainMenuManager.UserNameInputBoxCanvas.transform.GetChild(3).gameObject;
         tempObj.transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= warningNote;
@@ -191,7 +173,6 @@ public class GetInputField : MonoBehaviour
         if (warningNote == "Sign in Successfully!")
         {
             mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
-            //mainMenuManager.LogOutButton.SetActive(true);
             GameObject.Find("MainPageCanvas").transform.GetChild(6).gameObject.SetActive(true);
         }
         else if (warningNote == "Account Created Successfully!") {

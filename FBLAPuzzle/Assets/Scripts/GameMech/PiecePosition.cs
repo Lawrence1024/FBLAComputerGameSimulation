@@ -32,7 +32,6 @@ public class PiecePosition : MonoBehaviour
             msg += temp[i] + ",";
         }
         msg += "]";
-        Debug.Log(s + msg);
     }
     void printArray(List<List<int>> temp, string s)
     {
@@ -47,7 +46,6 @@ public class PiecePosition : MonoBehaviour
             msg += "], ";
         }
         msg += "]";
-        Debug.Log(s + msg);
     }
     public void addBoxPos(string lastMove)
     {
@@ -99,7 +97,6 @@ public class PiecePosition : MonoBehaviour
         }
         else
         {
-            Debug.Log("You are at the first step!");
             StartCoroutine(levelManager.loadWarning("You are at the first step!", 0.8f));
 
         }
@@ -123,7 +120,6 @@ public class PiecePosition : MonoBehaviour
         }
         else
         {
-            Debug.Log("You are at the first step!");
             StartCoroutine(levelManager.loadWarning("You are at the first step!", 0.8f));
         }
     }

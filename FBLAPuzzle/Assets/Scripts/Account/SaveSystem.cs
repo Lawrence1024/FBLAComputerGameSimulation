@@ -12,7 +12,6 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         AccountData data = new AccountData(account);
-        Debug.Log("saveAccount data of " + data.userName + ": " + data.password);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -32,7 +31,6 @@ public static class SaveSystem
         }
         else
         {
-            Debug.Log("There is no data account found in " + path);
             return null;
         }
     }

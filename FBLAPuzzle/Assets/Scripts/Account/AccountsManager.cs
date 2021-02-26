@@ -14,12 +14,9 @@ public class AccountsManager : MonoBehaviour
         accounts = new List<Account>();
         foreach (string file in System.IO.Directory.GetFiles(Application.persistentDataPath))
         {
-            //Debug.Log(file.Substring(file.Length - 8, 8));
             if(file.Length>8 && file.Substring(file.Length - 8, 8)==".account")
             {
                 int nameLength = file.Length - Application.persistentDataPath.Length - 9;
-                //Debug.Log(Application.persistentDataPath.Length);
-                //Debug.Log(file.Substring(Application.persistentDataPath.Length+1, nameLength));
                 string accountName = file.Substring(Application.persistentDataPath.Length + 1, nameLength);
                 Account tempAcc = new Account(accountName);
                 accounts.Add(tempAcc);
@@ -63,21 +60,18 @@ public class AccountsManager : MonoBehaviour
         bool find = checkIfAccountExist(name);
         if (!find)
         {
-            Debug.Log("You don't have an account yet");
+           
         }
         else
         {
             account = accounts[activeIndex];
             activeAccount = accounts[activeIndex];
-            Debug.Log("Attempt Sign in as: \""+ activeAccount.userName+"\"");
         }
     }
     public bool confirmLogin(string password)
     {
-        //Debug.Log("The Account To Confirm Login: "+activeAccount.password);
         if (activeAccount!=null && activeAccount.password.Equals(password))
         {
-            Debug.Log("Confirmed Login as: \"" + activeAccount.userName + "\"");
             return true;
         }
         activeAccount = null;

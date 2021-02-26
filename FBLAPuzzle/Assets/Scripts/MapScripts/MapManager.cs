@@ -32,8 +32,6 @@ public class MapManager : MonoBehaviour
         allLevelButtons[0].GetComponent<Button>().interactable = true;
         for (int i = 1; i < activeAccount.starsList.Count; i++)
         {
-            //Debug.Log(i+" "+activeAccount.starsList[i]);
-            Debug.Log(i+" "+activeAccount.starsList[i-1]);
             if (activeAccount.starsList[i-1]>=0) {
                 allLevelButtons[i].GetComponent<Button>().interactable = true;
             }

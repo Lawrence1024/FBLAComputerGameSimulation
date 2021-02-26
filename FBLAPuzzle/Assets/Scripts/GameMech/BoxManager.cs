@@ -28,9 +28,7 @@ public class BoxManager : MonoBehaviour
             }
         }
         if (win)
-        {
-            Debug.Log("The Level Is Passed!");
-            
+        {            
             StartCoroutine(levelManager.buffer());
         }
     }

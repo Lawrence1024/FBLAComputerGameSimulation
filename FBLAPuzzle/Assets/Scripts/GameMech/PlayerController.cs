@@ -77,16 +77,9 @@ public class PlayerController : MonoBehaviour
     }
     public float findConvertingScale()
     {
-        //Vector2 beforeLocal = movePoint.transform.localPosition;
-        //Vector2 beforeGlobal = movePoint.transform.position;
         float initialX = movePoint.transform.position.x;
         movePoint.localPosition += new Vector3(localScale, 0f, 0f);
         float finalX = movePoint.transform.position.x;
-        //Vector2 afterLocal = movePoint.transform.localPosition;
-        //Vector2 afterGlobal = movePoint.transform.position;
-        //Vector2 deltaLocal = afterLocal - beforeLocal;
-        //Vector2 deltaGlobal = afterGlobal - beforeGlobal;
-        //Debug.Log("DeltaLocal: " + deltaLocal);
         movePoint.localPosition += new Vector3(-localScale, 0f, 0f);
         return finalX - initialX;
     }
@@ -142,7 +135,6 @@ public class PlayerController : MonoBehaviour
             msg += temp[i] + ",";
         }
         msg += "]";
-        Debug.Log(msg);
     }
     void printArray(ArrayList temp,string s)
     {
@@ -152,7 +144,6 @@ public class PlayerController : MonoBehaviour
             msg += temp[i] + ",";
         }
         msg += "]";
-        Debug.Log(s + msg);
     }
     void printArray(List<List<int>> temp, string s)
     {
@@ -162,7 +153,6 @@ public class PlayerController : MonoBehaviour
             msg+=("["+myL[0] + "," + myL[1]+"],");
         }
         msg += "]";
-        Debug.Log(msg);
     }
     void makeMovement()
     {
@@ -195,15 +185,10 @@ public class PlayerController : MonoBehaviour
             attemptMovement = "down";
             yPos -= 1;
         }
-        //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
-        //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
-        //   piecePosition.updatePos(movementHistory[movementHistory.Count-1].ToString());
         Vector2 afterLocal = movePoint.transform.localPosition;
         Vector2 afterGlobal = movePoint.transform.position;
         Vector2 deltaLocal = afterLocal - beforeLocal;
         Vector2 deltaGlobal = afterGlobal - beforeGlobal;
-        Debug.Log("DeltaLocal: "+ deltaLocal);
-        Debug.Log("DeltaGlobal: "+deltaGlobal);
 
         oldTime = Time.time;
     }
@@ -222,12 +207,8 @@ public class PlayerController : MonoBehaviour
     public void rebound()
     {
         string lastMove = attemptMovement;
-        //canMove = false;
         reversePlayerMove(lastMove);
         piecePosition.backBoxPos();
-        //StartCoroutine(resumeMove(2f));
-        //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
-    //    printArray(positionHistory,"Rebound: ");
         
     }
     public void reversePlayerMove(string lastMove)
@@ -253,7 +234,6 @@ public class PlayerController : MonoBehaviour
             xPos -= 1;
         }
         piecePosition.backPlayerPos();
-        //piecePosition.backBoxPos();
 
     }
     IEnumerator resumeMove(float time)
@@ -273,11 +253,8 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         bool condition1 = Physics2D.OverlapCircle(movePoint.position, 0.02f, whatStopsMovement);
-        //bool condition2 = xPos == player.GetComponent<PlayerController>().xPos && yPos == player.GetComponent<PlayerController>().yPos;
         if (condition1)
         {
-            //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
-            //Debug.Log("Player Position: [" + player.GetComponent<PlayerController>().xPos + "," + player.GetComponent<PlayerController>().yPos + "]");
             rebound();
         }
     }

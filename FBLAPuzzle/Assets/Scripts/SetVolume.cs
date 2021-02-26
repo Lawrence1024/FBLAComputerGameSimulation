@@ -18,7 +18,6 @@ public class SetVolume : MonoBehaviour
     }
 
     public void modifyVolume(float sliderValue) {
-        Debug.Log("Volume " + GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue);
         GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().setScrollBarVal(sliderValue);
         audioMixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
     }

@@ -31,7 +31,6 @@ public class ChangeAvatar : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         if (currentScene.name == "Map") {
-            Debug.Log("color "+ activeAccount.avatarColor);
             GameObject.Find("AvatarColor").GetComponent<Image>().color = activeAccount.avatarColor;
         }
         

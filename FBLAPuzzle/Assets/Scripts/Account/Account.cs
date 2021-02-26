@@ -39,10 +39,8 @@ public class Account
     public void loadAccount()
     {
         AccountData data = SaveSystem.loadAccount(this);
-        //Debug.Log(data.userName);
         userName = data.userName;
         password = data.password;
-        //Debug.Log("loadAccount password of account \""+userName+"\": " + data.password);
         totalStar = data.totalStar;
         starsList = data.starsList;
         potentialStarsList = data.potentialStarsList;
@@ -65,7 +63,6 @@ public class Account
         }
         return total;
     }
-    //private method
 
 
 }

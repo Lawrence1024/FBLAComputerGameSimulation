@@ -13,8 +13,6 @@ public class BackgroundCalibration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    //    Debug.Log(Screen.width);
-    //    Debug.Log(Screen.height);
 
         SetBackground(MainBackground);
         SetBackground(LoadingBackground);

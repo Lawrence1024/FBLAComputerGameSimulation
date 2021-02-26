@@ -22,11 +22,6 @@ public class PlayAudio : MonoBehaviour
     void Start()
     {
         randomNumber = Random.Range(0, clip.Length);
-        //Debug.Log(randomNumber);
-        //audioSource = gameObject.AddComponent<AudioSource>();
-        //movementAudioSource = gameObject.AddComponent<AudioSource>();
-        //correctAudioSource = gameObject.AddComponent<AudioSource>();
-       // wrongAudioSource = gameObject.AddComponent<AudioSource>(); ;
         audioSource = audArry[0];
         movementAudioSource = audArry[1];
         correctAudioSource = audArry[2];
@@ -46,15 +41,6 @@ public class PlayAudio : MonoBehaviour
         wrongAudioSource.playOnAwake = false;
         correctAudioSource.outputAudioMixerGroup = audioMixer;
         sliderValue = 1;
-        //Debug.Log("Volume " + GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue);
-
-        //movementAudioSource.Play();
-
-        //startPlayingAudio();
-        //pauseAudio();
-        //audioSource = gameObject.GetComponent<AudioSource>();
-        //audioSource.clip = clip;
-        //randomStartPoint();
     }
 
     // Update is called once per frame
@@ -90,7 +76,6 @@ public class PlayAudio : MonoBehaviour
     }
     public void setScrollBarVal(float val) {
         sliderValue = val;
-        Debug.Log("Val " + val);
         volumePercentageText = GameObject.Find("AudioVolumeText");
         volumePercentageText.GetComponent<TMPro.TextMeshProUGUI>().text = "Volume: " + (int)((sliderValue * 100))+"%";
     }

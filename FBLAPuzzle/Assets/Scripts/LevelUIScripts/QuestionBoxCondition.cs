@@ -66,7 +66,6 @@ public class QuestionBoxCondition : MonoBehaviour
             for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].GetComponent<Button>().interactable = false;
-                Debug.Log("button uninteractable");
             }
             levelManager.QuestionCanvas.SetActive(true);
         }
