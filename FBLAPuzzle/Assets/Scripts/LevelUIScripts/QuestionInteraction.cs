@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//FileName: QuestionInteraction.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: QuestionInteraction gets the infromation of the question bank. 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
