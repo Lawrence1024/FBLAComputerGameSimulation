@@ -1,12 +1,13 @@
 # FBLAComputerGameSimulation
 
-This is a game created using Unity Engine and linked to GitHub. To access the graphical README file, please [click here](https://github.com/karen93shieh/FBLAComputerGameSimulation). To read the programming scripts, nevigate to [here](https://github.com/karen93shieh/FBLAComputerGameSimulation/tree/main/FBLAPuzzle/Assets/Scripts). Scripts are under different folder related to their functions.
+This is a puzzle game created using Unity Engine and linked to GitHub. To access the graphical README file, please [click here](https://github.com/karen93shieh/FBLAComputerGameSimulation). To read the programming scripts, nevigate to [here](https://github.com/karen93shieh/FBLAComputerGameSimulation/tree/main/FBLAPuzzle/Assets/Scripts). Scripts are under different folder related to their functions.
 
-Table of contents
+Table of Contents
 =================
 <!--ts-->
-   * [Table of contents](#table-of-contents)
+   * [Table of ontents](#table-of-contents)
    * [How to run the game](#how-to-run-the-game)
+   * [The game's goal](#the-game's-goal)
    * [Create new account](#create-new-account)
    * [Controls](#controls)
    * [Cool features](#cool-features)
@@ -22,6 +23,10 @@ How to Run the Game
    3. Open the folder and click on FBLAPuzzle.exe
       * This game is a standalone game 
 
+The Game's Goal
+============
+   1. The game's goal is to entertain and education users on general FBLA knowledge
+
 Create New Account
 ============
    1. Once open the FBLAPuzzle.exe file you will see a login page
@@ -36,15 +41,16 @@ Controls
       * Use mouse to click on different buttons
    2. Level maneuver
       * Use WASD or ↑↓→← to move the player
+   3. Quit program
+      * Pressing the ESC will activate the pause menu
+      * User can quit anytime by pressing the quit button on the pause menu 
 
 Cool Features
 ============
    1. Avatar
       * User can change their avatar by clicking the avatar on the map page 
    2. ESC key
-      * Pressing the ESC will activate the pause menu
       * User can change the volume of the game from there and nevigate to different scenes
-      * The user can quit anytime by pressing the quit button on the pause menu
    3. Instructions and Tutorial
       * Graphical instructions are provided 
       * A tutorial is provided at the end of the instructions
@@ -60,7 +66,7 @@ Cool Features
       * A question related to FBLA is prompted each time an unanswered box is pushed into the X area
         * Incorrect answer will cause the user to lose a heart
         * When all three hearts are lost, you lose a star and the level restarts
-      * The first trial of the level will determine how many stars you get in that level
+      * The first trial of each level will determine how many stars you get in that level
       * Points will be determined by how fast you complete the level 
         * Users can replay the level to earn a higher points
 
