@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//FileName: PlayAudio.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: PlayAudio contains the functions to play the audio.  
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -19,6 +24,12 @@ public class PlayAudio : MonoBehaviour
     private GameObject volumePercentageText;
     private int randomNumber;
     private bool audioActive=true;
+    /* Method Name: Start()
+     * Summary: Initiate all the audio files and asign audioMixer, clip, sould, etc. to each. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: Audio sources created.
+     */
     void Start()
     {
         randomNumber = Random.Range(0, clip.Length);
@@ -42,8 +53,12 @@ public class PlayAudio : MonoBehaviour
         correctAudioSource.outputAudioMixerGroup = audioMixer;
         sliderValue = 1;
     }
-
-    // Update is called once per frame
+    /* Method Name: Update()
+     * Summary: When the background music stops, it random generate a music to play.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Play random music.
+     */
     void Update()
     {
         if (!audioSource.isPlaying&&audioActive)
@@ -53,22 +68,58 @@ public class PlayAudio : MonoBehaviour
             startPlayingAudio();
         }
     }
+    /* Method Name: startPlayingAudio()
+     * Summary: Play the backgroundMusic.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Play the backgroundMusic.
+     */
     public void startPlayingAudio() {
         audioSource.Play();
     }
+    /* Method Name: changeVolume(float vol)
+     * Summary: Change the volume of the background music.
+     * @param vol: The volume size.
+     * @return N/A
+     * Special Effects: Background music volume changed.
+     */
     public void changeVolume(float vol) {
         audioSource.volume = vol;
     }
+    /* Method Name: playMovementSound()
+     * Summary: Play the movement sound.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Play the movement sound.
+     */
     public void playMovementSound()
     {
         movementAudioSource.Play();
     }
+    /* Method Name: playWrongSound()
+     * Summary: Play the wrong sound.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Play the wrong sound.
+     */
     public void playWrongSound() {
         wrongAudioSource.Play();
     }
+    /* Method Name: playCorrectSound()
+     * Summary: Play the corrent sound.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Play the corrent sound.
+     */
     public void playCorrectSound() {
         correctAudioSource.Play();
     }
+    /* Method Name: setScrollBarVal(val)
+     * Summary: Set the volume scroll bar to the volume size.
+     * @param val: The volume size.
+     * @return N/A
+     * Special Effects: Text display changes for the volume.
+     */
     public void setScrollBarVal(float val) {
         sliderValue = val;
         volumePercentageText = GameObject.Find("AudioVolumeText");
