@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//FileName: Loading.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: Loading contains the information to switch scenes.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,25 +17,32 @@ public class Loading : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //runLoading();
+        
     }
-
     // Update is called once per frame
     void Update()
     {
         
     }
-
+    /* Method Name: runLoading(string sceneName)
+     * Summary: Change the game volume to 0.25f and create a random number from 2 to 5 for the loading interval. It passes the scene's
+     *          name to Buffer(string sceneName).
+     * @param sceneName: The name of the scene to be switched to.
+     * @return N/A
+     * Special Effects: Decrease the volume to .25 and call Buffer(string sceneName).
+     */
     public void runLoading(string sceneName) {
-        //audioObject.GetComponent<AudioSource>().Pause();
-        //not disabling the audio
-        //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().pauseAudio();
-//disable all audioplayer
         GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
         loadingCounter = Random.Range(2, 5);
         StartCoroutine(Buffer(sceneName));        
     }
-
+    /* Method Name: Buffer(string sceneName)
+     * Summary: Wait for .5 seconds each interval to change the display of the loading text. Subtract 1 from loadingCounter each time
+     *          until loadingCounter <= 0 to switch scene. 
+     * @param sceneName: The name of the scene to be switched to.
+     * @return N/A
+     * Special Effects: Display the loading text animation and switch scene.
+     */
     IEnumerator Buffer(string sceneName)
     {
         loadingCounter--;
@@ -49,13 +61,8 @@ public class Loading : MonoBehaviour
         }
         if (loadingCounter <= 0)
         {
-            //Scene Transition
-            //Scene sceneToLoad = SceneManager.GetSceneByName(sceneName);
-            //not disabling the audio
-            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().startPlayingAudio();
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
             SceneManager.LoadScene(sceneName);
-            //SceneManager.MoveGameObjectToScene(GameObject.Find("AccountsManager"), sceneToLoad);
         }
     }
 }
