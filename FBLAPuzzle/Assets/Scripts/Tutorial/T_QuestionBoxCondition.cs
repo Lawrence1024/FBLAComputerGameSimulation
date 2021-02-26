@@ -1,8 +1,8 @@
-﻿//FileName: QuestionBoxCondition.cs
+﻿//FileName: T_QuestionBoxCondition.cs
 //FileType: C# File
 //Author: Karen Shieh, Lawrence Shieh
 //Date: Feb. 26, 2021
-//Description: QuestionBoxCondition contains the function to display the questions and check if the correct answer is chosen or not (for tutorial). 
+//Description: T_QuestionBoxCondition contains the function to display the questions and check if the correct answer is chosen or not (for tutorial). 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
