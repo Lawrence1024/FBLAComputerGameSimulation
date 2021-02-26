@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//FileName: MapManager.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: MapManager contains the canvas (a type of game element in Unity) in the map, so when the canvas are deactivated, 
+//             other scripts can still have access to the canvas and set them to activate. (You cannot use 
+//             GameObject.Find("NameOfObject") to find a gameobject that is deactivated).
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +21,15 @@ public class MapManager : MonoBehaviour
     public GameObject[] allLevelButtons;
     public GameObject[] starPanels;
     private Account activeAccount;
+    /* Method Name: Start()
+     * Summary: Set pause menu and loading canvas to deactivate when the map scene starts. Get the activateAccount through the 
+     *          game object "AccountsManager" and see its progress. According to the progress, the starts and buttons are either
+     *          deactivated/uninteractable or activated/interactable. It also sets the text display on the top left corner to the 
+     *          user's name and the number of stars he/she has.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Pause menu and loading .
+     */
     void Start()
     {
         PauseMenuCanvas.SetActive(false);
@@ -48,9 +64,6 @@ public class MapManager : MonoBehaviour
         currentUserName.GetComponent<TMPro.TextMeshProUGUI>().text=activeAccount.userName;
         currentStarCount.GetComponent<TMPro.TextMeshProUGUI>().text = activeAccount.getTotalStar().ToString();
         userColor.GetComponent<Image>().color = activeAccount.avatarColor;
-    }
-    void deactivateStars() { 
-        
     }
 
     // Update is called once per frame
