@@ -35,9 +35,7 @@ public class T_BoxController : MonoBehaviour
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<T_LevelManager>();
-        //movePoint.parent = null;
         movePoint.position = transform.position;
-        //Debug.Log("MovePoint POsition: " + movePoint.position);
         positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
         startingVectPosition = transform.position;
@@ -143,13 +141,6 @@ public class T_BoxController : MonoBehaviour
             xPos += 1;
         }
         GetComponentInParent<T_BoxManager>().checkIfWin();
-        //    positionHistory[positionHistory.Count-1]=(new List<int> { xPos, yPos });
-        foreach (List<int> temp in positionHistory)
-        {
-            //       Debug.Log("[" + temp[0] + "," + temp[1] + "]");
-        }
-        //   movementHistory[movementHistory.Count-1]=lastPlayerMovement;
-        //Debug.Log("[" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
     }
     bool thereIsBox()
     {
@@ -175,23 +166,19 @@ public class T_BoxController : MonoBehaviour
         getPushed = true;
         if (thereIsObstacle())
         {
-            Debug.Log("SDFDJKDJFKJDK");
             player.GetComponent<T_PlayerController>().rebound();
         }
         else
         {
             move();
-            //    piecePosition.addBoxPos(player.GetComponent<T_PlayerController>().attemptMovement);
             positionHistory[positionHistory.Count - 1] = new List<int> { xPos, yPos };
             movementHistory[movementHistory.Count - 1] = lastPlayerMovement;
         }
-        //StartCoroutine(checkIfBug());
         if (checkIfEnterQuestion() && !answered)
         {
             gameObject.GetComponentInParent<T_BoxManager>().checkIfWin();
             answerQuestion();
         }
-        //    printArray(movementHistory,"Movement History: ");
     }
     IEnumerator checkIfBug()
     {
@@ -200,8 +187,6 @@ public class T_BoxController : MonoBehaviour
         bool condition2 = xPos == player.GetComponent<T_PlayerController>().xPos && yPos == player.GetComponent<T_PlayerController>().yPos;
         if (condition2)
         {
-            //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
-            //Debug.Log("Player Position: [" + player.GetComponent<T_PlayerController>().xPos + "," + player.GetComponent<T_PlayerController>().yPos + "]");
             player.GetComponent<T_PlayerController>().rebound();
         }
     }
@@ -215,7 +200,6 @@ public class T_BoxController : MonoBehaviour
     }
     public void answerQuestion()
     {
-        Debug.Log("You Entered A Question Box");
         gameObject.GetComponent<T_QuestionBoxCondition>().checkBoxQuestionStatus();
         levelManager.currentQuestionBox = gameObject;
         StartCoroutine(buffer());
@@ -266,40 +250,8 @@ public class T_BoxController : MonoBehaviour
     public void answerCorrect()
     {
         answered = true;
-        //Debug.Log("test");
-        //Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite);
         gameObject.GetComponent<SpriteRenderer>().sprite = correctSprite;
         gameObject.GetComponentInParent<T_BoxManager>().checkIfWin();
-    }
-    void printArray(List<int> temp)
-    {
-        string msg = "[";
-        for (int i = 0; i < temp.Count; i++)
-        {
-            msg += temp[i] + ",";
-        }
-        msg += "]";
-        Debug.Log(msg);
-    }
-    void printArray(ArrayList temp, string s)
-    {
-        string msg = "[";
-        for (int i = 0; i < temp.Count; i++)
-        {
-            msg += temp[i] + ",";
-        }
-        msg += "]";
-        Debug.Log(s + msg);
-    }
-    void printArray(List<List<int>> temp, string s)
-    {
-        string msg = s + "[";
-        foreach (List<int> myL in temp)
-        {
-            msg += ("[" + myL[0] + "," + myL[1] + "],");
-        }
-        msg += "]";
-        Debug.Log(msg);
     }
 
     IEnumerator buffer()

@@ -90,7 +90,6 @@ public class T_LevelManager : MonoBehaviour
     }
     public void minusHeart()
     {
-        //Debug.Log("hearts " + GameObject.Find("Hearts").transform.GetChild(0).gameObject.activeSelf);
         if (GameObject.Find("Hearts").transform.childCount > 1)
         {
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
@@ -137,10 +136,6 @@ public class T_LevelManager : MonoBehaviour
                     reloadScenePrep();
                     StartCoroutine(loadWarning("Level restart in", 3));
                 }
-                else if (activeAccount.tutorialFeatures[1] == 0)
-                {
-                    Debug.Log("Died after the tutorial?");
-                }
             }
             else
             {
@@ -152,14 +147,6 @@ public class T_LevelManager : MonoBehaviour
             activeAccount.tutorialFeatures[0] = 3;
             reloadScenePrep();
 
-            //if (starsRemain == 2 && TFController.currentStep==29)
-            //{
-            //    Debug.Log("SHOW THE MINUS STAR");
-            //    TFController.nextStep();
-            //}
-
-            //        StartCoroutine(loadWarning("Level restart in", 3));
-
 
         }
 
@@ -170,7 +157,6 @@ public class T_LevelManager : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].GetComponent<Button>().interactable = false;
-            Debug.Log("button uninteractable");
         }
         QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
         QuestionCanvas.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
@@ -186,8 +172,6 @@ public class T_LevelManager : MonoBehaviour
     }
     public void displayScore()
     {
-        //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
-        Debug.Log(GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text);
         GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = "Points: " + GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text;
         displayStars("FinalStarDisplay");
     }
@@ -207,13 +191,6 @@ public class T_LevelManager : MonoBehaviour
         pointsCalculation.levelComplete = true;
         activeAccount.tutorialProgress[1] = true;
         activeAccount.tutorialProgress[0] = false;
-        Debug.Log("SHOW CONGRATS FINISH TUTORIAL");
-        //activeAccount.starsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
-        //if (activeAccount.pointsList[level[0] * 3 + level[1] - 4] < int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text))
-        //{
-        //    activeAccount.pointsList[level[0] * 3 + level[1] - 4] = int.Parse(GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text);
-        //}
-        //activeAccount.saveAccount();
 
 
         for (int i = 0; i < buttons.Length; i++)
@@ -258,7 +235,6 @@ public class T_LevelManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             sec--;
-            Debug.Log("sec " + sec);
             if (sec <= 0 && warningMessage == "Level restart in")
             {
 

@@ -332,36 +332,6 @@ public class T_PlayerController : MonoBehaviour
         }
         return true;
     }
-    void printArray(List<int> temp)
-    {
-        string msg = "[";
-        for (int i = 0; i < temp.Count; i++)
-        {
-            msg += temp[i] + ",";
-        }
-        msg += "]";
-        Debug.Log(msg);
-    }
-    void printArray(ArrayList temp, string s)
-    {
-        string msg = "[";
-        for (int i = 0; i < temp.Count; i++)
-        {
-            msg += temp[i] + ",";
-        }
-        msg += "]";
-        Debug.Log(s + msg);
-    }
-    void printArray(List<List<int>> temp, string s)
-    {
-        string msg = s + "[";
-        foreach (List<int> myL in temp)
-        {
-            msg += ("[" + myL[0] + "," + myL[1] + "],");
-        }
-        msg += "]";
-        Debug.Log(msg);
-    }
     void makeMovement()
     {
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
@@ -392,9 +362,6 @@ public class T_PlayerController : MonoBehaviour
             attemptMovement = "down";
             yPos -= 1;
         }
-        //Debug.Log("Movement: ["+positionHistory[positionHistory.Count-1][0]+","+ positionHistory[positionHistory.Count - 1][1]+"]");
-        //Debug.Log("Movement: " + movementHistory[movementHistory.Count - 1]);
-        //   piecePosition.updatePos(movementHistory[movementHistory.Count-1].ToString());
         oldTime = Time.time;
     }
     bool thereIsBox()
@@ -412,12 +379,8 @@ public class T_PlayerController : MonoBehaviour
     public void rebound()
     {
         string lastMove = attemptMovement;
-        //canMove = false;
         reversePlayerMove(lastMove);
         piecePosition.backBoxPos();
-        //StartCoroutine(resumeMove(2f));
-        //Debug.Log("Rebound: [" + positionHistory[positionHistory.Count - 1][0] + "," + positionHistory[positionHistory.Count - 1][1] + "]");
-        //    printArray(positionHistory,"Rebound: ");
 
     }
     public void reversePlayerMove(string lastMove)
@@ -458,16 +421,4 @@ public class T_PlayerController : MonoBehaviour
         transform.position = startingVectPosition;
         movePoint.position = startingVectPosition;
     }
-    //IEnumerator checkIfBug()
-    //{
-    //    yield return new WaitForSeconds(0.2f);
-    //    bool condition1 = Physics2D.OverlapCircle(movePoint.position, 0.02f, whatStopsMovement);
-    //    //bool condition2 = xPos == player.GetComponent<T_PlayerController>().xPos && yPos == player.GetComponent<T_PlayerController>().yPos;
-    //    if (condition1)
-    //    {
-    //        //Debug.Log("Box Position: ["+xPos+","+yPos+"]");
-    //        //Debug.Log("Player Position: [" + player.GetComponent<T_PlayerController>().xPos + "," + player.GetComponent<T_PlayerController>().yPos + "]");
-    //        rebound();
-    //    }
-    //}
 }

@@ -17,7 +17,6 @@ public class T_PointsCalculation : MonoBehaviour
         points = 1000;
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
         StartCoroutine(pointsCountDown());
-        Debug.Log(GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.tutorialProgress[0]);
         if (GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount.tutorialProgress[0])
         {
             stopTime = false;
@@ -46,7 +45,6 @@ public class T_PointsCalculation : MonoBehaviour
         else if (points <= 0)
         {
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
-            Debug.Log("Time=0, tip button is disabled in tutorial");
             featureButtonDetection.tipButton.SetActive(true);
         }
 

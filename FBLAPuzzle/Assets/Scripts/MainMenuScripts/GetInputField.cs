@@ -36,16 +36,8 @@ public class GetInputField : MonoBehaviour
             //if there is such account, account = true, else false
             accManager.loadAccount(userName);
             accountExist = accManager.checkIfAccountExist(inputText);
-            if (accountExist)
+            if (!accountExist)
             {
-                Debug.Log(accManager.activeAccount.password);
-                //get the account info and continue
-                //mainMenuManager.UserNameInputBoxCanvas.SetActive(false);
-
-            }
-            else
-            {
-                
                 warningNote = "Account does not exist! Please create a new account";
                 StartCoroutine(displayWarning());
             }

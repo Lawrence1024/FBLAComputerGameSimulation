@@ -24,31 +24,6 @@ public class T_PiecePosition : MonoBehaviour
     {
 
     }
-    void printArray(ArrayList temp, string s)
-    {
-        string msg = "[";
-        for (int i = 0; i < temp.Count; i++)
-        {
-            msg += temp[i] + ",";
-        }
-        msg += "]";
-        Debug.Log(s + msg);
-    }
-    void printArray(List<List<int>> temp, string s)
-    {
-        string msg = "[";
-        for (int j = 0; j < temp.Count; j++)
-        {
-            msg += "[";
-            for (int i = 0; i < 2; i++)
-            {
-                msg += temp[i] + ",";
-            }
-            msg += "], ";
-        }
-        msg += "]";
-        Debug.Log(s + msg);
-    }
     public void addBoxPos(string lastMove)
     {
         foreach (GameObject box in boxes)
@@ -102,9 +77,7 @@ public class T_PiecePosition : MonoBehaviour
         }
         else
         {
-            Debug.Log("You are at the first step!");
             StartCoroutine(levelManager.loadWarning("You are at the first step!", 0.8f));
-
         }
     }
     public void whenHitResetButton()
@@ -127,7 +100,6 @@ public class T_PiecePosition : MonoBehaviour
         }
         else
         {
-            Debug.Log("You are at the first step!");
             StartCoroutine(levelManager.loadWarning("You are at the first step!", 0.8f));
         }
     }

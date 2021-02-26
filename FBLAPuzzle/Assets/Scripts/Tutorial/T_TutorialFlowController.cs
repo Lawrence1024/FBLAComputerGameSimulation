@@ -106,7 +106,6 @@ public class T_TutorialFlowController : MonoBehaviour
     public void nextStep()
     {
         currentStep++;
-        Debug.Log("Step: " + currentStep);
         respondToNext();
     }
     public void respondToNext()
