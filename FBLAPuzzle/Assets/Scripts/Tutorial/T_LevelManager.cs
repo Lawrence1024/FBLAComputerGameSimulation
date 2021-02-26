@@ -64,6 +64,8 @@ public class T_LevelManager : MonoBehaviour
     void activatePauseMenu()
     {
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
+        PauseMenuCanvas.transform.GetChild(2).gameObject.GetComponent<Slider>().value = GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue;
+
         if (PauseMenuCanvas.activeSelf)
         {
             GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = false;
