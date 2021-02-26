@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//FileName: ChooseAvatar.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: ChooseAvatar contains the functions that run when an avatar is chosen.  
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,13 +17,17 @@ public class ChooseAvatar : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
         
     }
-
+    /* Method Name: chooseColor(GameObject userColor)
+     * Summary: When the avatar button is pressed, it set the account's avatar to a specific color.
+     * @param userColor: Contain the information on which color was chose.
+     * @return N/A
+     * Special Effects: The account's avatar is set. 
+     */
     public void chooseColor(GameObject userColor) {
         Scene currentScene = SceneManager.GetActiveScene();
         if (accManager.activeAccount == null)
@@ -57,8 +66,13 @@ public class ChooseAvatar : MonoBehaviour
         if (currentScene.name=="MainMenu") {
             accManager.activeAccount = null;
         }
-        
     }
+    /* Method Name: inactiveAvatarBoard(GameObject avatarBoard)
+     * Summary: When the avatar button is pressed, it set the parent of the avatar button to deactivated. 
+     * @param avatarBoard: The parent of the avatar buttons.
+     * @return N/A
+     * Special Effects: The avatar board is deactivated.
+     */
     public void inactiveAvatarBoard(GameObject avatarBoard) {
         avatarBoard.SetActive(false);
     }
