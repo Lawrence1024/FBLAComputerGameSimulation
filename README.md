@@ -69,7 +69,7 @@ Cool Features
         * Each incorrect answer will cause the user to lose a heart
         * When all three hearts are lost, you lose a star, and the level restarts
       * The first trial of each level will determine how many stars you get for that level
-      * There are 3 outcomes avaliable upon completition of each level. You can either earn 1 star, 2 stars, or 3 stars for that level
+      * There are 4 outcomes available upon completion of each level. You can either earn 0 star, 1 star, 2 stars, or 3 stars for that level
       * Points will be determined by how fast you complete the level 
         * Users can replay the level to score higher points
         * As an advanced rule, player will lose points when they undo a move or reset the pieces' positions
