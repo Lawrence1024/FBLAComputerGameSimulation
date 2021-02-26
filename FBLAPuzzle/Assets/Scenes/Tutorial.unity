@@ -298,7 +298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 967d5c2e00f91a84ca1527a2e19caf0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ffa309bf4c6360942987ed777155fc4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2158,7 +2158,7 @@ MonoBehaviour:
   startingVectPosition: {x: 0, y: 0, z: 0}
   gameCanvas: {fileID: 1391529616}
   answered: 0
-  correctSprite: {fileID: 21300000, guid: f7cd5c1bc0a563e488b6a7023e8ee474, type: 3}
+  correctSprite: {fileID: 21300000, guid: 2e2a3f40507e8da4eb9d86c092c4d36d, type: 3}
   convertingScale: 0
 --- !u!50 &191841397
 Rigidbody2D:
@@ -2199,7 +2199,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 70, y: 70}
-    newSize: {x: 0.7529412, y: 0.7529412}
+    newSize: {x: 70, y: 70}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2246,12 +2246,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: c8a223882a475894e8647fc6c415eb2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 755a4298ddf1b524bb7b36839e79c610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7529412, y: 0.7529412}
+  m_Size: {x: 70, y: 70}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7404,7 +7404,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 762928442ee8b774cacdd327ea853cac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b3fce7b1757adb4d99541a6b9e25438, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11084,7 +11084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b5e45ee4c51e3d64491fd5f3c3877b2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 938af0b35ec571046b61422d53995098, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14877,7 +14877,7 @@ MonoBehaviour:
   startingVectPosition: {x: 0, y: 0, z: 0}
   gameCanvas: {fileID: 1391529616}
   answered: 0
-  correctSprite: {fileID: 21300000, guid: f7cd5c1bc0a563e488b6a7023e8ee474, type: 3}
+  correctSprite: {fileID: 21300000, guid: 2e2a3f40507e8da4eb9d86c092c4d36d, type: 3}
   convertingScale: 0
 --- !u!50 &1623655004
 Rigidbody2D:
@@ -14918,7 +14918,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 70, y: 70}
-    newSize: {x: 0.7529412, y: 0.7529412}
+    newSize: {x: 70, y: 70}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -14965,12 +14965,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: c8a223882a475894e8647fc6c415eb2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 755a4298ddf1b524bb7b36839e79c610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7529412, y: 0.7529412}
+  m_Size: {x: 70, y: 70}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -16745,7 +16745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c25e152f2d9abc4cb2d4a2085cff8c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba38dd6b0ebb59040b6b16408875875a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17332,7 +17332,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 924924240}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.38771603
+  m_Size: 0.387716
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17615,7 +17615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 227260c4ed5138f46a0429d3b9d9c96a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e4509522cb3c78499138e9ffcfb56ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

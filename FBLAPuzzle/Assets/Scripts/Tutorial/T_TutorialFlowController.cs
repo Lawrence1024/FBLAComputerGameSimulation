@@ -464,7 +464,7 @@ public class T_TutorialFlowController : MonoBehaviour
         {
             levelManager.GetComponent<T_FeatureButtonDetection>().tipButton.SetActive(false);
             arrow.SetActive(false);
-            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's see if you can complete the tutorial leve on your own.";
+            instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Let's see if you can complete the tutorial level on your own.";
         }
         else if (currentStep == 56)
         {
