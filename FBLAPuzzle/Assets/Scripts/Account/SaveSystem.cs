@@ -2,7 +2,7 @@
 //FileType: C# File
 //Author: Karen Shieh, Lawrence Shieh
 //Date: Feb. 26, 2021
-//Description: SaveSystem will take in a account and store the information onto the computer (so user can keep their progress after quit).
+//Description: SaveSystem will store/load player account information onto the computer (so user can keep their progress after quit).
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
