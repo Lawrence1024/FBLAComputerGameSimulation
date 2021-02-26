@@ -74,7 +74,8 @@ Cool Features
 Additional Notes
 ============
    1. All drawing (except the FBLA logo) in the game are drawn by our team members using PhotoShop
-   2. Background music and sound effects came from YouTube
+   2. All levels (positions of boxes, obstacle and player) are designed by our team members.
+   3. Background music and sound effects came from YouTube
 
 
 
