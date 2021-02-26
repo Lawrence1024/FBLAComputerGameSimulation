@@ -237,6 +237,13 @@ public class T_LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(loadWarning("You are ready to move on! Loading Main Menu in ", 5));
     }
+    /* Method Name: displayMessage(string message, float sec)
+     * Summary: Diplay a message for a certain amount of time.
+     * @param message: The message to display.
+     * @param sec: The duration that the message is displayed (in seconds).
+     * @return an instance of WaitForSeconds which will allow the message to display for a certain duration.
+     * Special Effects: User is notified that the tutorial doesn't contain a tips video.
+     */
     public IEnumerator displayMessage(string message, float sec)
     {
         WarningCanvas.SetActive(true);
@@ -296,6 +303,12 @@ public class T_LevelManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
+    /* Method Name: doGarunteeCorrect()
+     * Summary: When the user is at 1 heart and 1 star in the tutorial, block all the wrong answers.
+     * @param N/A
+     * @return N/A
+     * Special Effects: User is garunteed to pass the tutorial level.
+     */
     public void doGarunteeCorrect()
     {
         QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;

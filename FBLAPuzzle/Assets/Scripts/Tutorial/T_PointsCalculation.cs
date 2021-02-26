@@ -61,6 +61,5 @@ public class T_PointsCalculation : MonoBehaviour
             gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = points.ToString();
             featureButtonDetection.tipButton.SetActive(true);
         }
-
     }
 }

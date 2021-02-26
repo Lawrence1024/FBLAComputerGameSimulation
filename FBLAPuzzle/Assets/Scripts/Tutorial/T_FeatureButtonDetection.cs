@@ -55,8 +55,12 @@ public class T_FeatureButtonDetection : MonoBehaviour
     {
         existObj.SetActive(false);
     }
-
-
+    /* Method Name: selectAnswer(GameObject answerButton)
+     * Summary: Respond to the user when an answer choice is selected.
+     * @param answerButton: The button that is pressed by the user to select the answer.
+     * @return N/A
+     * Special Effects: Sound effects are played and tutorial will progress in certain value ranges.
+     */
     public void selectAnswer(GameObject answerButton)
     {
         if(TFController.currentStep>=18 && TFController.currentStep <= 20 || TFController.currentStep==44)
@@ -77,6 +81,12 @@ public class T_FeatureButtonDetection : MonoBehaviour
             StartCoroutine(buffer());
         }
     }
+    /* Method Name: lastStep()
+     * Summary: When the last step button is pressed, it calls whenHitBackButton() in gameCanvas and play a sound effect. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: Reverse one step.
+     */
     public void lastStep()
     {
         gameCanvas.GetComponent<T_PiecePosition>().whenHitBackButton();
@@ -86,6 +96,12 @@ public class T_FeatureButtonDetection : MonoBehaviour
             TFController.nextStep();
         }
     }
+    /* Method Name: resetBoard()
+     * Summary: When the reset button is pressed, it calls whenHitResetButton() in gameCanvas and play a sound effect. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: Resetart the board.
+     */
     public void resetBoard()
     {
         gameCanvas.GetComponent<T_PiecePosition>().whenHitResetButton();

@@ -2,7 +2,7 @@
 //FileType: C# File
 //Author: Karen Shieh, Lawrence Shieh
 //Date: Feb. 26, 2021
-//Description: BoxController is a centralized control unit of all the boxes. It consist a list of all the boxes.
+//Description: BoxManager is a centralized control unit of all the boxes. It consist a list of all the boxes.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

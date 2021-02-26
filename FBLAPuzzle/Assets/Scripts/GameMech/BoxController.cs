@@ -108,7 +108,7 @@ public class BoxController : MonoBehaviour
         return false;
     }
     /* Method Name: move()
-     * Summary: Call the makeMovement method and set getPushed to true
+     * Summary: Call the makeMovement method and set getPushed to false
      * @param N/A
      * @return N/A
      * Special Effects: N/A

@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//FileName: T_TutorialFlowController.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: T_TutorialFlowControllwer is the central control of the whold flow of the tutorial. It knows where in the tutorial we 
+//              are at, and know what actions to take. It also blocks some unwanted actions in the tutorial.
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +28,12 @@ public class T_TutorialFlowController : MonoBehaviour
     public Account activeAccount;
     private float convertingScale;
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Initialize the value of the variables.
+     * @param N/A
+     * @return N/A
+     * Special Effects: If the user have gone through the first part of the tutorial, move directly on to free play.
+     */
     void Start()
     {
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
@@ -50,7 +63,12 @@ public class T_TutorialFlowController : MonoBehaviour
         }
 
     }
-
+    /* Method Name: Update()
+     * Summary: For each frame, check if we are at a specific step. For some steps, move the pointing arrow every frame.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Arrows are displayed and animated on specific tutorial steps.
+     */
     // Update is called once per frame
     void Update()
     {
@@ -71,6 +89,12 @@ public class T_TutorialFlowController : MonoBehaviour
             arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, arrowGoToPosition, 2f * Time.deltaTime* convertingScale);
         }
     }
+    /* Method Name: moveArrowLeftRight()
+     * Summary: Move the arrow image left and right.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     public void moveArrowLeftRight()
     {
         if (Mathf.Abs(arrow.transform.position.x - arrowGoToPosition.x) < 0.05)
@@ -86,6 +110,12 @@ public class T_TutorialFlowController : MonoBehaviour
             }
         }
     }
+    /* Method Name: moveArrowUpDown()
+     * Summary: Move the arrow up and down.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     public void moveArrowUpDown()
     {
         if (Mathf.Abs(arrow.transform.position.y - arrowGoToPosition.y) < 0.05)
@@ -101,11 +131,23 @@ public class T_TutorialFlowController : MonoBehaviour
             }
         }
     }
+    /* Method Name: nextStep()
+     * Summary: Add 1 to the current step and prepare for the next.
+     * @param N/A
+     * @return N/A
+     * Special Effects: When a movement should be taken, the keys on the screen will glow.
+     */
     public void nextStep()
     {
         currentStep++;
         respondToNext();
     }
+    /* Method Name: respondToNext()
+     * Summary: Base on the current step we are at, take a specific action.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Unwanted actions are blocked, user can only follow the tutorial.
+     */
     public void respondToNext()
     {
         if (currentStep == 1)
@@ -492,9 +534,5 @@ public class T_TutorialFlowController : MonoBehaviour
             activeAccount.tutorialFeatures[1] = 3;
             StartCoroutine(levelManager.buffer());
         }
-    }
-    public void moveArrow(Vector3 pos, float rot)
-    {
-
     }
 }

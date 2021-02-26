@@ -1,41 +1,42 @@
-﻿using System.Collections;
+﻿//FileName: T_PlayerController.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: Controlls the player in the tutorial. Keep track of all player information. 
+//              Really similar to the BoxController class, just a little modification based on the scenario of the tutorial.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class T_PlayerController : MonoBehaviour
 {
-
     public float moveSpeed = 3f;
     public Transform movePoint;
-
     public LayerMask whatStopsMovement;
     public LayerMask boxLayer;
-
     public ArrayList movementHistory = new ArrayList();
-
     public int xPos;
     public int yPos;
     public List<int> startingPosition;
     public Vector3 startingVectPosition;
     public List<List<int>> positionHistory = new List<List<int>>();
-
     public GameObject gameCanvas;
     private T_PiecePosition piecePosition;
     public string attemptMovement;
-
     public bool canMove = true;
     private float newTime;
     private float oldTime = 0f;
-
     public T_TutorialFlowController TFlowController;
     public int minorStepCounter = 0;
-
     public Account activeAccount;
-
     public float convertingScale;
-
-
     // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Initialize the different variables.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     void Start()
     {
         movePoint.position = transform.position;
@@ -48,6 +49,13 @@ public class T_PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    /* Method Name: Update()
+    * Summary: The player will move towards the move point every frame. If certain conditions are met, the move point can move once more.
+    *          As a result, the player will be able to move on the board.
+    * @param N/A
+    * @return N/A
+    * Special Effects: Everytime the move point is moved, the method calls on other methods to recored the position and movement history.
+    */
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
@@ -68,6 +76,12 @@ public class T_PlayerController : MonoBehaviour
             piecePosition.addBoxPos(attemptMovement);
         }
     }
+    /* Method Name: findConvertingScale()
+     * Summary: Find the converting scale between 1 unit of global position and 1 unit of local position.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Used to calibrate game and accomidate different screen resolutions.
+     */
     public float findConvertingScale()
     {
         float initialX = movePoint.transform.position.x;
@@ -76,6 +90,12 @@ public class T_PlayerController : MonoBehaviour
         movePoint.localPosition += new Vector3(-107.8949f, 0f, 0f);
         return finalX - initialX;
     }
+    /* Method Name: doTFlowController()
+     * Summary: Move the player according to the step count on the TutorialFlowController
+     * @param N/A
+     * @return N/A
+     * Special Effects: Unwanted manuvers are blocked.
+     */
     private void doTFlowController()
     {
         int step = TFlowController.currentStep;
@@ -88,6 +108,12 @@ public class T_PlayerController : MonoBehaviour
         }
         
     }
+    /* Method Name: streakMovement0To17()
+     * Summary: Check which movements to take when the step count is from 0 to 17.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Unwanted manuvers are blocked.
+     */
     void streakMovement0To17()
     {
         bool up = Input.GetAxisRaw("Vertical") == 1f;
@@ -167,7 +193,12 @@ public class T_PlayerController : MonoBehaviour
             moveFlow("left", 2);
         }
     }
-
+    /* Method Name: streakMovement21To31()
+     * Summary: Check which movements to take when the step count is from 21 to 43.
+     * @param N/A
+     * @return N/A
+     * Special Effects: Unwanted manuvers are blocked.
+     */
     void streakMovement21To31()
     {
         bool up = Input.GetAxisRaw("Vertical") == 1f;
@@ -244,6 +275,13 @@ public class T_PlayerController : MonoBehaviour
         }
 
     }
+    /* Method Name: moveFlow(string direct, int times)
+     * Summary: A function to acutally check the conditoin and move the player a specific amount of steps torards a direction.
+     * @param direct: the direction the player should move in.
+     * @param times: The amount of steps the user should be moving in that direction.
+     * @return N/A
+     * Special Effects: Audio is played on each movement.
+     */
     void moveFlow(string direct, int times)
     {
         if (newTime - oldTime > 0.35f)
@@ -284,6 +322,12 @@ public class T_PlayerController : MonoBehaviour
             oldTime = Time.time;
         }
     }
+    /* Method Name: OnCollisionEnter2D(Collision2D col)
+     * Summary: Rebound the player if the movement will crash into a wall or the border.
+     * @param col: The Collision2D object of the GameObject the player collided with.
+     * @return N/A
+     * Special Effects: N/A
+     */
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.collider.gameObject.layer == LayerMask.NameToLayer("StopMovement"))
@@ -291,44 +335,12 @@ public class T_PlayerController : MonoBehaviour
             rebound();
         }
     }
-    bool thereIsObstacle()
-    {
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
-        {
-            return true;
-        }
-        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, whatStopsMovement))
-        {
-            return true;
-        }
-        return false;
-    }
-    bool moveWhenNoObstacle()
-    {
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
-        {
-            if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, whatStopsMovement))
-            {
-                movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal") * 1f, 0f, 0f);
-            }
-            else
-            {
-                return false;
-            }
-        }
-        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-        {
-            if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, whatStopsMovement))
-            {
-                movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical") * 1f, 0f);
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    /* Method Name: makeMovement()
+     * Summary: Make movements according to the user input.
+     * @param N/A
+     * @return N/A
+     * Special Effects: The method will update a variable to store the time when a movement is performed.
+     */
     void makeMovement()
     {
         if ((Input.GetAxisRaw("Horizontal")) == 1f)
@@ -361,18 +373,12 @@ public class T_PlayerController : MonoBehaviour
         }
         oldTime = Time.time;
     }
-    bool thereIsBox()
-    {
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal") * 0.99f, 0f, 0f), 0.2f, boxLayer))
-        {
-            return true;
-        }
-        if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical") * 0.99f, 0f), 0.2f, boxLayer))
-        {
-            return true;
-        }
-        return false;
-    }
+    /* Method Name: rebound()
+     * Summary: Reverse the player's move and reverse the movement and position history.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     public void rebound()
     {
         string lastMove = attemptMovement;
@@ -380,6 +386,12 @@ public class T_PlayerController : MonoBehaviour
         piecePosition.backBoxPos();
 
     }
+    /* Method Name: reversePlayerMove(string lastMove)
+     * Summary: Update the move point position so that the last move could be reversed. Update the position of the player.
+     * @param lastMove: The move that the player is trying to undo
+     * @return N/A
+     * Special Effects: N/A
+     */
     public void reversePlayerMove(string lastMove)
     {
         if (lastMove == "up")
@@ -404,11 +416,12 @@ public class T_PlayerController : MonoBehaviour
         }
         piecePosition.backPlayerPos();
     }
-    IEnumerator resumeMove(float time)
-    {
-        yield return new WaitForSeconds(time);
-        canMove = true;
-    }
+    /* Method Name: resetPlayer()
+     * Summary: Move the player back to the original position and clean the movement and position history.
+     * @param N/A
+     * @return N/A
+     * Special Effects: N/A
+     */
     public void resetPlayer()
     {
         positionHistory = new List<List<int>>();
