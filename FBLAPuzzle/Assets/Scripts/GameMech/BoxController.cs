@@ -13,30 +13,24 @@ public class BoxController : MonoBehaviour
     public float moveSpeed = 20f;
     public Transform movePoint;
     public GameObject player;
-
     public LayerMask whatStopsMovement;
     public LayerMask boxLayer;
     public LayerMask playerLayer;
     public LayerMask questionLayer;
     public bool getPushed = false;
     private string lastPlayerMovement;
-
     public int xPos;
     public int yPos;
     public List<int> startingPosition;
     public List<List<int>> positionHistory = new List<List<int>>();
     public Vector3 startingVectPosition;
     public ArrayList movementHistory = new ArrayList();
-
     public GameObject gameCanvas;
     private PiecePosition piecePosition;
-
     public bool answered = false;
     public Sprite correctSprite;
-
     private float localScale = 107.8949f;
     public float convertingScale;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +42,6 @@ public class BoxController : MonoBehaviour
         piecePosition = gameCanvas.GetComponent<PiecePosition>();
         convertingScale = player.GetComponent<PlayerController>().findConvertingScale();
     }
-
     // Update is called once per frame
     void Update()
     {
