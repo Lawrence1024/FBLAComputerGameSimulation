@@ -24,7 +24,6 @@ public class T_PlayerController : MonoBehaviour
     public string attemptMovement;
 
     public bool canMove = true;
-    private int testCounter = 0;
     private float newTime;
     private float oldTime = 0f;
 

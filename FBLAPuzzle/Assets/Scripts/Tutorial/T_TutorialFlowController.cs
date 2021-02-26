@@ -54,7 +54,6 @@ public class T_TutorialFlowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string s = "Please follow the keyboard\nPRESS ";
         if (currentStep == 0)
         {
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Follow keyboard.\nPractice basic maneuver!";

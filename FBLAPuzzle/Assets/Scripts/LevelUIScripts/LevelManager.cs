@@ -25,7 +25,6 @@ public class LevelManager : MonoBehaviour
     public GameObject[] buttons;
     public List<int> level;
     private Account activeAccount;
-    private bool freezeState = false;
 
     // Start is called before the first frame update
     void Start()
@@ -108,10 +107,7 @@ public class LevelManager : MonoBehaviour
             QuestionCanvas.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = false;
             pointsCalculation.gamePause = true;
             StartCoroutine(loadWarning("Level restart in", 3));
-            
-            
         }
-        
     }
     public void displayScoreboard()
     {
@@ -197,17 +193,6 @@ public class LevelManager : MonoBehaviour
     }
     void reloadScene() {
         Scene scene = SceneManager.GetActiveScene();
-        /*for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].GetComponent<Button>().interactable = true;
-        }
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        QuestionCanvas.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        pointsCalculation.enabled = false;*/
         SceneManager.LoadScene(scene.name);
     }
-
-
 }

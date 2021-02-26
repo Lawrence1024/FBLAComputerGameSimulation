@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿//FileName: Account.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: Account will record different information of the user account.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Account
 {
     //fields
@@ -29,13 +33,23 @@ public class Account
         tutorialFeatures = new List<int> { 3, 3 };
         endSceneActivated = false;
     }
-    //setter/getter
-
     //public method
+    /* Method Name: saveAccount()
+     * Summary: Call on the saveAccount method in the SaveSystem object to store player data onto computer.
+     * @param N/A
+     * @return N/A
+     * Special Effects: This instance of account is saved.
+     */
     public void saveAccount()
     {
         SaveSystem.saveAccount(this);
     }
+    /* Method Name: loadAccount()
+     * Summary: Call on the loadAccount method in the SaveSystem object and retreieve an instance of AccountData from previously saved files. Fill this instance of Account with the retrieved data.
+     * @param N/A
+     * @return N/A
+     * Special Effects: This instance of Account have the updated player information fetched from previously saved files.
+     */
     public void loadAccount()
     {
         AccountData data = SaveSystem.loadAccount(this);
@@ -50,6 +64,12 @@ public class Account
         tutorialFeatures = data.tutorialFeatures;
         endSceneActivated = data.endSceneActivated;
     }
+    /* Method Name: loadAccount()
+     * Summary: With a list of stars, add up each number to get a total star count.
+     * @param N/A
+     * @return the total amount of stars the player currenlty has
+     * Special Effects: N/A
+     */
     public int getTotalStar()
     {
         int total = 0;
@@ -63,6 +83,4 @@ public class Account
         }
         return total;
     }
-
-
 }

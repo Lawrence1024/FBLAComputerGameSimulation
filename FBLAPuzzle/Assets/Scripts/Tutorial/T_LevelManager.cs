@@ -22,7 +22,6 @@ public class T_LevelManager : MonoBehaviour
 
     public List<int> level;
     private Account activeAccount;
-    private bool freezeState = false;
     private GameObject[] buttons;
 
     public GameObject TCanvas;
