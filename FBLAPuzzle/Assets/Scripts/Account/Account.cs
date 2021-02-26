@@ -37,7 +37,7 @@ public class Account
     /* Method Name: saveAccount()
      * Summary: Call on the saveAccount method in the SaveSystem object to store player data onto computer.
      * @param N/A
-     * @return: N/A
+     * @return N/A
      * Special Effects: This instance of account is saved.
      */
     public void saveAccount()
