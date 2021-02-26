@@ -62,7 +62,7 @@ Cool Features
    6. Leaderboard and scoreboard
       * The leaderboard on the main menu ranks the players according to their star count
       * The scoreboard on each level ranks the players according to their points in that level
-      * If you placed in the first 5 on the leaderboard or scoreboard, celebratory fireworks will display.
+      * If you placed in the first 5 on the leaderboard or scoreboard, celebratory fireworks will display
    7. Lives, stars, and points in a level
       * In each level, users starts with 3 hearts and 3 stars
       * A question related to FBLA is prompted each time an unanswered box is pushed into the X area
@@ -71,11 +71,15 @@ Cool Features
       * The first trial of each level will determine how many stars you get in that level
       * Points will be determined by how fast you complete the level 
         * Users can replay the level to earn a higher points
+   8. Question Database
+      * The question bank is a .csv file
+      * Question bank could be easily replaced with a different .csv files to display different questions
+      * Notice that the question bank can only be replaced before the game is built
 
 Additional Notes
 ============
    1. All drawing (except the FBLA logo) in the game are drawn by our team members using PhotoShop
-   2. All levels (positions of boxes, obstacle and player) are designed by our team members.
+   2. All levels (positions of boxes, obstacle and player) are designed by our team members
    3. Background music and sound effects came from YouTube
       * No Copyright | Calm Jazz Music | Background Chill | Cafe Music | Relaxing Work & Study
         * https://www.youtube.com/watch?v=DVEUcbPkb-c
