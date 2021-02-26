@@ -19,8 +19,8 @@ How to Run the Game
    1. Dowload the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/zw8uktvhfj8xoo7/GoldCost%20Test.zip?dl=0 "Click here"))
       * You do not have to have a Dropbox account to download
       * Click the download button on the top right corner
-   2. Right click on the folder and extract (unzip) all
-   3. Open the folder and double click on FBLAPuzzle.exe
+   2. Right click on the folder and unzip the folder (click on extract all)
+   3. Open the unzipped folder and double click on FBLAPuzzle.exe
       * This game is a standalone game 
 
 The Game's Objective
@@ -33,7 +33,7 @@ Account and Game
       * If you do not have an account in the game, click on the create new account link on the bottom right corner 
    2. Once you have an account, login to play the game
    3. Your information (username, password, records on levels, etc.) will be saved on your computer
-   4. This multi-player function enables users to compete with each other
+   4. This multi-player function enables users to have fun and compete with each other
 
 Controls
 ============
@@ -41,7 +41,7 @@ Controls
       * Use mouse to click on different buttons
       * Use WASD or ↑↓→← to move the player
    2. Quit program
-      * Pressing the ESC will activate the pause menu
+      * Pressing the ESC key will activate the pause menu
       * User can quit anytime by pressing the quit button on the pause menu 
 
 Cool Features
@@ -73,8 +73,8 @@ Cool Features
 
 Additional Notes
 ============
-   1. All drawing in the game are drawn by our team members using PhotoShop
-   2. Music source came from YouTube
+   1. All drawing (except the FBLA logo) in the game are drawn by our team members using PhotoShop
+   2. Background music and sound effects came from YouTube
 
 
 
