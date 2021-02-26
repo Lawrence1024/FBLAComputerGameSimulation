@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//FileName: LeaderBoardDisplay.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: LeaderBoardDisplay contains the functions to display rank on the leaderboard.  
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,22 +12,31 @@ public class LeaderBoardDisplay : MonoBehaviour
     AccountsManager accountsManager;
     public GameObject[] rankTexts;
     public GameObject celebratoryMsgCanvas;
-    // Start is called before the first frame update
+    /* Method Name: Start()
+     * Summary: Get the game object "AccountsManager"'s script "AccountsManager" (a script attatched to the AccountsManager). 
+     * @param N/A
+     * @return N/A
+     * Special Effects: The script is saved to the variable accountsManager.
+     */
     void Start()
     {
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
     }
-
     // Update is called once per frame
     void Update()
     {
         
     }
+    /* Method Name: getAccountsTotalStars()
+     * Summary: Sorts the rank of the users using their star counts. Display their ranks. If the active account's rank is in the top 5
+     *          a celebratory message is displayed. 
+     * @param N/A
+     * @return N/A
+     * Special Effects: The ranks are displayed. 
+     */
     public void getAccountsTotalStars() {
         celebratoryMsgCanvas.SetActive(false);
         accountsManager = GameObject.Find("AccountsManager").GetComponent<AccountsManager>();
-        //List<string> names=new List<string>();
-        //List<int> stars = new List<int>();
         List<Account> highToLow = new List<Account>();
         for(int i = 0; i < accountsManager.accounts.Count; i++)
         {
@@ -46,28 +60,11 @@ public class LeaderBoardDisplay : MonoBehaviour
                         break;
                     }
                 }
-                //highToLow.Add(acc);
-                //for(int j = i; j >= 1; j--)
-                //{
-                //    if (acc.getTotalStar() > highToLow[j - 1].getTotalStar())
-                //    {
-                //        Account tempAcc = highToLow[j - 1];
-                //        highToLow[j - 1] = acc;
-                //        highToLow[j] = tempAcc;
-                //    }
-                //    else
-                //    {
-                //        break;
-                //    }
-                //}
             }
         }
         for (int i = 0; i < highToLow.Count; i++) {
             string text;
             text = (i+1) + ". " + highToLow[i].userName;
-            int tempTextLength = text.Length;
-            
-            //text = text + getTotalStar(highToLow[i]);
             rankTexts[i].GetComponent<TMPro.TextMeshProUGUI>().text= text;
             rankTexts[i].transform.GetChild(0).gameObject.GetComponent<TMPro.TextMeshProUGUI>().text= highToLow[i].getTotalStar().ToString();
             if (highToLow[i].userName == accountsManager.activeAccount.userName&&i<5) {
