@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//FileName: AccountsManager.cs
+//FileType: C# File
+//Author: Karen Shieh, Lawrence Shieh
+//Date: Feb. 26, 2021
+//Description: Account will record different information of the user account.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -30,6 +35,12 @@ public class AccountsManager : MonoBehaviour
     {
         
     }
+    /* Method Name: createAccount(string name)
+     * Summary: Create a new account if the quired username is not already taken.
+     * @param name: The username which the player is trying to register.
+     * @return whether there is already a prexisitng account with the username. Return true if name is already taken, false if not.
+     * Special Effects: N/A
+     */
     public bool createAccount(string name)
     {
         bool find = checkIfAccountTaken(name);
@@ -42,6 +53,12 @@ public class AccountsManager : MonoBehaviour
         }
         return !find;
     }
+    /* Method Name: checkIfAccountTaken(string name)
+     * Summary: Go through a list of accounts and check if any accounts have already used the desired username.
+     * @param name: The username which the player is trying to register.
+     * @return whether there is already a prexisitng account with the username. Return true if name is already taken, false if not.
+     * Special Effects: N/A
+     */
     public bool checkIfAccountTaken(string name)
     {
         for (int i = 0; i < accounts.Count; i++)
@@ -53,21 +70,29 @@ public class AccountsManager : MonoBehaviour
         }
         return false;
     }
+    /* Method Name: loadAccount(GameObject textArea)
+     * Summary: Go through a list of accounts and load the account with a specific username.
+     * @param textArea: A text area where we could read the user input to see which account they would like to load.
+     * @return N/A
+     * Special Effects: N/A
+     */
     public void loadAccount(GameObject textArea)
     {
         Account account = null;
         string name = textArea.GetComponent<TMPro.TextMeshProUGUI>().text;
         bool find = checkIfAccountExist(name);
-        if (!find)
-        {
-           
-        }
-        else
+        if (find)
         {
             account = accounts[activeIndex];
             activeAccount = accounts[activeIndex];
         }
     }
+    /* Method Name: confirmLogin(string password)
+     * Summary: Each account has its own password. Check if the inputed password match the stored password.
+     * @param password: A string of user inputed password
+     * @return ture if password matches, false if not.
+     * Special Effects: If the password is incorrect, the activeAccount will be set to null.
+     */
     public bool confirmLogin(string password)
     {
         if (activeAccount!=null && activeAccount.password.Equals(password))
@@ -78,10 +103,15 @@ public class AccountsManager : MonoBehaviour
         activeIndex = -1;
         return false;
     }
+    /* Method Name: checkIfAccountExist(string name)
+     * Summary: In the array of accounts, check if the account with the given name already exists.
+     * @param name: A string of user inputed username
+     * @return ture if account already exist, false if not.
+     * Special Effects: N/A
+     */
     public bool checkIfAccountExist(string name)
     {
         bool find = false;
-        //Why is there a empty space after the input text????
         name = name.Substring(0,name.Length-1);
         for(int i = 0; i < accounts.Count; i++)
         {
@@ -93,10 +123,13 @@ public class AccountsManager : MonoBehaviour
         }
         return find;
     }
-    public int lookUpAccountIndex()
-    {
-        return -1;
-    }
+    /* Method Name: accountGreaterThan(Account acc1, Account acc2)
+     * Summary: Take in two accounts and see if the first account have more total stars than the second
+     * @param acc1: An instance of account
+     * @param acc2: An instance of account
+     * @return ture if first acount have more stars than the second account
+     * Special Effects: N/A
+     */
     public bool accountGreaterThan(Account acc1, Account acc2)
     {
         return acc1.getTotalStar() > acc2.getTotalStar();

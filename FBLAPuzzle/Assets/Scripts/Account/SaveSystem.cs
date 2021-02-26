@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    /* Method Name: saveAccount()
+    /* Method Name: saveAccount(Account account)
      * Summary: Store an account onto the computer so users can save their progress and records.
      * @param account: The account that user wants to save.
      * @return N/A
@@ -25,7 +25,7 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
-    /* Method Name: loadAccount()
+    /* Method Name: loadAccount(Account account)
      * Summary: Look into the secure folder and attempt to find the user data.
      * @param account: The account that user wants to load.
      * @return an instance of AccountData which contains the user information requested. Return null if file not found. 
