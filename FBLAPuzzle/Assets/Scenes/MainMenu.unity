@@ -11882,7 +11882,32 @@ MonoBehaviour:
   LeaderBoardCanvas: {fileID: 1714027426}
   UserNameInputBoxCanvas: {fileID: 271648146}
   LogOutButton: {fileID: 1692997482}
-  InstructionPages: []
+  InstructionPages:
+  - {fileID: 2049601448}
+  - {fileID: 1227058088}
+  - {fileID: 216830714}
+  - {fileID: 1533873907}
+  - {fileID: 1084945708}
+  - {fileID: 50936902}
+  - {fileID: 273179511}
+  - {fileID: 92603338}
+  - {fileID: 1191065341}
+  - {fileID: 1366123079}
+  - {fileID: 1984068412}
+  - {fileID: 150339533}
+  - {fileID: 598151606}
+  - {fileID: 28803373}
+  - {fileID: 1606774290}
+  - {fileID: 2091571730}
+  - {fileID: 2068499141}
+  - {fileID: 2074592295}
+  - {fileID: 1723449857}
+  - {fileID: 1933972392}
+  - {fileID: 693120177}
+  - {fileID: 774663954}
+  - {fileID: 1932331222}
+  - {fileID: 274637503}
+  - {fileID: 1244461728}
   buttonsToDisableOnWarning:
   - {fileID: 125318846}
   - {fileID: 246059270}
