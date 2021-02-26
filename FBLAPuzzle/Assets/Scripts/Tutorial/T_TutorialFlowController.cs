@@ -57,7 +57,6 @@ public class T_TutorialFlowController : MonoBehaviour
         string s = "Please follow the keyboard\nPRESS ";
         if (currentStep == 0)
         {
-            //instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = s + "W";
             instructionText.GetComponent<TMPro.TextMeshProUGUI>().text = "Follow keyboard.\nPractice basic maneuver!";
             keysControl.darkAllKeys();
             keysControl.glow("up");

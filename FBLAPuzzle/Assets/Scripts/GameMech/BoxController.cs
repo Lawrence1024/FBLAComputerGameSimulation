@@ -36,7 +36,6 @@ public class BoxController : MonoBehaviour
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        //movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
@@ -166,26 +165,13 @@ public class BoxController : MonoBehaviour
         else
         {
             move();
-            //    piecePosition.addBoxPos(player.GetComponent<PlayerController>().attemptMovement);
             positionHistory[positionHistory.Count - 1] = new List<int> { xPos, yPos };
             movementHistory[movementHistory.Count - 1] = lastPlayerMovement;
         }
-        //StartCoroutine(checkIfBug());
         if (checkIfEnterQuestion()&&!answered)
         {
             gameObject.GetComponentInParent<BoxManager>().checkIfWin();
             answerQuestion();
-        }
-    //    printArray(movementHistory,"Movement History: ");
-    }
-    IEnumerator checkIfBug()
-    {
-        yield return new WaitForSeconds(0.2f);
-        bool condition1 = Physics2D.OverlapCircle(movePoint.position, 0.02f, playerLayer);
-        bool condition2 = xPos == player.GetComponent<PlayerController>().xPos && yPos == player.GetComponent<PlayerController>().yPos;
-        if (condition2)
-        {
-            player.GetComponent<PlayerController>().rebound();
         }
     }
     public bool checkIfEnterQuestion()

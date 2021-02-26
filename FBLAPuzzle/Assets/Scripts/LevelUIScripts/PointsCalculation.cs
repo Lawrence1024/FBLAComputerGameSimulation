@@ -30,7 +30,6 @@ public class PointsCalculation : MonoBehaviour
         if (!levelComplete && !gamePause) {
             points--;
         }
-        //parser.nextScene(sceneCounter, sceneNum);
         yield return new WaitForSeconds(.12f);
         gameObject.GetComponent<TMPro.TextMeshProUGUI>().text =points.ToString();
         if (points > 0&& !levelComplete&&!gamePause)

@@ -53,12 +53,7 @@ public class PlayAudio : MonoBehaviour
             startPlayingAudio();
         }
     }
-    public void pauseAudio(){
-        //audioActive = false;
-        //audioSource.Pause();
-    }
     public void startPlayingAudio() {
-        //audioActive = true;
         audioSource.Play();
     }
     public void changeVolume(float vol) {

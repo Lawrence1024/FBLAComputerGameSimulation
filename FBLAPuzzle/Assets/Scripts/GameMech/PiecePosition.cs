@@ -53,8 +53,6 @@ public class PiecePosition : MonoBehaviour
             BoxController tempController=box.GetComponent<BoxController>();
             tempController.positionHistory.Add(new List<int> { tempController.xPos, tempController.yPos });
             tempController.movementHistory.Add("-");
-            //printArray(tempController.positionHistory, "Box Position History: ");
-            //printArray(tempController.movementHistory, "Box Movement History: ");
         }
 
     }
@@ -116,7 +114,6 @@ public class PiecePosition : MonoBehaviour
                 BoxController tempController = box.GetComponent<BoxController>();
                 tempController.resetBox();
             }
-            //backBoxPos();
         }
         else
         {

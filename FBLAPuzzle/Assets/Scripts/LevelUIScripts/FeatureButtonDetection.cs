@@ -12,7 +12,6 @@ public class FeatureButtonDetection : MonoBehaviour
     public GameObject[] buttons;
 
     GameObject showScoreBoardData;
-    //public string nextSceneName;
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();

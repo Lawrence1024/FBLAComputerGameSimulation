@@ -26,9 +26,6 @@ public class MainMenuManager : MonoBehaviour
         UserNameInputBoxCanvas.transform.GetChild(2).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(3).gameObject.SetActive(false);
         UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(false);
-        /*UserNameInputBoxCanvas.transform.GetChild(4).gameObject.SetActive(false);
-        UserNameInputBoxCanvas.transform.GetChild(5).gameObject.SetActive(false);
-        UserNameInputBoxCanvas.transform.GetChild(6).gameObject.SetActive(false);*/
         for (int i = 0; i < InstructionPages.Length; i++)
         {
             InstructionPages[i].SetActive(false);
@@ -57,11 +54,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PauseMenuCanvas.SetActive(!PauseMenuCanvas.activeSelf);
         PauseMenuCanvas.transform.GetChild(2).gameObject.GetComponent<Slider>().value=GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().sliderValue;
-        if (PauseMenuCanvas.activeSelf)
-        {
-            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
-        }
-        else
+        if (!PauseMenuCanvas.activeSelf)
         {
             GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
         }

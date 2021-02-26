@@ -134,7 +134,6 @@ public class GetInputField : MonoBehaviour
             {
                 accManager.activeAccount.password = pwd;
                 accManager.activeAccount.saveAccount();
-                //accManager.activeAccount = null;
             }
         }
     }

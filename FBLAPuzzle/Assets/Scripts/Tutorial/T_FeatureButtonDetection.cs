@@ -13,13 +13,11 @@ public class T_FeatureButtonDetection : MonoBehaviour
 
     public GameObject TCanvas;
     public T_TutorialFlowController TFController;
-    //public string nextSceneName;
     void Start()
     {
         levelManager = GameObject.Find("LevelManager").GetComponent<T_LevelManager>();
         loading = levelManager.LoadingCanvas.transform.GetChild(0).GetComponent<Loading>();
         tipButton.SetActive(false);
-        //buttons = GameObject.FindGameObjectsWithTag("Buttons");
         TFController = TCanvas.GetComponent<T_TutorialFlowController>();
     }
 
@@ -124,12 +122,9 @@ public class T_FeatureButtonDetection : MonoBehaviour
         GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(1f);
         GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = true;
         GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>().stopTime = false;
-        //StartCoroutine(GameObject.Find("PointsValue").GetComponent<PointsCalculation>().pointsCountDown());
-        //Time.timeScale = 1;
     }
     public void switchToMainMenu()
     {
-        //showScoreBoardData.SetActive(false);
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
             if (GameObject.Find("AccountsManager") != null)
@@ -147,7 +142,6 @@ public class T_FeatureButtonDetection : MonoBehaviour
     }
     public void switchToMap()
     {
-        //showScoreBoardData.SetActive(false);
         if (SceneManager.GetActiveScene().name != "Map")
         {
             if (GameObject.Find("AccountsManager") != null)

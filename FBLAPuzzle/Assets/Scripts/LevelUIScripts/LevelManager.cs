@@ -12,7 +12,6 @@ public class LevelManager : MonoBehaviour
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
     public GameObject LevelCanvas;
-    //public GameObject InstructionCanvas;
     public GameObject TipsCanvas;
     public GameObject ScoreboardCanvas;
     public GameObject QuestionCanvas;
@@ -32,7 +31,6 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         LoadingCanvas.SetActive(false);
-        // PauseMenuCanvas.SetActive(false);
         TipsCanvas.SetActive(false);
         ScoreboardCanvas.SetActive(false);
         QuestionCanvas.SetActive(false);
@@ -41,8 +39,6 @@ public class LevelManager : MonoBehaviour
         LevelCanvas.SetActive(true);
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
         featureButtonDetection = GetComponent<FeatureButtonDetection>();
-        //This is the max star
-        //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         pointsCalculation = GameObject.Find("PointsValue").GetComponent<PointsCalculation>();
         displayStars("Stars");
         playerSprite.GetComponent<SpriteRenderer>().color = activeAccount.avatarColor;
@@ -64,7 +60,6 @@ public class LevelManager : MonoBehaviour
 
         if (PauseMenuCanvas.activeSelf) {
             GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
-            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
             pointsCalculation.gamePause = true;
         }
         else{
@@ -99,7 +94,6 @@ public class LevelManager : MonoBehaviour
                 activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] - 1;
             }
             activeAccount.saveAccount();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene());
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
 
@@ -121,13 +115,10 @@ public class LevelManager : MonoBehaviour
     }
     public void displayScoreboard()
     {
-        //FeatureCanvas.active=false;
-        //Time.timeScale = 0;
         pointsCalculation.levelComplete = true;
         ScoreboardCanvas.SetActive(true);
     }
     public void displayScore() {
-        //GameObject.Find("Points").GetComponent<TMPro.TextMeshProUGUI>().text();
         GameObject.Find("FinalPoints").GetComponent<TMPro.TextMeshProUGUI>().text = "Points: "+GameObject.Find("PointsValue").GetComponent<TMPro.TextMeshProUGUI>().text;
         displayStars("FinalStarDisplay");
     }
@@ -169,9 +160,6 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         displayScoreboard();
         displayScore();
-        //getAccountsPoints
-        //ScoreboardCanvas.GetComponent<ScoreBoardDisplay>().getAccountsPoints(level);
-        //ScoreboardCanvas.GetComponent<ScoreBoardDispaly>().getAccountsPoints(level);
         ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
         activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = 3;
     }

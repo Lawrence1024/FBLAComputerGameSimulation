@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     public ArrayList movementHistory = new ArrayList();
 
-    //public int[] startingPosition=new int[2];
     public int xPos;
     public int yPos;
     public List<int> startingPosition;
@@ -38,7 +37,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> {xPos,yPos});
         startingPosition = new List<int> { xPos, yPos };
@@ -60,19 +58,9 @@ public class PlayerController : MonoBehaviour
         movePointCloseEnough = state1;
         if (state1 && state2 && state3 && state4)
         {
-            //if (thereIsObstacle())
-            //{
-            //    //makeMovement();
-            //}
-            //else
-            //{
-                makeMovement();
-                piecePosition.addPlayerPos(attemptMovement);
-                piecePosition.addBoxPos(attemptMovement);
-            //    //    printArray(positionHistory, "Movement: ");
-            //}
-            //canMove = false;
-            //StartCoroutine(resumeMove(0.5f));
+            makeMovement();
+            piecePosition.addPlayerPos(attemptMovement);
+            piecePosition.addBoxPos(attemptMovement);
         }
     }
     public float findConvertingScale()

@@ -208,7 +208,6 @@ public class T_BoxController : MonoBehaviour
     }
     public void reverseBoxMove()
     {
-        //    printArray(movementHistory, "Box Movement History: ");
         string lastMove = movementHistory[movementHistory.Count - 1].ToString();
         if (lastMove == "up")
         {

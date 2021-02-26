@@ -78,7 +78,6 @@ public class QuestionInteraction : MonoBehaviour
         return lines[num].correctAnswer;
     }
 
-    //Assets/Scripts/QuestionBank/Question1.txt
     void LoadQuestion(string filename)
     {
         TextAsset questionData = Resources.Load<TextAsset>("QuestionData");
@@ -88,8 +87,6 @@ public class QuestionInteraction : MonoBehaviour
         byte[] byteArray = Encoding.UTF8.GetBytes(contents);
         MemoryStream stream = new MemoryStream(byteArray);
         // convert stream to string
-
-        //string file = "Assets/Resources/" + filename;
         string line;
         StreamReader r = new StreamReader(stream);
 

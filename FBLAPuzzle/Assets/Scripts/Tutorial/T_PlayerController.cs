@@ -13,7 +13,6 @@ public class T_PlayerController : MonoBehaviour
 
     public ArrayList movementHistory = new ArrayList();
 
-    //public int[] startingPosition=new int[2];
     public int xPos;
     public int yPos;
     public List<int> startingPosition;
@@ -40,7 +39,6 @@ public class T_PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //movePoint.parent = null;
         movePoint.position = transform.position;
         positionHistory.Add(new List<int> { xPos, yPos });
         startingPosition = new List<int> { xPos, yPos };
@@ -406,7 +404,6 @@ public class T_PlayerController : MonoBehaviour
             xPos -= 1;
         }
         piecePosition.backPlayerPos();
-        //piecePosition.backBoxPos();
     }
     IEnumerator resumeMove(float time)
     {

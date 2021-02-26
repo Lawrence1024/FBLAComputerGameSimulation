@@ -26,7 +26,6 @@ public class ChooseAvatar : MonoBehaviour
             return;
         }
         if (userColor.name == "Red") {
-            //rgba
             accManager.activeAccount.avatarColor = new Vector4(1, 0.24f, 0.24f, 1);
         } else if (userColor.name=="Orange") {
             accManager.activeAccount.avatarColor = new Vector4(1, 0.35f, 0, 1);

@@ -11,7 +11,6 @@ public class T_LevelManager : MonoBehaviour
     public GameObject LoadingCanvas;
     public GameObject PauseMenuCanvas;
     public GameObject LevelCanvas;
-    //public GameObject InstructionCanvas;
     public GameObject TipsCanvas;
     public GameObject ScoreboardCanvas;
     public GameObject QuestionCanvas;
@@ -36,7 +35,6 @@ public class T_LevelManager : MonoBehaviour
     void Start()
     {
         LoadingCanvas.SetActive(false);
-        // PauseMenuCanvas.SetActive(false);
         TipsCanvas.SetActive(false);
         ScoreboardCanvas.SetActive(false);
         QuestionCanvas.SetActive(false);
@@ -44,8 +42,6 @@ public class T_LevelManager : MonoBehaviour
         LevelCanvas.SetActive(true);
         PauseMenuCanvas.SetActive(false);
         activeAccount = GameObject.Find("AccountsManager").GetComponent<AccountsManager>().activeAccount;
-        //This is the max star
-        //activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4];
         pointsCalculation = GameObject.Find("PointsValue").GetComponent<T_PointsCalculation>();
         buttons = GameObject.FindGameObjectsWithTag("Buttons");
         TFController = TCanvas.GetComponent<T_TutorialFlowController>();
@@ -69,7 +65,6 @@ public class T_LevelManager : MonoBehaviour
         if (PauseMenuCanvas.activeSelf)
         {
             GameObject.Find("Player").GetComponent<T_PlayerController>().enabled = false;
-            //GameObject.Find("AudioPlayer").GetComponent<PlayAudio>().changeVolume(0.25f);
             pointsCalculation.stopTime = true;
         }
         else
@@ -104,15 +99,6 @@ public class T_LevelManager : MonoBehaviour
         }
         else if (GameObject.Find("Hearts").transform.childCount <= 1)
         {
-            //if (0 > activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] - 1)
-            //{
-            //    activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = 0;
-            //}
-            //else
-            //{
-            //    activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] = activeAccount.potentialStarsList[level[0] * 3 + level[1] - 4] - 1;
-            //}
-            //activeAccount.saveAccount();
             GameObject.Find("Hearts").transform.GetChild(0).gameObject.SetActive(false);
             Destroy(GameObject.Find("Hearts").transform.GetChild(0).gameObject);
             
@@ -166,7 +152,6 @@ public class T_LevelManager : MonoBehaviour
     }
     public void displayScoreboard()
     {
-        //FeatureCanvas.active=false;
         pointsCalculation.levelComplete = true;
         ScoreboardCanvas.SetActive(true);
     }
@@ -198,12 +183,6 @@ public class T_LevelManager : MonoBehaviour
             buttons[i].GetComponent<Button>().interactable = false;
         }
         yield return new WaitForSeconds(1f);
-        //    displayScoreboard();
-        //    displayScore();
-        //getAccountsPoints
-        //ScoreboardCanvas.GetComponent<ScoreBoardDisplay>().getAccountsPoints(level);
-        //ScoreboardCanvas.GetComponent<ScoreBoardDispaly>().getAccountsPoints(level);
-        //    ScoreboardCanvas.GetComponent<ShowScoreBoardData>().getAccountsPoints(level);
         StartCoroutine(loadWarning("You are ready to move on! Loading Main Menu in ", 5));
     }
     public IEnumerator displayMessage(string message, float sec)
