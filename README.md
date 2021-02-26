@@ -7,11 +7,7 @@ Table of contents
    * [How to run the game](#how-to-run-the-game)
    * [Create new account](#create-new-account)
    * [Controls](#controls)
-   * [gh-md-toc](#gh-md-toc)
-   * [Table of contents](#table-of-contents)
-   * [Installation](#installation)
-   1. smth
-      1. smth
+   * [Cool features](#cool-features)
 <!--te-->
 How to run the game
 ============
@@ -35,7 +31,13 @@ Controls
    2. 
    3. 
 
-
+Cool features
+============
+   1. Level maneuver
+      * Use WASD or ↑↓→← to move the player
+      * Use mouse to click on different buttons
+   2. 
+   3. 
 
 
 
