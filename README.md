@@ -17,7 +17,7 @@ Table of Contents
 How to Run the Game
 ============
    1. Download the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/zw8uktvhfj8xoo7/GoldCost%20Test.zip?dl=0 "Click here"))
-      * You do not have to have a Dropbox account to download
+      * You are NOT required to have a Dropbox account to download
       * Click the download button on the top right corner
    2. Right-click on the folder and unzip it (click on extract all)
    3. Open the unzipped folder and double click on FBLAPuzzle.exe
@@ -39,7 +39,7 @@ Controls
 ============
    1. Player maneuver
       * Use mouse to click on different buttons
-      * Use WASD or ↑↓→← to move the player
+      * Use WASD or ↑↓→← (the arrow keys) to move the player
    2. Quit program
       * Pressing the ESC key will activate the pause menu
       * User can quit anytime by pressing the quit button on the pause menu 
@@ -60,7 +60,7 @@ Cool Features
       * A tip button will show up if the user got stuck on a level
         * Clicking on it will prompt a video on how to pass the level
    6. Leaderboard and scoreboard
-      * The leaderboard on the main menu ranks the players according to their star count
+      * The main menu (as known as title page or homepage) contains the leaderboard that ranks the players according to their total star count
       * The scoreboard on each level ranks the players according to their points in that level
       * If you placed in the first 5 on the leaderboard or scoreboard, celebratory fireworks will display
    7. Lives, stars, and points in a level
@@ -69,8 +69,10 @@ Cool Features
         * Each incorrect answer will cause the user to lose a heart
         * When all three hearts are lost, you lose a star, and the level restarts
       * The first trial of each level will determine how many stars you get for that level
+      * There are 3 outcomes avaliable upon completition of each level. You can either earn 1 star, 2 stars, or 3 stars for that level
       * Points will be determined by how fast you complete the level 
         * Users can replay the level to score higher points
+        * As an advanced rule, player will lose points when they undo a move or reset the pieces' positions
    8. Question Database
       * The question bank is a .csv file
       * Question bank could be easily replaced with different .csv files to display different questions
