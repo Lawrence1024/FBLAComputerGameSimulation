@@ -16,7 +16,7 @@ Table of Contents
 
 How to Run the Game
 ============
-   1. Download the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/sheilhtyn4jcx1m/GoldCoastSection_MarkKeppelHighSchool.zip?dl=0 "Click here"))
+   1. Download the folder ([GoldCoastSection_MarkKeppelHighSchool](https://www.dropbox.com/s/rvq6j62rayehllr/GoldCoastSection_MarkKeppelHighSchool.zip?dl=0 "Click here"))
       * You are NOT required to have a Dropbox account to download
       * Click the download button on the top right corner
    2. Right-click on the folder and unzip it (click on extract all)
