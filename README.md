@@ -20,7 +20,7 @@ How to Run the Game
       * You are NOT required to have a Dropbox account to download
       * Click the download button on the top right corner
    2. Right-click on the folder and unzip it (click on extract all)
-   3. Open the unzipped folder and double click on FBLAPuzzle.exe (or FBLAPuzzle.lnk)
+   3. Open the unzipped folder and double click on FBLAPuzzle.lnk (or open the inner folder and double click on FBLAPuzzle.exe)
       * If a window pops up “Windows protected your PC,” click on more info and click on run anyway
       * This virus-free game is a standalone executable
 
