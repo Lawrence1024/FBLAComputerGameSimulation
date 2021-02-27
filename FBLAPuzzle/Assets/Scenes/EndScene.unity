@@ -11204,10 +11204,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Thank you for playing this game. \nYou are now an expert in FBLA!\nWe
-    enjoyed programming this game, so we hope that you also enjoyed playing it :)\n\nTeam
-    Members: \nKaren Shieh\nLawrence Shieh\n\nSchool:\nMark Keppel High School\n\nGame
-    Engine:\nUnity\n\nIllustrator:\nKaren Shieh\n\nMusic Soundtrack: \nhttps://www.youtube.com/watch?v=DVEUcbPkb-c\nhttps://www.youtube.com/watch?v=jxXxkAFxuBE&list=RDQMhXfrKN6EdLY&index=1\nhttps://www.youtube.com/watch?v=7DwPU-Vs2qI&t=112s\n\n\nAgain,
-    thank you for playing this game!\n"
+    hope that you enjoyed this game (we enjoyed programming it) :)\n\nTeam Members:
+    \nKaren Shieh\nLawrence Shieh\n\nSection: \nGold Coast Section\n\nSchool:\nMark
+    Keppel High School\n\nGame Engine:\nUnity\n\nLevel Designer:\nKaren Shieh\nLawrence
+    Shieh\n\nIllustrator:\nKaren Shieh\n\nMusic Soundtrack: \nGeorge Street Shuffle
+    Kevin MacLeod (incompetech.com)\r\nLicensed under Creative Commons: \nBy Attribution
+    3.0 License\r\nhttp://creativecommons.org/licenses/by/3.0/\r\nLong Stroll Kevin
+    MacLeod (incompetech.com)\r\nLicensed under Creative Commons: \nBy Attribution
+    3.0 License\r\nhttp://creativecommons.org/licenses/by/3.0/\r\nFunny Sound Effects
+    for Youtube Videos - NON-COPYRIGHTED SOUND EFFECTS!\r\nhttps://tinyurl.com/y4dzpvts\r\nFreesound
+    Music\r\nhttps://tinyurl.com/2uvkur4b\r\n\n\nAgain, thank you for playing this
+    game!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ec91163bce90dd144b17a57097c311ff, type: 2}
   m_sharedMaterial: {fileID: 6720403506706157979, guid: ec91163bce90dd144b17a57097c311ff,
